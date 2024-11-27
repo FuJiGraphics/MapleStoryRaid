@@ -1,0 +1,36 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                147,
+                273,
+                25,
+                25
+            ]
+        },
+        "ClipName": "LegIdle",
+        "FrameCount": 1,
+        "LoopType": "Loop",
+        "TexturePath": "graphics\\players\\marco_pistol.png",
+        "Transform": {
+            "Translate": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0, 1.0
+            ]
+        }
+    }
+}

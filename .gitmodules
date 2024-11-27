@@ -1,0 +1,3 @@
+[submodule "VegaEngine2/Vendor/spdlog"]
+	path = VegaEngine2/Vendor/spdlog
+	url = https://github.com/FuJiGraphics/spdlog.git
