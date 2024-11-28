@@ -1,0 +1,73 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                4,
+                95,
+                73,
+                53
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                98,
+                95,
+                73,
+                53
+            ]
+        },
+        "2": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                195,
+                95,
+                73,
+                53
+            ]
+        },
+        "ClipName": "None",
+        "FrameCount": 3,
+        "LoopType": "Loop",
+        "TexturePath": "graphics\\monster\\ironhog.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

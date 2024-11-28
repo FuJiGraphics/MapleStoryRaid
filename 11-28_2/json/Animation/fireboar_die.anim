@@ -1,0 +1,55 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                10,
+                351,
+                77,
+                60
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                101,
+                351,
+                77,
+                60
+            ]
+        },
+        "ClipName": "None",
+        "FrameCount": 2,
+        "LoopType": "Loop",
+        "TexturePath": "graphics\\monster\\fireboar.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}
