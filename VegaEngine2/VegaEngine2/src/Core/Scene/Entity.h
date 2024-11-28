@@ -50,14 +50,6 @@ namespace fz {
 		}
 
 		template <typename T>
-		T& GetComponent() const
-		{
-			FZLOG_ASSERT(m_Handle != entt::null, "앤티티가 존재하지 않습니다.");
-			FZLOG_ASSERT(HasComponent<T>(), "컴포넌트를 찾을 수 없습니다.");
-			return m_Scene->m_Registry.get<T>(m_Handle);
-		}
-
-		template <typename T>
 		bool HasComponent()
 		{
 			FZLOG_ASSERT(m_Handle != entt::null, "앤티티가 존재하지 않습니다.");
@@ -72,6 +64,8 @@ namespace fz {
 		}
 
 		void SetColorWithChilds(const sf::Color& color);
+		sf::Vector2f GetWorldPosition();
+		sf::Transform GetWorldTransform();
 
 		inline bool operator ==(const fz::Entity& other) const	{ return m_Handle == other.m_Handle && m_Scene == other.m_Scene; }
 		inline bool operator !=(const fz::Entity& other) const	{ return !((*this) == other); }
@@ -85,6 +79,7 @@ namespace fz {
 		fz::Entity CreateChildEntity(const std::string& uuid, const std::string& tagName);
 		void SavePrefab(const std::string& path);
 		void SetActiveWithChild(bool enabled);
+		sf::Transform GetRealWorldTransform(fz::Entity parent) const;
 
 	private:
 		entt::entity	m_Handle;

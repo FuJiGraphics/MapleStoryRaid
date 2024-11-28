@@ -62,6 +62,35 @@ namespace fz {
 		}
 	}
 
+	sf::Vector2f Entity::GetWorldPosition()
+	{
+		if (this->HasComponent<RootEntityComponent>())
+		{
+			fz::Transform& transform = GetComponent<TransformComponent>().Transform;
+			return transform.GetTranslate();
+		}
+
+		const auto& parent = GetComponent<ParentEntityComponent>().ParentEntity;
+		const sf::Transform realWorldTransform = GetRealWorldTransform(parent);
+		const auto& localPos = GetComponent<TransformComponent>().Transform.GetTranslate();
+
+		return realWorldTransform * localPos;
+	}
+
+	sf::Transform Entity::GetWorldTransform()
+	{
+		if (this->HasComponent<RootEntityComponent>())
+		{
+			return GetComponent<TransformComponent>().Transform;
+		}
+
+		const auto& parent = GetComponent<ParentEntityComponent>().ParentEntity;
+		const sf::Transform realWorldTransform = GetRealWorldTransform(parent);
+		const sf::Transform& localTransform = GetComponent<TransformComponent>().Transform;
+
+		return realWorldTransform * localTransform;
+	}
+
 	Entity& Entity::operator=(const Entity& other)
 	{
 		this->m_Handle = other.m_Handle;
@@ -138,5 +167,17 @@ namespace fz {
 			}
 		}
 	}
+
+	sf::Transform Entity::GetRealWorldTransform(fz::Entity parent) const
+	{
+		if (parent.HasComponent<RootEntityComponent>())
+		{
+			return parent.GetComponent<TransformComponent>().Transform;
+		}
+		sf::Transform transform = parent.GetComponent<TransformComponent>().Transform;
+		auto& parentComp = parent.GetComponent<ParentEntityComponent>();
+		return GetRealWorldTransform(parentComp.ParentEntity) * transform;
+	}
+
 
 } // namespace fz

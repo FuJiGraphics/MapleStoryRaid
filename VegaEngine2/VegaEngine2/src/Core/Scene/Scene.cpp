@@ -244,7 +244,7 @@ namespace fz {
 		auto& rigidBodyComp = entity.GetComponent<RigidbodyComponent>();
 		auto& transform = transformComp.Transform;
 
-		const b2Vec2& meterPos = Utils::PixelToMeter(transform.GetTranslate());
+		const b2Vec2& meterPos = Utils::PixelToMeter(entity.GetWorldPosition());
 
 		b2BodyDef bodyDef;
 		bodyDef.type = ToBox2dBodyType(rigidBodyComp.RigidType);
@@ -672,7 +672,8 @@ namespace fz {
 			rect->setFillColor(sf::Color::Transparent);
 			rect->setSize({ boxComp.Size.x * 2.0f, boxComp.Size.y * 2.0f });
 			rect->setPosition({ boxComp.Size.x * -1.0f, boxComp.Size.y * -1.0f });
-			Renderer2D::Draw(rect, transformComp.Transform);
+			fz::Entity entity = { handle, this->shared_from_this() };
+			Renderer2D::Draw(rect, entity.GetWorldTransform());
 		}
 		auto edgeView = GetEntities<TagComponent, TransformComponent, EdgeCollider2DComponent>();
 		for (auto& handle : edgeView)
@@ -689,7 +690,8 @@ namespace fz {
 			line->setFillColor(sf::Color::Green);
 			line->setSize(size);
 			line->setPosition(pos);
-			Renderer2D::Draw(line, transformComp.Transform);
+			fz::Entity entity = { handle, this->shared_from_this() };
+			Renderer2D::Draw(line, entity.GetWorldTransform());
 		}
 		// auto circleView = GetEntities<TransformComponent, CircleCollider2DComponent>();
 	}
