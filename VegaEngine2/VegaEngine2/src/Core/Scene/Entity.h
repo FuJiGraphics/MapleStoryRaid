@@ -74,7 +74,6 @@ namespace fz {
 	protected:
 		fz::Entity CreateChildEntity(const std::string& uuid, const std::string& tagName);
 		void SavePrefab(const std::string& path);
-		void LoadPrefab(const std::string& path);
 		void SetActiveWithChild(bool enabled);
 
 	private:

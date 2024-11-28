@@ -33,6 +33,7 @@
 #include "Renderer/FrameBuffer.h"
 
 // Scene
+#include "Core/Scene/Components.h"
 #include "Core/Scene/Entity.h"
 #include "Core/Scene/VegaScript.h"
 #include "Core/Scene/EditorCamera.h"

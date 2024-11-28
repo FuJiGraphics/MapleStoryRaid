@@ -7,12 +7,13 @@ namespace fz {
 
 	const std::string g_TempProjectPath = "temp.json";
 
+	enum class EditorState {
+		Edit = 0, Play, Count
+	};
+
 	class Editor2D : public fz::Layer
 	{
 	protected:
-		enum class SceneState {
-			Edit = 0, Play, Count
-		};
 		FZ_DELETE_COPY(Editor2D)
 
 	public:
@@ -40,7 +41,7 @@ namespace fz {
 		Shared<Scene> m_TempScene;
 		Shared<Scene> m_ActiveScene;
 		HierarchyPanel m_HierarchyPanel;
-		SceneState m_SceneState;
+		EditorState m_SceneState;
 		EditorCamera m_EditorCamera;
 	};
 

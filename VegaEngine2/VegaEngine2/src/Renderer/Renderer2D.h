@@ -8,8 +8,8 @@ namespace fz {
 
 	struct RenderFrame
 	{
-		sf::Sprite*	Sprite = nullptr;
-		const sf::Transform* Transform = nullptr;
+		sf::Sprite Sprite;
+		sf::Transform Transform;
 		sf::RectangleShape* RectangleShape = nullptr;
 		sf::CircleShape* CircleShape = nullptr;
 		sf::Transform subTranform = sf::Transform::Identity;

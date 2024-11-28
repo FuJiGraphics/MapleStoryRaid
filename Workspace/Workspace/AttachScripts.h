@@ -7,3 +7,5 @@
 #include "Fireboar.h"
 #include "Ironhog.h"
 
+#include "Player.h"
+

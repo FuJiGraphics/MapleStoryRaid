@@ -1,21 +1,24 @@
 #include "HierarchyPanel.h"
+#include "../Editor2D.h"
 
 using namespace std;
 
 namespace fz {
 
 
-	HierarchyPanel::HierarchyPanel(const Shared<Scene>& scene)
+	HierarchyPanel::HierarchyPanel(const Shared<Scene>& scene, EditorState* state)
 		: m_Context(nullptr)
 		, m_OnEntityRemove(false)
+		, m_EditState(nullptr)
 	{
-		SetContext(scene);
+		SetContext(scene, state);
 	}
 
-	void HierarchyPanel::SetContext(const Shared<Scene>& scene)
+	void HierarchyPanel::SetContext(const Shared<Scene>& scene, EditorState* state)
 	{
 		m_Context = scene;
 		m_SelectionContext = {};
+		m_EditState = state;
 	}
 
 	void HierarchyPanel::OnImGuiRender()
@@ -29,14 +32,14 @@ namespace fz {
 			
 			if (ImGui::BeginPopupContextWindow(0, 1))
 			{
-				if (ImGui::MenuItem("New Entity..."))
+				if (*m_EditState == EditorState::Edit && ImGui::MenuItem("New Entity..."))
 				{
 					if (!m_Context)
 						m_Context = CreateShared<Scene>(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
 					fz::Entity entity = m_Context->CreateEntity("NewEntity");
 					entity.AddComponent<RootEntityComponent>();
 				}
-				if (ImGui::MenuItem("Load Prefab"))
+				if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Load Prefab"))
 				{
 					if (!m_Context)
 					{
@@ -45,8 +48,8 @@ namespace fz {
 					auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
 					HWND handle = (HWND)nativeWindow->getSystemHandle();
 					std::string prefabOpenPath = VegaUI::OpenFile(handle, "Prefab File (*.prefab)\0*.prefab\0");
-					fz::Entity entity = m_Context->CreateEntity("NewEntity");
-					entity.LoadPrefab(prefabOpenPath);
+					if (!prefabOpenPath.empty())
+						m_Context->LoadPrefab(prefabOpenPath);
 				}
 				ImGui::EndPopup();
 			}
@@ -66,11 +69,11 @@ namespace fz {
 					ImGui::OpenPopup("##OpenPopup");
 					if (ImGui::BeginPopup("##Popup"))
 					{
-						if (ImGui::MenuItem("Add Child Entity"))
+						if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Add Child Entity"))
 						{
 							Entity childEntity = m_SelectionContext.CreateChildEntity(Random.GetUUID(), "New Child Entity");
 						}
-						if (ImGui::MenuItem("Remove"))
+						if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Remove"))
 						{
 							m_OnEntityRemove = true;
 						}
@@ -124,22 +127,32 @@ namespace fz {
 
 		if (!result && ImGui::BeginPopupContextItem(0, ImGuiPopupFlags_MouseButtonRight))
 		{
-			if (ImGui::MenuItem("Add Child Entity"))
+			if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Add Child Entity"))
 			{
 				m_SelectionContext = entity;
 				Entity childEntity = m_SelectionContext.CreateChildEntity(Random.GetUUID(), "New Child Entity");
 			}
-			if (ImGui::MenuItem("Remove"))
+			if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Remove"))
 			{
 				m_SelectionContext = entity;
 				m_OnEntityRemove = true;
 			}
-			if (ImGui::MenuItem("Save Prefab"))
+			if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Save Prefab"))
 			{
 				auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
 				HWND handle = (HWND)nativeWindow->getSystemHandle();
 				std::string prefabSavePath = VegaUI::SaveFile(handle, "Prefab File (*.prefab)\0*.prefab\0");
-				m_SelectionContext.SavePrefab(prefabSavePath);
+				if (!prefabSavePath.empty())
+				{
+					if (m_SelectionContext)
+					{
+						m_SelectionContext.SavePrefab(prefabSavePath);
+					}
+					else
+					{
+						FZLOG_WARN("Prefab 저장 실패! SelectContext가 존재하지 않습니다.");
+					}
+				}
 			}
 			ImGui::EndPopup();
 			result = true;
@@ -167,9 +180,10 @@ namespace fz {
 			ImGui::PushItemWidth(-1);
 			if (ImGui::Button("Add"))
 			{
-				ImGui::OpenPopup("AddComponent");
+				if (*m_EditState == EditorState::Edit)
+					ImGui::OpenPopup("AddComponent");
 			}
-			if (ImGui::BeginPopup("AddComponent"))
+			if (*m_EditState == EditorState::Edit && ImGui::BeginPopup("AddComponent"))
 			{
 				DisplayAddComponentEntry<CameraComponent>("Camera");
 				DisplayAddComponentEntry<SpriteComponent>("Sprite");
@@ -208,9 +222,12 @@ namespace fz {
 		{
 			if (ImGui::TreeNodeEx("CameraComponent", treeFlag, "Camera"))
 			{
-				bool isRemove = VegaUI::PopupContextItem("Remove CameraComponent", [&entity]() {
-											 entity.RemoveComponent<CameraComponent>();
-										 });
+				bool isRemove = false;
+				if (*m_EditState == EditorState::Edit)
+				{
+					isRemove = VegaUI::PopupContextItem("Remove CameraComponent", [&entity]() {
+						entity.RemoveComponent<CameraComponent>(); });
+				}
 
 				if (!isRemove)
 				{
@@ -239,9 +256,13 @@ namespace fz {
 		{
 			if (ImGui::TreeNodeEx("SpriteComponent", treeFlag, "Sprite"))
 			{
-				bool isRemove = VegaUI::PopupContextItem("Remove SpriteComponent", [&entity]() {
-															 entity.RemoveComponent<SpriteComponent>();
-														 });
+				bool isRemove = false;
+				if (*m_EditState == EditorState::Edit)
+				{
+					isRemove = VegaUI::PopupContextItem("Remove SpriteComponent", [&entity]() {
+						entity.RemoveComponent<SpriteComponent>();
+															 });
+				}
 				if (!isRemove)
 				{
 					SpriteComponent& spriteComp = entity.GetComponent<SpriteComponent>();
@@ -296,9 +317,13 @@ namespace fz {
 		{
 			if (ImGui::TreeNodeEx("RigidbodyComponent", treeFlag, "Rigidbody"))
 			{
-				bool isRemove = VegaUI::PopupContextItem("Remove RigidbodyComponent", [&entity]() {
-					entity.RemoveComponent<RigidbodyComponent>();
-														 });
+				bool isRemove = false;
+				if (*m_EditState == EditorState::Edit)
+				{
+					isRemove = VegaUI::PopupContextItem("Remove RigidbodyComponent", [&entity]() {
+						entity.RemoveComponent<RigidbodyComponent>();
+															 });
+				}
 				if (!isRemove)
 				{
 					auto& rigidComp = entity.GetComponent<RigidbodyComponent>();
@@ -329,8 +354,12 @@ namespace fz {
 		{
 			if (ImGui::TreeNodeEx("ColliderComponent", treeFlag, "Collider"))
 			{
-				bool isRemove = VegaUI::PopupContextItem("Remove ColliderComponent", [&entity]() {
-					entity.RemoveComponent<BoxCollider2DComponent>(); });
+				bool isRemove = false;
+				if (*m_EditState == EditorState::Edit)
+				{
+					VegaUI::PopupContextItem("Remove ColliderComponent", [&entity]() {
+						entity.RemoveComponent<BoxCollider2DComponent>(); });
+				}
 
 				if (!isRemove)
 				{

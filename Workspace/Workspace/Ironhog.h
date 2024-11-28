@@ -1,6 +1,6 @@
 #pragma once
 #include <VegaEngine2.h>
-#include "MonsterFSM.h"
+#include "FSM.h"
 
 namespace fz {
 

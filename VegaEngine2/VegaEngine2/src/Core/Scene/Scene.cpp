@@ -479,6 +479,21 @@ namespace fz {
 						});
 	}
 
+	void Scene::LoadPrefab(const std::string& path)
+	{
+		Database::LoadFromJson(path);
+		auto& json = Database::GetJsonObject(path);
+		for (json::iterator itEntityUUID = json.begin(); itEntityUUID != json.end(); ++itEntityUUID)
+		{
+			const std::string& entityUUID = itEntityUUID.key();
+			fz::Entity entity = this->CreateEntityWithUUID("New Entity...", entityUUID);
+			entity.m_UUID = entityUUID;
+			EntitySerializer serialize(entity);
+			serialize.Deserialize(json);
+		}
+		Database::Unload(path);
+	}
+
 	void Scene::OnUpdateChildEntity()
 	{
 		// 차일드 엔티티 트랜스폼 업데이트

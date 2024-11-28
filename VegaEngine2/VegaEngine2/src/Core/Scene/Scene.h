@@ -77,6 +77,9 @@ namespace fz {
 		void OnUpdateScript(float dt);
 		void OnPostUpdateScript();
 
+		// Prefab
+		void LoadPrefab(const std::string& path);
+
 		void OnUpdateChildEntity();
 		void OnUpdatePhysicsSystem(float dt);
 		void OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform** dstTransform);

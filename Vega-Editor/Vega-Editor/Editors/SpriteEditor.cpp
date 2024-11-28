@@ -80,6 +80,20 @@ namespace fz {
 		{
 			if( ImGui::BeginMenu("Options"))
 			{
+				if (ImGui::MenuItem("New..."))
+				{
+					auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
+					HWND handle = (HWND)nativeWindow->getSystemHandle();
+					std::string openPath = VegaUI::OpenFile(handle, "Atlas Image (*.png)\0*.png\0");
+					if (!openPath.empty())
+					{
+						SpriteEditor::Clear();
+						SpriteEditor::SetTarget(openPath);
+						s_IsOpenedFile = true;
+					}
+					else
+						s_IsOpenedFile = false;
+				}
 				if (s_IsOpenedFile && ImGui::MenuItem("Add Frame"))
 				{
 					s_Frames.push_back(s_WorkSprite);
@@ -101,7 +115,24 @@ namespace fz {
 						SpriteEditor::OpenAniamtionClip(openPath);
 					}
 				}
-				if (s_IsOpenedFile && ImGui::MenuItem("Save Clip..."))
+				if (s_IsOpenedFile && ImGui::MenuItem("Save..."))
+				{
+					if (!s_CurrentPath.empty()) 
+					{
+						SpriteEditor::SaveAnimationClip(s_CurrentPath);
+					}
+					else
+					{
+						auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
+						HWND handle = (HWND)nativeWindow->getSystemHandle();
+						std::string savePath = VegaUI::SaveFile(handle, "Animation Clip (*.anim)\0*.anim\0");
+						if (!savePath.empty())
+						{
+							SpriteEditor::SaveAnimationClip(savePath);
+						}
+					}
+				}
+				if (s_IsOpenedFile && ImGui::MenuItem("Save As..."))
 				{
 					auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
 					HWND handle = (HWND)nativeWindow->getSystemHandle();
@@ -338,7 +369,7 @@ namespace fz {
 		s_WorkSprite = sf::Sprite();
 		s_WorkSprite.setTexture(texture);
 		s_FrameBuffer->Resize((float)size.x, (float)size.y);
-		s_EditorCamera.SetViewport(0.0f, 0.0f, 200.f, 200.f);
+		s_EditorCamera.SetViewport(0.0f, 0.0f, size.x * 2.0f, size.y * 2.0f);
 
 		return result;
 	}
@@ -358,6 +389,7 @@ namespace fz {
 			s_Scale = { 1.0f, 1.0f };
 			s_Rotation = 0.0f;
 			s_IsOpenedFile = false;
+			s_FrameBuffer->Clear();
 		}
 	}
 
@@ -408,7 +440,6 @@ namespace fz {
 
 	void SpriteEditor::Clear()
 	{
-		s_IsActive = false;
 		s_CurrentPath = "";
 		s_ClipName = "None";
 		s_LoopType = AnimationLoopTypes::Loop;

@@ -4,8 +4,8 @@ namespace fz {
 	Editor2D::Editor2D(const std::string& name)
 		: Layer(name)
 		, m_ActiveScene(nullptr)
-		, m_HierarchyPanel(m_ActiveScene)
-		, m_SceneState(SceneState::Edit)
+		, m_SceneState(EditorState::Edit)
+		, m_HierarchyPanel(m_ActiveScene, &m_SceneState)
 		, m_EditorCamera({ (float)FRAMEWORK.GetWidth(), (float)FRAMEWORK.GetHeight() }, false)
 	{
 		// Empty
@@ -21,7 +21,7 @@ namespace fz {
 			m_ActiveScene = LoadScene(g_TempProjectPath);
 		if (m_ActiveScene == nullptr)
 			m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
-		m_HierarchyPanel.SetContext(m_ActiveScene);
+		m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 		SpriteEditor::SetContext(m_ActiveScene);
 		Scene::s_CurrentScene = m_ActiveScene;
 	}
@@ -38,11 +38,11 @@ namespace fz {
 	{
 		switch (m_SceneState)
 		{
-			case SceneState::Edit:
+			case EditorState::Edit:
 				m_ActiveScene->OnUpdateEditor(dt, m_EditorCamera);
 				SpriteEditor::OnUpdate(dt);
 				break;
-			case SceneState::Play:
+			case EditorState::Play:
 				m_ActiveScene->OnUpdate(dt);
 				break;
 		}
@@ -50,7 +50,7 @@ namespace fz {
 
 	void Editor2D::OnEvent(fz::Event& ev)
 	{
-		if (m_SceneState == SceneState::Edit)
+		if (m_SceneState == EditorState::Edit)
 		{
 			m_EditorCamera.OnEvent(ev);
 			SpriteEditor::OnEvent(ev);
@@ -66,7 +66,7 @@ namespace fz {
 		// ÀúÀå ÇÖ Å°
 		if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_S))
 		{
-			if (m_SceneState == SceneState::Edit)
+			if (m_SceneState == EditorState::Edit)
 			{
 				SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
 				FZLOG_INFO("Scene Save UUID = {0}", m_ActiveScene->GetUUID());
@@ -75,39 +75,52 @@ namespace fz {
 
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("New", "Ctrl+N"))
+			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("New", "Ctrl+N"))
 			{
 				m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
-				m_HierarchyPanel.SetContext(m_ActiveScene);
+				m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 				m_ActiveSceneFilePath.clear();
 				this->OnScenePlay();
 				this->OnSceneStop();
 			}
-			if (ImGui::MenuItem("Open...", "Ctrl+O"))
+			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Open...", "Ctrl+O"))
 			{
 				this->OnSceneStop();
-				Shared<Scene> prevScene = m_ActiveScene;
-				m_ActiveSceneFilePath = VegaUI::OpenFile(handle, "Scene File (*.json)\0*.json\0");
+				std::string prevPath = m_ActiveSceneFilePath;
+				m_ActiveSceneFilePath = VegaUI::OpenFile(handle, "Scene File (*.vega)\0*.vega\0");
 				if (m_ActiveSceneFilePath.empty())
-					m_ActiveScene = prevScene;
-				else
+				{
+					m_ActiveSceneFilePath = prevPath;
+				}
+				else if (!m_ActiveSceneFilePath.empty())
 				{
 					m_ActiveScene = LoadScene(m_ActiveSceneFilePath);
-					if (!m_ActiveScene)
-						m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
 				}
-				m_HierarchyPanel.SetContext(m_ActiveScene);
+				if (!m_ActiveScene)
+					m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
+				m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 			}
-			if (ImGui::MenuItem("Save", "Ctrl+S"))
+			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Save", "Ctrl+S"))
 			{
-				SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
+				if (!m_ActiveSceneFilePath.empty()) 
+				{
+					SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
+				}
+				else
+				{
+					std::string path = VegaUI::SaveFile(handle, "Scene File (*.vega)\0*.vega\0");
+					SaveScene(m_ActiveScene, path);
+				}
 			}
-			if (ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
+			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 			{
-				std::string path = VegaUI::SaveFile(handle, "Scene File (*.json)\0*.json\0");
-				SaveScene(m_ActiveScene, path);
+				std::string path = VegaUI::SaveFile(handle, "Scene File (*.vega)\0*.vega\0");
+				if (!path.empty())
+				{
+					SaveScene(m_ActiveScene, path);
+				}
 			}
-			if (ImGui::MenuItem("Exit"))
+			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Exit"))
 			{
 				System::GetSystem().ExitSystem();
 			}
@@ -153,10 +166,13 @@ namespace fz {
 		m_HierarchyPanel.OnImGuiRender();
 		if (ImGui::Begin("Draw Debug Mode"))
 		{
-			bool flag = m_ActiveScene->IsDebugDisplayMode();
-			if (ImGui::Checkbox("##debugMode", &flag))
+			if (m_ActiveScene)
 			{
-				m_ActiveScene->SetDebugDisplayMode(flag);
+				bool flag = m_ActiveScene->IsDebugDisplayMode();
+				if (ImGui::Checkbox("##debugMode", &flag))
+				{
+					m_ActiveScene->SetDebugDisplayMode(flag);
+				}
 			}
 		}
 		ImGui::End(); // Viewports
@@ -187,24 +203,24 @@ namespace fz {
 
 	void Editor2D::OnScenePlay()
 	{
-		m_SceneState = SceneState::Play;
+		m_SceneState = EditorState::Play;
 		SaveScene(m_ActiveScene, g_TempProjectPath);
 		auto loadScene = LoadScene(g_TempProjectPath);
 		if (loadScene)
 			m_ActiveScene = loadScene;
-		m_HierarchyPanel.SetContext(m_ActiveScene);
+		m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 		this->BindScript();
 		m_ActiveScene->OnPreUpdate();
 	}
 
 	void Editor2D::OnSceneStop()
 	{
-		m_SceneState = SceneState::Edit;
+		m_SceneState = EditorState::Edit;
 		m_ActiveScene->OnPostUpdate();
 		if (!m_ActiveSceneFilePath.empty())
 		{
 			m_ActiveScene = LoadScene(m_ActiveSceneFilePath);
-			m_HierarchyPanel.SetContext(m_ActiveScene);
+			m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 		}
 	}
 
@@ -226,13 +242,13 @@ namespace fz {
 			ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - (size * 0.5f));
 			if (ImGui::ImageButton("##PlayButton", TEXTURE_MGR.Get("editor/icons/PlayButton.png"), {size, size}))
 			{
-				if (m_SceneState == SceneState::Edit)
+				if (m_SceneState == EditorState::Edit)
 					OnScenePlay();
 			}
 			ImGui::SameLine();
 			if (ImGui::ImageButton("##StopButton", TEXTURE_MGR.Get("editor/icons/StopButton.png"), { size, size }))
 			{
-				if (m_SceneState == SceneState::Play)
+				if (m_SceneState == EditorState::Play)
 					OnSceneStop();
 			}
 		}
