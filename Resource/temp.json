@@ -97,7 +97,7 @@
                 "TexPath": "game\\graphics\\player\\player_Idle.png",
                 "TexRect": {
                     "Height": 83,
-                    "Left": 126,
+                    "Left": 63,
                     "Top": 0,
                     "Width": 63
                 }
@@ -113,12 +113,12 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    1.0,
+                    -1.0,
                     1.0
                 ],
                 "Translate": [
-                    1206.0322265625,
-                    520.3001098632813
+                    939.1935424804688,
+                    642.3001098632813
                 ]
             }
         },

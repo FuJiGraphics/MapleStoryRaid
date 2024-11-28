@@ -67,6 +67,8 @@ namespace fz {
 			FZLOG_DEBUG("Rect = {0}, {1}, {2}, {3}", rect[0], rect[1], rect[2], rect[3]);
 		}
 		std::cout << std::endl;
+
+		Database::Unload(filePath);
 		return true;
 	}
 

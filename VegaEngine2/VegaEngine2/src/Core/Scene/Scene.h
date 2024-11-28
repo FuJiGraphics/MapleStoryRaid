@@ -82,7 +82,7 @@ namespace fz {
 
 		void OnUpdateChildEntity();
 		void OnUpdatePhysicsSystem(float dt);
-		void OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform** dstTransform);
+		void OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform& dstTransform);
 		void OnRenderEditorSprite(OrthoCamera* mainCamera);
 		void OnRenderRuntimeSprite(OrthoCamera* mainCamera, sf::Transform& transform);
 		void OnDrawDebugShape();

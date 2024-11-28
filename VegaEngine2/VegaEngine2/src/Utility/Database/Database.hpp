@@ -27223,7 +27223,7 @@ namespace fz {
         static void LoadFromJson(const std::string& jsonPath)
         {
             const auto& it = s_JsonPool.find(jsonPath);
-            if (it == s_JsonPool.end())
+            if (s_JsonPool.empty() || it == s_JsonPool.end())
 			{
 				std::shared_ptr<nlohmann::json> newJson = nullptr;
 				newJson = std::make_shared<nlohmann::json>();

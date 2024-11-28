@@ -72,6 +72,7 @@ namespace fz {
 			}
 			break;
 		}
+		Database::Unload(path);
 		return newScene;
 	}
 

@@ -331,12 +331,12 @@ namespace fz {
 	void Scene::OnUpdate(float dt)
 	{
 		OrthoCamera* camera = nullptr;
-		sf::Transform* transform = nullptr;
+		sf::Transform transform = sf::Transform::Identity;
 		this->OnUpdateScript(dt);
 		this->OnUpdateChildEntity();
-		this->OnUpdateCamera(&camera, &transform);
+		this->OnUpdateCamera(&camera, transform);
 		this->OnUpdatePhysicsSystem(dt);
-		this->OnRenderRuntimeSprite(camera, *transform);
+		this->OnRenderRuntimeSprite(camera, transform);
 	}
 
 	void Scene::OnPostUpdate()
@@ -548,7 +548,7 @@ namespace fz {
 		}
 	}
 
-	void Scene::OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform** dstTransform)
+	void Scene::OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform& dstTransform)
 	{
 		auto view = m_Registry.view<TagComponent, TransformComponent, CameraComponent>();
 		for (auto entity : view)
@@ -560,9 +560,9 @@ namespace fz {
 			if (camera.Primary)
 			{
 				if (transform.IsChildRenderMode)
-					*dstTransform = &transform.RenderTransform;
+					dstTransform = transform.RenderTransform;
 				else
-					*dstTransform = &transform.Transform.GetRawTransform();
+					dstTransform = transform.Transform.GetRawTransform();
 				*dstCamera = &camera.Camera;
 				break;
 			}
@@ -605,10 +605,10 @@ namespace fz {
 		if (mainCamera)
 		{
 			Renderer2D::BeginScene(*mainCamera, transform, m_FrameBuffer);
-			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteComponent, TagComponent>);
-			for (auto entity : group)
+			auto entities = GetEntities< TransformComponent, SpriteComponent, TagComponent>();
+			for (auto entity : entities)
 			{
-				const auto& [transform, sprite, tag] = group.get<TransformComponent, SpriteComponent, TagComponent>(entity);
+				const auto& [transform, sprite, tag] = entities.get<TransformComponent, SpriteComponent, TagComponent>(entity);
 				if (tag.Active == false)
 					continue; // ** 비활성화시 로직 생략
 
