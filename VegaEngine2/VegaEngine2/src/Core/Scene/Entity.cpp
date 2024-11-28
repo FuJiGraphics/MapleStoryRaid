@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Entity.h"
+#include "EntitySerializer.h"
 
 namespace fz {
 	Entity::Entity()
@@ -92,6 +93,50 @@ namespace fz {
 			dhildTransformComp.IsChildRenderMode = true;
 		}
 		return childEntity;
+	}
+
+	void Entity::SavePrefab(const std::string& path)
+	{
+		Database::LoadFromJson(path);
+		auto& json = Database::GetJsonObject(path);
+		json.clear();
+
+		Entity saveEntity = { m_UUID, m_Handle, FZ_CURRENT_SCENE };
+		EntitySerializer serializer(saveEntity);
+		serializer.Serialize(json);
+		Database::Unload(path);
+	}
+
+	void Entity::LoadPrefab(const std::string& path)
+	{
+		Database::LoadFromJson(path);
+		auto& json = Database::GetJsonObject(path);
+		for (json::iterator itEntityUUID = json.begin(); itEntityUUID != json.end(); ++itEntityUUID)
+		{
+			const std::string& entityUUID = itEntityUUID.key();
+			fz::Entity entity = m_Scene->CreateEntityWithUUID("New Entity...", entityUUID);
+			entity.m_UUID = entityUUID;
+			EntitySerializer serialize(entity);
+			serialize.Deserialize(json);
+			*this = entity;
+		}
+	}
+
+	void Entity::SetActiveWithChild(bool enabled)
+	{
+		if (this->HasComponent<TagComponent>())
+		{
+			auto& tagComp = this->GetComponent<TagComponent>();
+			tagComp.Active = enabled;
+		}
+		if (this->HasComponent<ChildEntityComponent>())
+		{
+			auto& childComp = this->GetComponent<ChildEntityComponent>();
+			for (auto& child : childComp.CurrentChildEntities)
+			{
+				child.SetActiveWithChild(enabled);
+			}
+		}
 	}
 
 } // namespace fz

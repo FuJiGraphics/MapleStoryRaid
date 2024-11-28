@@ -22,7 +22,7 @@ namespace fz {
 
 	private:
 		Shared<Scene> m_Context;
-		Entity m_SelectionContext;
+		fz::Entity m_SelectionContext;
 		bool m_OnEntityRemove;
 	};
 }

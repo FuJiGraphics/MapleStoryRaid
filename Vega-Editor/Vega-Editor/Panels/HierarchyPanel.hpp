@@ -43,6 +43,18 @@ namespace fz {
 						colComp.Size.y *= (transform.GetScale().y * (rect.height - rect.top));
 					}
 				}
+				else if (std::is_same<T, EdgeCollider2DComponent>().value)
+				{
+					if (m_SelectionContext.HasComponent<SpriteComponent>())
+					{
+						EdgeCollider2DComponent& colComp = m_SelectionContext.GetComponent<EdgeCollider2DComponent>();
+						fz::Transform& transform = m_SelectionContext.GetComponent<TransformComponent>();
+						sf::Sprite& sprite = m_SelectionContext.GetComponent<SpriteComponent>().Sprite;
+						sf::FloatRect rect = sprite.getGlobalBounds();
+						colComp.StartPos = transform.GetRawTransform() * colComp.StartPos;
+						colComp.EndPos = transform.GetRawTransform() * colComp.EndPos;
+					}
+				}
 				ImGui::CloseCurrentPopup();
 			}
 		}

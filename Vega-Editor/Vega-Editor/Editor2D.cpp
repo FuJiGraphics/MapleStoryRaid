@@ -66,8 +66,11 @@ namespace fz {
 		// ÀúÀå ÇÖ Å°
 		if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_S))
 		{
-			SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
-			FZLOG_INFO("Scene Save UUID = {0}", m_ActiveScene->GetUUID());
+			if (m_SceneState == SceneState::Edit)
+			{
+				SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
+				FZLOG_INFO("Scene Save UUID = {0}", m_ActiveScene->GetUUID());
+			}
 		}
 
 		if (ImGui::BeginMenu("File"))
@@ -243,7 +246,8 @@ namespace fz {
 		auto& base = BindScriptBase::GetInstance();
 		for (auto& script : base)
 		{
-			script->Bind(m_ActiveScene->GetUUID(), m_ActiveScene);
+			std::string sceneUUID = m_ActiveScene->GetUUID();
+			script->Bind(sceneUUID, m_ActiveScene);
 		}
 	}
 

@@ -103,6 +103,21 @@ namespace fz {
         return vec / mag;
     }
 
+	sf::Vector2f Utils::GetNormalVector(const sf::Vector2f& v1, const sf::Vector2f& v2)
+	{
+		sf::Vector2f v = v2 - v1;
+
+		sf::Vector2f normal(v.y, -v.x);
+
+		float mag = std::sqrt(normal.x * normal.x + normal.y * normal.y);
+		if (mag != 0) {
+			normal.x /= mag;
+			normal.y /= mag;
+		}
+
+		return normal;
+	}
+
     float Utils::Distance(const sf::Vector2f& p1, const sf::Vector2f& p2)
     {
         return Magnitude(p2 - p1);
@@ -112,6 +127,11 @@ namespace fz {
     {
         return v1.x * v2.x + v1.y * v2.y;
     }
+
+	float Utils::Cross(const sf::Vector2f& v1, const sf::Vector2f& v2)
+	{
+		return v1.x * v2.y - v1.y * v2.x;
+	}
 
     float Utils::RadianToDegree(float radian)
     {

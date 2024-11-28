@@ -157,6 +157,19 @@ namespace fz {
 				dstBoxComp.RestitutionThreshold = srcBoxComp.RestitutionThreshold;
 				dstBoxComp.Size = srcBoxComp.Size;
 			}
+			else if (src.HasComponent<EdgeCollider2DComponent>())
+			{
+				auto& srcBoxComp = src.GetComponent<EdgeCollider2DComponent>();
+				auto& dstBoxComp = dst.AddComponent<EdgeCollider2DComponent>();
+				dstBoxComp.StartPos = srcBoxComp.StartPos;
+				dstBoxComp.EndPos = srcBoxComp.EndPos;
+				dstBoxComp.IsOneSides = srcBoxComp.IsOneSides;
+				dstBoxComp.Density = srcBoxComp.Density;
+				dstBoxComp.Friction = srcBoxComp.Friction;
+				dstBoxComp.IsTrigger = srcBoxComp.IsTrigger;
+				dstBoxComp.Restitution = srcBoxComp.Restitution;
+				dstBoxComp.RestitutionThreshold = srcBoxComp.RestitutionThreshold;
+			}
 			// TODO: 스크립트 복사
 			if (src.HasComponent<NativeScriptComponent>())
 			{
@@ -258,6 +271,41 @@ namespace fz {
 			b2FixtureDef fixtureDef;
 			fixtureDef.isSensor = collider.IsTrigger;
 			fixtureDef.shape = &polygonShape;
+			fixtureDef.density = collider.Density;
+			fixtureDef.friction = collider.Friction;
+			fixtureDef.restitution = collider.Restitution;
+			fixtureDef.restitutionThreshold = collider.RestitutionThreshold;
+			collider.RuntimeFixture = body->CreateFixture(&fixtureDef);
+		}
+		else if (entity.HasComponent<EdgeCollider2DComponent>())
+		{
+			auto& collider = entity.GetComponent<EdgeCollider2DComponent>();
+
+			const b2Vec2& newStart = Utils::PixelToMeter(collider.StartPos);
+			const b2Vec2& newEnd = Utils::PixelToMeter(collider.EndPos);
+
+			b2EdgeShape edgeShape;
+			if (collider.IsOneSides)
+			{
+				b2Vec2 direction = newEnd - newStart;
+				b2Vec2 normal(direction.y, -direction.x);
+				float length = normal.Length(); 
+				if (length != 0) {
+					normal.x /= length;
+					normal.y /= length;
+				}
+				b2Vec2 v0 = newStart + normal;
+				b2Vec2 v3 = newEnd + normal;
+				edgeShape.SetOneSided(v0, newStart, newEnd, v3);
+			}
+			else
+			{
+				edgeShape.SetTwoSided(newStart, newEnd);
+			}
+
+			b2FixtureDef fixtureDef;
+			fixtureDef.isSensor = collider.IsTrigger;
+			fixtureDef.shape = &edgeShape;
 			fixtureDef.density = collider.Density;
 			fixtureDef.friction = collider.Friction;
 			fixtureDef.restitution = collider.Restitution;
@@ -409,6 +457,7 @@ namespace fz {
 	void Scene::OnUpdateScript(float dt)
 	{
 		auto nativeView = m_Registry.view<TagComponent, NativeScriptComponent>();
+		if (nativeView.size_hint())
 		nativeView.each([&](auto entity, TagComponent& tag, NativeScriptComponent& nsc)
 						{
 							if (tag.Active)
@@ -582,6 +631,23 @@ namespace fz {
 			rect->setSize({ boxComp.Size.x * 2.0f, boxComp.Size.y * 2.0f });
 			rect->setPosition({ boxComp.Size.x * -1.0f, boxComp.Size.y * -1.0f });
 			Renderer2D::Draw(rect, transformComp.Transform);
+		}
+		auto edgeView = GetEntities<TagComponent, TransformComponent, EdgeCollider2DComponent>();
+		for (auto& handle : edgeView)
+		{
+			const auto& [tag, transformComp, edgeComp] = edgeView.get<TagComponent, TransformComponent, EdgeCollider2DComponent>(handle);
+			if (tag.Active == false)
+				continue; // ** 비활성화시 로직 생략
+
+			sf::Vector2f size = (edgeComp.EndPos - edgeComp.StartPos);
+			sf::Vector2f pos = edgeComp.StartPos;
+			sf::RectangleShape* line = new sf::RectangleShape;
+			line->setOutlineColor(sf::Color::Green);
+			line->setOutlineThickness(1.0f);
+			line->setFillColor(sf::Color::Green);
+			line->setSize(size);
+			line->setPosition(pos);
+			Renderer2D::Draw(line, transformComp.Transform);
 		}
 		// auto circleView = GetEntities<TransformComponent, CircleCollider2DComponent>();
 	}

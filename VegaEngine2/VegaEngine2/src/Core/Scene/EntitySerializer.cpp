@@ -97,6 +97,8 @@ namespace fz {
 				this->DeserializeRigidBody(json[m_EntityUUID]);
 			else if (component == "BoxCollider2DComponent")
 				this->DeserializeCollider(json[m_EntityUUID]);
+			else if (component == "EdgeCollider2DComponent")
+				this->DeserializeCollider(json[m_EntityUUID]);
 			else if (component == "RootEntity")
 				isRootEntity = json[m_EntityUUID]["RootEntity"];
 			else if (component == "HasChild")
@@ -227,7 +229,9 @@ namespace fz {
 			float friction = colliderComp.Friction;
 			float restitution = colliderComp.Restitution;
 			float restitutionThreshold = colliderComp.RestitutionThreshold;
+			bool isTrigger = colliderComp.IsTrigger;
 
+			json["BoxCollider2DComponent"]["IsTrigger"] = isTrigger;
 			json["BoxCollider2DComponent"]["Offset"]["X"] = offset.x;
 			json["BoxCollider2DComponent"]["Offset"]["Y"] = offset.y;
 			json["BoxCollider2DComponent"]["Size"]["X"] = size.x;
@@ -236,6 +240,29 @@ namespace fz {
 			json["BoxCollider2DComponent"]["Friction"] = friction;
 			json["BoxCollider2DComponent"]["Restitution"] = restitution;
 			json["BoxCollider2DComponent"]["RestitutionThreshold"] = restitutionThreshold;
+		}
+		if (m_Entity.HasComponent<EdgeCollider2DComponent>())
+		{
+			auto& colliderComp = m_Entity.GetComponent<EdgeCollider2DComponent>();
+			sf::Vector2f startPos = colliderComp.StartPos;
+			sf::Vector2f endPos = colliderComp.EndPos;
+			bool isOneSides = colliderComp.IsOneSides;
+			float density = colliderComp.Density;
+			float friction = colliderComp.Friction;
+			float restitution = colliderComp.Restitution;
+			float restitutionThreshold = colliderComp.RestitutionThreshold;
+			bool isTrigger = colliderComp.IsTrigger;
+
+			json["EdgeCollider2DComponent"]["IsTrigger"] = isTrigger;
+			json["EdgeCollider2DComponent"]["IsOneSides"] = isOneSides;
+			json["EdgeCollider2DComponent"]["StartPos"]["X"] = startPos.x;
+			json["EdgeCollider2DComponent"]["StartPos"]["Y"] = startPos.y;
+			json["EdgeCollider2DComponent"]["EndPos"]["X"] = endPos.x;
+			json["EdgeCollider2DComponent"]["EndPos"]["Y"] = endPos.y;
+			json["EdgeCollider2DComponent"]["Density"] = density;
+			json["EdgeCollider2DComponent"]["Friction"] = friction;
+			json["EdgeCollider2DComponent"]["Restitution"] = restitution;
+			json["EdgeCollider2DComponent"]["RestitutionThreshold"] = restitutionThreshold;
 		}
 	}
 
@@ -343,15 +370,33 @@ namespace fz {
 
 	void EntitySerializer::DeserializeCollider(json& json)
 	{
-		BoxCollider2DComponent& colliderComp = FindComponent<BoxCollider2DComponent>();
-		colliderComp.Density = json["BoxCollider2DComponent"]["Density"];
-		colliderComp.Friction = json["BoxCollider2DComponent"]["Friction"];
-		colliderComp.Restitution = json["BoxCollider2DComponent"]["Restitution"];
-		colliderComp.RestitutionThreshold = json["BoxCollider2DComponent"]["RestitutionThreshold"];
-		colliderComp.Offset.x = json["BoxCollider2DComponent"]["Offset"]["X"];
-		colliderComp.Offset.y = json["BoxCollider2DComponent"]["Offset"]["Y"];
-		colliderComp.Size.x = json["BoxCollider2DComponent"]["Size"]["X"];
-		colliderComp.Size.y = json["BoxCollider2DComponent"]["Size"]["Y"];
+		if (json.contains("BoxCollider2DComponent"))
+		{
+			BoxCollider2DComponent& colliderComp = FindComponent<BoxCollider2DComponent>();
+			colliderComp.IsTrigger = json["BoxCollider2DComponent"]["IsTrigger"];
+			colliderComp.Density = json["BoxCollider2DComponent"]["Density"];
+			colliderComp.Friction = json["BoxCollider2DComponent"]["Friction"];
+			colliderComp.Restitution = json["BoxCollider2DComponent"]["Restitution"];
+			colliderComp.RestitutionThreshold = json["BoxCollider2DComponent"]["RestitutionThreshold"];
+			colliderComp.Offset.x = json["BoxCollider2DComponent"]["Offset"]["X"];
+			colliderComp.Offset.y = json["BoxCollider2DComponent"]["Offset"]["Y"];
+			colliderComp.Size.x = json["BoxCollider2DComponent"]["Size"]["X"];
+			colliderComp.Size.y = json["BoxCollider2DComponent"]["Size"]["Y"];
+		}
+		if (json.contains("EdgeCollider2DComponent"))
+		{
+			EdgeCollider2DComponent& colliderComp = FindComponent<EdgeCollider2DComponent>();
+			colliderComp.IsTrigger = json["EdgeCollider2DComponent"]["IsTrigger"];
+			colliderComp.IsOneSides = json["EdgeCollider2DComponent"]["IsOneSides"];
+			colliderComp.Density = json["EdgeCollider2DComponent"]["Density"];
+			colliderComp.Friction = json["EdgeCollider2DComponent"]["Friction"];
+			colliderComp.Restitution = json["EdgeCollider2DComponent"]["Restitution"];
+			colliderComp.RestitutionThreshold = json["EdgeCollider2DComponent"]["RestitutionThreshold"];
+			colliderComp.StartPos.x = json["EdgeCollider2DComponent"]["StartPos"]["X"];
+			colliderComp.StartPos.y = json["EdgeCollider2DComponent"]["StartPos"]["Y"];
+			colliderComp.EndPos.x = json["EdgeCollider2DComponent"]["EndPos"]["X"];
+			colliderComp.EndPos.y = json["EdgeCollider2DComponent"]["EndPos"]["Y"];
+		}
 	}
 
 } // namespace fz

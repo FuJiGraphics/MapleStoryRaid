@@ -1,0 +1,563 @@
+{
+    "8fc401b3-19ba-4183-833f-2cf6b0c13d01": {
+        "01bbcb1f-fc92-4390-8f12-77e34f8008f9": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 0.0,
+                    "Y": 0.0
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": false,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    38.0,
+                    28.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.4000000059604645,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "graphics\\monster\\stump.png",
+                "TexRect": {
+                    "Height": 57,
+                    "Left": -1,
+                    "Top": 0,
+                    "Width": 76
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Stump"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -108.33329772949219,
+                    0.0
+                ]
+            }
+        },
+        "18a172c1-c2c0-4d2d-9b8d-613961e05f7e": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 265.79998779296875,
+                    "Y": 0.5
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Block"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    -1.0,
+                    1.0
+                ],
+                "Translate": [
+                    1.0,
+                    133.0
+                ]
+            }
+        },
+        "351080e6-2555-4198-801a-8e964c6250d0": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 0.5,
+                    "Y": 0.5
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    22.0,
+                    20.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "graphics\\monster\\snail.png",
+                "TexRect": {
+                    "Height": 40,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 44
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Snail"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    90.95784759521484,
+                    38.50000762939453
+                ]
+            }
+        },
+        "85c915ac-78dd-428b-9f67-2ca285435600": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 31.399999618530273,
+                    "Y": 31.399999618530273
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": false,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    47.0,
+                    34.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "graphics\\monster\\ironhog.png",
+                "TexRect": {
+                    "Height": 69,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 94
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Ironhog"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    51.0,
+                    0.0
+                ]
+            }
+        },
+        "b81ee0a6-60e8-42c4-b06d-656d2555b324": {
+            "CameraComponent": {
+                "Center": [
+                    0.0,
+                    0.0
+                ],
+                "FixedAspectRatio": false,
+                "Primary": true,
+                "Rotation": 0.0,
+                "Size": [
+                    1032.39599609375,
+                    493.04400634765625
+                ],
+                "Viewport": {
+                    "Height": 1.0,
+                    "Left": 0.0,
+                    "Top": 0.0,
+                    "Width": 1.0
+                },
+                "Zoom": 0.6809999942779541
+            },
+            "HasChild": false,
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "SceneCamera"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    15.0,
+                    -3.0
+                ]
+            }
+        },
+        "dd5ef276-04d2-48e2-a2c5-86a6b68a0d65": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 31.399999618530273,
+                    "Y": 33.29999923706055
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": false,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    47.0,
+                    34.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "graphics\\monster\\fireboar.png",
+                "TexRect": {
+                    "Height": 69,
+                    "Left": 259,
+                    "Top": 39,
+                    "Width": 94
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Fireboar"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -69.0,
+                    77.0
+                ]
+            }
+        },
+        "de861e87-104f-4623-9f87-6293eab2db7d": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 31.399999618530273,
+                    "Y": 30.799999237060547
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    49.5,
+                    29.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    6.300000190734863,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "graphics\\monster\\ribbonpig.png",
+                "TexRect": {
+                    "Height": 58,
+                    "Left": 148,
+                    "Top": 0,
+                    "Width": 99
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "RibbonPig"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    56.590877532958984,
+                    8.200002670288086
+                ]
+            }
+        },
+        "ecc56651-ae87-4e4a-b05f-e8c5b14963c4": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 42.599998474121094,
+                    "Y": 39.20000076293945
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    26.5,
+                    19.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    -0.4000000059604645,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\monster\\spoa.png",
+                "TexRect": {
+                    "Height": 158,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 230
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Spoa"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -129.26788330078125,
+                    -0.4165811538696289
+                ]
+            }
+        }
+    }
+}

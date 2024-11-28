@@ -32,11 +32,21 @@ namespace fz {
 				if (ImGui::MenuItem("New Entity..."))
 				{
 					if (!m_Context)
+						m_Context = CreateShared<Scene>(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
+					fz::Entity entity = m_Context->CreateEntity("NewEntity");
+					entity.AddComponent<RootEntityComponent>();
+				}
+				if (ImGui::MenuItem("Load Prefab"))
+				{
+					if (!m_Context)
 					{
 						m_Context = CreateShared<Scene>(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
 					}
+					auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
+					HWND handle = (HWND)nativeWindow->getSystemHandle();
+					std::string prefabOpenPath = VegaUI::OpenFile(handle, "Prefab File (*.prefab)\0*.prefab\0");
 					fz::Entity entity = m_Context->CreateEntity("NewEntity");
-					entity.AddComponent<RootEntityComponent>();
+					entity.LoadPrefab(prefabOpenPath);
 				}
 				ImGui::EndPopup();
 			}
@@ -124,9 +134,12 @@ namespace fz {
 				m_SelectionContext = entity;
 				m_OnEntityRemove = true;
 			}
-			if (ImGui::MenuItem("Create Prefab"))
+			if (ImGui::MenuItem("Save Prefab"))
 			{
-
+				auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
+				HWND handle = (HWND)nativeWindow->getSystemHandle();
+				std::string prefabSavePath = VegaUI::SaveFile(handle, "Prefab File (*.prefab)\0*.prefab\0");
+				m_SelectionContext.SavePrefab(prefabSavePath);
 			}
 			ImGui::EndPopup();
 			result = true;
@@ -142,7 +155,10 @@ namespace fz {
 		if (entity.HasComponent<TagComponent>())
 		{
 			auto& tagComp = entity.GetComponent<TagComponent>();
-			VegaUI::Checkbox("Active", tagComp.Active);
+			if (VegaUI::Checkbox("Active", tagComp.Active))
+			{
+				entity.SetActiveWithChild(tagComp.Active);
+			}
 			VegaUI::InputText(tagComp.Tag, "Tag");
 		}
 
@@ -158,7 +174,10 @@ namespace fz {
 				DisplayAddComponentEntry<CameraComponent>("Camera");
 				DisplayAddComponentEntry<SpriteComponent>("Sprite");
 				DisplayAddComponentEntry<RigidbodyComponent>("Rigidbody");
-				DisplayAddComponentEntry<BoxCollider2DComponent>("BoxCollider2D");
+				if (!m_SelectionContext.HasComponent<EdgeCollider2DComponent>())
+					DisplayAddComponentEntry<BoxCollider2DComponent>("BoxCollider2D");
+				if (!m_SelectionContext.HasComponent<BoxCollider2DComponent>())
+					DisplayAddComponentEntry<EdgeCollider2DComponent>("EdgeCollider2D");
 				ImGui::EndPopup();
 			} 
 		}
@@ -311,8 +330,7 @@ namespace fz {
 			if (ImGui::TreeNodeEx("ColliderComponent", treeFlag, "Collider"))
 			{
 				bool isRemove = VegaUI::PopupContextItem("Remove ColliderComponent", [&entity]() {
-					entity.RemoveComponent<BoxCollider2DComponent>();
-														 });
+					entity.RemoveComponent<BoxCollider2DComponent>(); });
 
 				if (!isRemove)
 				{
@@ -322,6 +340,32 @@ namespace fz {
 						VegaUI::Checkbox("IsTrigger", colComp.IsTrigger);
 						VegaUI::DrawControl2("Offset", colComp.Offset);
 						VegaUI::DrawControl2("Size", colComp.Size);
+						VegaUI::DrawControl1("Density", "Reset", colComp.Density);
+						VegaUI::DrawControl1("Friction", "Reset", colComp.Friction);
+						VegaUI::DrawControl1("Restitution", "Reset", colComp.Restitution);
+						VegaUI::DrawControl1("Threshold", "Reset", colComp.RestitutionThreshold);
+					}
+				}
+				ImGui::TreePop();
+			}
+		}
+
+		if (entity.HasComponent<EdgeCollider2DComponent>())
+		{
+			if (ImGui::TreeNodeEx("ColliderComponent", treeFlag, "Collider"))
+			{
+				bool isRemove = VegaUI::PopupContextItem("Remove ColliderComponent", [&entity]() {
+					entity.RemoveComponent<EdgeCollider2DComponent>(); });
+
+				if (!isRemove)
+				{
+					if (entity.HasComponent<EdgeCollider2DComponent>())
+					{
+						auto& colComp = entity.GetComponent<EdgeCollider2DComponent>();
+						VegaUI::Checkbox("IsTrigger", colComp.IsTrigger);
+						VegaUI::Checkbox("IsOneSides", colComp.IsOneSides);
+						VegaUI::DrawControl2("Start Position", colComp.StartPos, 0.1f, 0.1f, 0.0f, colComp.EndPos.x - 1.0f, 0.0f, colComp.EndPos.y - 1.0f);
+						VegaUI::DrawControl2("End Position", colComp.EndPos, 0.1f, 0.1f, colComp.StartPos.x + 1.0f, 0.0f, colComp.StartPos.y, 0.0f );
 						VegaUI::DrawControl1("Density", "Reset", colComp.Density);
 						VegaUI::DrawControl1("Friction", "Reset", colComp.Friction);
 						VegaUI::DrawControl1("Restitution", "Reset", colComp.Restitution);

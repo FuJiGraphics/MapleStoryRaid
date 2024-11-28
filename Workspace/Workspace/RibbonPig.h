@@ -1,37 +1,36 @@
 #pragma once
 #include <VegaEngine2.h>
+#include "MonsterFSM.h"
 
 namespace fz {
 
-	class RibbonPig : public VegaScript
+	class RibbonPig : public VegaScript, public MonsterFSM
 	{
 	public:
-		bool isJumping = false; // 점프 상태 추적
+		float JumpPower = -500.f;
+		float MoveSpeed = 100.f;
 
 		Animator animator;
 		AnimationClip idle;
-
-		AnimationClip idle1;
-
 		AnimationClip move;
-		AnimationClip hit;
+		AnimationClip damaged;
 		AnimationClip die;
 
-
+		TransformComponent* transform;
+		RigidbodyComponent* body;
 
 		void Start() override
 		{
-			auto& transform = GetComponent<TransformComponent>();
-			auto& body = GetComponent<RigidbodyComponent>();
+			transform = &GetComponent<TransformComponent>();
+			body = &GetComponent<RigidbodyComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			body.SetGravityScale(1.5f);
-			animator.SetTarget(sprite, transform);
+			animator.SetTarget(sprite, *transform);
 			animator.SetSpeed(1.0f);
-			bool flag = idle.loadFromFile("json/animation/ribbon_pig_anim.json");
-			bool flag2 = move.loadFromFile("json/animation/ribbon_pig_animMove.json");
-			//bool flag3 = idle.loadFromFile("json/ribbon_pig_animHit.json");
-			//bool flag4 = idle.loadFromFile("json/ribbon_pig_animDie.json");
-
+			idle.loadFromFile("game/animations/ribbon_pig_idle.anim");
+			move.loadFromFile("game/animations/ribbon_pig_move.anim");
+			damaged.loadFromFile("game/animations/ribbon_pig_damaged.anim");
+			die.loadFromFile("game/animations/ribbon_pig_die.anim");
+			body->SetGravityScale(1.5f);
 		}
 
 		void OnDestroy() override
@@ -45,43 +44,80 @@ namespace fz {
 				return;
 
 			animator.Update(dt);
-
-			animator.Play(&idle);
-
-			//	animator.Play(&move);
-
-			fz::Transform& transform = GetComponent<TransformComponent>();
-			auto& body = GetComponent<RigidbodyComponent>();
-
-			if (Input::IsKeyDown(KeyType::D))
+	
+			// 이동 적용
+			if (Input::IsKeyPressed(KeyType::D)) 
 			{
-				body.AddPosition({ 100.0, 0.0f });
-				transform.SetScale(-1.0f, 1.0f);
-					animator.Play(&move);
+				this->Move(Directions::RIGHT);
 			}
-			else if (Input::IsKeyDown(KeyType::A))
+			else if (Input::IsKeyPressed(KeyType::A))
 			{
-				body.AddPosition({ -100.0, 0.0f });
-				animator.Play(&move);
-
+				this->Move(Directions::LEFT);
+			}
+			else if (Input::IsKeyPressed(KeyType::Q))
+			{
+				this->Damaged();
+			}
+			else if (Input::IsKeyPressed(KeyType::W))
+			{
+				this->Die();
 			}
 
+			else
+			{
+				this->Idle();
+			}
 			// 점프 처리
-			if (body.IsOnGround() && !isJumping)
+			if (Input::IsKeyDown(KeyType::Space))
 			{
-				if (Input::IsKeyDown(KeyType::Space))
-				{
-					body.AddPosition({ 0.0f, -500.f });
-					isJumping = true; // 점프 시작
-				}
+ 				this->Jump();
 			}
 
+	
+
+		}
+
+		void Idle() override
+		{
+			animator.Play(&idle);
+		}
+
+		void Move(Directions dir) override
+		{
+			fz::Transform& transform = GetComponent<TransformComponent>();
+			// 이동 적용
+			if (dir == Directions::RIGHT)
+			{
+				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
+				transform.SetScale(-1.0f, 1.0f);
+				animator.Play(&move);
+			}
+			else if (dir == Directions::LEFT)
+			{
+				body->AddPosition({ MoveSpeed * -1.f, 0.0f});
+				transform.SetScale(1.0f, 1.0f);
+				animator.Play(&move);
+			}
+		}
+
+		void Jump() override
+		{
 			// 바닥에 닿으면 점프 상태 해제
-			if (body.IsOnGround())
+			if (body->IsOnGround())
 			{
-				isJumping = false;
+				body->AddPosition({ 0.0f, JumpPower });
 			}
+		}
 
+		void Damaged() override
+		{
+			// 플레이어 피격시
+			animator.Play(&damaged);
+		}
+
+		void Die() override
+		{
+			animator.Play(&die);
 		}
 
 	private:
@@ -90,7 +126,7 @@ namespace fz {
 
 }
 
-BIND_SCRIPT(RibbonPig, "8fc401b3-19ba-4183-833f-2cf6b0c13d01", "RibbonPig", RibbonPig);
+BIND_SCRIPT(RibbonPig, "RibbonPig", RibbonPig);
 
 
 

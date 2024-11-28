@@ -1,40 +1,43 @@
 #pragma once
 #include <VegaEngine2.h>
-
+#include "MonsterFSM.h"
 namespace fz {
 
-	class Spoa : public VegaScript
+	class Spoa : public VegaScript, public MonsterFSM
 	{
 	public:
-		bool isJumping = false; // 점프 상태 추적
+		float JumpPower = -500.f;
+		float MoveSpeed = 100.f;
+
 		Animator animator;
 		AnimationClip idle;
 		AnimationClip move;
-		AnimationClip hit;
+		AnimationClip damaged;
 		AnimationClip die;
 
-
+		TransformComponent* transform;
+		RigidbodyComponent* body;
 
 		void Start() override
 		{
-			auto& transform = GetComponent<TransformComponent>();
-			auto& body = GetComponent<RigidbodyComponent>();
+			transform = &GetComponent<TransformComponent>();
+			body = &GetComponent<RigidbodyComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			body.SetGravityScale(1.5f);
-			animator.SetTarget(sprite, transform);
+			animator.SetTarget(sprite, *transform);
 			animator.SetSpeed(1.0f);
-		
+			idle.loadFromFile("game/animations/spoa_idle.anim");
+			move.loadFromFile("game/animations/spoa_move.anim");
+			damaged.loadFromFile("game/animations/spoa_damaged.anim");
+			die.loadFromFile("game/animations/spoa_die.anim");
 
-			bool flag5 = idle.loadFromFile("json/animation/spoa_anim.json");
-			//bool flag2 = move.loadFromFile("json/animation/ribbon_pig_animMove.json");
-			//bool flag3 = idle.loadFromFile("json/ribbon_pig_animHit.json");
-			//bool flag4 = idle.loadFromFile("json/ribbon_pig_animDie.json");
+			body->SetGravityScale(1.5f);
+		
 
 		}
 
 		void OnDestroy() override
 		{
-			FZLOG_DEBUG("스포아 스크립트 파괴!{0} { 1 }", 1.1, "aSDASCA");
+			FZLOG_DEBUG("스포아 스크립트 파괴!{0} { 1 }", 1.1, "aSDASCAsad");
 		}
 
 		void OnUpdate(float dt) override
@@ -43,47 +46,70 @@ namespace fz {
 				return;
 			animator.Update(dt);
 
-			/*	animator.Play(&idle);*/
-		/*		animator.Play(&move);*/
-			animator.Play(&idle);
-
-
-			auto& body = GetComponent<RigidbodyComponent>();
 
 			if (Input::IsKeyPressed(KeyType::D))
 			{
-				body.AddPosition({ 100.0, 0.0f });
-			//	animator.Play(&move);
+				this->Move(Directions::RIGHT);
 			}
 			else if (Input::IsKeyPressed(KeyType::A))
 			{
-				body.AddPosition({ -100.0, 0.0f });
-			//	animator.Play(&move);
-
+				this->Move(Directions::LEFT);
+			}
+			else if (Input::IsKeyPressed(KeyType::Q))
+			{
+				this->Damaged();
+			}
+			else if (Input::IsKeyPressed(KeyType::W))
+			{
+				this->Die();
 			}
 
-			// 점프 처리
-			if (body.IsOnGround() && !isJumping)
+			else
 			{
-				if (Input::IsKeyPressed(KeyType::Space))
-				{
-					body.AddPosition({ 0.0f, -500.f });
-					isJumping = true; // 점프 시작
-				}
-			}
-
-			// 바닥에 닿으면 점프 상태 해제
-			if (body.IsOnGround())
-			{
-				isJumping = false;
+				this->Idle();
 			}
 
 		}
 
+
+
+		void Idle() override
+		{
+			animator.Play(&idle);
+		}
+
+		void Move(Directions dir) override
+		{
+			fz::Transform& transform = GetComponent<TransformComponent>();
+			// 이동 적용
+			if (dir == Directions::RIGHT)
+			{
+				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
+				transform.SetScale(-1.0f, 1.0f);
+				animator.Play(&move);
+			}
+			else if (dir == Directions::LEFT)
+			{
+				body->AddPosition({ MoveSpeed * -1.f, 0.0f });
+				transform.SetScale(1.0f, 1.0f);
+				animator.Play(&move);
+			}
+		}
+
+		void Damaged() override
+		{
+			// 플레이어 피격시
+			animator.Play(&damaged);
+		}
+
+		void Die() override
+		{
+			animator.Play(&die);
+		}
 	private:
 
 	};
 
 }
 
-BIND_SCRIPT(Spoa, "ecc56651-ae87-4e4a-b05f-e8c5b14963c4", "Spoa", Spoa);
+BIND_SCRIPT(Spoa, "Spoa", Spoa);

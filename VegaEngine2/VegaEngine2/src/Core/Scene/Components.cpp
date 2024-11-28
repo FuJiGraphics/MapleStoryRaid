@@ -35,27 +35,27 @@ namespace fz {
 		return Utils::MeterToPixel(((b2Body*)RuntimeBody)->GetLinearVelocity());
 	}
 
-	bool RigidbodyComponent::IsOnGround()
+	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir)
 	{
 		sf::Vector2f empty;
 		float fempty;
-		return IsOnGround(empty, empty, fempty);
+		return IsOnGround(rayDir, empty, empty, fempty);
 	}
 
-	bool RigidbodyComponent::IsOnGround(sf::Vector2f& normal)
+	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal)
 	{
 		sf::Vector2f empty;
 		float fempty;
-		return IsOnGround(normal, empty, fempty);
+		return IsOnGround(rayDir, normal, empty, fempty);
 	}
 
-	bool RigidbodyComponent::IsOnGround(sf::Vector2f& normal, sf::Vector2f& pos)
+	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos)
 	{
 		float fempty;
-		return IsOnGround(normal, pos, fempty);
+		return IsOnGround(rayDir, normal, pos, fempty);
 	}
 
-	bool RigidbodyComponent::IsOnGround(sf::Vector2f& normal, sf::Vector2f& pos, float& fraction)
+	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction)
 	{
 		if (!FZ_CURRENT_SCENE)
 			return false;
@@ -91,7 +91,7 @@ namespace fz {
 		// 객체의 현재 위치
 		b2Vec2 start = ((b2Body*)RuntimeBody)->GetPosition();
 		// 바닥으로 1미터 떨어진 위치
-		b2Vec2 end = start - b2Vec2(0.0f, -0.2f);
+		b2Vec2 end = start - b2Vec2(rayDir.x, rayDir.y * -1.0f);
 
 		bool hitGround = false;
 		((b2World*)rawWorld)->RayCast(&callback, start, end);
@@ -102,6 +102,13 @@ namespace fz {
 	}
 
 	void BoxCollider2DComponent::SetTrigger(bool enabled)
+	{
+		IsTrigger = enabled;
+		b2FixtureDef* fixture = (b2FixtureDef*)RuntimeFixture;
+		fixture->isSensor = IsTrigger;
+	}
+
+	void EdgeCollider2DComponent::SetTrigger(bool enabled)
 	{
 		IsTrigger = enabled;
 		b2FixtureDef* fixture = (b2FixtureDef*)RuntimeFixture;
