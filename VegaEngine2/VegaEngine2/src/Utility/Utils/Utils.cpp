@@ -216,5 +216,10 @@ namespace fz {
 		return { vec.x * s_PPM, vec.y * s_PPM };
     }
 
+    bool Utils::IsEqual(float a, float b)
+	{
+		return std::fabs(a - b) <= std::numeric_limits<float>::epsilon();
+	}
+
 } // namespace fz
 

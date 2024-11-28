@@ -45,6 +45,23 @@ namespace fz {
 		other.m_UUID = "";
 	}
 
+	void Entity::SetColorWithChilds(const sf::Color& color)
+	{
+		if (this->HasComponent<SpriteComponent>())
+		{
+			sf::Sprite& sprite = this->GetComponent<SpriteComponent>();
+			sprite.setColor(color);
+		}
+		if (this->HasComponent<ChildEntityComponent>())
+		{
+			auto& childComp = this->GetComponent<ChildEntityComponent>();
+			for (auto& child : childComp.CurrentChildEntities)
+			{
+				child.SetColorWithChilds(color);
+			}
+		}
+	}
+
 	Entity& Entity::operator=(const Entity& other)
 	{
 		this->m_Handle = other.m_Handle;

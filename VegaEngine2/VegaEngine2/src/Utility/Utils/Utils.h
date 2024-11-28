@@ -42,6 +42,8 @@ namespace fz {
 		static bool CanFileOpen(const std::string& path);
 		static b2Vec2 PixelToMeter(const sf::Vector2f& vec);
 		static sf::Vector2f MeterToPixel(const b2Vec2& vec);
+
+		static bool IsEqual(float a, float b);
 	};
 
 } // namespace fz

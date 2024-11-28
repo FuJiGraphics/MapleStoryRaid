@@ -4,6 +4,7 @@
 #include "VegaScript.h"
 #include "EditorCamera.h"
 #include "EntitySerializer.h"
+#include "CollisionHandler.h"
 
 namespace fz {
 
@@ -217,6 +218,9 @@ namespace fz {
 
 		s_World = new b2World({ 0.0f, 9.8f });
 
+		m_CollistionHandler.SetContext(shared_from_this());
+		s_World->SetContactListener(&m_CollistionHandler);
+
 		auto view = m_Registry.view<RigidbodyComponent>();
 		for (auto& handle : view)
 		{
@@ -275,6 +279,7 @@ namespace fz {
 			fixtureDef.friction = collider.Friction;
 			fixtureDef.restitution = collider.Restitution;
 			fixtureDef.restitutionThreshold = collider.RestitutionThreshold;
+			fixtureDef.userData.pointer = static_cast<uintptr_t>(entity.m_Handle);
 			collider.RuntimeFixture = body->CreateFixture(&fixtureDef);
 		}
 		else if (entity.HasComponent<EdgeCollider2DComponent>())
@@ -310,6 +315,7 @@ namespace fz {
 			fixtureDef.friction = collider.Friction;
 			fixtureDef.restitution = collider.Restitution;
 			fixtureDef.restitutionThreshold = collider.RestitutionThreshold;
+			fixtureDef.userData.pointer = static_cast<uintptr_t>(entity.m_Handle);
 			collider.RuntimeFixture = body->CreateFixture(&fixtureDef);
 		}
 	}

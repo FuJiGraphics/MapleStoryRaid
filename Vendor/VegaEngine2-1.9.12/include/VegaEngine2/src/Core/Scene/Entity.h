@@ -63,6 +63,8 @@ namespace fz {
 			return m_Scene->m_Registry.all_of<T>(m_Handle);
 		}
 
+		void SetColorWithChilds(const sf::Color& color);
+
 		inline bool operator ==(const fz::Entity& other) const	{ return m_Handle == other.m_Handle && m_Scene == other.m_Scene; }
 		inline bool operator !=(const fz::Entity& other) const	{ return !((*this) == other); }
 		inline operator bool() const							{ return m_Handle != entt::null; }

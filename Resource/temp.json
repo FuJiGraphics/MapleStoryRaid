@@ -11,7 +11,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1516.0,
-                    806.0
+                    807.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -80,8 +80,8 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    31.5,
-                    41.5
+                    21.5,
+                    35.0
                 ],
                 "Origins": "MC",
                 "Position": [
@@ -96,10 +96,10 @@
                 "SortingOrder": 3,
                 "TexPath": "game\\graphics\\player\\player_Idle.png",
                 "TexRect": {
-                    "Height": 83,
-                    "Left": 63,
+                    "Height": 70,
+                    "Left": 0,
                     "Top": 0,
-                    "Width": 63
+                    "Width": 43
                 }
             },
             "TagComponent": {
@@ -113,12 +113,12 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    -1.0,
+                    1.0,
                     1.0
                 ],
                 "Translate": [
-                    939.1935424804688,
-                    642.3001098632813
+                    717.8258666992188,
+                    563.33349609375
                 ]
             }
         },
