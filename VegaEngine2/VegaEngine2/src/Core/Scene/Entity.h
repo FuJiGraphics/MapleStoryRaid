@@ -50,6 +50,14 @@ namespace fz {
 		}
 
 		template <typename T>
+		T& GetComponent() const
+		{
+			FZLOG_ASSERT(m_Handle != entt::null, "앤티티가 존재하지 않습니다.");
+			FZLOG_ASSERT(HasComponent<T>(), "컴포넌트를 찾을 수 없습니다.");
+			return m_Scene->m_Registry.get<T>(m_Handle);
+		}
+
+		template <typename T>
 		bool HasComponent()
 		{
 			FZLOG_ASSERT(m_Handle != entt::null, "앤티티가 존재하지 않습니다.");

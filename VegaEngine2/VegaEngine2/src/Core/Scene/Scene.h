@@ -82,6 +82,8 @@ namespace fz {
 		void LoadPrefab(const std::string& path);
 
 		void OnUpdateChildEntity();
+		void UpdateTransformChilds(const sf::Transform& parentTransform, fz::Entity child);
+
 		void OnUpdatePhysicsSystem(float dt);
 		void OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform& dstTransform);
 		void OnRenderEditorSprite(OrthoCamera* mainCamera);

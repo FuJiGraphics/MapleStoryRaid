@@ -503,20 +503,41 @@ namespace fz {
 	void Scene::OnUpdateChildEntity()
 	{
 		// 차일드 엔티티 트랜스폼 업데이트
-		auto chileView = m_Registry.view<ChildEntityComponent>();
-		for (auto childEntity : chileView)
+		auto rootEntityView = m_Registry.view<RootEntityComponent>();
+		for (auto& rootEntity : rootEntityView)
 		{
-			auto& childComp = chileView.get<ChildEntityComponent>(childEntity);
-			auto& parentTransform = childComp.ParentEntity.GetComponent<TransformComponent>();
+			auto& rootComp = m_Registry.get<RootEntityComponent>(rootEntity);
+			if (rootComp.RootEntity.HasComponent<ChildEntityComponent>())
+			{
+				sf::Transform rootTransform = rootComp.RootEntity.GetComponent<TransformComponent>().Transform;
+				auto& childComp = rootComp.RootEntity.GetComponent<ChildEntityComponent>();
+				for (auto& child : childComp.CurrentChildEntities)
+				{
+					auto& tagComp = child.GetComponent<TagComponent>();
+					if (tagComp.Active == false)
+						continue; // ** 비활성화시 로직 생략
+					UpdateTransformChilds(rootTransform, child);
+				}
+			}
+		}
+	}
+
+	void Scene::UpdateTransformChilds(const sf::Transform& parentTransform, fz::Entity child)
+	{
+		// 차일드 엔티티 트랜스폼 업데이트
+		TransformComponent& childTransform = child.GetComponent<TransformComponent>();
+		childTransform.IsChildRenderMode = true;
+		childTransform.RenderTransform = parentTransform * childTransform.Transform.GetRawTransform();
+
+		if (child.HasComponent<ChildEntityComponent>())
+		{
+			auto childComp = child.GetComponent<ChildEntityComponent>();
 			for (auto& childs : childComp.CurrentChildEntities)
 			{
 				auto& tagComp = childs.GetComponent<TagComponent>();
 				if (tagComp.Active == false)
 					continue; // ** 비활성화시 로직 생략
-
-				TransformComponent& childTransform = childs.GetComponent<TransformComponent>();
-				childTransform.IsChildRenderMode = true;
-				childTransform.RenderTransform = parentTransform.Transform * childTransform.Transform;
+				UpdateTransformChilds(childTransform.RenderTransform, childs);
 			}
 		}
 	}
