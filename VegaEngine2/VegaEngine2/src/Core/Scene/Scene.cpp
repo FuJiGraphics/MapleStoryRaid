@@ -189,6 +189,11 @@ namespace fz {
 			LoginPhysicsWorld(dst);
 
 			m_PrefabInstancePool.insert({ dst.m_UUID, dst.m_Handle });
+			if (dst.HasComponent<NativeScriptComponent>())
+			{
+				auto& dstNativeComp = dst.GetComponent<NativeScriptComponent>();
+				dstNativeComp.OnCreateFunction(dstNativeComp.Instance);
+			}
 		}
 	}
 
@@ -227,6 +232,14 @@ namespace fz {
 		{
 			fz::Entity entity = { handle, shared_from_this() };
 			LoginPhysicsWorld(entity);
+
+			// 보간 비활성화
+			auto& rigidBody = entity.GetComponent<RigidbodyComponent>();
+			b2Body* body = static_cast<b2Body*>(rigidBody.RuntimeBody);
+			if (body)
+			{
+				body->SetSleepingAllowed(false); // 항상 위치 업데이트
+			}
 		}
 	}
 
@@ -339,10 +352,10 @@ namespace fz {
 	{
 		OrthoCamera* camera = nullptr;
 		sf::Transform transform = sf::Transform::Identity;
-		this->OnUpdateScript(dt);
-		this->OnUpdateChildEntity();
-		this->OnUpdateCamera(&camera, transform);
 		this->OnUpdatePhysicsSystem(dt);
+		this->OnUpdateChildEntity();
+		this->OnUpdateScript(dt);
+		this->OnUpdateCamera(&camera, transform);
 		this->OnRenderRuntimeSprite(camera, transform);
 	}
 
@@ -632,6 +645,8 @@ namespace fz {
 		// 스프라이트 렌더링
 		if (mainCamera)
 		{
+			this->OnUpdateChildEntity();
+
 			Renderer2D::BeginScene(*mainCamera, transform, m_FrameBuffer);
 			auto entities = GetEntities< TransformComponent, SpriteComponent, TagComponent>();
 			for (auto entity : entities)

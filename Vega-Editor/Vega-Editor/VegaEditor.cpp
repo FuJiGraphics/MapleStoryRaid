@@ -7,7 +7,7 @@ class VegaEditor : public fz::System
 {
 public:
 	VegaEditor()
-		: System(1920, 1080, "VegaEngine2")
+		: System(1024, 768, "VegaEngine2")
 	{
 		this->PushLayer(LayerGenerator->Take<fz::Editor2D>("Editor2D"));
 	}

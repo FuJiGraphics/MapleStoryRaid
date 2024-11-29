@@ -24,6 +24,8 @@ namespace fz {
 	{
 		std::string id;
 		std::string path;
+		float Speed = 1.0f;
+
 		AnimationLoopTypes loopType = AnimationLoopTypes::Loop;
 		fz::Transform transform;
 		int fps = 30;

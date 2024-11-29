@@ -12,13 +12,13 @@
                 "Restitution": 0.0,
                 "RestitutionThreshold": 0.5,
                 "Size": {
-                    "X": 0.5,
+                    "X": 377.0,
                     "Y": 0.5
                 }
             },
             "CameraComponent": {
                 "Center": [
-                    618.0,
+                    0.0,
                     0.0
                 ],
                 "FixedAspectRatio": false,
@@ -38,7 +38,7 @@
             },
             "HasChild": false,
             "RigidbodyComponent": {
-                "FixedRotation": true,
+                "FixedRotation": false,
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
@@ -57,8 +57,8 @@
                     1.0
                 ],
                 "Translate": [
-                    618.0,
-                    0.0
+                    2183.40478515625,
+                    612.4169921875
                 ]
             }
         },
@@ -477,8 +477,8 @@
                     1.0
                 ],
                 "Translate": [
-                    1131.0,
-                    497.0
+                    2253.0,
+                    571.0
                 ]
             },
             "a24e57f7-d210-4540-9ef3-53d98782a075": {
@@ -795,8 +795,8 @@
                         1.0
                     ],
                     "Translate": [
-                        588.0,
-                        352.0
+                        19381.0,
+                        7452.9990234375
                     ]
                 }
             },
@@ -861,7 +861,326 @@
                 }
             }
         },
-        "65f6c357-5714-46a9-a5bb-789b31bf752b": {
+        "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 58.20000076293945,
+                    "Y": 56.29999923706055
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    61.5,
+                    57.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\monster\\mushMom.png",
+                "TexRect": {
+                    "Height": 114,
+                    "Left": 3,
+                    "Top": 0,
+                    "Width": 123
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Mushmom"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    1500.0,
+                    60.0
+                ]
+            }
+        },
+        "aede658d-5753-46ac-9570-f360e921f0ac": {
+            "175a7fb5-6ccc-471a-9f9c-5d5a02721daa": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "",
+                    "TexRect": {
+                        "Height": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 0
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Hair"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "222b170e-d232-4572-85c6-89aa6a1f4d6c": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "",
+                    "TexRect": {
+                        "Height": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 0
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Leg"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "3d788e6f-ad7b-401d-aa3b-13af06d94b86": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        13.0,
+                        8.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 4,
+                    "TexPath": "game\\graphics\\player\\Face\\Face_1\\Face1Default.png",
+                    "TexRect": {
+                        "Height": 16,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 26
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Face"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -3.5,
+                        -11.0
+                    ]
+                }
+            },
+            "52d30285-ed74-4c89-a26b-5040f7932c18": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "",
+                    "TexRect": {
+                        "Height": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 0
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Body"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
@@ -877,7 +1196,7 @@
                     "Y": 31.200000762939453
                 }
             },
-            "HasChild": false,
+            "HasChild": true,
             "RigidbodyComponent": {
                 "FixedRotation": true,
                 "RigidType": "Dynamic"
@@ -915,7 +1234,7 @@
                 "TexPath": "game\\graphics\\player\\player_Idle.png",
                 "TexRect": {
                     "Height": 83,
-                    "Left": 63,
+                    "Left": 0,
                     "Top": 0,
                     "Width": 63
                 }
@@ -931,13 +1250,73 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    -1.0,
+                    1.0,
                     1.0
                 ],
                 "Translate": [
-                    1095.3468017578125,
-                    580.7052001953125
+                    2173.351318359375,
+                    642.3001098632813
                 ]
+            },
+            "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "",
+                    "TexRect": {
+                        "Height": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 0
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Shoes"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
             }
         },
         "e2b2bcc3-6d11-4061-ab70-fc37e5e41b5d": {

@@ -173,7 +173,7 @@ namespace fz {
 		winMode.Title = Title;
 		winMode.Api = WindowAPI::SFML;
 		winMode.VSync = true;
-		winMode.AntialiasingLevel = 4;
+		winMode.AntialiasingLevel = 16;
 		m_Window = Window::Create(winMode);
 		if (m_Window != nullptr)
 		{
