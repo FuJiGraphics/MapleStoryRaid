@@ -37,7 +37,8 @@ namespace fz {
 					if (!m_Context)
 						m_Context = CreateShared<Scene>(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
 					fz::Entity entity = m_Context->CreateEntity("NewEntity");
-					entity.AddComponent<RootEntityComponent>();
+					auto& rootComp = entity.AddComponent<RootEntityComponent>();
+					rootComp.RootEntity = entity;
 				}
 				if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Load Prefab"))
 				{

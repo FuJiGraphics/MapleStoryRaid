@@ -88,6 +88,7 @@ namespace fz {
 		{
 			auto& rootComp = dst.AddComponent<RootEntityComponent>();
 			rootComp.RootEntity = dst;
+			rootComp.RootEntity.m_Scene = this->shared_from_this();
 		}
 		else if (src.HasComponent<ChildEntityComponent>())
 		{
@@ -503,8 +504,8 @@ namespace fz {
 	void Scene::OnUpdateChildEntity()
 	{
 		// 차일드 엔티티 트랜스폼 업데이트
-		auto rootEntityView = m_Registry.view<RootEntityComponent>();
-		for (auto& rootEntity : rootEntityView)
+		auto view = this->GetEntities<RootEntityComponent>();
+		for (auto& rootEntity : view)
 		{
 			auto& rootComp = m_Registry.get<RootEntityComponent>(rootEntity);
 			if (rootComp.RootEntity.HasComponent<ChildEntityComponent>())
