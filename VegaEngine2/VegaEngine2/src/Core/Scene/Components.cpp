@@ -30,6 +30,19 @@ namespace fz {
 		this->SetLinearVelocity({ nextPosX, nextPosY });
 	}
 
+	void RigidbodyComponent::AddPositionNoGravity(const sf::Vector2f& pos)
+	{
+		sf::Vector2f velocity = this->GetLinearVelocity();
+		float nextPosX = 0.0f;
+		float nextPosY = 0.0f;
+		// TODO: float 연산 정확도 수정
+		if (pos.x != 0.0f)
+			nextPosX = pos.x;
+		if (pos.y != 0.0f)
+			nextPosY = pos.y;
+		this->SetLinearVelocity({ nextPosX, nextPosY });
+	}
+
 	sf::Vector2f RigidbodyComponent::GetLinearVelocity() const
 	{
 		return Utils::MeterToPixel(((b2Body*)RuntimeBody)->GetLinearVelocity());
@@ -57,10 +70,7 @@ namespace fz {
 
 	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction)
 	{
-		if (!FZ_CURRENT_SCENE)
-			return false;
-		void* rawWorld = FZ_CURRENT_SCENE->GetPhysicsWorld();
-		if (rawWorld == nullptr)
+		if (Scene::s_World == nullptr)
 			return false;
 
 		class RayCastCallback : public b2RayCastCallback
@@ -94,7 +104,7 @@ namespace fz {
 		b2Vec2 end = start - b2Vec2(rayDir.x, rayDir.y * -1.0f);
 
 		bool hitGround = false;
-		((b2World*)rawWorld)->RayCast(&callback, start, end);
+		Scene::s_World->RayCast(&callback, start, end);
 		normal = callback.Normal;
 		pos = callback.Position;
 		hitGround = callback.HitGround;

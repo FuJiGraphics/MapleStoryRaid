@@ -18,7 +18,7 @@ namespace fz {
 		virtual void Move(Directions dir) {}
 		virtual void Jump() {}
 		virtual void Attack() {}
-		virtual void Damaged() {}
+		virtual void Damaged(int damage) {}
 		virtual void Die() {}
 
 		virtual void Skill1() {}

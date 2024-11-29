@@ -397,13 +397,12 @@ namespace fz {
 
 	Entity Scene::GetEntityFromTag(const std::string& tag)
 	{
-		auto view = m_Registry.view<TagComponent>();
-		for (auto& it : m_EntityPool)
+		auto tagView = GetEntities<TagComponent>();
+		for (auto& tags : tagView)
 		{
-			Entity entity = { it.first, it.second, shared_from_this() };
-			std::string targetTag = entity.GetComponent<TagComponent>().Tag;
-			if (targetTag == tag)
-				return entity;
+			auto& tagComp = tagView.get<TagComponent>(tags);
+			if (tagComp.Tag == tag)
+				return { tags, shared_from_this() };
 		}
 		return {};
 	}
@@ -463,15 +462,16 @@ namespace fz {
 
 	void Scene::OnUpdateScript(float dt)
 	{
-		auto nativeView = m_Registry.view<TagComponent, NativeScriptComponent>();
-		if (nativeView.size_hint())
-		nativeView.each([&](auto entity, TagComponent& tag, NativeScriptComponent& nsc)
-						{
-							if (tag.Active)
-							{
-								nsc.OnUpdateFunction(nsc.Instance, dt);
-							}
-						});
+		auto nativeView = GetEntities<TagComponent, NativeScriptComponent>();
+		for (auto& natives : nativeView)
+		{
+			auto& tagComp = nativeView.get<TagComponent>(natives);
+			if (tagComp.Active)
+			{
+				auto& nativeComp = nativeView.get<NativeScriptComponent>(natives);
+				nativeComp.OnUpdateFunction(nativeComp.Instance, dt);
+			}
+		}
 	}
 
 	void Scene::OnPostUpdateScript()

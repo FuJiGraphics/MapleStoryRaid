@@ -236,18 +236,17 @@ namespace fz {
 					ImGui::Checkbox("Main", &cameraComp.Primary);
 					ImGui::Checkbox("Fixed Aspect Ratio", &cameraComp.FixedAspectRatio);
 
+					sf::Vector2f center = cameraComp.Camera.GetCenter();
+					if (VegaUI::DrawControl2("Center Position", center))
+					{
+						cameraComp.Camera.SetCenter(center);
+					}
 					float zoom = cameraComp.Camera.GetZoom();
 					if (VegaUI::DrawControl1("Zoom", "Reset", zoom, 0.01f, 0.001f, 10.f, 1.0f))
 					{
 						cameraComp.Camera.Zoom(zoom);
 					}
 
-					sf::FloatRect viewport = cameraComp.Camera.GetViewport();
-					if (VegaUI::DragFloat4(viewport, "Viewport", true, 0.01))
-					{
-						if (viewport.width > viewport.left && viewport.height > viewport.top)
-							cameraComp.Camera.SetViewport(viewport);
-					}
 				}
 				ImGui::TreePop();
 			}

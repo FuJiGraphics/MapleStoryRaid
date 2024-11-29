@@ -66,8 +66,8 @@ namespace fz {
 	{
 		if (this->HasComponent<RootEntityComponent>())
 		{
-			fz::Transform& transform = GetComponent<TransformComponent>().Transform;
-			return transform.GetTranslate();
+			auto& transformComp = this->GetComponent<TransformComponent>();
+			return transformComp.Transform.GetTranslate();
 		}
 
 		const auto& parent = GetComponent<ParentEntityComponent>().ParentEntity;

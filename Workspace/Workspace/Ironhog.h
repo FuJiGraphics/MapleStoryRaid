@@ -1,23 +1,24 @@
 #pragma once
 #include <VegaEngine2.h>
 #include "FSM.h"
+#include "Utils/Timer.h"
 
 namespace fz {
 
-	class Ironhog : public VegaScript, public MonsterFSM
+	class IronhogScript : public VegaScript, public MonsterFSM
 	{
+	using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
 		float JumpPower = -500.f;
 		float MoveSpeed = 100.f;
 
 		Animator animator;
-		AnimationClip idle;
-		AnimationClip move;
-		AnimationClip damaged;
-		AnimationClip die;
+		AnimPool clips;
 
 		TransformComponent* transform;
 		RigidbodyComponent* body;
+
+		Timer timer;
 
 		void Start() override
 		{
@@ -26,10 +27,10 @@ namespace fz {
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 			animator.SetTarget(sprite, *transform);
 			animator.SetSpeed(1.0f);
-			idle.loadFromFile("game/animations/ironhog_idle.anim");
-			move.loadFromFile("game/animations/ironhog_move.anim");
-			damaged.loadFromFile("game/animations/ironhog_damaged.anim");
-			die.loadFromFile("game/animations/ironhog_die.anim");
+			clips["idle"].loadFromFile("game/animations/ironhog_idle.anim");
+			clips["move"].loadFromFile("game/animations/ironhog_move.anim");
+			clips["damaged"].loadFromFile("game/animations/ironhog_damaged.anim");
+			clips["die"].loadFromFile("game/animations/ironhog_die.anim");
 			body->SetGravityScale(1.5f);
 		}
 
@@ -44,7 +45,7 @@ namespace fz {
 				return;
 
 			animator.Update(dt);
-
+			timer.Update(dt);
 			// 이동 적용
 			if (Input::IsKeyPressed(KeyType::D))
 			{
@@ -56,7 +57,7 @@ namespace fz {
 			}
 			else if (Input::IsKeyPressed(KeyType::Q))
 			{
-				this->Damaged();
+				this->Damaged(0);
 			}
 			else if (Input::IsKeyPressed(KeyType::W))
 			{
@@ -79,7 +80,7 @@ namespace fz {
 
 		void Idle() override
 		{
-			animator.Play(&idle);
+			animator.Play(&clips["idle"]);
 		}
 
 		void Move(Directions dir) override
@@ -90,13 +91,13 @@ namespace fz {
 			{
 				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
 				transform.SetScale(-1.0f, 1.0f);
-				animator.Play(&move);
+				animator.Play(&clips["move"]);
 			}
 			else if (dir == Directions::LEFT)
 			{
 				body->AddPosition({ MoveSpeed * -1.f, 0.0f });
 				transform.SetScale(1.0f, 1.0f);
-				animator.Play(&move);
+				animator.Play(&clips["move"]);;
 			}
 		}
 
@@ -109,15 +110,15 @@ namespace fz {
 			}
 		}
 
-		void Damaged() override
+		void Damaged(int damage) override
 		{
 			// 플레이어 피격시
-			animator.Play(&damaged);
+			animator.Play(&clips["damaged"]);
 		}
 
 		void Die() override
 		{
-			animator.Play(&die);
+			animator.Play(&clips["die"]);
 		}
 
 	private:
@@ -125,9 +126,6 @@ namespace fz {
 	};
 
 }
-
-BIND_SCRIPT(Ironhog, "Ironhog", Ironhog);
-
 
 
 

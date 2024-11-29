@@ -152,5 +152,3 @@ namespace fz {
 		}
 	};
 }
-
-BIND_SCRIPT(PlayerScript, "Player", PlayerScript);

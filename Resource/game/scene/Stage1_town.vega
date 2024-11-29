@@ -1,5 +1,67 @@
 {
     "ed63015c-19f7-423e-be31-21eb6181116a": {
+        "0ac50fbb-78aa-4474-aec2-ff9ec9e17a65": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 0.5,
+                    "Y": 0.5
+                }
+            },
+            "CameraComponent": {
+                "Center": [
+                    618.0,
+                    0.0
+                ],
+                "FixedAspectRatio": false,
+                "Primary": true,
+                "Rotation": 0.0,
+                "Size": [
+                    1516.0,
+                    725.0
+                ],
+                "Viewport": {
+                    "Height": 1.0,
+                    "Left": 0.0,
+                    "Top": 0.0,
+                    "Width": 1.0
+                },
+                "Zoom": 1.0
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Camera"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    618.0,
+                    0.0
+                ]
+            }
+        },
         "1df0e0f8-377f-4f48-8ad3-f0f882b1f6a1": {
             "0142046f-f199-4fac-b2f6-22892db2fd01": {
                 "HasChild": false,
@@ -360,26 +422,6 @@
                         385.0
                     ]
                 }
-            },
-            "CameraComponent": {
-                "Center": [
-                    0.0,
-                    0.0
-                ],
-                "FixedAspectRatio": false,
-                "Primary": true,
-                "Rotation": 0.0,
-                "Size": [
-                    1516.0,
-                    807.0
-                ],
-                "Viewport": {
-                    "Height": 1.0,
-                    "Left": 0.0,
-                    "Top": 0.0,
-                    "Width": 1.0
-                },
-                "Zoom": 1.0
             },
             "HasChild": true,
             "RootEntity": true,

@@ -518,7 +518,6 @@ namespace fz {
 			float sw = texSize.x / (s_CurrentDrawSize.x);
 			float ew = texSize.y / (s_CurrentDrawSize.y);
 
-			FZLOG_DEBUG("sw = {0}, ew = {1}", sw, ew);
 			sf::Vector2f adjustedStart = start;
 			adjustedStart.x -= 7.f;
 			adjustedStart.y -= 55.f;
@@ -544,8 +543,6 @@ namespace fz {
 			shape.setFillColor(sf::Color::Transparent);
 
 			s_DrawRect = shape;
-			FZLOG_DEBUG("Rect Pos {0}, {1}", s_DrawRect.getPosition().x, s_DrawRect.getPosition().y);
-			FZLOG_DEBUG("Rect Size {0}, {1}", s_DrawRect.getSize().x, s_DrawRect.getSize().y);
 		}
 		else
 		{

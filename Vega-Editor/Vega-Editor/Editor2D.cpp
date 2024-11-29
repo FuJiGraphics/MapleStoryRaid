@@ -23,7 +23,6 @@ namespace fz {
 			m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
 		m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 		SpriteEditor::SetContext(m_ActiveScene);
-		Scene::s_CurrentScene = m_ActiveScene;
 	}
 
 	void Editor2D::OnDetach()
@@ -125,8 +124,6 @@ namespace fz {
 				System::GetSystem().ExitSystem();
 			}
 			ImGui::EndMenu();
-
-			Scene::s_CurrentScene = m_ActiveScene;
 		}
 
 		if (ImGui::BeginMenu("Tools"))
@@ -259,12 +256,7 @@ namespace fz {
 
 	void Editor2D::BindScript()
 	{
-		auto& base = BindScriptBase::GetInstance();
-		for (auto& script : base)
-		{
-			std::string sceneUUID = m_ActiveScene->GetUUID();
-			script->Bind(sceneUUID, m_ActiveScene);
-		}
+		AttachScripts(m_ActiveScene);
 	}
 
 } // namespace fz

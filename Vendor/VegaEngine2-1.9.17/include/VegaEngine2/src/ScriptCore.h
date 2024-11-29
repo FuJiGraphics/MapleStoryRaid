@@ -20,8 +20,11 @@ namespace fz {																			\
 		void Bind(const std::string& path, fz::Shared<fz::Scene>& currScene) override	\
 		{																				\
 			auto Entity = currScene->GetEntityFromTag(entity);							\
-			if (Entity && !Entity.HasComponent<NativeScriptComponent>())				\
-				Entity.AddComponent<NativeScriptComponent>().Bind<##script>();			\
+			if (Entity.HasComponent<NativeScriptComponent>())							\
+			{																			\
+				Entity.RemoveComponent<NativeScriptComponent>();						\
+			}																			\
+			Entity.AddComponent<NativeScriptComponent>().Bind<##script>();				\
 		}																				\
 	};																					\
 class bindClassBind##tag																\
