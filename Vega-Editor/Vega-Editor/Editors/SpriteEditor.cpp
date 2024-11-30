@@ -112,14 +112,14 @@ namespace fz {
 					std::string openPath = VegaUI::OpenFile(handle, "Animation Clip (*.anim)\0*.anim\0");
 					if (!openPath.empty())
 					{
-						SpriteEditor::OpenAniamtionClip(openPath);
+						SpriteEditor::OpenAnimationClip(openPath);
 					}
 				}
 				if (s_IsOpenedFile && ImGui::MenuItem("Save..."))
 				{
-					if (!s_CurrentPath.empty()) 
+					if (!s_OpenFilePath.empty())
 					{
-						SpriteEditor::SaveAnimationClip(s_CurrentPath);
+						SpriteEditor::SaveAnimationClip(s_OpenFilePath);
 					}
 					else
 					{
@@ -199,7 +199,7 @@ namespace fz {
 					{
 						s_CurrentPath = path;
 						SpriteEditor::SaveAnimationClip(s_OpenFilePath);
-						SpriteEditor::OpenAniamtionClip(s_OpenFilePath);
+						SpriteEditor::OpenAnimationClip(s_OpenFilePath);
 						SpriteEditor::SetTarget(path);
 					}
 				}
@@ -298,7 +298,7 @@ namespace fz {
 		Database::Unload(path);
 	}
 
-	void SpriteEditor::OpenAniamtionClip(const std::string& path)
+	void SpriteEditor::OpenAnimationClip(const std::string& path)
 	{
 		std::string newPath = path;
 		SpriteEditor::Clear();
@@ -380,6 +380,7 @@ namespace fz {
 		if (!enabled)
 		{
 			s_CurrentPath = "";
+			s_OpenFilePath = "";
 			s_ClipName = "None";
 			s_LoopType = AnimationLoopTypes::Loop;
 			s_Frames.clear();

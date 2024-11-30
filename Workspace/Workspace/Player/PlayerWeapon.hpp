@@ -6,12 +6,23 @@ namespace fz {
 
 	class PlayerWeaponScript : public VegaScript, public CharacterFSM
 	{
+		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
-		float Speed = 2000.f;
+		Animator animator;
+		AnimPool clips;
+
+		fz::Entity parent;
 
 		void Start() override
 		{
-
+			parent = GetComponent<ParentEntityComponent>().ParentEntity;
+			clips["Idle"].loadFromFile("game/animations/weapon/basic_sword/idle.anim");
+			clips["Move"].loadFromFile("game/animations/weapon/basic_sword/move.anim");
+			clips["Jump"].loadFromFile("game/animations/weapon/basic_sword/jump.anim");
+			clips["Attack1"].loadFromFile("game/animations/weapon/basic_sword/attack1.anim");
+			TransformComponent& transform = GetComponent<TransformComponent>();
+			sf::Sprite& sprite = GetComponent<SpriteComponent>();
+			animator.SetTarget(sprite, transform);
 		}
 
 		void OnDestroy() override
@@ -21,7 +32,28 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
+			animator.Update(dt);
 
+			PlayerStatus status = parent.GetComponent<PlayerStatusComponent>().Status;
+			switch(status)
+			{
+				case PlayerStatus::Idle:
+					animator.Play(&clips["Idle"]);
+					break;
+				case PlayerStatus::Move:
+					animator.Play(&clips["Move"]);
+					break;
+				case PlayerStatus::Jump:
+					animator.Play(&clips["Jump"]);
+					break;
+				case PlayerStatus::Attack1:
+					animator.Play(&clips["Attack1"]);
+					break;
+				case PlayerStatus::Damaged:
+					animator.Stop();
+					break;
+			}
+		
 		}
 
 		void OnTriggerEnter(Collider collider) override
@@ -29,7 +61,7 @@ namespace fz {
 
 		}
 
-		void OnTriggerStay(Collider collider) override
+		void OnTriggerStay(Collider collider) override 
 		{
 
 		}
@@ -39,5 +71,7 @@ namespace fz {
 
 		}
 	};
+
+
 } // namespace fz
 

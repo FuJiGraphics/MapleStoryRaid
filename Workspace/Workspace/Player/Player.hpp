@@ -2,6 +2,7 @@
 #include <VegaEngine2.h>
 #include "FSM.h"
 #include "Utils/Timer.h"
+#include "PlayerStatus.hpp"
 
 namespace fz {
 
@@ -17,31 +18,20 @@ namespace fz {
 
 		Directions currDir = Directions::LEFT;
 
-		Animator animator;
-		AnimPool clips;
-
 		TransformComponent* transform;
 		RigidbodyComponent* body;
+		PlayerStatusComponent* status;
+
+		bool isOnGround = false;
 
 		Timer timer;
 			
 	public:
 		void Start() override
 		{
+			status = &AddComponent<PlayerStatusComponent>();
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
-			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			animator.SetTarget(sprite, *transform);
-			clips["idle"].loadFromFile("game/animations/player_idle.anim");
-			clips["idle"].Speed = 1.0f;
-			clips["move"].loadFromFile("game/animations/player_move.anim");
-			clips["move"].Speed = 1.0f;
-			clips["jump"].loadFromFile("game/animations/player_jump.anim");
-			clips["jump"].Speed = 1.0f;
-			clips["damaged"].loadFromFile("game/animations/player_damaged.anim");
-			clips["die"].loadFromFile("game/animations/player_die.anim");
-			clips["attackFirst"].loadFromFile("game/animations/player_idle_attack_first.anim");
-			clips["attackFirst"].Speed = 2.0f;
 			body->SetGravityScale(1.5f);
 		}
 
@@ -55,8 +45,9 @@ namespace fz {
 			if (!HasComponent<RigidbodyComponent>())
 				return;
 
-			animator.Update(dt);
 			timer.Update(dt);
+
+			isOnGround = body->IsOnGround({ 0.0f, 0.34f });
 
 			// 이동 적용
 			if (Input::IsKeyPressed(KeyType::Right))
@@ -102,7 +93,6 @@ namespace fz {
 				return;
 
 			timer["Attack"].Start(AttackTime);
-			animator.Play(&clips["attackFirst"]);
 		}
 
 		void Idle() override
@@ -111,8 +101,11 @@ namespace fz {
 				return;
 			if (!timer["Attack"].Done())
 				return;
+			if (!body->IsOnGround({ 0.0f, 0.34f }))
+				return;
 
-			animator.Play(&clips["idle"]);
+			status->Status = PlayerStatus::Idle;
+			SetColorWithChilds({ 255, 255, 255, 255 });
 		}
 
 		void Move(Directions dir) override
@@ -122,19 +115,22 @@ namespace fz {
 			if (!timer["Attack"].Done())
 				return;
 
+			if (isOnGround)
+			{
+				status->Status = PlayerStatus::Move;
+			}
+
 			fz::Transform& transform = GetComponent<TransformComponent>();
 			if (dir == Directions::RIGHT)
 			{
 				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
 				transform.SetScale(-1.0f, 1.0f);
-				animator.Play(&clips["move"]);
 				currDir = Directions::RIGHT;
 			}
 			else if (dir == Directions::LEFT)
 			{
 				body->AddPosition({ MoveSpeed * -1.f, 0.0f });
 				transform.SetScale(1.0f, 1.0f);
-				animator.Play(&clips["move"]);
 				currDir = Directions::LEFT;
 			}
 		}
@@ -146,15 +142,16 @@ namespace fz {
 			if (!timer["Attack"].Done())
 				return;
 
-			if (body->IsOnGround({0.0f, 0.34f}))
+			if (isOnGround)
 			{
+				status->Status = PlayerStatus::Jump;
 				body->AddPosition({ 0.0f, JumpPower });
 			}
 		}
 
 		void Damaged(int damage) override
 		{
-			animator.Play(&clips["damaged"]);
+			status->Status = PlayerStatus::Damaged;
 			if (currDir == Directions::LEFT)
 				Knockback(Directions::RIGHT);
 			else if (currDir == Directions::RIGHT)

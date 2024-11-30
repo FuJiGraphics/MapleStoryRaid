@@ -3,6 +3,8 @@
 // Ã¶Áø
 #include "Camera.hpp"
 #include "Player/Player.hpp"
+#include "Player/PlayerBody.hpp"
+#include "Player/PlayerHand.hpp"
 #include "Player/PlayerWeapon.hpp"
 
 // ¹ÎÀç
@@ -22,6 +24,8 @@ namespace fz {
 	{
 		BIND_SCRIPT("Camera", CameraScript);
 		BIND_SCRIPT("Player", PlayerScript);
+		BIND_SCRIPT("Body", PlayerBodyScript);
+		BIND_SCRIPT("Hand", PlayerHandScript);
 		BIND_SCRIPT("Weapon", PlayerWeaponScript);
 
 		BIND_SCRIPT("Fireboar", FireboarScript);

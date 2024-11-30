@@ -30,7 +30,7 @@ namespace fz {
 		static void UpdateFrames();
 		static void RenderFrameViewport();
 		static void SaveAnimationClip(const std::string& path);
-		static void OpenAniamtionClip(const std::string& path);
+		static void OpenAnimationClip(const std::string& path);
 
 	private:
 		inline static bool s_IsOpenedFile = false;

@@ -119,6 +119,7 @@ namespace fz {
 		isPlaying = false;
 		currentFrame = 0;
 		checkFrame = totalFrame - 1;
+		currentClip = nullptr;
 	}
 
 	void Animator::SetFrame(const AnimationFrame& frame)

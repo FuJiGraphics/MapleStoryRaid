@@ -26,7 +26,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1516.0,
-                    725.0
+                    856.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -57,8 +57,8 @@
                     1.0
                 ],
                 "Translate": [
-                    2122.1298828125,
-                    613.0376586914063
+                    1336.1910400390625,
+                    481.2845764160156
                 ]
             }
         },
@@ -795,8 +795,8 @@
                         1.0
                     ],
                     "Translate": [
-                        26140.0,
-                        9165.9990234375
+                        213138.765625,
+                        56558.85546875
                     ]
                 }
             },
@@ -861,6 +861,85 @@
                 }
             }
         },
+        "3740e81b-ff4b-4f46-9cfa-d7fbf4d3fc05": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 20.0,
+                    "Y": 20.0
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    26.5,
+                    19.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    -2.9000000953674316,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\monster\\spoa.png",
+                "TexRect": {
+                    "Height": 39,
+                    "Left": -6,
+                    "Top": 1,
+                    "Width": 53
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Spoa"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    2377.536865234375,
+                    653.5001220703125
+                ]
+            }
+        },
         "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
@@ -898,8 +977,8 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    62.5,
-                    63.0
+                    61.5,
+                    57.0
                 ],
                 "Origins": "MC",
                 "Position": [
@@ -911,13 +990,13 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
+                "SortingOrder": 4,
                 "TexPath": "game\\graphics\\monster\\mushMom.png",
                 "TexRect": {
-                    "Height": 126,
-                    "Left": 547,
-                    "Top": 128,
-                    "Width": 125
+                    "Height": 114,
+                    "Left": 3,
+                    "Top": 0,
+                    "Width": 123
                 }
             },
             "TagComponent": {
@@ -931,12 +1010,12 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    1.0,
+                    -1.0,
                     1.0
                 ],
                 "Translate": [
-                    1404.5584716796875,
-                    478.0078430175781
+                    2730.289306640625,
+                    617.2000732421875
                 ]
             }
         },
@@ -972,7 +1051,7 @@
                         1.0,
                         1.0
                     ],
-                    "SortingOrder": 0,
+                    "SortingOrder": 4,
                     "TexPath": "",
                     "TexRect": {
                         "Height": 0,
@@ -1001,7 +1080,7 @@
                     ]
                 }
             },
-            "222b170e-d232-4572-85c6-89aa6a1f4d6c": {
+            "29df05cf-a4e8-4862-a381-e94d33499808": {
                 "HasChild": false,
                 "RootEntity": false,
                 "SpriteComponent": {
@@ -1019,8 +1098,8 @@
                     },
                     "MaskMode": false,
                     "Origin": [
-                        0.0,
-                        0.0
+                        6.0,
+                        10.5
                     ],
                     "Origins": "MC",
                     "Position": [
@@ -1032,18 +1111,18 @@
                         1.0,
                         1.0
                     ],
-                    "SortingOrder": 0,
-                    "TexPath": "",
+                    "SortingOrder": 5,
+                    "TexPath": "game\\graphics\\player\\hand\\idle.png",
                     "TexRect": {
-                        "Height": 0,
-                        "Left": 0,
+                        "Height": 21,
+                        "Left": 1,
                         "Top": 0,
-                        "Width": 0
+                        "Width": 12
                     }
                 },
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Leg"
+                    "Tag": "Hand"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1056,8 +1135,8 @@
                         1.0
                     ],
                     "Translate": [
-                        0.0,
-                        0.0
+                        10.5,
+                        11.0
                     ]
                 }
             },
@@ -1093,7 +1172,7 @@
                         1.0
                     ],
                     "SortingOrder": 4,
-                    "TexPath": "game\\graphics\\player\\Face\\Face_1\\Face1Default.png",
+                    "TexPath": "game\\graphics\\player\\face\\face1\\idle.png",
                     "TexRect": {
                         "Height": 16,
                         "Left": 0,
@@ -1116,8 +1195,68 @@
                         1.0
                     ],
                     "Translate": [
-                        -3.5,
-                        -11.0
+                        -4.5,
+                        -10.5
+                    ]
+                }
+            },
+            "4b4aeede-cf52-4681-b418-0c1914f6a8cb": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        20.5,
+                        6.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 4,
+                    "TexPath": "game\\graphics\\player\\weapon\\basic_sword\\idle.png",
+                    "TexRect": {
+                        "Height": 13,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 41
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Weapon"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -3.0,
+                        19.0
                     ]
                 }
             },
@@ -1139,8 +1278,8 @@
                     },
                     "MaskMode": false,
                     "Origin": [
-                        0.0,
-                        0.0
+                        31.5,
+                        41.5
                     ],
                     "Origins": "MC",
                     "Position": [
@@ -1152,13 +1291,13 @@
                         1.0,
                         1.0
                     ],
-                    "SortingOrder": 0,
-                    "TexPath": "",
+                    "SortingOrder": 3,
+                    "TexPath": "game\\graphics\\player\\body\\idle.png",
                     "TexRect": {
-                        "Height": 0,
-                        "Left": 0,
+                        "Height": 83,
+                        "Left": 126,
                         "Top": 0,
-                        "Width": 0
+                        "Width": 63
                     }
                 },
                 "TagComponent": {
@@ -1202,43 +1341,6 @@
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    31.5,
-                    41.5
-                ],
-                "Origins": "MC",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 3,
-                "TexPath": "game\\graphics\\player\\player_Idle.png",
-                "TexRect": {
-                    "Height": 83,
-                    "Left": 63,
-                    "Top": 0,
-                    "Width": 63
-                }
-            },
             "TagComponent": {
                 "Active": true,
                 "Tag": "Player"
@@ -1254,8 +1356,8 @@
                     1.0
                 ],
                 "Translate": [
-                    2116.1806640625,
-                    642.3001098632813
+                    1336.2236328125,
+                    520.3001098632813
                 ]
             },
             "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
@@ -1289,7 +1391,7 @@
                         1.0,
                         1.0
                     ],
-                    "SortingOrder": 0,
+                    "SortingOrder": 3,
                     "TexPath": "",
                     "TexRect": {
                         "Height": 0,
