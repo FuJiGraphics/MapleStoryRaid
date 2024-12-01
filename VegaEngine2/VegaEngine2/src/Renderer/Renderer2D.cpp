@@ -106,7 +106,7 @@ namespace fz {
 		s_CommandBuffer.clear();
 	} 
 
-	void Renderer2D::Draw(int order, sf::Sprite& target, const sf::Transform& transform, const sf::Transform& subTransform)
+	void Renderer2D::Draw(int order, sf::Sprite target, const sf::Transform& transform, const sf::Transform& subTransform)
 	{
 		FZLOG_ASSERT(s_RenderWindow, "Renderer2D를 사용할 수 없습니다. 초기화되지 않은 Renderer2D 입니다.");
 		FZLOG_ASSERT(s_OrthoCamera, "Renderer2D를 사용할 수 없습니다. BeginScene이 호출되지 않았습니다.");

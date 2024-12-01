@@ -34,8 +34,8 @@ namespace fz {
         {
             transform = &GetComponent<TransformComponent>();
             body = &GetComponent<RigidbodyComponent>();
-            sf::Sprite& sprite = GetComponent<SpriteComponent>();
-            animator.SetTarget(sprite, *transform);
+			sf::Sprite& sprite = GetComponent<SpriteComponent>();
+			animator.SetTarget(GetCurrentEntity());
             animator.SetSpeed(1.0f);
             clips["idle"].loadFromFile("game/animations/mushmom_idle.anim");
             clips["move"].loadFromFile("game/animations/mushmom_move.anim");

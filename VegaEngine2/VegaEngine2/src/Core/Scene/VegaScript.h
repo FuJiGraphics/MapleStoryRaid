@@ -40,10 +40,15 @@ namespace fz {
 		{
 			return m_Entity.AddComponent<T>();
 		}
-
+		
 		void SetColorWithChilds(const sf::Color& color)
 		{
 			m_Entity.SetColorWithChilds(color);
+		}
+
+		fz::Entity& GetCurrentEntity()
+		{
+			return m_Entity;
 		}
 
 		sf::Vector2f GetWorldPosition()

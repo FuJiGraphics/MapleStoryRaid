@@ -22,17 +22,27 @@ namespace fz {
 
 		TransformComponent* transform;
 		RigidbodyComponent* body;
+		StatComponent* stat;
+		
+		bool isOnDie = false;
 
 		Timer timer;
 
-		enum class AIState { Idle, Moving } currentState = AIState::Moving;
+		enum class AIState { Idle, Moving, Die } currentState = AIState::Moving;
 
 		void Start() override
 		{
+			stat = &AddComponent<StatComponent>();
+			stat->Stat.HP = 200;
+			stat->Stat.MP = 0;
+			stat->Stat.AD = 10;
+			stat->Stat.AP = 0;
+
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
+
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			animator.SetTarget(sprite, *transform);
+			animator.SetTarget(GetCurrentEntity());
 			animator.SetSpeed(1.0f);
 			clips["idle"].loadFromFile("game/animations/spoa_idle.anim");
 			clips["move"].loadFromFile("game/animations/spoa_move.anim");
@@ -55,10 +65,17 @@ namespace fz {
 				return;
 
 			animator.Update(dt);
-
 			timer.Update(dt);
 
-			if (timer["ActionTimer"].Done())
+			if (timer["Die"].IsStart() && timer["Die"].Done())
+			{
+				GetCurrentScene()->DestroyInstance(GetCurrentEntity());
+				return;
+			}
+			if (Input::IsKeyDown(KeyType::Y))
+				this->Damaged(50);
+
+			if (!timer["Die"].IsStart() && timer["ActionTimer"].Done())
 			{
 				// 상태 전환
 				if (currentState == AIState::Moving)
@@ -77,9 +94,9 @@ namespace fz {
 			{
 				Move(MoveDirection, dt);
 			}
-			else if (Input::IsKeyPressed(KeyType::Q))
+			else if (currentState == AIState::Die)
 			{
-				this->Damaged(0);
+				Die();
 			}
 			else
 			{
@@ -87,8 +104,6 @@ namespace fz {
 			}
 
 		}
-
-
 
 		void Idle() override
 		{
@@ -103,6 +118,7 @@ namespace fz {
 				return;
 			fz::Transform& transform = GetComponent<TransformComponent>();
 			// 이동 적용
+			currDir = dir;
 			if (dir == Directions::RIGHT)
 			{
 				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
@@ -119,28 +135,51 @@ namespace fz {
 
 		void Damaged(int damage) override
 		{
-			// 플레이어 피격시
-			animator.Play(&clips["damaged"]);
-			if (currDir == Directions::LEFT)
-				Knockback(Directions::RIGHT);
-			else if (currDir == Directions::RIGHT)
-				Knockback(Directions::LEFT);
+			stat->Stat.HP -= damage;
+			if (stat->Stat.HP <= 0)
+			{
+				stat->Stat.HP = 0;
+				Die();
+			}
+			else
+			{
+				animator.Play(&clips["damaged"]);
+				if (currDir == Directions::LEFT)
+					Knockback(Directions::RIGHT);
+				else if (currDir == Directions::RIGHT)
+					Knockback(Directions::LEFT);
+			}
 		}
 
 		void Die() override
 		{
 			animator.Play(&clips["die"]);
+			currentState = AIState::Die;
+			timer["Die"].Start(0.5f);
+			stat->Stat.IsDead = true;
 		}
+
 		void Knockback(Directions dir)
 		{
 			if (!timer["Knocback"].Done())
 				return;
 			timer["Knocback"].Start(KnockbackTime);
 			if (dir == Directions::LEFT)
-				body->AddForce({ -1000.f, -1000.0f });
+				body->AddForce({ -2000.f, -2000.0f });
 			else if (dir == Directions::RIGHT)
-				body->AddForce({ +1000.f, -1000.0f });
+				body->AddForce({ +2000.f, -2000.0f });
 		}
+
+
+		virtual void OnCollisionEnter(Collision collision)
+		{
+			if (collision.gameObject.HasComponent<SkillComponent>())
+			{
+				const auto& stat = collision.gameObject.GetComponent<StatComponent>();
+				Damaged(stat.Stat.AD);
+			}
+		}
+
 	private:
 		Directions MoveDirection = Directions::RIGHT;
 

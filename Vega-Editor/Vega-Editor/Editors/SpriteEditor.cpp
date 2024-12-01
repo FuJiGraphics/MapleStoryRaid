@@ -398,10 +398,10 @@ namespace fz {
 	{
 		if (!s_IsActive)
 			return;
-
 		s_FrameBuffer->Clear();
 		s_FrameBuffer->GetBuffer().setView(s_EditorCamera.GetOrthoCamera());
-		if (ImGui::Begin("Viewport", 0))
+		bool isOpen = true;
+		if (ImGui::Begin("Viewport", &isOpen))
 		{
 			if (ImGui::IsWindowHovered(ImGuiHoveredFlags_AllowWhenBlockedByPopup) && ImGui::IsWindowFocused())
 				s_EditorCamera.SetActivated(true);
@@ -419,6 +419,8 @@ namespace fz {
 		SpriteEditor::UpdateFrames();
 		SpriteEditor::RenderFrameViewport();
 		ImGui::End();
+		if (!isOpen)
+			SpriteEditor::SetActive(false);
 	}
 
 	void SpriteEditor::OnEvent(fz::Event& ev)

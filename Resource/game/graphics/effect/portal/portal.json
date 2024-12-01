@@ -1,0 +1,175 @@
+{
+	"frames": {
+		"Portal0.png": {
+			"frame": {
+				"x": 2,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal1.png": {
+			"frame": {
+				"x": 96,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal2.png": {
+			"frame": {
+				"x": 190,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal3.png": {
+			"frame": {
+				"x": 284,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal4.png": {
+			"frame": {
+				"x": 378,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal5.png": {
+			"frame": {
+				"x": 472,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal6.png": {
+			"frame": {
+				"x": 566,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		},
+		"Portal7.png": {
+			"frame": {
+				"x": 660,
+				"y": 2,
+				"w": 90,
+				"h": 260
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 260
+			},
+			"sourceSize": {
+				"w": 90,
+				"h": 260
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 752,
+			"h": 264
+		},
+		"scale": "1"
+	}
+}

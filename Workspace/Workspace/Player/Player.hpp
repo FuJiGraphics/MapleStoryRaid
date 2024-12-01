@@ -3,6 +3,7 @@
 #include "FSM.h"
 #include "Utils/Timer.h"
 #include "PlayerStatus.hpp"
+#include "Stat.hpp"
 
 namespace fz {
 
@@ -18,9 +19,10 @@ namespace fz {
 
 		Directions currDir = Directions::LEFT;
 
-		TransformComponent* transform;
-		RigidbodyComponent* body;
-		PlayerStatusComponent* status;
+		TransformComponent* transform = nullptr;
+		RigidbodyComponent* body = nullptr;
+		PlayerStatusComponent* status = nullptr;
+		StatComponent* Stat = nullptr;
 
 		bool isOnGround = false;
 
@@ -30,6 +32,7 @@ namespace fz {
 		void Start() override
 		{
 			status = &AddComponent<PlayerStatusComponent>();
+			Stat = &AddComponent<StatComponent>();
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
 			body->SetGravityScale(1.5f);
@@ -73,8 +76,7 @@ namespace fz {
 
 			if (Input::IsKeyDown(KeyType::T))
 			{
-				GameObject mushmom = GetCurrentScene()->GetEntityFromTag("Mushmom");
-				GetCurrentScene()->Instantiate(mushmom, { 200.f, 0.0f });
+				GetCurrentScene()->Instantiate("Spoa", { 200.f, 0.0f });
 			}
 
 			if (Input::IsKeyDown(KeyType::Space))
@@ -93,6 +95,7 @@ namespace fz {
 				return;
 
 			timer["Attack"].Start(AttackTime);
+			status->Status = PlayerStatus::Attack1;
 		}
 
 		void Idle() override

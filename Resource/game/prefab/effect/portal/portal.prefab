@@ -1,0 +1,81 @@
+{
+    "5bab8522-355e-48ee-9ba4-29120e70cf61": {
+        "BoxCollider2DComponent": {
+            "Density": 1.0,
+            "Friction": 0.5,
+            "IsTrigger": true,
+            "Offset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "Restitution": 0.0,
+            "RestitutionThreshold": 0.5,
+            "Size": {
+                "X": 39.599998474121094,
+                "Y": 122.0
+            }
+        },
+        "HasChild": false,
+        "RigidbodyComponent": {
+            "FixedRotation": true,
+            "RigidType": "Static"
+        },
+        "RootEntity": true,
+        "SpriteComponent": {
+            "Color": {
+                "A": 255,
+                "B": 255,
+                "G": 255,
+                "R": 255
+            },
+            "MaskColor": {
+                "A": 255,
+                "B": 0,
+                "G": 0,
+                "R": 0
+            },
+            "MaskMode": false,
+            "Origin": [
+                45.0,
+                130.0
+            ],
+            "Origins": "MC",
+            "Position": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "SortingOrder": 1,
+            "TexPath": "game\\graphics\\effect\\portal\\portal.png",
+            "TexRect": {
+                "Height": 260,
+                "Left": 2,
+                "Top": 2,
+                "Width": 90
+            }
+        },
+        "TagComponent": {
+            "Active": true,
+            "Tag": "Portal"
+        },
+        "TransformComponent": {
+            "Origin": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                2508.0,
+                551.0
+            ]
+        }
+    }
+}

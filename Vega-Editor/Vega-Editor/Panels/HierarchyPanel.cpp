@@ -93,7 +93,7 @@ namespace fz {
 			if (m_OnEntityRemove)
 			{
 				m_OnEntityRemove = false;
-				DeleteChildEntities(m_SelectionContext);
+				m_Context->DeleteEntity(m_SelectionContext);
 				m_SelectionContext = {};
 			}
 		}
@@ -404,51 +404,6 @@ namespace fz {
 				ImGui::TreePop();
 			}
 		}
-	}
-
-	void HierarchyPanel::DeleteChildEntities(fz::Entity& entity)
-	{
-		if (entity && entity.HasComponent<ChildEntityComponent>())
-		{
-			ChildEntityComponent& childComp = entity.GetComponent<ChildEntityComponent>();
-			for (auto& child : childComp.CurrentChildEntities)
-			{
-				DeleteChildEntities(child);
-			}
-			childComp.CurrentChildEntities.clear();
-			if (childComp.ParentEntity.HasComponent<ChildEntityComponent>())
-			{
-				childComp.ParentEntity.RemoveComponent<ChildEntityComponent>();
-			}
-		}
-		if (entity.HasComponent<RootEntityComponent>())
-		{
-			entity.RemoveComponent<RootEntityComponent>();
-		}
-		else
-		{
-			auto view = m_Context->m_Registry.view<ChildEntityComponent>();
-			for (auto& entity : view)
-			{
-				fz::Entity baseEntity = { entity, m_Context };
-				fz::Entity delEntity = m_SelectionContext;
-				auto& childComp = view.get<ChildEntityComponent>(entity);
-				auto it = std::find_if(childComp.CurrentChildEntities.begin(), childComp.CurrentChildEntities.end(),
-										[&delEntity](const fz::Entity& target)
-										{
-											return target == delEntity;
-										});
-				if (it != childComp.CurrentChildEntities.end())
-				{
-					childComp.CurrentChildEntities.erase(it);
-				}
-				if (childComp.CurrentChildEntities.empty())
-				{
-					childComp.ParentEntity.RemoveComponent<ChildEntityComponent>();
-				}
-			}
-		}
-		m_Context->DeleteEntity(entity);
 	}
 
 } // namespace fz

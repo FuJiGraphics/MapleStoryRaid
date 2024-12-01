@@ -26,7 +26,7 @@ namespace fz {
 
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 			TransformComponent& transform = GetComponent<TransformComponent>();
-			animator.SetTarget(sprite, transform);
+			animator.SetTarget(GetCurrentEntity());
 		}
 
 		void OnDestroy() override

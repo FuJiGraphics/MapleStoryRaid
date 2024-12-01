@@ -1,8 +1,13 @@
 #pragma once
 
+// Effects
+#include "Skill/BasicAttack.hpp"
+#include "Portal/Portal.hpp"
+
 // Ã¶Áø
 #include "Camera.hpp"
 #include "Player/Player.hpp"
+#include "Player/PlayerFace.hpp"
 #include "Player/PlayerBody.hpp"
 #include "Player/PlayerHand.hpp"
 #include "Player/PlayerWeapon.hpp"
@@ -22,11 +27,15 @@ namespace fz {
 
 	static void AttachScripts(Shared<Scene>& scene)
 	{
+		BIND_SCRIPT("BasicAttack", BasicAttackScript);
+		BIND_SCRIPT("Portal", PortalScript);
+
 		BIND_SCRIPT("Camera", CameraScript);
 		BIND_SCRIPT("Player", PlayerScript);
 		BIND_SCRIPT("Body", PlayerBodyScript);
 		BIND_SCRIPT("Hand", PlayerHandScript);
 		BIND_SCRIPT("Weapon", PlayerWeaponScript);
+		BIND_SCRIPT("Face", PlayerFaceScript);
 
 		BIND_SCRIPT("Fireboar", FireboarScript);
 		BIND_SCRIPT("Ironhog", IronhogScript);

@@ -1,0 +1,37 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.5,
+                0.5
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                26,
+                16
+            ]
+        },
+        "ClipName": "player_face1_idle",
+        "FrameCount": 1,
+        "LoopType": "Loop",
+        "TexturePath": "game\\graphics\\player\\face\\face1\\idle.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

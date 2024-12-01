@@ -19,9 +19,10 @@ namespace fz {
 			clips["Idle"].loadFromFile("game/animations/player/hand/idle.anim");
 			clips["Move"].loadFromFile("game/animations/player/hand/move.anim");
 			clips["Jump"].loadFromFile("game/animations/player/hand/jump.anim");
+			clips["Attack1"].loadFromFile("game/animations/player/hand/attack1.anim");
 			TransformComponent& transform = GetComponent<TransformComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			animator.SetTarget(sprite, transform);
+			animator.SetTarget(GetCurrentEntity());
 		}
 
 		void OnDestroy() override
@@ -46,7 +47,7 @@ namespace fz {
 					animator.Play(&clips["Jump"]);
 					break;
 				case PlayerStatus::Attack1:
-					animator.Stop();
+					animator.Play(&clips["Attack1"]);
 					break;
 				case PlayerStatus::Damaged:
 					animator.Stop();

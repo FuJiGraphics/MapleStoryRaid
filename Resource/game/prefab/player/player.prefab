@@ -1,5 +1,5 @@
 {
-    "aede658d-5753-46ac-9570-f360e921f0ac": {
+    "e18cbcc2-bcfe-4cca-94fa-670ea7ce0733": {
         "175a7fb5-6ccc-471a-9f9c-5d5a02721daa": {
             "HasChild": false,
             "RootEntity": false,
@@ -31,7 +31,7 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
+                "SortingOrder": 4,
                 "TexPath": "",
                 "TexRect": {
                     "Height": 0,
@@ -60,7 +60,7 @@
                 ]
             }
         },
-        "222b170e-d232-4572-85c6-89aa6a1f4d6c": {
+        "29df05cf-a4e8-4862-a381-e94d33499808": {
             "HasChild": false,
             "RootEntity": false,
             "SpriteComponent": {
@@ -78,31 +78,31 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    0.0,
-                    0.0
+                    7.0,
+                    7.5
                 ],
                 "Origins": "MC",
                 "Position": [
                     0.0,
-                    0.0
+                    -1.0
                 ],
                 "Rotation": 0.0,
                 "Scale": [
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
-                "TexPath": "",
+                "SortingOrder": 5,
+                "TexPath": "game\\graphics\\player\\hand\\idle.png",
                 "TexRect": {
-                    "Height": 0,
-                    "Left": 0,
-                    "Top": 0,
-                    "Width": 0
+                    "Height": 15,
+                    "Left": 261,
+                    "Top": 32,
+                    "Width": 14
                 }
             },
             "TagComponent": {
                 "Active": true,
-                "Tag": "Leg"
+                "Tag": "Hand"
             },
             "TransformComponent": {
                 "Origin": [
@@ -115,8 +115,8 @@
                     1.0
                 ],
                 "Translate": [
-                    0.0,
-                    0.0
+                    10.5,
+                    11.0
                 ]
             }
         },
@@ -138,8 +138,8 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    0.0,
-                    0.0
+                    13.0,
+                    8.0
                 ],
                 "Origins": "MC",
                 "Position": [
@@ -151,13 +151,13 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
-                "TexPath": "",
+                "SortingOrder": 4,
+                "TexPath": "game\\graphics\\player\\face\\face1\\idle.png",
                 "TexRect": {
-                    "Height": 0,
+                    "Height": 16,
                     "Left": 0,
                     "Top": 0,
-                    "Width": 0
+                    "Width": 26
                 }
             },
             "TagComponent": {
@@ -175,8 +175,68 @@
                     1.0
                 ],
                 "Translate": [
+                    -4.5,
+                    -10.5
+                ]
+            }
+        },
+        "4b4aeede-cf52-4681-b418-0c1914f6a8cb": {
+            "HasChild": false,
+            "RootEntity": false,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    20.5,
+                    6.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    4.5,
+                    -6.5
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 4,
+                "TexPath": "game\\graphics\\player\\weapon\\basic_sword\\idle.png",
+                "TexRect": {
+                    "Height": 13,
+                    "Left": 2,
+                    "Top": 2,
+                    "Width": 41
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Weapon"
+            },
+            "TransformComponent": {
+                "Origin": [
                     0.0,
                     0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -3.0,
+                    19.0
                 ]
             }
         },
@@ -198,8 +258,8 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    0.0,
-                    0.0
+                    21.5,
+                    35.0
                 ],
                 "Origins": "MC",
                 "Position": [
@@ -211,13 +271,13 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
-                "TexPath": "",
+                "SortingOrder": 3,
+                "TexPath": "game\\graphics\\player\\body\\idle.png",
                 "TexRect": {
-                    "Height": 0,
+                    "Height": 70,
                     "Left": 0,
                     "Top": 0,
-                    "Width": 0
+                    "Width": 43
                 }
             },
             "TagComponent": {
@@ -261,43 +321,6 @@
             "RigidType": "Dynamic"
         },
         "RootEntity": true,
-        "SpriteComponent": {
-            "Color": {
-                "A": 255,
-                "B": 255,
-                "G": 255,
-                "R": 255
-            },
-            "MaskColor": {
-                "A": 255,
-                "B": 0,
-                "G": 0,
-                "R": 0
-            },
-            "MaskMode": false,
-            "Origin": [
-                31.5,
-                41.5
-            ],
-            "Origins": "MC",
-            "Position": [
-                0.0,
-                0.0
-            ],
-            "Rotation": 0.0,
-            "Scale": [
-                1.0,
-                1.0
-            ],
-            "SortingOrder": 3,
-            "TexPath": "game\\graphics\\player\\player_Idle.png",
-            "TexRect": {
-                "Height": 83,
-                "Left": 0,
-                "Top": 0,
-                "Width": 63
-            }
-        },
         "TagComponent": {
             "Active": true,
             "Tag": "Player"
@@ -313,8 +336,8 @@
                 1.0
             ],
             "Translate": [
-                890.8099975585938,
-                311.29998779296875
+                877.0894165039063,
+                642.3001098632813
             ]
         },
         "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
@@ -348,7 +371,7 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
+                "SortingOrder": 3,
                 "TexPath": "",
                 "TexRect": {
                     "Height": 0,

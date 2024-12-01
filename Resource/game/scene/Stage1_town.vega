@@ -26,7 +26,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1516.0,
-                    856.0
+                    864.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -57,8 +57,8 @@
                     1.0
                 ],
                 "Translate": [
-                    1030.22802734375,
-                    609.937744140625
+                    798.7179565429688,
+                    612.3553466796875
                 ]
             }
         },
@@ -795,8 +795,8 @@
                         1.0
                     ],
                     "Translate": [
-                        145548.90625,
-                        39428.96875
+                        379860.375,
+                        98812.5859375
                     ]
                 }
             },
@@ -861,11 +861,11 @@
                 }
             }
         },
-        "3740e81b-ff4b-4f46-9cfa-d7fbf4d3fc05": {
+        "2cafe6a9-9048-4acc-a2a1-1ff7287b8a88": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
-                "IsTrigger": false,
+                "IsTrigger": true,
                 "Offset": {
                     "X": 0.0,
                     "Y": 0.0
@@ -873,14 +873,14 @@
                 "Restitution": 0.0,
                 "RestitutionThreshold": 0.5,
                 "Size": {
-                    "X": 20.0,
-                    "Y": 20.0
+                    "X": 39.599998474121094,
+                    "Y": 122.0
                 }
             },
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": true,
-                "RigidType": "Dynamic"
+                "RigidType": "Static"
             },
             "RootEntity": true,
             "SpriteComponent": {
@@ -898,8 +898,8 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    19.5,
-                    20.5
+                    45.0,
+                    130.0
                 ],
                 "Origins": "MC",
                 "Position": [
@@ -911,97 +911,18 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
-                "TexPath": "game\\graphics\\monster\\spoa.png",
+                "SortingOrder": 1,
+                "TexPath": "game\\graphics\\effect\\portal\\portal.png",
                 "TexRect": {
-                    "Height": 41,
-                    "Left": 91,
-                    "Top": 39,
-                    "Width": 39
+                    "Height": 260,
+                    "Left": 2,
+                    "Top": 2,
+                    "Width": 90
                 }
             },
             "TagComponent": {
                 "Active": true,
-                "Tag": "Spoa"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    -1.0,
-                    1.0
-                ],
-                "Translate": [
-                    2600.575927734375,
-                    627.7987670898438
-                ]
-            }
-        },
-        "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": false,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 58.20000076293945,
-                    "Y": 56.29999923706055
-                }
-            },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": true,
-                "RigidType": "Dynamic"
-            },
-            "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    62.5,
-                    63.0
-                ],
-                "Origins": "MC",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 4,
-                "TexPath": "game\\graphics\\monster\\mushMom.png",
-                "TexRect": {
-                    "Height": 126,
-                    "Left": 547,
-                    "Top": 128,
-                    "Width": 125
-                }
-            },
-            "TagComponent": {
-                "Active": true,
-                "Tag": "Mushmom"
+                "Tag": "Portal"
             },
             "TransformComponent": {
                 "Origin": [
@@ -1014,8 +935,8 @@
                     1.0
                 ],
                 "Translate": [
-                    2680.275634765625,
-                    579.4987182617188
+                    2508.0,
+                    551.0
                 ]
             }
         },
@@ -1098,13 +1019,13 @@
                     },
                     "MaskMode": false,
                     "Origin": [
-                        6.0,
-                        8.5
+                        7.0,
+                        7.5
                     ],
                     "Origins": "MC",
                     "Position": [
-                        -8.0,
-                        0.0
+                        0.0,
+                        -1.0
                     ],
                     "Rotation": 0.0,
                     "Scale": [
@@ -1114,10 +1035,10 @@
                     "SortingOrder": 5,
                     "TexPath": "game\\graphics\\player\\hand\\idle.png",
                     "TexRect": {
-                        "Height": 17,
-                        "Left": 108,
+                        "Height": 15,
+                        "Left": 261,
                         "Top": 32,
-                        "Width": 12
+                        "Width": 14
                     }
                 },
                 "TagComponent": {
@@ -1223,8 +1144,8 @@
                     ],
                     "Origins": "MC",
                     "Position": [
-                        1.0,
-                        0.0
+                        4.5,
+                        -6.5
                     ],
                     "Rotation": 0.0,
                     "Scale": [
@@ -1235,8 +1156,8 @@
                     "TexPath": "game\\graphics\\player\\weapon\\basic_sword\\idle.png",
                     "TexRect": {
                         "Height": 13,
-                        "Left": 0,
-                        "Top": 0,
+                        "Left": 2,
+                        "Top": 2,
                         "Width": 41
                     }
                 },
@@ -1295,7 +1216,7 @@
                     "TexPath": "game\\graphics\\player\\body\\idle.png",
                     "TexRect": {
                         "Height": 70,
-                        "Left": 129,
+                        "Left": 0,
                         "Top": 0,
                         "Width": 43
                     }
@@ -1356,8 +1277,8 @@
                     1.0
                 ],
                 "Translate": [
-                    1097.3507080078125,
-                    580.7054443359375
+                    877.0894165039063,
+                    642.3001098632813
                 ]
             },
             "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
@@ -2124,6 +2045,85 @@
                         -230.0
                     ]
                 }
+            }
+        },
+        "f957a6a3-90c6-4be7-853c-e79190d10284": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 22.299999237060547,
+                    "Y": 34.75
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    25.0,
+                    37.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 4,
+                "TexPath": "game\\graphics\\effect\\attack\\attack1.png",
+                "TexRect": {
+                    "Height": 75,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 50
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "BasicAttack"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    1573.0,
+                    516.0
+                ]
             }
         }
     }

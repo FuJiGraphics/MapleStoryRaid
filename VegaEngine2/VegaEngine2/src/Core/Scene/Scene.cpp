@@ -45,6 +45,17 @@ namespace fz {
 		this->ReleaseNativeComponent();
 	}
 
+	void Scene::DestroyInstance(GameObject& prefabInstance)
+	{
+		if (!prefabInstance.HasComponent<PrefabInstance>())
+		{
+			FZLOG_WARN("현재 제거하려 하는 인스턴스가 Prefab의 인스턴스가 아닙니다.");
+			return;
+		}
+		m_RemoveInstanceList.push_back(prefabInstance);
+		prefabInstance = GameObject();
+	}
+
 	Entity Scene::CreateEntity(const std::string& tagName)
 	{
 		Entity entity = { m_Registry.create(), shared_from_this() };
@@ -109,7 +120,7 @@ namespace fz {
 			auto& srcTagComp = src.GetComponent<TagComponent>();
 			auto& dstTagComp = dst.GetComponent<TagComponent>();
 			dstTagComp.Active = true; // TODO: prefab instance는 무조건 활성화
-			dstTagComp.Tag = srcTagComp.Tag;
+			dstTagComp.Tag += srcTagComp.Tag;
 		}
 		// Transform 
 		{
@@ -180,20 +191,13 @@ namespace fz {
 				dstNativeComp.Instance = srcNativeComp.CreateInstanceFunc();
 				dstNativeComp.Instance->m_Entity = dst;
 				dstNativeComp.CreateInstanceFunc = srcNativeComp.CreateInstanceFunc;
-				dstNativeComp.DeleteInstanceFunc = srcNativeComp.DeleteInstanceFunc;
 				dstNativeComp.OnCreateFunction = srcNativeComp.OnCreateFunction;
 				dstNativeComp.OnDestroyFunction = srcNativeComp.OnDestroyFunction;
 				dstNativeComp.OnUpdateFunction = srcNativeComp.OnUpdateFunction;
 			}
 
-			LoginPhysicsWorld(dst);
-
 			m_PrefabInstancePool.insert({ dst.m_UUID, dst.m_Handle });
-			if (dst.HasComponent<NativeScriptComponent>())
-			{
-				auto& dstNativeComp = dst.GetComponent<NativeScriptComponent>();
-				dstNativeComp.OnCreateFunction(dstNativeComp.Instance);
-			}
+			m_LoadPrefabInstanceList.push_back(dst);
 		}
 	}
 
@@ -209,13 +213,25 @@ namespace fz {
 
 	void Scene::DeleteEntity(fz::Entity& entity)
 	{
-		auto it = m_EntityPool.find(entity.m_UUID);
-		if (it != m_EntityPool.end())
+		if (entity && entity.HasComponent<ChildEntityComponent>())
 		{
-			m_EntityPool.erase(it);
+			ChildEntityComponent& childComp = entity.GetComponent<ChildEntityComponent>();
+			for (auto& child : childComp.CurrentChildEntities)
+			{
+				DeleteEntity(child);
+			}
+			childComp.CurrentChildEntities.clear();
+		}
+		if (Scene::s_World && entity.HasComponent<RigidbodyComponent>())
+		{
+			auto& rigidComp = entity.GetComponent<RigidbodyComponent>();
+			b2Body* body = (b2Body*)rigidComp.RuntimeBody;
+			if (body)
+			{
+				Scene::s_World->DestroyBody(body);
+			}
 		}
 		m_Registry.destroy(entity.m_Handle);
-		entity.m_Handle = entt::null;
 	}
 
 	void Scene::StartPhysics()
@@ -281,7 +297,6 @@ namespace fz {
 			}
 
 			auto& tag = entity.GetComponent<TagComponent>();
-			FZLOG_DEBUG("UUID = {0}, Tag = {1}", entity.m_UUID, tag.Tag);
 
 			b2PolygonShape polygonShape;
 			polygonShape.SetAsBox(meterBoxSize.x, meterBoxSize.y);
@@ -352,6 +367,8 @@ namespace fz {
 	{
 		OrthoCamera* camera = nullptr;
 		sf::Transform transform = sf::Transform::Identity;
+		this->OnDestroyRuntimeInstance();
+		this->OnCreateRuntimeInstance();
 		this->OnUpdatePhysicsSystem(dt);
 		this->OnUpdateChildEntity();
 		this->OnUpdateScript(dt);
@@ -381,6 +398,21 @@ namespace fz {
 			{
  				cameraComponent.Camera.SetSize(width, height);
 			}
+		}
+	}
+
+	void Scene::OnDestroyRuntimeInstance()
+	{
+		while(!m_RemoveInstanceList.empty())
+		{
+			GameObject delObj = m_RemoveInstanceList.front();
+			m_RemoveInstanceList.pop_front();
+			auto it = m_PrefabInstancePool.find(delObj.m_UUID);
+			if (it != m_PrefabInstancePool.end())
+			{
+				m_PrefabInstancePool.erase(it);
+			}
+			this->DeleteEntity(delObj);
 		}
 	}
 
@@ -429,6 +461,25 @@ namespace fz {
 		return this->Instantiate(entity, tempTag, transform);
 	}
 
+	GameObject Scene::Instantiate(const std::string& tag, const sf::Vector2f& position)
+	{
+		std::string tempTag = ("prefabInstance" + std::to_string(m_prefabInstanceCount));
+		fz::Transform transform;
+		transform.SetTranslate(position);
+		GameObject prefab = this->GetEntityFromTag(tag);
+		return this->Instantiate(prefab, tempTag, transform);
+	}
+
+	GameObject Scene::Instantiate(const std::string& tag, const sf::Vector2f& position, const sf::Vector2f& scale)
+	{
+		std::string tempTag = ("prefabInstance" + std::to_string(m_prefabInstanceCount));
+		fz::Transform transform;
+		transform.SetTranslate(position);
+		transform.SetScale(scale);
+		GameObject prefab = this->GetEntityFromTag(tag);
+		return this->Instantiate(prefab, tempTag, transform);
+	}
+
 	GameObject Scene::Instantiate(GameObject entity, const sf::Vector2f& position)
 	{
 		std::string tempTag = ("prefabInstance" + std::to_string(m_prefabInstanceCount));
@@ -446,12 +497,14 @@ namespace fz {
 	GameObject Scene::Instantiate(GameObject entity, const std::string& tag, const fz::Transform& transform)
 	{
 		fz::Entity newEntity = CreateEntity(tag);
-		newEntity.AddComponent<PrefabInstance>();
+		auto& prefabComp = newEntity.AddComponent<PrefabInstance>();
+		prefabComp.PrefabInstanceEntity = newEntity;
 
 		auto& transformComp = newEntity.GetComponent<TransformComponent>();
 		transformComp.Transform = transform;
 		CopyEntityForPrefab(newEntity, entity, true);
 
+		m_prefabInstanceCount++;
 		return newEntity;
 	}
 
@@ -556,6 +609,21 @@ namespace fz {
 		}
 	}
 
+	void Scene::OnCreateRuntimeInstance()
+	{
+		while(!m_LoadPrefabInstanceList.empty())
+		{
+			fz::Entity gen = m_LoadPrefabInstanceList.front();
+			m_LoadPrefabInstanceList.pop_front();
+			this->LoginPhysicsWorld(gen);
+			if (gen.HasComponent<NativeScriptComponent>())
+			{
+				auto& dstNativeComp = gen.GetComponent<NativeScriptComponent>();
+				dstNativeComp.OnCreateFunction(dstNativeComp.Instance);
+			}
+		}
+	}
+
 	void Scene::OnUpdatePhysicsSystem(float dt)
 	{
 		// 물리 시스템 업데이트
@@ -649,16 +717,19 @@ namespace fz {
 
 			Renderer2D::BeginScene(*mainCamera, transform, m_FrameBuffer);
 			auto entities = GetEntities< TransformComponent, SpriteComponent, TagComponent>();
-			for (auto entity : entities)
+			for (auto handle : entities)
 			{
-				const auto& [transform, sprite, tag] = entities.get<TransformComponent, SpriteComponent, TagComponent>(entity);
-				if (tag.Active == false)
+				fz:Entity entity = { handle, shared_from_this() };
+				auto& tagComp = entity.GetComponent<TagComponent>();
+				auto& transformComp = entity.GetComponent<TransformComponent>();
+				auto& spriteComp = entity.GetComponent<SpriteComponent>();
+				if (tagComp.Active == false)
 					continue; // ** 비활성화시 로직 생략
-
-				if (transform.IsChildRenderMode)
-					Renderer2D::Draw(sprite.SortingOrder, sprite, transform.RenderTransform, transform.AnimTransform);
+				
+				if (transformComp.IsChildRenderMode)
+					Renderer2D::Draw(spriteComp.SortingOrder, spriteComp, transformComp.RenderTransform, transformComp.AnimTransform);
 				else
-					Renderer2D::Draw(sprite.SortingOrder, sprite, transform.Transform, transform.AnimTransform);
+					Renderer2D::Draw(spriteComp.SortingOrder, spriteComp, transformComp.Transform, transformComp.AnimTransform);
 			}
 			// Debug Display Mode
 			OnDrawDebugShape();

@@ -32,10 +32,9 @@ namespace fz {
 		std::unordered_map<std::pair<std::string, int>, AnimationEvent, AnimationEventHash> events;
 		std::queue<std::string> playeQueue;
 
+		fz::Entity Entity;
 		std::string currentTag;
 		AnimationClip* currentClip;
-		sf::Sprite* sprite = nullptr;
-		TransformComponent* transformComp = nullptr;
 
 		bool isPlaying = false;
 		int currentFrame = 0;
@@ -50,26 +49,16 @@ namespace fz {
 		Animator() = default;
 		~Animator() = default;
 
-		void SetTarget(sf::Sprite& target, TransformComponent& transform)
+		void SetTarget(fz::Entity target)
 		{
-			sprite = &target;
-			transformComp = &transform;
+			Entity = target;
 		}
 		void AddEvent(const std::string& id, int frame, std::function<void()> action);
 		void ClearEvent() { events.clear(); }
 
-		//void AddEvent(const AnimationEvent& ev)
-		//{ 
-		//	if (events.find(ev) != events.end())
-		//	{
-		//		// Error
-		//		return;
-		//	}
-		//	events.insert(ev);
-		//}
-
 		void Update(float dt);
 
+		bool IsPlaying(int frame) const { return currentFrame == frame; }
 		bool IsPlaying() const { return false; }
 		void SetSpeed(float speed)
 		{

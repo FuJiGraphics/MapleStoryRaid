@@ -26,7 +26,7 @@ namespace fz {
 		static void BeginScene(OrthoCamera& camera, const sf::Transform& transform, Shared<Framebuffer>& framebuffer);
 		static void EndScene();
 
-		static void Draw(int order, sf::Sprite& target, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
+		static void Draw(int order, sf::Sprite target, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
 		static void Draw(sf::RectangleShape* target, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
 	private:
 		static sf::Sprite s_Spirte;

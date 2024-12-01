@@ -14,9 +14,15 @@ namespace fz {
 
 		fz::Entity entityA = { handleA, m_Context->shared_from_this() };
 		fz::Entity entityB = { handleB, m_Context->shared_from_this() };
+		if (!entityA || !entityB)
+			return;
 
-		std::string tagA = entityA.GetComponent<TagComponent>().Tag;
-		std::string tagB = entityB.GetComponent<TagComponent>().Tag;
+		auto& tagAcomp = entityA.GetComponent<TagComponent>();
+		auto& tagBcomp = entityB.GetComponent<TagComponent>();
+		if (!tagAcomp.Active || !tagBcomp.Active)
+			return;
+		const std::string& tagA = tagAcomp.Tag;
+		const std::string& tagB = tagBcomp.Tag;
 
 		if (entityA.HasComponent<NativeScriptComponent>())
 		{
@@ -54,20 +60,26 @@ namespace fz {
 
 		fz::Entity entityA = { handleA, m_Context->shared_from_this() };
 		fz::Entity entityB = { handleB, m_Context->shared_from_this() };
+		if (!entityA || !entityB)
+			return;
 
-		std::string tagA = entityA.GetComponent<TagComponent>().Tag;
-		std::string tagB = entityB.GetComponent<TagComponent>().Tag;
+		auto& tagAcomp = entityA.GetComponent<TagComponent>();
+		auto& tagBcomp = entityB.GetComponent<TagComponent>();
+		if (!tagAcomp.Active || !tagBcomp.Active)
+			return;
+		const std::string& tagA = tagAcomp.Tag;
+		const std::string& tagB = tagBcomp.Tag;
 
 		if (entityA.HasComponent<NativeScriptComponent>())
 		{
 			auto& scriptComp = entityA.GetComponent<NativeScriptComponent>();
 			if (fixtureA->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerEnter({ tagB });
+				scriptComp.Instance->OnTriggerExit({ tagB });
 			}
 			else
 			{
-				scriptComp.Instance->OnCollisionEnter({ entityB, tagB, 0 });
+				scriptComp.Instance->OnCollisionExit({ entityB, tagB, 0 });
 			}
 		}
 		if (entityB.HasComponent<NativeScriptComponent>())
@@ -94,9 +106,15 @@ namespace fz {
 
 		fz::Entity entityA = { handleA, m_Context->shared_from_this() };
 		fz::Entity entityB = { handleB, m_Context->shared_from_this() };
+		if (!entityA || !entityB)
+			return;
 
-		std::string tagA = entityA.GetComponent<TagComponent>().Tag;
-		std::string tagB = entityB.GetComponent<TagComponent>().Tag;
+		auto& tagAcomp = entityA.GetComponent<TagComponent>();
+		auto& tagBcomp = entityB.GetComponent<TagComponent>();
+		if (!tagAcomp.Active || !tagBcomp.Active)
+			return;
+		const std::string& tagA = tagAcomp.Tag;
+		const std::string& tagB = tagBcomp.Tag;
 
 		unsigned int count = static_cast<unsigned int>(impulse->count);
 		b2Vec2 totalImpulse = { 0.0f, 0.0f };

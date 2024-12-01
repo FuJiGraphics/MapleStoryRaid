@@ -17,7 +17,6 @@ namespace fz {
 	protected:
 		bool DrawTreeNode(fz::Entity& entity, const char* tag);
 		void DrawSceneComponents(fz::Entity& entity);
-		void DeleteChildEntities(fz::Entity& entity);
 
 		template<typename T>
 		void DisplayAddComponentEntry(const std::string& entryName);

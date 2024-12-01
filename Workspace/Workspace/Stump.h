@@ -23,7 +23,7 @@ namespace fz {
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			animator.SetTarget(sprite, *transform);
+			animator.SetTarget(GetCurrentEntity());
 			animator.SetSpeed(1.0f);
 			clips["idle"].loadFromFile("game/animations/Stump_idle.anim");
 			clips["move"].loadFromFile("game/animations/Stump_move.anim");

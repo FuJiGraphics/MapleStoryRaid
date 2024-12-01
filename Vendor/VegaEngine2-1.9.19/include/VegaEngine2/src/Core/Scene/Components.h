@@ -121,6 +121,7 @@ namespace fz {
 	{
 	protected:
 		friend fz::Scene;
+		friend fz::Entity;
 		void* RuntimeBody = nullptr;
 
 	public:
@@ -200,24 +201,21 @@ namespace fz {
 	struct NativeScriptComponent
 	{
 	public:
-		VegaScript* Instance = nullptr;
+		Shared<VegaScript> Instance = nullptr;
 
-		VegaScript* (*CreateInstanceFunc)();
-		void (*DeleteInstanceFunc)(VegaScript* instance);
+		std::function<Shared<VegaScript>()> CreateInstanceFunc;
 
-		void(*OnCreateFunction)(VegaScript*);
-		void(*OnDestroyFunction)(VegaScript*);
-		void(*OnUpdateFunction)(VegaScript*, float);
+		std::function<void(Weak<VegaScript>)> OnCreateFunction;
+		std::function<void(Weak<VegaScript>)> OnDestroyFunction;
+		std::function<void(Weak<VegaScript>, float)> OnUpdateFunction;
 
 		template <typename T>
-		void Bind()
-		{
-			CreateInstanceFunc = []() { return static_cast<VegaScript*>(new T()); };
-			DeleteInstanceFunc = [](VegaScript* instance) { delete instance; instance = nullptr; };
+		void Bind() {
+			CreateInstanceFunc = []() { return static_cast<Shared<VegaScript>>(CreateShared<T>()); };
 
-			OnCreateFunction = [](VegaScript* instance) { (instance)->Start(); };
-			OnDestroyFunction = [](VegaScript* instance) { (instance)->OnDestroy(); };
-			OnUpdateFunction = [](VegaScript* instance, float dt) { (instance)->OnUpdate(dt); };
+			OnCreateFunction = [](Weak<VegaScript> instance) { instance->Start(); };
+			OnDestroyFunction = [](Weak<VegaScript> instance) { instance->OnDestroy(); };
+			OnUpdateFunction = [](Weak<VegaScript> instance, float dt) { instance->OnUpdate(dt); };
 		}
 	};
 

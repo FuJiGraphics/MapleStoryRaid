@@ -1,0 +1,91 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                0
+            ],
+            "Rect": [
+                86,
+                1,
+                32,
+                33
+            ]
+        },
+        "1": {
+            "Border": [
+                -6.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                0
+            ],
+            "Rect": [
+                86,
+                1,
+                32,
+                33
+            ]
+        },
+        "2": {
+            "Border": [
+                -8.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                43,
+                1,
+                41,
+                13
+            ]
+        },
+        "3": {
+            "Border": [
+                -8.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                43,
+                1,
+                41,
+                13
+            ]
+        },
+        "ClipName": "None",
+        "FrameCount": 4,
+        "LoopType": "Loop",
+        "TexturePath": "game\\graphics\\player\\weapon\\basic_sword\\attack1.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                -1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

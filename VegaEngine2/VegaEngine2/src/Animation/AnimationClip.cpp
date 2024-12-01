@@ -58,8 +58,6 @@ namespace fz {
 			Utils::SetOrigin(newSprite, Origins::MC);
 			frames.push_back(newSprite);
 		}
-		std::cout << std::endl;
-
 		Database::Unload(filePath);
 		return true;
 	}

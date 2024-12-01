@@ -15,6 +15,7 @@ namespace fz {
 				return;
 			m_Time = time;
 			m_ElapsedTime = 0.f;
+			m_IsStart = true;
 		}
 
 		void Update(float dt)
@@ -27,9 +28,15 @@ namespace fz {
 			return Utils::IsEqual(m_Time, m_ElapsedTime) || m_ElapsedTime > m_Time;
 		}
 
+		bool IsStart() const 
+		{
+			return m_IsStart;
+		}
+
 	protected:
 		float m_Time = 0;
 		float m_ElapsedTime = 0;
+		bool m_IsStart = false;
 	};
 
 	class Timer

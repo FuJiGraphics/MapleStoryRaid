@@ -33,7 +33,7 @@ namespace fz {
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			animator.SetTarget(sprite, *transform);
+			animator.SetTarget(GetCurrentEntity());
 			animator.SetSpeed(1.0f);
 			clips["idle"].loadFromFile("game/animations/snail_idle.anim");
 			clips["move"].loadFromFile("game/animations/snail_move.anim");

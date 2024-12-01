@@ -3,11 +3,13 @@
 #include "Core/Core.h"
 #include "entt/entt.hpp"
 #include "Scene.h"
+#include "Components.h"
 
 namespace fz {
 
 	class EntitySerializer;
 	class HierarchyPanel;
+	struct RigidbodyComponent;
 
 	class Entity 
 	{
@@ -81,6 +83,9 @@ namespace fz {
 		void SavePrefab(const std::string& path);
 		void SetActiveWithChild(bool enabled);
 		sf::Transform GetRealWorldTransform(fz::Entity parent) const;
+
+	protected:
+		inline static std::uint32_t s_EntityCount = 1;
 
 	private:
 		entt::entity	m_Handle;
