@@ -25,16 +25,12 @@ namespace fz {
 		void OnEvent(fz::Event& ev) override;
 		void OnUI() override;
 
-	protected:
-		Shared<Scene> CreateScene(unsigned int width, unsigned int height);
-		void SaveScene(const Shared<Scene>& scene, const std::string& path);
-		Shared<Scene> LoadScene(const std::string& path);
+		void ChangeSceneEvent(Shared<Scene> scene);
 
+	protected:
 		void OnScenePlay();
 		void OnSceneStop();
 		void UiToolbar(const char* title = "##Toolbar");
-
-		void BindScript();
 
 	private:
 		std::string	m_ActiveSceneFilePath;

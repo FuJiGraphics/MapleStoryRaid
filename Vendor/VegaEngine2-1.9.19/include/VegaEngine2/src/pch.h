@@ -51,3 +51,7 @@
 // Animation
 #include "Animation/AnimationClip.h"
 #include "Animation/Animator.h"
+
+// Script
+#include "AttachScripts.h"
+

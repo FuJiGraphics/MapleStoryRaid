@@ -17,12 +17,15 @@ namespace fz {
 		TEXTURE_MGR.Load("graphics/player.png");
 		TEXTURE_MGR.Load("editor/icons/playbutton.png");
 		TEXTURE_MGR.Load("editor/icons/stopbutton.png");
+		SceneManager::AddChangedSceneEvent(BIND_EVENT_FUNC(Editor2D::ChangeSceneEvent));
 		if (Utils::CanFileOpen(g_TempProjectPath))
-			m_ActiveScene = LoadScene(g_TempProjectPath);
-		if (m_ActiveScene == nullptr)
-			m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
-		m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
-		SpriteEditor::SetContext(m_ActiveScene);
+		{
+			bool loadedScene = SceneManager::LoadScene(g_TempProjectPath);
+			if (!loadedScene)
+			{
+				SceneManager::NewScene();
+			}
+		}
 	}
 
 	void Editor2D::OnDetach()
@@ -38,11 +41,11 @@ namespace fz {
 		switch (m_SceneState)
 		{
 			case EditorState::Edit:
-				m_ActiveScene->OnUpdateEditor(dt, m_EditorCamera);
+				SceneManager::UpdateForEditor(dt, m_EditorCamera);
 				SpriteEditor::OnUpdate(dt);
 				break;
 			case EditorState::Play:
-				m_ActiveScene->OnUpdate(dt);
+				SceneManager::Update(dt);
 				break;
 		}
 	}
@@ -67,7 +70,7 @@ namespace fz {
 		{
 			if (m_SceneState == EditorState::Edit)
 			{
-				SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
+				SceneManager::SaveScene();
 				FZLOG_INFO("Scene Save UUID = {0}", m_ActiveScene->GetUUID());
 			}
 		}
@@ -76,47 +79,22 @@ namespace fz {
 		{
 			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("New", "Ctrl+N"))
 			{
-				m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
-				m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
-				m_ActiveSceneFilePath.clear();
-				this->OnScenePlay();
-				this->OnSceneStop();
+				SceneManager::NewScene();
 			}
 			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Open...", "Ctrl+O"))
 			{
-				this->OnSceneStop();
-				std::string prevPath = m_ActiveSceneFilePath;
-				m_ActiveSceneFilePath = VegaUI::OpenFile(handle, "Scene File (*.vega)\0*.vega\0");
-				if (m_ActiveSceneFilePath.empty())
-				{
-					m_ActiveSceneFilePath = prevPath;
-				}
-				else if (!m_ActiveSceneFilePath.empty())
-				{
-					m_ActiveScene = LoadScene(m_ActiveSceneFilePath);
-				}
-				if (!m_ActiveScene)
-					m_ActiveScene = CreateScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
-				m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
+				SceneManager::LoadScene();
 			}
 			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Save", "Ctrl+S"))
 			{
-				if (!m_ActiveSceneFilePath.empty()) 
-				{
-					SaveScene(m_ActiveScene, m_ActiveSceneFilePath);
-				}
-				else
-				{
-					std::string path = VegaUI::SaveFile(handle, "Scene File (*.vega)\0*.vega\0");
-					SaveScene(m_ActiveScene, path);
-				}
+				SceneManager::SaveScene();
 			}
 			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Save As...", "Ctrl+Shift+S"))
 			{
 				std::string path = VegaUI::SaveFile(handle, "Scene File (*.vega)\0*.vega\0");
 				if (!path.empty())
 				{
-					SaveScene(m_ActiveScene, path);
+					SceneManager::SaveScene(path);
 				}
 			}
 			if (m_SceneState == EditorState::Edit && ImGui::MenuItem("Exit"))
@@ -179,46 +157,30 @@ namespace fz {
 		ImGui::EndMainMenuBar();
 	}
 
-	Shared<Scene> Editor2D::CreateScene(unsigned int width, unsigned int height)
+	void Editor2D::ChangeSceneEvent(Shared<Scene> scene)
 	{
-		Shared<Scene> newScene = CreateShared<Scene>(width, height);
-		return newScene;
-	}
-
-	void Editor2D::SaveScene(const Shared<Scene>& scene, const std::string& path)
-	{
-		SceneSerializer serializer(scene);
-		serializer.Serialize(path);
-	}
-
-	Shared<Scene> Editor2D::LoadScene(const std::string& path)
-	{
-		SceneSerializer serializer(nullptr);
-		Shared<Scene> loadScene = serializer.Deserialize(path);
-		return loadScene;
+		m_ActiveScene = scene;
+		if (m_ActiveScene == nullptr)
+		{
+			SceneManager::NewScene(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
+		}
+		SpriteEditor::SetContext(m_ActiveScene);
+		m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
 	}
 
 	void Editor2D::OnScenePlay()
 	{
 		m_SceneState = EditorState::Play;
-		SaveScene(m_ActiveScene, g_TempProjectPath);
-		auto loadScene = LoadScene(g_TempProjectPath);
-		if (loadScene)
-			m_ActiveScene = loadScene;
-		m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
-		this->BindScript();
-		m_ActiveScene->OnPreUpdate();
+		SceneManager::SaveScene(g_TempProjectPath);
+		SceneManager::LoadScene(g_TempProjectPath);
+		SceneManager::StartScene();
 	}
 
 	void Editor2D::OnSceneStop()
 	{
 		m_SceneState = EditorState::Edit;
-		m_ActiveScene->OnPostUpdate();
-		if (!m_ActiveSceneFilePath.empty())
-		{
-			m_ActiveScene = LoadScene(m_ActiveSceneFilePath);
-			m_HierarchyPanel.SetContext(m_ActiveScene, &m_SceneState);
-		}
+		SceneManager::StopScene();
+		SceneManager::RollbackScene();
 	}
 
 	void Editor2D::UiToolbar(const char* title)
@@ -252,11 +214,6 @@ namespace fz {
 		ImGui::PopStyleVar(2);
 		ImGui::PopStyleColor(3);
 		ImGui::End();
-	}
-
-	void Editor2D::BindScript()
-	{
-		AttachScripts(m_ActiveScene);
 	}
 
 } // namespace fz

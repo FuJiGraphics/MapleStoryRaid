@@ -1,1 +1,1116 @@
-{}
+{
+    "d5fb6052-e8c1-46b9-9e04-fc91d21649ff": {
+        "0c79cc09-5ee2-48d7-a060-74d604416caa": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 377.0,
+                    "Y": 0.5
+                }
+            },
+            "CameraComponent": {
+                "Center": [
+                    0.0,
+                    0.0
+                ],
+                "FixedAspectRatio": false,
+                "Primary": true,
+                "Rotation": 0.0,
+                "Size": [
+                    1516.0,
+                    864.0
+                ],
+                "Viewport": {
+                    "Height": 1.0,
+                    "Left": 0.0,
+                    "Top": 0.0,
+                    "Width": 1.0
+                },
+                "Zoom": 1.0
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": false,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Camera"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -378.8814697265625,
+                    287.361083984375
+                ]
+            }
+        },
+        "5bab8522-355e-48ee-9ba4-29120e70cf61": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 39.599998474121094,
+                    "Y": 122.0
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    45.0,
+                    130.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 1,
+                "TexPath": "game\\graphics\\effect\\portal\\portal.png",
+                "TexRect": {
+                    "Height": 260,
+                    "Left": 2,
+                    "Top": 2,
+                    "Width": 90
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Portal"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -613.0,
+                    -343.0
+                ]
+            }
+        },
+        "b643b4cd-24d8-4552-95fc-0e016e3eee47": {
+            "00e52c39-9c2d-4f6a-8a4d-7b77942377b7": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 90.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line5"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -379.0,
+                        263.0
+                    ]
+                }
+            },
+            "321b31d3-7f10-4fbf-939b-5c38bccce8c4": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 63.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "LLine2"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 270.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -199.0,
+                        205.0
+                    ]
+                }
+            },
+            "3aecfd25-ce94-480e-a682-914a12ad617a": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1710.5999755859375,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line1"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -849.0,
+                        350.0
+                    ]
+                }
+            },
+            "67d4f0cb-e513-41f9-8226-ea13ec0651c0": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 853.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line2"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -109.0,
+                        84.0
+                    ]
+                }
+            },
+            "HasChild": true,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    861.0,
+                    649.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\town\\Stage1\\AmhustHunt.png",
+                "TexRect": {
+                    "Height": 1299,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 1722
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "AmherstHunt"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
+                ]
+            },
+            "a3a1a2a9-e790-4102-810a-c07e2f0d5a9d": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 90.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line3"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -199.0,
+                        143.0
+                    ]
+                }
+            },
+            "a717ae93-4ac9-42eb-879e-5e5fc5e2ad58": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 78.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line6"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -469.0,
+                        316.9999694824219
+                    ]
+                }
+            },
+            "b3b60f62-de91-484b-b609-0dcbfeb97d10": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 500.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line7"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -738.0,
+                        -219.0
+                    ]
+                }
+            },
+            "c83185aa-0369-4cc4-891b-c936cae57d91": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 90.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line4"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -289.0,
+                        205.0
+                    ]
+                }
+            },
+            "d08eee25-3ff9-4b93-99f7-3ad710fe927c": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 60.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "LLine1"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 270.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -107.99999237060547,
+                        144.0
+                    ]
+                }
+            },
+            "d5123201-62d2-428f-bf22-3b1513eb01f3": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 57.400001525878906,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "LLine3"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 270.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -290.0,
+                        262.5
+                    ]
+                }
+            }
+        },
+        "c7f91631-b6ea-4aae-9d57-34c023c3b0bf": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 22.299999237060547,
+                    "Y": 34.75
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    25.0,
+                    37.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 4,
+                "TexPath": "game\\graphics\\effect\\attack\\attack1.png",
+                "TexRect": {
+                    "Height": 75,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 50
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "BasicAttack"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    1573.0,
+                    516.0
+                ]
+            }
+        },
+        "e18cbcc2-bcfe-4cca-94fa-670ea7ce0733": {
+            "175a7fb5-6ccc-471a-9f9c-5d5a02721daa": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 4,
+                    "TexPath": "",
+                    "TexRect": {
+                        "Height": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 0
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Hair"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "29df05cf-a4e8-4862-a381-e94d33499808": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        6.0,
+                        10.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 5,
+                    "TexPath": "game\\graphics\\player\\hand\\idle.png",
+                    "TexRect": {
+                        "Height": 21,
+                        "Left": 12,
+                        "Top": 0,
+                        "Width": 12
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Hand"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        10.5,
+                        11.0
+                    ]
+                }
+            },
+            "3d788e6f-ad7b-401d-aa3b-13af06d94b86": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        13.0,
+                        8.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 4,
+                    "TexPath": "game\\graphics\\player\\face\\face1\\idle.png",
+                    "TexRect": {
+                        "Height": 16,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 26
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Face"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -4.5,
+                        -10.5
+                    ]
+                }
+            },
+            "4b4aeede-cf52-4681-b418-0c1914f6a8cb": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        20.5,
+                        6.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        1.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 4,
+                    "TexPath": "game\\graphics\\player\\weapon\\basic_sword\\idle.png",
+                    "TexRect": {
+                        "Height": 13,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 41
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Weapon"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -3.0,
+                        19.0
+                    ]
+                }
+            },
+            "52d30285-ed74-4c89-a26b-5040f7932c18": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        31.5,
+                        41.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 3,
+                    "TexPath": "game\\graphics\\player\\body\\idle.png",
+                    "TexRect": {
+                        "Height": 83,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 63
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Body"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 18.75,
+                    "Y": 31.200000762939453
+                }
+            },
+            "HasChild": true,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Player"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    -1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -378.89886474609375,
+                    317.300048828125
+                ]
+            },
+            "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 3,
+                    "TexPath": "",
+                    "TexRect": {
+                        "Height": 0,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 0
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Shoes"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -39,6 +39,7 @@
 #include "Core/Scene/EditorCamera.h"
 #include "Core/Scene/Scene.h"
 #include "Core/Scene/ScriptCore.h"
+#include "Core/Scene/SceneManager.h"
 
 #include "Animation/AnimationClip.h"
 #include "Animation/Animator.h"

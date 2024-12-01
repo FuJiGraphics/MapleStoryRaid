@@ -15,6 +15,7 @@ namespace fz {
 	class EntitySerializer;
 	class EditorCamera;
 	class Editor2D;
+	class SceneManager;
 
 	using GameObject = fz::Entity;
 
@@ -28,6 +29,7 @@ namespace fz {
 		friend fz::SceneSerializer;
 		friend fz::EntitySerializer;
 		friend fz::Editor2D;
+		friend fz::SceneManager;
 		FZ_DELETE_COPY(Scene)
 
 	public:
