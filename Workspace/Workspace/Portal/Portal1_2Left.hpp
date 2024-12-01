@@ -4,7 +4,7 @@
 
 namespace fz {
 
-	class Portal1R_Script : public VegaScript
+	class Portal1_2Left_Script : public VegaScript
 	{
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
@@ -20,8 +20,8 @@ namespace fz {
 			animator.Play(&clips["Portal"]);
 
 			auto& comp = AddComponent<PortalComponent>();
-			comp.NextPlayerPos = { -613.f, -290.f };
-			comp.NextScenePath = "game/scene/Stage1_hunt.vega";
+			comp.NextPlayerPos = { 2508.f, 551.f };
+			comp.NextScenePath = "game/scene/Stage1_town.vega";
 		}
 
 		void OnUpdate(float dt) override

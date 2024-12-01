@@ -12,7 +12,6 @@ namespace fz {
 		Animator animator;
 		AnimPool clips;
 
-		int i = 0;
 		void Start() override
 		{
 			auto& skillComp = AddComponent<SkillComponent>();
@@ -30,7 +29,6 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			i++;
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 			const sf::Texture* texture = sprite.getTexture();
 			animator.Play(&clips["Attack"]);

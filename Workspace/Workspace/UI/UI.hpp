@@ -4,11 +4,9 @@
 
 namespace fz {
 
-	class UI : public VegaScript
+	class UIScript : public VegaScript
 	{
 	public:
-		float Speed = 2000.f;
-
 		void Start() override
 		{
 
