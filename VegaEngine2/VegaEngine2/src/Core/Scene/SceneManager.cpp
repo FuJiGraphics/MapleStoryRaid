@@ -91,6 +91,7 @@ namespace fz {
 	{
 		if (s_HasStartScene)
 		{
+			s_ActiveScene->m_SceneChanged = true;
 			SceneManager::StopScene();
 		}
 		SceneManager::LoadScene(path);

@@ -134,6 +134,8 @@ namespace fz {
 		void AddForce(const sf::Vector2f& force);
 		void AddPosition(const sf::Vector2f& pos);
 		void AddPositionNoGravity(const sf::Vector2f& pos);
+		void SetPosition(const sf::Vector2f& pos);
+		void SetPosition(const sf::Vector2f& pos, float angle);
 		void SetGravityScale(float scale);
 		void SetLinearVelocity(const sf::Vector2f& velocity);
 		sf::Vector2f GetLinearVelocity() const;

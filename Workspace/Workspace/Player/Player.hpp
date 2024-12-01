@@ -4,6 +4,7 @@
 #include "Utils/Timer.h"
 #include "PlayerStatus.hpp"
 #include "Stat.hpp"
+#include "SaveData.hpp"
 
 namespace fz {
 
@@ -26,6 +27,10 @@ namespace fz {
 
 		bool isOnGround = false;
 
+	
+		bool IsInsidePortal = false;
+		GameObject TargetPortal;
+
 		Timer timer;
 			
 	public:
@@ -36,6 +41,12 @@ namespace fz {
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
 			body->SetGravityScale(1.5f);
+			if (SaveData::ChangedScene)
+			{
+				SaveData::Get(*Stat);
+				transform->Transform.SetTranslate(SaveData::Position);
+				body->SetPosition(SaveData::Position);
+			}
 		}
 
 		void OnDestroy() override
@@ -74,6 +85,11 @@ namespace fz {
 				this->Idle();
 			}
 
+			if (IsInsidePortal && Input::IsKeyDown(KeyType::Up))
+			{
+				this->ChangeScene();
+			}
+
 			if (Input::IsKeyDown(KeyType::T))
 			{
 				GetCurrentScene()->Instantiate("Spoa", { 200.f, 0.0f });
@@ -86,6 +102,24 @@ namespace fz {
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
 				this->Attack();
+			}
+		}
+
+		virtual void OnCollisionEnter(Collision collision) 
+		{
+			if (collision.gameObject.HasComponent<PortalComponent>())
+			{
+				IsInsidePortal = true;
+				TargetPortal = collision.gameObject;
+			}
+		}
+
+		virtual void OnCollisionExit(Collision collision) 
+		{
+			if (collision.gameObject.HasComponent<PortalComponent>())
+			{
+				IsInsidePortal = false;
+				TargetPortal = {};
 			}
 		}
 
@@ -179,5 +213,15 @@ namespace fz {
 			else if (dir == Directions::RIGHT)
 				body->AddForce({ +3000.f, -3000.0f });
 		}
+
+		void ChangeScene()
+		{
+			SaveData::ChangedScene = true;
+			SaveData::Set(*Stat);
+			auto& comp = TargetPortal.GetComponent<PortalComponent>();
+			SaveData::Position = comp.NextPlayerPos;
+			SceneManager::RuntimeChangeScene(comp.NextScenePath);
+		}
+
 	};
 }

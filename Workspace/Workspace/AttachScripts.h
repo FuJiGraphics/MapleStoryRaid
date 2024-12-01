@@ -2,7 +2,9 @@
 
 // Effects
 #include "Skill/BasicAttack.hpp"
-#include "Portal/Portal.hpp"
+
+// Portal
+#include "Portal/Portal1R.hpp"
 
 // Ã¶Áø
 #include "Camera.hpp"
@@ -28,7 +30,7 @@ namespace fz {
 	static void AttachScripts(Shared<Scene>& scene)
 	{
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
-		BIND_SCRIPT("Portal", PortalScript);
+		BIND_SCRIPT("Portal1R", Portal1R_Script);
 
 		BIND_SCRIPT("Camera", CameraScript);
 		BIND_SCRIPT("Player", PlayerScript);

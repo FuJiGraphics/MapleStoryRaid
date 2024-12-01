@@ -32,6 +32,7 @@ namespace fz {
 		, m_IsDebugMode(false)
 		, m_prefabTempPath("Prefabs/temp.prefab")
 		, m_prefabInstanceCount(0)
+		, m_SceneChanged(false)
 	{
 		FramebufferSpec frameSpec;
 		frameSpec.Width = width;
@@ -536,6 +537,8 @@ namespace fz {
 			{
 				auto& nativeComp = nativeView.get<NativeScriptComponent>(natives);
 				nativeComp.OnUpdateFunction(nativeComp.Instance, dt);
+				if (m_SceneChanged)
+					return;
 			}
 		}
 	}
@@ -659,6 +662,9 @@ namespace fz {
 
 	void Scene::OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform& dstTransform)
 	{
+		if (m_SceneChanged)
+			return;
+
 		auto view = m_Registry.view<TagComponent, TransformComponent, CameraComponent>();
 		for (auto entity : view)
 		{
@@ -710,6 +716,9 @@ namespace fz {
 
 	void Scene::OnRenderRuntimeSprite(OrthoCamera* mainCamera, sf::Transform& transform)
 	{
+		if (m_SceneChanged)
+			return;
+
 		// 스프라이트 렌더링
 		if (mainCamera)
 		{

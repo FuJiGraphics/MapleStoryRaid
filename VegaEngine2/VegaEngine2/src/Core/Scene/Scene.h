@@ -120,6 +120,7 @@ namespace fz {
 		CollisionHandler		m_CollistionHandler;
 		std::list<fz::Entity>	m_RemoveInstanceList;
 		std::list<fz::Entity>	m_LoadPrefabInstanceList;
+		bool					m_SceneChanged;
 	};
 
 } // namespace fz

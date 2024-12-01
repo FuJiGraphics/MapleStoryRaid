@@ -41,6 +41,22 @@ namespace fz {
 		this->SetLinearVelocity({ nextPosX, nextPosY });
 	}
 
+	void RigidbodyComponent::SetPosition(const sf::Vector2f& pos)
+	{
+		b2Body* body = static_cast<b2Body*>(RuntimeBody);
+		if (body) {
+			body->SetTransform(Utils::PixelToMeter(pos), 0.0f);
+		}
+	}
+
+	void RigidbodyComponent::SetPosition(const sf::Vector2f& pos, float angle)
+	{
+		b2Body* body = static_cast<b2Body*>(RuntimeBody);
+		if (body) {
+			body->SetTransform(Utils::PixelToMeter(pos), angle);
+		}
+	}
+
 	sf::Vector2f RigidbodyComponent::GetLinearVelocity() const
 	{
 		if (RuntimeBody == nullptr)
