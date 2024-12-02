@@ -19,6 +19,7 @@ namespace fz {
 
 	struct TextComponent
 	{
+		int SortingOrder = 0;
 		std::string FontPath;
 		sf::Text Text;
 

@@ -131,8 +131,6 @@ namespace fz {
 			if (!isRootTransform) // 지정된 Transform일 경우 복사 제외 (차일드 엔티티일 경우)
 				dstTransformComp.Transform = srcTransformComp.Transform;
 			dstTransformComp.AnimTransform = srcTransformComp.AnimTransform;
-			dstTransformComp.RenderTransform = srcTransformComp.RenderTransform;
-			dstTransformComp.IsChildRenderMode = srcTransformComp.IsChildRenderMode;
 		}
 		// etc
 		{
@@ -143,6 +141,28 @@ namespace fz {
 				dstSpriteComp.Active = srcSpriteComp.Active;
 				dstSpriteComp.Sprite = srcSpriteComp.Sprite;
 				dstSpriteComp.SortingOrder = srcSpriteComp.SortingOrder;
+			}
+			if (src.HasComponent<TextComponent>())
+			{
+				auto& srcTextComp = src.GetComponent<TextComponent>();
+				auto& dstTextComp = dst.AddComponent<TextComponent>();
+				dstTextComp.FontPath = srcTextComp.FontPath;
+				FONT_MGR.Load(dstTextComp.FontPath);
+				auto& srcText = srcTextComp.Text;
+				auto& dstText = dstTextComp.Text;
+				dstText.setFont(FONT_MGR.Get(dstTextComp.FontPath));
+				dstText.setString(srcText.getString());
+				dstText.setCharacterSize(srcText.getCharacterSize());
+				dstText.setColor(srcText.getColor());
+				dstText.setOutlineColor(srcText.getOutlineColor());
+				dstText.setOutlineThickness(srcText.getOutlineThickness());
+				dstText.setFillColor(srcText.getFillColor());
+				dstText.setLetterSpacing(srcText.getLetterSpacing());
+				dstText.setLineSpacing(srcText.getLineSpacing());
+				dstText.setOrigin(srcText.getOrigin());
+				dstText.setPosition(srcText.getPosition());
+				dstText.setScale(srcText.getScale());
+				dstText.setRotation(srcText.getRotation());
 			}
 			if (src.HasComponent<CameraComponent>())
 			{
@@ -376,7 +396,6 @@ namespace fz {
 
 	void Scene::OnUpdateEditor(float dt, EditorCamera& editorCamera)
 	{
-		this->OnUpdateChildEntity();
 		editorCamera.OnUpdate(dt);
 		this->OnRenderEditorSprite(&editorCamera.GetOrthoCamera());
 	}
@@ -394,11 +413,10 @@ namespace fz {
 		sf::Transform transform = sf::Transform::Identity;
 		this->OnCreateRuntimeInstance();
 		this->OnDestroyRuntimeInstance();
-		this->OnUpdateChildEntity();
 		this->OnUpdateScript(dt);
 		this->OnUpdateCamera(&camera, transform);
 		this->OnUpdatePhysicsSystem(dt);
-		this->OnRenderRuntimeSprite(camera, transform);
+		this->OnRuntimeRenderDrawable(camera, transform);
 	}
 
 	void Scene::OnPostUpdate()
@@ -612,48 +630,6 @@ namespace fz {
 		Database::Unload(path);
 	}
 
-	void Scene::OnUpdateChildEntity()
-	{
-		// 차일드 엔티티 트랜스폼 업데이트
-		auto view = this->GetEntities<RootEntityComponent>();
-		for (auto& rootEntity : view)
-		{
-			auto& rootComp = m_Registry.get<RootEntityComponent>(rootEntity);
-			if (rootComp.RootEntity.HasComponent<ChildEntityComponent>())
-			{
-				sf::Transform rootTransform = rootComp.RootEntity.GetComponent<TransformComponent>().Transform;
-				auto& childComp = rootComp.RootEntity.GetComponent<ChildEntityComponent>();
-				for (auto& child : childComp.CurrentChildEntities)
-				{
-					auto& tagComp = child.GetComponent<TagComponent>();
-					if (tagComp.Active == false)
-						continue; // ** 비활성화시 로직 생략
-					UpdateTransformChilds(rootTransform, child);
-				}
-			}
-		}
-	}
-
-	void Scene::UpdateTransformChilds(const sf::Transform& parentTransform, fz::Entity child)
-	{
-		// 차일드 엔티티 트랜스폼 업데이트
-		TransformComponent& childTransform = child.GetComponent<TransformComponent>();
-		childTransform.IsChildRenderMode = true;
-		childTransform.RenderTransform = parentTransform * childTransform.Transform.GetRawTransform();
-
-		if (child.HasComponent<ChildEntityComponent>())
-		{
-			auto childComp = child.GetComponent<ChildEntityComponent>();
-			for (auto& childs : childComp.CurrentChildEntities)
-			{
-				auto& tagComp = childs.GetComponent<TagComponent>();
-				if (tagComp.Active == false)
-					continue; // ** 비활성화시 로직 생략
-				UpdateTransformChilds(childTransform.RenderTransform, childs);
-			}
-		}
-	}
-
 	void Scene::OnCreateRuntimeInstance()
 	{
 		while(!m_LoadPrefabInstanceList.empty())
@@ -736,16 +712,14 @@ namespace fz {
 			Renderer2D::BeginScene(*mainCamera, m_FrameBuffer);
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteComponent, TagComponent>);
-			for (auto entity : group)
+			for (auto handle : group)
 			{
-				const auto& [transform, sprite, tag] = group.get<TransformComponent, SpriteComponent, TagComponent>(entity);
+				fz:Entity entity = { handle, shared_from_this() };
+				const auto& [transform, sprite, tag] = group.get<TransformComponent, SpriteComponent, TagComponent>(handle);
 				if (tag.Active == false)
 					continue; // ** 비활성화시 로직 생략
 
-				if (transform.IsChildRenderMode)
-					Renderer2D::Draw(sprite.SortingOrder, sprite, transform.RenderTransform);
-				else
-					Renderer2D::Draw(sprite.SortingOrder, sprite, transform.Transform * transform.AnimTransform);
+				Renderer2D::Draw(sprite.SortingOrder, sprite, entity.GetWorldTransform(), transform.AnimTransform);
 			}
 
 			// Debug Display Mode
@@ -758,7 +732,7 @@ namespace fz {
 		}
 	}
 
-	void Scene::OnRenderRuntimeSprite(OrthoCamera* mainCamera, sf::Transform& transform)
+	void Scene::OnRuntimeRenderDrawable(OrthoCamera* mainCamera, sf::Transform& transform)
 	{
 		if (m_SceneChanged)
 			return;
@@ -766,23 +740,21 @@ namespace fz {
 		// 스프라이트 렌더링
 		if (mainCamera)
 		{
-			this->OnUpdateChildEntity();
-
 			Renderer2D::BeginScene(*mainCamera, transform, m_FrameBuffer);
-			auto entities = GetEntities< TransformComponent, SpriteComponent, TagComponent>();
+			auto entities = GetEntities<TagComponent, TransformComponent, SpriteComponent>();
 			for (auto handle : entities)
 			{
 				fz:Entity entity = { handle, shared_from_this() };
-				auto& tagComp = entity.GetComponent<TagComponent>();
-				auto& transformComp = entity.GetComponent<TransformComponent>();
-				auto& spriteComp = entity.GetComponent<SpriteComponent>();
-				if (tagComp.Active == false)
+				const auto& [tag, transform, Sprite] = entities.get<TagComponent, TransformComponent, SpriteComponent>(handle);
+				if (tag.Active == false)
 					continue; // ** 비활성화시 로직 생략
 				
-				if (transformComp.IsChildRenderMode)
-					Renderer2D::Draw(spriteComp.SortingOrder, spriteComp, transformComp.RenderTransform, transformComp.AnimTransform);
-				else
-					Renderer2D::Draw(spriteComp.SortingOrder, spriteComp, transformComp.Transform, transformComp.AnimTransform);
+				Renderer2D::Draw(Sprite.SortingOrder, Sprite, entity.GetWorldTransform(), transform.AnimTransform);
+				if (entity.HasComponent<TextComponent>())
+				{
+					auto& textComp = entity.GetComponent<TextComponent>();
+					Renderer2D::Draw(textComp.SortingOrder, textComp.Text, entity.GetWorldTransform(), transform.AnimTransform);
+				}
 			}
 			// Debug Display Mode
 			OnDrawDebugShape();
@@ -813,7 +785,7 @@ namespace fz {
 			rect->setSize({ boxComp.Size.x * 2.0f, boxComp.Size.y * 2.0f });
 			rect->setPosition({ boxComp.Size.x * -1.0f, boxComp.Size.y * -1.0f });
 			fz::Entity entity = { handle, this->shared_from_this() };
-			Renderer2D::Draw(rect, entity.GetWorldTransform());
+			Renderer2D::PostDraw(rect, entity.GetWorldTransform());
 		}
 		auto edgeView = GetEntities<TagComponent, TransformComponent, EdgeCollider2DComponent>();
 		for (auto& handle : edgeView)
@@ -831,7 +803,7 @@ namespace fz {
 			line->setSize(size);
 			line->setPosition(pos);
 			fz::Entity entity = { handle, this->shared_from_this() };
-			Renderer2D::Draw(line, entity.GetWorldTransform());
+			Renderer2D::PostDraw(line, entity.GetWorldTransform());
 		}
 		// auto circleView = GetEntities<TransformComponent, CircleCollider2DComponent>();
 	}

@@ -102,6 +102,8 @@ namespace fz {
 
 	bool HierarchyPanel::DrawTreeNode(fz::Entity& entity, const char* tag)
 	{
+		auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
+		HWND handle = (HWND)nativeWindow->getSystemHandle();
 		ImGuiTreeNodeFlags flag = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
 
 		bool result = false;
@@ -140,8 +142,6 @@ namespace fz {
 			}
 			if (*m_EditState == EditorState::Edit && ImGui::MenuItem("Save Prefab"))
 			{
-				auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
-				HWND handle = (HWND)nativeWindow->getSystemHandle();
 				std::string prefabSavePath = VegaUI::SaveFile(handle, "Prefab File (*.prefab)\0*.prefab\0");
 				if (!prefabSavePath.empty())
 				{
@@ -164,6 +164,9 @@ namespace fz {
 
 	void HierarchyPanel::DrawSceneComponents(fz::Entity& entity)
 	{
+		auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
+		HWND handle = (HWND)nativeWindow->getSystemHandle();
+
 		ImGuiTreeNodeFlags treeFlag = ImGuiTreeNodeFlags_DefaultOpen |
 			ImGuiTreeNodeFlags_SpanAvailWidth | ImGuiTreeNodeFlags_Framed;
 		if (entity.HasComponent<TagComponent>())
@@ -173,7 +176,7 @@ namespace fz {
 			{
 				entity.SetActiveWithChild(tagComp.Active);
 			}
-			VegaUI::InputText(tagComp.Tag, "Tag");
+			VegaUI::InputText("Tag", tagComp.Tag);
 		}
 
 		{
@@ -328,18 +331,72 @@ namespace fz {
 				if (!isRemove)
 				{
 					TextComponent& textComp = entity.GetComponent<TextComponent>();
-					VegaUI::InputText(textComp.FontPath, "Font Path");
+					int sortingOrder = textComp.SortingOrder;
+					if (VegaUI::DrawControl1("Sorting Order", "Reset", sortingOrder, 1))
+					{
+						textComp.SortingOrder = sortingOrder;
+					}
+					VegaUI::OpenFontFile(FRAMEWORK.GetWindow().GetHandle(), textComp.FontPath);
 					std::string str = textComp.Text.getString();
-					if (VegaUI::InputText(str, "String"))
+					if (VegaUI::InputText("Input Text", str))
 					{
 						textComp.Text.setString(str);
 					}
 					int size = textComp.Text.getCharacterSize();
-					if (VegaUI::DrawControl1("Character Size", "Reset", size, 0.1f, 0.0f, 0.0f, textComp.Text.getCharacterSize()))
+					if (VegaUI::DrawControl1("Character Size", "Reset", size))
 					{
 						textComp.Text.setCharacterSize(size);
 					}
-
+					sf::Color color = textComp.Text.getColor();
+					if (VegaUI::ColorEdit4(color, "Font Color"))
+					{
+						textComp.Text.setColor(color);
+					}
+					sf::Color outlineColor = textComp.Text.getOutlineColor();
+					if (VegaUI::ColorEdit4(outlineColor, "Outline Color"))
+					{
+						textComp.Text.setOutlineColor(outlineColor);
+					}
+					float outlineThickness = textComp.Text.getOutlineThickness();
+					if (VegaUI::DrawControl1("Outline Thickness", "Reset", outlineThickness))
+					{
+						textComp.Text.setOutlineThickness(outlineThickness);
+					}
+					sf::Color fillColor = textComp.Text.getFillColor();
+					if (VegaUI::ColorEdit4(fillColor, "Fill Color"))
+					{
+						textComp.Text.setFillColor(fillColor);
+					}
+					float letterSpacing = textComp.Text.getLetterSpacing();
+					if (VegaUI::DrawControl1("letter Spacing", "Reset", letterSpacing))
+					{
+						textComp.Text.setLetterSpacing(letterSpacing);
+					}
+					float lineSpacing = textComp.Text.getLineSpacing();
+					if (VegaUI::DrawControl1("Line Spacing", "Reset", lineSpacing))
+					{
+						textComp.Text.setLineSpacing(lineSpacing);
+					}
+					sf::Vector2f origin = textComp.Text.getOrigin();
+					if (VegaUI::DrawControl2("Origin", origin))
+					{
+						textComp.Text.setOrigin(origin);
+					}
+					sf::Vector2f position = textComp.Text.getPosition();
+					if (VegaUI::DrawControl2("Position", position))
+					{
+						textComp.Text.setPosition(position);
+					}
+					sf::Vector2f scale = textComp.Text.getScale();
+					if (VegaUI::DrawControl2("Scale", scale))
+					{
+						textComp.Text.setScale(scale);
+					}
+					float rotation = textComp.Text.getRotation();
+					if (VegaUI::DrawControl1("Rotation", "Reset", rotation))
+					{
+						textComp.Text.setRotation(rotation);
+					}
 				}
 				ImGui::TreePop();
 			}

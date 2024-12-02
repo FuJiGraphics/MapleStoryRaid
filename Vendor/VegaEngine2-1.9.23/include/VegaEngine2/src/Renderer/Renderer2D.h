@@ -8,10 +8,9 @@ namespace fz {
 
 	struct RenderFrame
 	{
-		sf::Sprite Sprite;
+		sf::Drawable* drawable;
+		const sf::Texture* Texture;
 		sf::Transform Transform;
-		sf::RectangleShape* RectangleShape = nullptr;
-		sf::CircleShape* CircleShape = nullptr;
 		sf::Transform subTranform = sf::Transform::Identity;
 	};
 
@@ -26,8 +25,9 @@ namespace fz {
 		static void BeginScene(OrthoCamera& camera, const sf::Transform& transform, Shared<Framebuffer>& framebuffer);
 		static void EndScene();
 
-		static void Draw(int order, sf::Sprite target, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
-		static void Draw(sf::RectangleShape* target, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
+		static void Draw(int order, sf::Drawable& drawable, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
+		static void Draw(int order, sf::Sprite& drawable, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
+		static void PostDraw(sf::RectangleShape* target, const sf::Transform& transform, const sf::Transform& subTransform = sf::Transform::Identity);
 	private:
 		static sf::Sprite s_Spirte;
 		static sf::RenderWindow* s_RenderWindow;

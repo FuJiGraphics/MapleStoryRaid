@@ -11,6 +11,7 @@ namespace fz {
 		, LayerGenerator(nullptr)
 		, m_LayerStack(nullptr)
 		, m_Window(nullptr)
+		, m_IsRunning(true)
 	{
 		this->Init();
 		s_System = this;
@@ -30,9 +31,9 @@ namespace fz {
 		}
 		FZLOG_INFO("System 초기화 중");
 		FZLOG_ASSERT((Width > 0 && Height > 0), "윈도우 생성 사이즈가 잘못되었습니다. 생성 인자: width = {0}, height = {1}", Width, Height);
-		FZLOG_ASSERT(this->GenerateWindow(), "윈도우 생성에 실패하였습니다.");
-		FZLOG_ASSERT(this->GenerateLayerStack(), "레이어 스택 생성에 실패하였습니다.");
-		FZLOG_ASSERT(ImGuiManager::Init(*m_Window), "ImGui 초기화에 실패하였습니다.");
+		this->GenerateWindow();
+		this->GenerateLayerStack();
+		ImGuiManager::Init(*m_Window);
 		InputManager::SetTargetTrackingWindow((sf::RenderWindow*)m_Window->GetNativeWindow());
 		InputManager::Init();
 		Renderer2D::Init((sf::RenderWindow*)m_Window->GetNativeWindow());
@@ -85,11 +86,24 @@ namespace fz {
 	{
 		FZLOG_INFO("System Run...");
 		sf::Clock clock;
+		sf::Clock fpsClock;
 
 		while (m_IsRunning && m_Window->IsOpen())
 		{
 			sf::Time t = clock.restart();
 			float dt = t.asSeconds();
+
+			float frameTimeMs = dt * 1000.0f; // 프레임 시간(ms)
+			float fps = (dt > 0.0f) ? 1.0f / dt : 0.0f; // FPS
+
+			if (fpsClock.getElapsedTime().asSeconds() >= 1.0f) {
+				const std::string& title = m_Window->GetTitle();
+				m_Window->SetTitle(title + " - [Debug]" + 
+								   std::to_string(static_cast<int>(fps)) + "FPS, " + 
+								   std::to_string(static_cast<int>(frameTimeMs)) + "ms");
+				fpsClock.restart(); // 1초 간격으로 제목 업데이트
+			}
+
 			// Event
 			m_Window->OnEvent();
 			if (!m_Window->IsOpen())

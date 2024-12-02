@@ -13,6 +13,8 @@
 #include <cassert>
 #include <queue>
 #include <map>
+#include <mutex>
+#include <thread>
 
 // Box2D
 #include <box2d/box2d.h>

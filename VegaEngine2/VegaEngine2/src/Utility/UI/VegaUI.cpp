@@ -297,28 +297,30 @@ namespace fz {
 		return result;
 	}
 
-	bool VegaUI::InputText(std::string& dst, const std::string& label, bool isRightLabel)
+	bool VegaUI::InputText(const std::string& label, std::string& dst, float columnWidth)
 	{
-		const char* newLabel = "##Empty";
-		if (!label.empty())
-		{
-			if (isRightLabel)
-				newLabel = label.c_str();
-			else
-				newLabel = VegaUI::LabelPrefix(label);
-		}
-
-		char buf[256];
-		memset(buf, '\0', sizeof(buf));
-		memcpy_s(buf, sizeof(buf), dst.c_str(), dst.size());
-
 		bool result = false;
-		if (ImGui::InputText(newLabel, buf, sizeof(buf)))
+		ImGui::PushID(("Input Text" + label).c_str());
+		ImGui::Columns(2);
+		ImGui::SetColumnWidth(0, columnWidth);
+		ImGui::Text(label.c_str());
+		ImGui::NextColumn();
+
+		float lineHeight = GImGui->Font->FontSize + GImGui->Style.FramePadding.y * 2.0f;
+		ImVec2 buttonSize = { lineHeight * 2.0f, lineHeight };
+		ImGui::PushMultiItemsWidths(1, ImGui::CalcItemWidth());
+
+		char c[256];
+		strcpy_s(c, sizeof(c), dst.c_str());
+		if (ImGui::InputText("##InputText", c, IM_ARRAYSIZE(c)))
 		{
-			dst = buf;
+			dst = c;
 			result = true;
 		}
 
+		ImGui::PopItemWidth();
+		ImGui::Columns(1);
+		ImGui::PopID();
 		return result;
 	}
 

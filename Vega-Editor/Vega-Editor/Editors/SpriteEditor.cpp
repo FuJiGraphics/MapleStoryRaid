@@ -191,7 +191,7 @@ namespace fz {
 		{
 			if (s_IsOpenedFile)
 			{
-				VegaUI::InputText(s_ClipName, "Clip Name");
+				VegaUI::InputText("Clip Name", s_ClipName);
 				std::string path = s_CurrentPath;
 				if (VegaUI::OpenTextureFile(FRAMEWORK.GetWindow().GetHandle(), path))
 				{

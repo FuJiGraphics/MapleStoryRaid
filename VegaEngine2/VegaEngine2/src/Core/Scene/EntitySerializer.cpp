@@ -68,6 +68,7 @@ namespace fz {
 		this->SerializeTransform(json[m_EntityUUID]);
 		this->SerializeCamera(json[m_EntityUUID]);
 		this->SerializeSprite(json[m_EntityUUID]);
+		this->SerializeText(json[m_EntityUUID]);
 		this->SerializeCollider(json[m_EntityUUID]);
 		this->SerializeRigidBody(json[m_EntityUUID]);
 	}
@@ -93,6 +94,8 @@ namespace fz {
 				this->DeserializeCamera(json[m_EntityUUID]);
 			else if (component == "SpriteComponent")
 				this->DeserializeSprite(json[m_EntityUUID]);
+			else if (component == "TextComponent")
+				this->DeserializeText(json[m_EntityUUID]);
 			else if (component == "RigidbodyComponent")
 				this->DeserializeRigidBody(json[m_EntityUUID]);
 			else if (component == "BoxCollider2DComponent")
@@ -203,6 +206,44 @@ namespace fz {
 			json["SpriteComponent"]["MaskColor"]["B"] = maskColor.b;
 			json["SpriteComponent"]["MaskColor"]["A"] = maskColor.a;
 			json["SpriteComponent"]["SortingOrder"] = spriteComp.SortingOrder;
+		}
+	}
+
+	void EntitySerializer::SerializeText(json& json)
+	{
+		if (m_Entity.HasComponent<TextComponent>())
+		{
+			const TextComponent& textComp = m_Entity.GetComponent<TextComponent>();
+			const auto& text = textComp.Text;
+			int sortingOrder = textComp.SortingOrder;
+			std::string path = textComp.FontPath;
+			std::string str = text.getString();
+			int size = text.getCharacterSize();
+			sf::Color color = text.getColor();
+			sf::Color outlineColor = text.getOutlineColor();
+			float outlineThickness = text.getOutlineThickness();
+			sf::Color fillColor = text.getFillColor();
+			float letterSpacing = text.getLetterSpacing();
+			float lineSpacing = text.getLineSpacing();
+			sf::Vector2f origin = text.getOrigin();
+			sf::Vector2f position = text.getPosition();
+			sf::Vector2f scale = text.getScale();
+			float rotation = text.getRotation();
+			json["TextComponent"]["SortingOrder"] = sortingOrder;
+			json["TextComponent"]["FontPath"] = path;
+			json["TextComponent"]["String"] = str;
+			json["TextComponent"]["Color"] = { color.r, color.g, color.b, color.a };
+			json["TextComponent"]["CharacterSize"] = size;
+			json["TextComponent"]["OutlineColor"] = { outlineColor.r, outlineColor.g, outlineColor.b, outlineColor.a };
+			json["TextComponent"]["OutlineThickness"] = outlineThickness;
+			json["TextComponent"]["FillColor"] = { fillColor.r, fillColor.g, fillColor.b, fillColor.a };
+			json["TextComponent"]["LetterSpacing"] = letterSpacing;
+			json["TextComponent"]["LineSpacing"] = lineSpacing;
+			json["TextComponent"]["Origin"] = { origin.x, origin.y };
+			json["TextComponent"]["Position"] = { position.x, position.y };
+			json["TextComponent"]["Scale"] = { scale.x, scale.y };
+			json["TextComponent"]["Rotation"] = rotation;
+
 		}
 	}
 
@@ -358,6 +399,43 @@ namespace fz {
 		rawSprite.setPosition(pos[0], pos[1]);
 		rawSprite.setScale(scale[0], scale[1]);
 		rawSprite.setRotation(rotation);
+	}
+
+	void EntitySerializer::DeserializeText(json& json)
+	{
+		TextComponent& textComp = FindComponent<TextComponent>();
+		auto& text = textComp.Text;
+
+		int order = json["TextComponent"]["SortingOrder"];
+		std::string path = json["TextComponent"]["FontPath"];
+		std::string str = json["TextComponent"]["String"];
+		const auto& color = json["TextComponent"]["Color"];
+		int size = json["TextComponent"]["CharacterSize"];
+		const auto& outlineColor = json["TextComponent"]["OutlineColor"];
+		float outlineThickness = json["TextComponent"]["OutlineThickness"];
+		const auto& fillColor = json["TextComponent"]["FillColor"];
+		float letterSpacing = json["TextComponent"]["LetterSpacing"];
+		float lineSpacing = json["TextComponent"]["LineSpacing"];
+		const auto& origin = json["TextComponent"]["Origin"];
+		const auto& position = json["TextComponent"]["Position"];
+		const auto& scale = json["TextComponent"]["Scale"];
+		float rotation = json["TextComponent"]["Rotation"];
+		textComp.SortingOrder = order;
+		textComp.FontPath = path;
+		FONT_MGR.Load(textComp.FontPath);
+		text.setFont(FONT_MGR.Get(textComp.FontPath));
+		text.setString(str);
+		text.setCharacterSize(size);
+		text.setColor({ color[0], color[1], color[2], color[3] });
+		text.setOutlineColor({ outlineColor[0], outlineColor[1], outlineColor[2], outlineColor[3] });
+		text.setOutlineThickness(outlineThickness);
+		text.setFillColor({ fillColor[0], fillColor[1], fillColor[2], fillColor[3] });
+		text.setLetterSpacing(letterSpacing);
+		text.setLineSpacing(lineSpacing);
+		text.setOrigin({ origin[0], origin[1] });
+		text.setPosition({ position[0], position[1] });
+		text.setScale({ scale[0], scale[1] });
+		text.setRotation(rotation);
 	}
 
 	void EntitySerializer::DeserializeRigidBody(json& json)

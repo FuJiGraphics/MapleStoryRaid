@@ -93,14 +93,11 @@ namespace fz {
 		// Prefab
 		void LoadPrefab(const std::string& path);
 
-		void OnUpdateChildEntity();
-		void UpdateTransformChilds(const sf::Transform& parentTransform, fz::Entity child);
-
 		void OnCreateRuntimeInstance();
 		void OnUpdatePhysicsSystem(float dt);
 		void OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform& dstTransform);
 		void OnRenderEditorSprite(OrthoCamera* mainCamera);
-		void OnRenderRuntimeSprite(OrthoCamera* mainCamera, sf::Transform& transform);
+		void OnRuntimeRenderDrawable(OrthoCamera* mainCamera, sf::Transform& transform);
 		void OnDrawDebugShape();
 		void OnViewportResize(unsigned int width, unsigned int height);
 		void OnDestroyRuntimeInstance();

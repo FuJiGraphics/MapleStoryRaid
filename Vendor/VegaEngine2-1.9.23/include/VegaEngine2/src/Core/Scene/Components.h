@@ -17,6 +17,19 @@ namespace fz {
 		{/*Empty*/}
 	};
 
+	struct TextComponent
+	{
+		int SortingOrder = 0;
+		std::string FontPath;
+		sf::Text Text;
+
+		TextComponent() = default;
+		TextComponent(const TextComponent&) = default;
+		TextComponent(const sf::Text& other)
+			: Text(other)
+		{/*Empty*/}
+	};
+
 	struct RootEntityComponent
 	{
 		fz::Entity RootEntity;

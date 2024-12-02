@@ -28,7 +28,6 @@ namespace fz {
 								 const sf::IntRect& resetValues = { 0, 0, 0, 0 }, float columnWidth = 100.f);
 		static bool ColorEdit4(sf::Color& dst, const std::string& label);
 		static bool ColorEdit4WidthCheckbox(sf::Color& dst, bool& check, const std::string& label);
-		static bool InputText(std::string& dst, const std::string& label = "", bool isRightLabel = false);
 		static bool InputFloat(float& dst, const std::string& label = "", bool isRightLabel = false, float step = 0.0f, float step_fast = 0.0f);
 		static bool InputFloat2(sf::Vector2f& dst, const std::string& label = "", bool isRightLabel = false);
 		static bool DragFloat(float& dst, const std::string& label = "", bool isRightLabel = false, float v_speed = 1.0f, float v_min = 0.0f, float v_max = 0.0f);
@@ -117,6 +116,39 @@ namespace fz {
 			ImGui::PopID();
 			return result;
 		}
+		static bool OpenFontFile(HWND handle, std::string& path, float columnWidth = 100.f)
+		{
+			bool result = false;
+			ImGui::PushID("Font Path");
+			ImGui::Columns(2);
+			ImGui::SetColumnWidth(0, columnWidth);
+			ImGui::Text("Font Path");
+			ImGui::NextColumn();
+
+			float lineHeight = GImGui->Font->FontSize + GImGui->Style.FramePadding.y * 2.0f;
+			ImVec2 buttonSize = { lineHeight * 2.0f, lineHeight };
+			ImGui::PushMultiItemsWidths(1, ImGui::CalcItemWidth());
+
+			char c[256];
+			strcpy_s(c, sizeof(c), path.c_str());
+			ImGui::InputText("##InputText", c, IM_ARRAYSIZE(c));
+
+			ImGui::SameLine();
+			if (ImGui::Button("Add", buttonSize))
+			{
+				std::string prevPath = path;
+				path = VegaUI::OpenFile(handle, "Font File (*.ttf)\0*.ttf\0");
+				if (path.empty())
+					path = prevPath;
+				result = true;
+			}
+
+			ImGui::PopItemWidth();
+			ImGui::Columns(1);
+			ImGui::PopID();
+			return result;
+		}
+		static bool InputText(const std::string& label, std::string& dst, float columnWidth = 100.f);
 		static void SelectOrigins(fz::Sprite& sprite, float columnWidth = 100.f);
 		static bool PopupContextItem(const std::string& item, const std::function<void()>& fn);
 		static bool DragRect(sf::Vector2f& start, sf::Vector2f& end, bool currentWindow = true, ImGuiMouseButton button = ImGuiMouseButton_Left);

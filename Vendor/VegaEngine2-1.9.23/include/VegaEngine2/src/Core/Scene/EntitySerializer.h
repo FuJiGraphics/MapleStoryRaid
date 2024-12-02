@@ -19,6 +19,7 @@ namespace fz {
 		void SerializeCamera(json& json);
 		void SerializeTransform(json& json);
 		void SerializeSprite(json& json);
+		void SerializeText(json& json);
 		void SerializeRigidBody(json& json);
 		void SerializeCollider(json& json);
 
@@ -26,6 +27,7 @@ namespace fz {
 		void DeserializeCamera(json& json);
 		void DeserializeTransform(json& json);
 		void DeserializeSprite(json& json);
+		void DeserializeText(json& json);
 		void DeserializeRigidBody(json& json);
 		void DeserializeCollider(json& json);
 

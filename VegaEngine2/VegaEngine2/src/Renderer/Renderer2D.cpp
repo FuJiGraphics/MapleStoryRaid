@@ -73,20 +73,8 @@ namespace fz {
 				RenderFrame& renderFrame = it.second;
 				sf::RenderStates state;
 				state.transform = renderFrame.Transform * renderFrame.subTranform;
-				state.texture = renderFrame.Sprite.getTexture();
-				s_FrameBuffer->GetBuffer().draw(renderFrame.Sprite, state);
-				if (renderFrame.RectangleShape)
-				{
-					s_FrameBuffer->GetBuffer().draw(*renderFrame.RectangleShape, state);
-					delete renderFrame.RectangleShape;
-					renderFrame.RectangleShape = nullptr;
-				}
-				if (renderFrame.CircleShape)
-				{
-					s_FrameBuffer->GetBuffer().draw(*renderFrame.CircleShape, state);
-					delete renderFrame.CircleShape;
-					renderFrame.CircleShape = nullptr;
-				}
+				state.texture = renderFrame.Texture;
+				s_FrameBuffer->GetBuffer().draw(*renderFrame.drawable, state);
 			}
 
 			auto& renderBuffer = s_FrameBuffer->GetBuffer();
@@ -104,21 +92,24 @@ namespace fz {
 		s_FrameBuffer = nullptr;
 		s_OrthoCamera = nullptr;
 		s_CommandBuffer.clear();
-	} 
+	}
 
-	void Renderer2D::Draw(int order, sf::Sprite target, const sf::Transform& transform, const sf::Transform& subTransform)
+	void Renderer2D::Draw(int order, sf::Drawable& drawable, const sf::Transform& transform, const sf::Transform& subTransform)
 	{
-		FZLOG_ASSERT(s_RenderWindow, "Renderer2D를 사용할 수 없습니다. 초기화되지 않은 Renderer2D 입니다.");
-		FZLOG_ASSERT(s_OrthoCamera, "Renderer2D를 사용할 수 없습니다. BeginScene이 호출되지 않았습니다.");
-
-		RenderFrame renderFrame = { target, transform, nullptr, nullptr, subTransform };
+		RenderFrame renderFrame = { &drawable, nullptr, transform, subTransform };
 		s_CommandBuffer.insert({ order, renderFrame });
 	}
 
-	void Renderer2D::Draw(sf::RectangleShape* target, const sf::Transform& transform, const sf::Transform& subTransform)
+	void Renderer2D::Draw(int order, sf::Sprite& sprite, const sf::Transform& transform, const sf::Transform& subTransform)
+	{
+		RenderFrame renderFrame = { &sprite, sprite.getTexture(), transform, subTransform };
+		s_CommandBuffer.insert({ order, renderFrame });
+	}
+
+	void Renderer2D::PostDraw(sf::RectangleShape* target, const sf::Transform& transform, const sf::Transform& subTransform)
 	{
 		const auto& lastElement = *s_CommandBuffer.rbegin();
-		RenderFrame renderFrame = { {}, transform, target, nullptr, subTransform };
+		RenderFrame renderFrame = { target, nullptr, transform, subTransform };
 		s_CommandBuffer.insert({ lastElement.first + 1, renderFrame });
 	}
 

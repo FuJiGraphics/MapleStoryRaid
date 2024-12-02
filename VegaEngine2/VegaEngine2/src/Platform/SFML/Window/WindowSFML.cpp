@@ -180,6 +180,11 @@ namespace fz {
 		return m_Window->isOpen();
 	}
 
+	void WindowSFML::SetTitle(const std::string& title)
+	{
+		m_Window->setTitle(title);
+	}
+
 	void WindowSFML::ActivateOpenGL(bool enabled)
 	{
 		if (enabled)
