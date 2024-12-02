@@ -22,7 +22,6 @@ namespace fz {
 
 		TransformComponent* transform;
 		RigidbodyComponent* body;
-		StatComponent* stat;
 		
 		bool isOnDie = false;
 
@@ -32,11 +31,11 @@ namespace fz {
 
 		void Start() override
 		{
-			stat = &AddComponent<StatComponent>();
-			stat->Stat.HP = 200;
-			stat->Stat.MP = 0;
-			stat->Stat.AD = 10;
-			stat->Stat.AP = 0;
+			auto& stat = AddComponent<StatComponent>();
+			stat.Stat.HP = 200;
+			stat.Stat.MP = 0;
+			stat.Stat.AD = 10;
+			stat.Stat.AP = 0;
 
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
@@ -135,10 +134,11 @@ namespace fz {
 
 		void Damaged(int damage) override
 		{
-			stat->Stat.HP -= damage;
-			if (stat->Stat.HP <= 0)
+			auto& stat = GetComponent<StatComponent>();
+			stat.Stat.HP -= damage;
+			if (stat.Stat.HP <= 0)
 			{
-				stat->Stat.HP = 0;
+				stat.Stat.HP = 0;
 				Die();
 			}
 			else
@@ -153,10 +153,11 @@ namespace fz {
 
 		void Die() override
 		{
+			auto& stat = GetComponent<StatComponent>();
 			animator.Play(&clips["die"]);
 			currentState = AIState::Die;
 			timer["Die"].Start(0.5f);
-			stat->Stat.IsDead = true;
+			stat.Stat.IsDead = true;
 		}
 
 		void Knockback(Directions dir)

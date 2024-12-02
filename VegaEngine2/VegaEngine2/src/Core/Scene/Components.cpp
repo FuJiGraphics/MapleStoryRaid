@@ -4,16 +4,22 @@ namespace fz {
 
 	void RigidbodyComponent::AddForce(const sf::Vector2f& force)
 	{
+		if (!RuntimeBody)
+			return;
 		((b2Body*)RuntimeBody)->ApplyForceToCenter(Utils::PixelToMeter(force), true);
 	}
 
 	void RigidbodyComponent::SetGravityScale(float scale)
 	{
+		if (!RuntimeBody)
+			return;
 		((b2Body*)RuntimeBody)->SetGravityScale(scale);
 	}
 
 	void RigidbodyComponent::SetLinearVelocity(const sf::Vector2f& velocity)
 	{
+		if (!RuntimeBody)
+			return;
 		((b2Body*)RuntimeBody)->SetLinearVelocity(Utils::PixelToMeter(velocity));
 	}
 
@@ -43,6 +49,8 @@ namespace fz {
 
 	void RigidbodyComponent::SetPosition(const sf::Vector2f& pos)
 	{
+		if (!RuntimeBody)
+			return;
 		b2Body* body = static_cast<b2Body*>(RuntimeBody);
 		if (body) {
 			body->SetTransform(Utils::PixelToMeter(pos), 0.0f);
@@ -51,6 +59,8 @@ namespace fz {
 
 	void RigidbodyComponent::SetPosition(const sf::Vector2f& pos, float angle)
 	{
+		if (!RuntimeBody)
+			return;
 		b2Body* body = static_cast<b2Body*>(RuntimeBody);
 		if (body) {
 			body->SetTransform(Utils::PixelToMeter(pos), angle);

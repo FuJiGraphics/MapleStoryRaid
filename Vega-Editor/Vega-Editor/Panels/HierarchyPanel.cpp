@@ -188,6 +188,7 @@ namespace fz {
 			{
 				DisplayAddComponentEntry<CameraComponent>("Camera");
 				DisplayAddComponentEntry<SpriteComponent>("Sprite");
+				DisplayAddComponentEntry<TextComponent>("Text");
 				DisplayAddComponentEntry<RigidbodyComponent>("Rigidbody");
 				if (!m_SelectionContext.HasComponent<EdgeCollider2DComponent>())
 					DisplayAddComponentEntry<BoxCollider2DComponent>("BoxCollider2D");
@@ -308,6 +309,37 @@ namespace fz {
 					{
 						spriteComp.Sprite.SetMaskColor(maskMode, maskColor);
 					}
+				}
+				ImGui::TreePop();
+			}
+		}
+
+		if (entity.HasComponent<TextComponent>())
+		{
+			if (ImGui::TreeNodeEx("TextComponent", treeFlag, "Text"))
+			{
+				bool isRemove = false;
+				if (*m_EditState == EditorState::Edit)
+				{
+					isRemove = VegaUI::PopupContextItem("Remove TextComponent", [&entity]() {
+						entity.RemoveComponent<TextComponent>(); });
+				}
+
+				if (!isRemove)
+				{
+					TextComponent& textComp = entity.GetComponent<TextComponent>();
+					VegaUI::InputText(textComp.FontPath, "Font Path");
+					std::string str = textComp.Text.getString();
+					if (VegaUI::InputText(str, "String"))
+					{
+						textComp.Text.setString(str);
+					}
+					int size = textComp.Text.getCharacterSize();
+					if (VegaUI::DrawControl1("Character Size", "Reset", size, 0.1f, 0.0f, 0.0f, textComp.Text.getCharacterSize()))
+					{
+						textComp.Text.setCharacterSize(size);
+					}
+
 				}
 				ImGui::TreePop();
 			}

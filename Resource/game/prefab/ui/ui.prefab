@@ -1,5 +1,5 @@
 {
-    "d1878583-1f7a-4533-8f8c-b0c3bbab2633": {
+    "3a1a09f5-5aa6-4483-9e4d-cc54ee2835bd": {
         "0142046f-f199-4fac-b2f6-22892db2fd01": {
             "HasChild": false,
             "RootEntity": false,
@@ -241,6 +241,21 @@
             }
         },
         "3415ef93-6404-4440-98c9-7ca688163ab1": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 35.349998474121094,
+                    "Y": 15.100000381469727
+                }
+            },
             "HasChild": false,
             "RootEntity": false,
             "SpriteComponent": {
@@ -358,6 +373,21 @@
                     360.0,
                     18.0
                 ]
+            }
+        },
+        "BoxCollider2DComponent": {
+            "Density": 1.0,
+            "Friction": 0.5,
+            "IsTrigger": true,
+            "Offset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "Restitution": 0.0,
+            "RestitutionThreshold": 0.5,
+            "Size": {
+                "X": 0.0,
+                "Y": 0.0
             }
         },
         "HasChild": true,
@@ -738,6 +768,21 @@
             }
         },
         "f3e68fce-d4a8-403d-b957-171d987f9143": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 34.0,
+                    "Y": 14.0
+                }
+            },
             "HasChild": false,
             "RootEntity": false,
             "SpriteComponent": {

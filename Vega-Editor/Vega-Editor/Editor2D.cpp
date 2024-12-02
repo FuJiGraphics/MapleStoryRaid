@@ -137,8 +137,8 @@ namespace fz {
 
 			const auto& viewportOffset = ImGui::GetCursorPos();
 			const auto& windowSize = ImGui::GetWindowSize();
+			const ImVec2& contentRegionMin = ImGui::GetWindowContentRegionMin();
 			auto minBound = ImGui::GetWindowPos();
-			ImVec2 contentRegionMin = ImGui::GetWindowContentRegionMin();
 			minBound.x += viewportOffset.x;
 			minBound.y += viewportOffset.y;
 

@@ -5,6 +5,7 @@
 #include "EditorCamera.h"
 #include "EntitySerializer.h"
 #include "CollisionHandler.h"
+#include "SFML/Graphics.hpp"
 
 namespace fz {
 
@@ -232,6 +233,23 @@ namespace fz {
 				Scene::s_World->DestroyBody(body);
 			}
 		}
+		if (entity.HasComponent<ParentEntityComponent>())
+		{
+			auto& parentComp = entity.GetComponent<ParentEntityComponent>();
+			if (parentComp.ParentEntity.HasComponent<ChildEntityComponent>())
+			{
+				auto& childComp = parentComp.ParentEntity.GetComponent<ChildEntityComponent>();
+				for (auto begin = childComp.CurrentChildEntities.begin();
+					 begin != childComp.CurrentChildEntities.end(); ++begin)
+				{
+					if (*begin == entity)
+					{
+						childComp.CurrentChildEntities.erase(begin);
+						break;
+					}
+				}
+			}
+		}
 		m_Registry.destroy(entity.m_Handle);
 	}
 
@@ -271,20 +289,26 @@ namespace fz {
 
 	void Scene::LoginPhysicsWorld(fz::Entity entity)
 	{
+		if (!entity.HasComponent<RigidbodyComponent>())
+			return;
+
 		auto& transformComp = entity.GetComponent<TransformComponent>();
 		auto& rigidBodyComp = entity.GetComponent<RigidbodyComponent>();
+		auto& tagComp = entity.GetComponent<TagComponent>();
 		auto& transform = transformComp.Transform;
-
+		FZLOG_DEBUG("생성 {0}", tagComp.Tag);
 		const b2Vec2& meterPos = Utils::PixelToMeter(entity.GetWorldPosition());
-
+		b2Body* body = nullptr;
 		b2BodyDef bodyDef;
 		bodyDef.type = ToBox2dBodyType(rigidBodyComp.RigidType);
 		bodyDef.position.Set(meterPos.x, meterPos.y);
 		bodyDef.angle = Utils::DegreeToRadian(transform.GetRotation());
-		b2Body* body = s_World->CreateBody(&bodyDef);
-		body->SetFixedRotation(rigidBodyComp.FixedRotation);
-		rigidBodyComp.RuntimeBody = body;
-
+		body = s_World->CreateBody(&bodyDef);
+		if (body)
+		{ 
+			body->SetFixedRotation(rigidBodyComp.FixedRotation);
+			rigidBodyComp.RuntimeBody = body;
+		}
 		if (entity.HasComponent<BoxCollider2DComponent>())
 		{
 			auto& collider = entity.GetComponent<BoxCollider2DComponent>();
@@ -368,12 +392,12 @@ namespace fz {
 	{
 		OrthoCamera* camera = nullptr;
 		sf::Transform transform = sf::Transform::Identity;
-		this->OnDestroyRuntimeInstance();
 		this->OnCreateRuntimeInstance();
-		this->OnUpdatePhysicsSystem(dt);
+		this->OnDestroyRuntimeInstance();
 		this->OnUpdateChildEntity();
 		this->OnUpdateScript(dt);
 		this->OnUpdateCamera(&camera, transform);
+		this->OnUpdatePhysicsSystem(dt);
 		this->OnRenderRuntimeSprite(camera, transform);
 	}
 
@@ -460,6 +484,24 @@ namespace fz {
 		transform.SetTranslate(position);
 		transform.SetRotation(rotation);
 		return this->Instantiate(entity, tempTag, transform);
+	}
+
+	sf::Vector2f Scene::GetWorldMousePos() const
+	{
+		const auto& mousePos = Input::GetMousePosition();
+		return this->PixelToCoords({ (int)mousePos.x, (int)mousePos.y });
+	}
+
+	sf::Vector2f Scene::PixelToCoords(const sf::Vector2i& pixelPos) const
+	{
+		auto& buffer = m_FrameBuffer->GetBuffer();
+		return buffer.mapPixelToCoords(pixelPos);
+	}
+
+	sf::Vector2f Scene::PixelToCoords(const sf::Vector2i& pixelPos, const fz::OrthoCamera& camera) const
+	{
+		auto& buffer = m_FrameBuffer->GetBuffer();
+		return buffer.mapPixelToCoords(pixelPos, camera);
 	}
 
 	GameObject Scene::Instantiate(const std::string& tag, const sf::Vector2f& position)
@@ -629,6 +671,8 @@ namespace fz {
 
 	void Scene::OnUpdatePhysicsSystem(float dt)
 	{
+		if (m_SceneChanged)
+			return;
 		// 물리 시스템 업데이트
 		if (s_World)
 		{

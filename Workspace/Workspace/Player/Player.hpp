@@ -13,7 +13,7 @@ namespace fz {
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
 		float JumpPower = -500.f;
-		float MoveSpeed = 100.f;
+		float MoveSpeed = 500.f;
 
 		float KnockbackTime = 0.5f;
 		float AttackTime = 1.0f;

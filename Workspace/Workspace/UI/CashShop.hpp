@@ -8,10 +8,11 @@ namespace fz {
 	{
 	public:
 		sf::Vector2f size;
+		bool IsClickedLeft = false;
 
 		void Start() override
 		{
-			size = GetComponent<BoxCollider2DComponent>().GetSize();
+			// size = GetComponent<BoxCollider2DComponent>().GetSize();
 		}
 		void OnDestroy() override
 		{
@@ -20,28 +21,31 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			const auto& pos = GetWorldPosition();
-
 			if (Input::IsMouseButtonPressed(MouseButtonType::Left))
 			{
-				const auto& mousePos = Input::GetMousePosition();
-				FZLOG_DEBUG("click mouse {0}, {1}", mousePos.x, mousePos.y);
-				FZLOG_DEBUG("pos {0}, {1}", pos.x, pos.y);
+				if (!IsClickedLeft && Input::IsMouseButtonPressed(MouseButtonType::Left))
+				{
+					IsClickedLeft = true;
+					if (IsClickedBounds())
+					{
+
+					}
+				}
 			}
 		}
 
-		void OnTriggerEnter(Collider collider) override
+		bool IsClickedBounds()
 		{
-		}
-
-		void OnTriggerStay(Collider collider) override
-		{
-
-		}
-
-		void OnTriggerExit(Collider collider) override
-		{
-
+			const sf::Vector2f& mousePos = GetCurrentScene()->GetWorldMousePos();
+			const auto& pos = GetWorldPosition();
+			sf::Vector2f bounds[2];
+			bounds[0] = { pos.x - size.x * 2.f, pos.y - size.y * 2.f };
+			bounds[1] = { pos.x + size.x * 2.f, pos.y + size.y * 2.f };
+			if (bounds[0].x > mousePos.x || bounds[0].y > mousePos.y)
+				return false;
+			if (bounds[1].x < mousePos.x || bounds[1].y < mousePos.y)
+				return false;
+			return true;
 		}
 	};
 } // namespace fz
