@@ -138,6 +138,7 @@ namespace fz {
 			const auto& viewportOffset = ImGui::GetCursorPos();
 			const auto& windowSize = ImGui::GetWindowSize();
 			auto minBound = ImGui::GetWindowPos();
+			ImVec2 contentRegionMin = ImGui::GetWindowContentRegionMin();
 			minBound.x += viewportOffset.x;
 			minBound.y += viewportOffset.y;
 
@@ -147,7 +148,8 @@ namespace fz {
 			InputManager::SetViewportBounds(m_ViewportBounds[0], m_ViewportBounds[1]);
 			auto [mx, my] = ImGui::GetMousePos();
 			mx -= m_ViewportBounds[0].x;
-			my -= m_ViewportBounds[0].y;
+			my -= (minBound.y - windowSize.y);
+			my -= contentRegionMin.y;
 			sf::Vector2f viewportSize = m_ViewportBounds[1] - m_ViewportBounds[0];
 			InputManager::SetViewportMousePos((int)mx, (int)my);
 		}
@@ -217,7 +219,7 @@ namespace fz {
 		{
 			float size = ImGui::GetWindowHeight() - 4.0f;
 			ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x * 0.5f) - (size * 0.5f));
-			if (ImGui::ImageButton("##PlayButton", TEXTURE_MGR.Get("editor/icons/PlayButton.png"), {size, size}))
+			if (ImGui::ImageButton("##PlayButton", TEXTURE_MGR.Get("editor/icons/PlayButton.png"), { size, size }))
 			{
 				if (m_SceneState == EditorState::Edit)
 					OnScenePlay();
