@@ -7,6 +7,7 @@ namespace fz {
 		, m_SceneState(EditorState::Edit)
 		, m_HierarchyPanel(m_ActiveScene, &m_SceneState)
 		, m_EditorCamera({ (float)FRAMEWORK.GetWidth(), (float)FRAMEWORK.GetHeight() }, false)
+		, m_ViewportBounds{ {0.f, 0.f}, {0.f, 0.f} }
 	{
 		// Empty
 	}
@@ -26,6 +27,7 @@ namespace fz {
 				SceneManager::NewScene();
 			}
 		}
+		InputManager::SetEditorMode(true);
 	}
 
 	void Editor2D::OnDetach()
@@ -132,6 +134,22 @@ namespace fz {
 				m_EditorCamera.SetActivated(true);
 			else
 				m_EditorCamera.SetActivated(false);
+
+			const auto& viewportOffset = ImGui::GetCursorPos();
+			const auto& windowSize = ImGui::GetWindowSize();
+			auto minBound = ImGui::GetWindowPos();
+			minBound.x += viewportOffset.x;
+			minBound.y += viewportOffset.y;
+
+			ImVec2 maxBound = { minBound.x + windowSize.x, minBound.y + windowSize.y };
+			m_ViewportBounds[0] = { minBound.x, minBound.y };
+			m_ViewportBounds[1] = { maxBound.x, maxBound.y };
+			InputManager::SetViewportBounds(m_ViewportBounds[0], m_ViewportBounds[1]);
+			auto [mx, my] = ImGui::GetMousePos();
+			mx -= m_ViewportBounds[0].x;
+			my -= m_ViewportBounds[0].y;
+			sf::Vector2f viewportSize = m_ViewportBounds[1] - m_ViewportBounds[0];
+			InputManager::SetViewportMousePos((int)mx, (int)my);
 		}
 		// Viewport End
 		ImGui::End();

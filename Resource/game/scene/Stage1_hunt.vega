@@ -74,8 +74,8 @@
                 "Restitution": 0.0,
                 "RestitutionThreshold": 0.5,
                 "Size": {
-                    "X": 42.599998474121094,
-                    "Y": 39.20000076293945
+                    "X": 16.399999618530273,
+                    "Y": 17.299999237060547
                 }
             },
             "HasChild": false,
@@ -99,8 +99,8 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    115.0,
-                    79.0
+                    23.0,
+                    20.0
                 ],
                 "Origins": "MC",
                 "Position": [
@@ -112,13 +112,13 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": 0,
+                "SortingOrder": 3,
                 "TexPath": "game\\graphics\\monster\\spoa.png",
                 "TexRect": {
-                    "Height": 158,
+                    "Height": 40,
                     "Left": 0,
                     "Top": 0,
-                    "Width": 230
+                    "Width": 46
                 }
             },
             "TagComponent": {
@@ -136,8 +136,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -129.26788330078125,
-                    -0.4165811538696289
+                    20000.0,
+                    20000.0
                 ]
             }
         },
@@ -282,6 +282,10 @@
                     }
                 },
                 "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
@@ -680,6 +684,10 @@
                     }
                 },
                 "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "RigidType": "Static"
+                },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
@@ -951,6 +959,824 @@
                     1573.0,
                     516.0
                 ]
+            }
+        },
+        "d1878583-1f7a-4533-8f8c-b0c3bbab2633": {
+            "0142046f-f199-4fac-b2f6-22892db2fd01": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        1.0,
+                        0.0
+                    ],
+                    "Origins": "TR",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 102,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\StatusGradation.png",
+                    "TexRect": {
+                        "Height": 16,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 1
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "HPGradation"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -74.0,
+                        14.0
+                    ]
+                }
+            },
+            "01cea258-5aff-40e7-a323-0a8e6bc2c512": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        170.0,
+                        15.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 101,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\StatusBar.png",
+                    "TexRect": {
+                        "Height": 31,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 340
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "StatusBar"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -14.0,
+                        16.0
+                    ]
+                }
+            },
+            "1e59ff0d-b773-4838-858f-3e8ef733a958": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        285.0,
+                        35.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 100,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\LevelBar.png",
+                    "TexRect": {
+                        "Height": 71,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 570
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "LevelBar"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -113.0,
+                        0.0
+                    ]
+                }
+            },
+            "2a4e57a4-152f-400c-bbaf-ebf038c99233": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        400.0,
+                        35.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 98,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\BottomBackground.png",
+                    "TexRect": {
+                        "Height": 71,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 800
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "BottomBackground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "3415ef93-6404-4440-98c9-7ca688163ab1": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        36.5,
+                        17.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 100,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\Menu.png",
+                    "TexRect": {
+                        "Height": 34,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 73
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Menu"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        285.5,
+                        18.0
+                    ]
+                }
+            },
+            "6ea0b68b-9620-453a-986f-cac3050541be": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        36.5,
+                        17.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 100,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\ShortCut.png",
+                    "TexRect": {
+                        "Height": 34,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 73
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Shortcut"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        360.0,
+                        18.0
+                    ]
+                }
+            },
+            "HasChild": true,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 100,
+                "TexPath": "",
+                "TexRect": {
+                    "Height": 0,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 0
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "UI"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    2253.0,
+                    571.0
+                ]
+            },
+            "a24e57f7-d210-4540-9ef3-53d98782a075": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        14.0,
+                        10.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 100,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\StatKey.png",
+                    "TexRect": {
+                        "Height": 20,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 28
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Stat"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        221.0,
+                        -17.0
+                    ]
+                }
+            },
+            "a9a3dd7d-432a-432c-9caf-28983652dd86": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        1.0,
+                        0.0
+                    ],
+                    "Origins": "TR",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 102,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\StatusGradation.png",
+                    "TexRect": {
+                        "Height": 16,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 1
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "EXPGradation"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        155.0,
+                        14.0
+                    ]
+                }
+            },
+            "bea523eb-bd14-474b-a86d-746513ee747c": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        1.0,
+                        0.0
+                    ],
+                    "Origins": "TR",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 102,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\StatusGradation.png",
+                    "TexRect": {
+                        "Height": 16,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 1
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "MPGradation"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        31.0,
+                        15.0
+                    ]
+                }
+            },
+            "cfa5cf49-3f9f-4340-a174-f1b24be7fc06": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        170.0,
+                        15.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 103,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\StatusBarLayer.png",
+                    "TexRect": {
+                        "Height": 31,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 340
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "StatusBarBackground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -14.0,
+                        15.0
+                    ]
+                }
+            },
+            "f3b99247-3b87-4bd9-9354-9ee6aaa49c4d": {
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 21.0,
+                        "Y": 15.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        14.0,
+                        10.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 100,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\InvenKey.png",
+                    "TexRect": {
+                        "Height": 20,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 28
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Inventory"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        191.0,
+                        -17.0
+                    ]
+                }
+            },
+            "f3e68fce-d4a8-403d-b957-171d987f9143": {
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 35.650001525878906,
+                        "Y": 16.100000381469727
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Dynamic"
+                },
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        36.5,
+                        17.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 100,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\CashShop.png",
+                    "TexRect": {
+                        "Height": 34,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 73
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "CashShop"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        210.0,
+                        18.0
+                    ]
+                }
             }
         },
         "e18cbcc2-bcfe-4cca-94fa-670ea7ce0733": {

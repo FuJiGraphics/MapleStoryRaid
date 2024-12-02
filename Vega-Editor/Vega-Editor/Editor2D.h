@@ -39,6 +39,7 @@ namespace fz {
 		HierarchyPanel m_HierarchyPanel;
 		EditorState m_SceneState;
 		EditorCamera m_EditorCamera;
+		sf::Vector2f m_ViewportBounds[2];
 	};
 
 } // namespace fz

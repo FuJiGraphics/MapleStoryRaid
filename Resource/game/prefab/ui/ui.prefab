@@ -1,5 +1,5 @@
 {
-    "21d164f9-6027-4ede-bdfe-1a7431a93cda": {
+    "d1878583-1f7a-4533-8f8c-b0c3bbab2633": {
         "0142046f-f199-4fac-b2f6-22892db2fd01": {
             "HasChild": false,
             "RootEntity": false,
@@ -55,8 +55,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -431.5,
-                    382.0
+                    -74.0,
+                    14.0
                 ]
             }
         },
@@ -115,8 +115,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -369.0,
-                    383.0
+                    -14.0,
+                    16.0
                 ]
             }
         },
@@ -175,8 +175,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -469.0,
-                    368.0
+                    -113.0,
+                    0.0
                 ]
             }
         },
@@ -231,12 +231,12 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    2.0,
+                    1.0,
                     1.0
                 ],
                 "Translate": [
-                    42.0,
-                    368.0
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -295,8 +295,8 @@
                     1.0
                 ],
                 "Translate": [
-                    638.0,
-                    385.0
+                    285.5,
+                    18.0
                 ]
             }
         },
@@ -355,30 +355,10 @@
                     1.0
                 ],
                 "Translate": [
-                    712.0,
-                    385.0
+                    360.0,
+                    18.0
                 ]
             }
-        },
-        "CameraComponent": {
-            "Center": [
-                0.0,
-                0.0
-            ],
-            "FixedAspectRatio": false,
-            "Primary": true,
-            "Rotation": 0.0,
-            "Size": [
-                1516.0,
-                807.0
-            ],
-            "Viewport": {
-                "Height": 1.0,
-                "Left": 0.0,
-                "Top": 0.0,
-                "Width": 1.0
-            },
-            "Zoom": 1.0
         },
         "HasChild": true,
         "RootEntity": true,
@@ -434,8 +414,8 @@
                 1.0
             ],
             "Translate": [
-                1131.0,
-                497.0
+                2253.0,
+                571.0
             ]
         },
         "a24e57f7-d210-4540-9ef3-53d98782a075": {
@@ -493,8 +473,8 @@
                     1.0
                 ],
                 "Translate": [
-                    617.0,
-                    352.0
+                    221.0,
+                    -17.0
                 ]
             }
         },
@@ -553,8 +533,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -201.0,
-                    382.0
+                    155.0,
+                    14.0
                 ]
             }
         },
@@ -613,8 +593,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -324.5,
-                    382.0
+                    31.0,
+                    15.0
                 ]
             }
         },
@@ -673,13 +653,32 @@
                     1.0
                 ],
                 "Translate": [
-                    -369.0,
-                    383.0
+                    -14.0,
+                    15.0
                 ]
             }
         },
         "f3b99247-3b87-4bd9-9354-9ee6aaa49c4d": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 21.0,
+                    "Y": 15.0
+                }
+            },
             "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": false,
+                "RigidType": "Static"
+            },
             "RootEntity": false,
             "SpriteComponent": {
                 "Color": {
@@ -733,8 +732,8 @@
                     1.0
                 ],
                 "Translate": [
-                    588.0,
-                    352.0
+                    191.0,
+                    -17.0
                 ]
             }
         },
@@ -793,8 +792,8 @@
                     1.0
                 ],
                 "Translate": [
-                    564.0,
-                    385.0
+                    210.0,
+                    18.0
                 ]
             }
         }

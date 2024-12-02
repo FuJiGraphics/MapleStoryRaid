@@ -169,6 +169,7 @@ namespace fz {
 
 	public:
 		void SetTrigger(bool enabled);
+		sf::Vector2f GetSize() const { return Size; }
 
 		BoxCollider2DComponent() = default;
 		BoxCollider2DComponent(const BoxCollider2DComponent& other) = default;

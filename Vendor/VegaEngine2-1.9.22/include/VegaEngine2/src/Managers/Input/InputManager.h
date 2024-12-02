@@ -31,8 +31,14 @@ namespace fz {
 		}
 	};
 
+
+	class Editor2D;
+
 	class InputManager
 	{
+	protected:
+		friend fz::Editor2D;
+
 	public:
 		static void Init();
 		static void Update(float dt);
@@ -70,12 +76,18 @@ namespace fz {
 		static bool IsMouseButtonPressedImpl(MouseButtonType button);
 		static sf::Vector2f GetMousePositionImpl();
 		static bool Contains(const std::list<int>& list, int code);
+		static void SetEditorMode(bool enabled);
+		static void SetViewportMousePos(int x, int y);
+		static void SetViewportBounds(const sf::Vector2f& b1, const sf::Vector2f& b2);
 
 	private:
 		static sf::WindowBase* s_TargetWindow;
 		static std::unordered_map<Axis, AxisInfo> s_AxisInfoMap;
 		static std::unordered_map<sf::Keyboard::Key, bool> s_KeyStates;
 		static std::unordered_map<sf::Keyboard::Key, bool> s_PrevKeyStates;
+		static bool s_IsEditorMode;
+		static sf::Vector2i s_MousePosFromViewport;
+		static sf::Vector2f s_ViewportBounds[2];
 	};
 
 	using Input = fz::InputManager;

@@ -8,6 +8,9 @@ namespace fz {
 	{
 	public:
 		float Speed = 2000.f;
+		bool IsCollideBlockL = false;
+		bool IsCollideBlockR = false;
+		sf::Vector2f prevPos;
 
 		void Start() override
 		{
@@ -28,6 +31,8 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
+			auto& body = GetComponent<RigidbodyComponent>();
+
 			GameObject target = GetCurrentScene()->GetEntityFromTag("Player");
 			auto& transform = target.GetComponent<TransformComponent>();
 			const auto& targetPos = transform.Transform.GetTranslate();
@@ -40,23 +45,24 @@ namespace fz {
 			{
 				newPos.y = currPos.y;
 			}
-			auto& body = GetComponent<RigidbodyComponent>();
+			prevPos = { currPos.x, currPos.y };
 			body.AddPositionNoGravity({ newPos.x - currPos.x, newPos.y - currPos.y });
 		}
 
 		void OnTriggerEnter(Collider collider) override
 		{
-
-		}
-
-		void OnTriggerStay(Collider collider) override
-		{
-
+			if (collider.tag == "B2")
+				IsCollideBlockL = true;
+			if (collider.tag == "B1")
+				IsCollideBlockR = true;
 		}
 
 		void OnTriggerExit(Collider collider) override
 		{
-
+			if (collider.tag == "B2")
+				IsCollideBlockL = false;
+			if (collider.tag == "B1")
+				IsCollideBlockR = false;
 		}
 	};
 } // namespace fz

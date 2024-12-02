@@ -4,6 +4,8 @@
 #include "Camera.hpp"
 // UI
 #include "UI/UI.hpp"
+#include "UI/CashShop.hpp"
+
 // Effects
 #include "Skill/BasicAttack.hpp"
 // Portal
@@ -32,6 +34,8 @@ namespace fz {
 	static void AttachScripts(Shared<Scene>& scene)
 	{
 		BIND_SCRIPT("UI", UIScript);
+		BIND_SCRIPT("CashShop", CashShopScript);
+
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);
 		BIND_SCRIPT("Portal1_2Left", Portal1_2Left_Script);

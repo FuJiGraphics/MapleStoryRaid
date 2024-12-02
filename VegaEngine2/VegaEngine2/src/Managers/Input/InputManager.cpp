@@ -7,6 +7,9 @@ namespace fz {
 	std::unordered_map<Axis, AxisInfo> InputManager::s_AxisInfoMap;
 	std::unordered_map<sf::Keyboard::Key, bool> InputManager::s_KeyStates;
 	std::unordered_map<sf::Keyboard::Key, bool> InputManager::s_PrevKeyStates;
+	bool InputManager::s_IsEditorMode = false;
+	sf::Vector2i InputManager::s_MousePosFromViewport = { 0, 0 };
+	sf::Vector2f InputManager::s_ViewportBounds[2] = { { 0.0f, 0.0f }, { 0.0f, 0.0f } };
 
 	void InputManager::Init()
 	{
@@ -53,6 +56,22 @@ namespace fz {
 			s_KeyStates[ev.key.code] = true;
 		else if (ev.type == sf::Event::KeyReleased)
 			s_KeyStates[ev.key.code] = false;
+	}
+
+	void InputManager::SetEditorMode(bool enabled)
+	{
+		s_IsEditorMode = enabled;
+	}
+
+	void InputManager::SetViewportMousePos(int x, int y)
+	{
+		s_MousePosFromViewport = { x, y };
+	}
+
+	void InputManager::SetViewportBounds(const sf::Vector2f& b1, const sf::Vector2f& b2)
+	{
+		s_ViewportBounds[0] = b1;
+		s_ViewportBounds[1] = b2;
 	}
 
 	float InputManager::GetAxisRaw(Axis axis)
@@ -133,8 +152,11 @@ namespace fz {
 	sf::Vector2f InputManager::GetMousePositionImpl()
 	{
 		sf::Vector2i mousePos;
+		// case 0 Game Engine Editor mode
+		if (s_IsEditorMode)
+			mousePos = s_MousePosFromViewport;
 		// case 1 Target Window Mouse Position
-		if (s_TargetWindow)
+		else if (s_TargetWindow)
 			mousePos = sf::Mouse::getPosition(*s_TargetWindow);
 		// case 2 Global position in the desktop
 		else
