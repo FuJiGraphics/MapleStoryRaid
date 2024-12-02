@@ -1,0 +1,81 @@
+{
+    "63ffb820-e294-4be2-af6e-a9c89b4f2c79": {
+        "BoxCollider2DComponent": {
+            "Density": 1.0,
+            "Friction": 0.5,
+            "IsTrigger": false,
+            "Offset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "Restitution": 0.0,
+            "RestitutionThreshold": 0.5,
+            "Size": {
+                "X": 0.5,
+                "Y": 0.5
+            }
+        },
+        "HasChild": false,
+        "RigidbodyComponent": {
+            "FixedRotation": true,
+            "RigidType": "Dynamic"
+        },
+        "RootEntity": true,
+        "SpriteComponent": {
+            "Color": {
+                "A": 255,
+                "B": 255,
+                "G": 255,
+                "R": 255
+            },
+            "MaskColor": {
+                "A": 255,
+                "B": 0,
+                "G": 0,
+                "R": 0
+            },
+            "MaskMode": false,
+            "Origin": [
+                22.0,
+                20.0
+            ],
+            "Origins": "MC",
+            "Position": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "SortingOrder": 0,
+            "TexPath": "game\\graphics\\monster\\snail.png",
+            "TexRect": {
+                "Height": 265,
+                "Left": 0,
+                "Top": 0,
+                "Width": 224
+            }
+        },
+        "TagComponent": {
+            "Active": false,
+            "Tag": "Snail"
+        },
+        "TransformComponent": {
+            "Origin": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                90.95784759521484,
+                38.50000762939453
+            ]
+        }
+    }
+}

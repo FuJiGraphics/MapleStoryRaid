@@ -1,0 +1,91 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                50,
+                75
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                50,
+                75
+            ]
+        },
+        "2": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                202
+            ],
+            "Rect": [
+                0,
+                0,
+                50,
+                75
+            ]
+        },
+        "3": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                166
+            ],
+            "Rect": [
+                0,
+                0,
+                50,
+                75
+            ]
+        },
+        "ClipName": "basic_attack_effect",
+        "FrameCount": 4,
+        "LoopType": "Single",
+        "TexturePath": "game\\graphics\\effect\\attack\\attack1.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

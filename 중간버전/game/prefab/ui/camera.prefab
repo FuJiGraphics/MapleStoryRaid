@@ -1,0 +1,64 @@
+{
+    "0c79cc09-5ee2-48d7-a060-74d604416caa": {
+        "BoxCollider2DComponent": {
+            "Density": 1.0,
+            "Friction": 0.5,
+            "IsTrigger": true,
+            "Offset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "Restitution": 0.0,
+            "RestitutionThreshold": 0.5,
+            "Size": {
+                "X": 377.0,
+                "Y": 0.5
+            }
+        },
+        "CameraComponent": {
+            "Center": [
+                0.0,
+                0.0
+            ],
+            "FixedAspectRatio": false,
+            "Primary": true,
+            "Rotation": 0.0,
+            "Size": [
+                1516.0,
+                864.0
+            ],
+            "Viewport": {
+                "Height": 1.0,
+                "Left": 0.0,
+                "Top": 0.0,
+                "Width": 1.0
+            },
+            "Zoom": 1.0
+        },
+        "HasChild": false,
+        "RigidbodyComponent": {
+            "FixedRotation": false,
+            "RigidType": "Dynamic"
+        },
+        "RootEntity": true,
+        "TagComponent": {
+            "Active": true,
+            "Tag": "Camera"
+        },
+        "TransformComponent": {
+            "Origin": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                798.7179565429688,
+                612.3553466796875
+            ]
+        }
+    }
+}

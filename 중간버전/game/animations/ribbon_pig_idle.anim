@@ -1,0 +1,73 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                77,
+                57
+            ]
+        },
+        "1": {
+            "Border": [
+                5.699999809265137,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                77,
+                0,
+                71,
+                56
+            ]
+        },
+        "2": {
+            "Border": [
+                6.300000190734863,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                148,
+                0,
+                99,
+                58
+            ]
+        },
+        "ClipName": "None",
+        "FrameCount": 3,
+        "LoopType": "Loop",
+        "TexturePath": "game\\graphics\\monster\\ribbonpig.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

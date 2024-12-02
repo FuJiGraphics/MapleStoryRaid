@@ -1,0 +1,91 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.5,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                26,
+                16
+            ]
+        },
+        "1": {
+            "Border": [
+                0.5,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                26,
+                16
+            ]
+        },
+        "2": {
+            "Border": [
+                -6.0,
+                4.5
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                26,
+                16
+            ]
+        },
+        "3": {
+            "Border": [
+                -6.0,
+                4.5
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                0,
+                0,
+                26,
+                16
+            ]
+        },
+        "ClipName": "player_face1_attack1",
+        "FrameCount": 4,
+        "LoopType": "Single",
+        "TexturePath": "game\\graphics\\player\\face\\face1\\idle.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

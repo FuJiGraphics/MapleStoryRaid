@@ -1,0 +1,91 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                -22.5,
+                -13.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                32,
+                32,
+                23,
+                14
+            ]
+        },
+        "1": {
+            "Border": [
+                -22.5,
+                -13.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                32,
+                32,
+                23,
+                14
+            ]
+        },
+        "2": {
+            "Border": [
+                2.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                206,
+                32,
+                19,
+                16
+            ]
+        },
+        "3": {
+            "Border": [
+                2.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                206,
+                32,
+                19,
+                16
+            ]
+        },
+        "ClipName": "player_hand_attack1",
+        "FrameCount": 4,
+        "LoopType": "Loop",
+        "TexturePath": "game\\graphics\\player\\hand\\attack1.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

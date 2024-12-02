@@ -1,0 +1,95 @@
+{
+	"frames": {
+		"BasicArmWalk0.png": {
+			"frame": {
+				"x": 32,
+				"y": 32,
+				"w": 12,
+				"h": 17
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 12,
+				"h": 17
+			},
+			"sourceSize": {
+				"w": 12,
+				"h": 17
+			}
+		},
+		"BasicArmWalk1.png": {
+			"frame": {
+				"x": 108,
+				"y": 32,
+				"w": 13,
+				"h": 17
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 13,
+				"h": 17
+			},
+			"sourceSize": {
+				"w": 13,
+				"h": 17
+			}
+		},
+		"BasicArmWalk2.png": {
+			"frame": {
+				"x": 185,
+				"y": 32,
+				"w": 12,
+				"h": 17
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 12,
+				"h": 17
+			},
+			"sourceSize": {
+				"w": 12,
+				"h": 17
+			}
+		},
+		"BasicArmWalk3.png": {
+			"frame": {
+				"x": 261,
+				"y": 32,
+				"w": 14,
+				"h": 15
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 14,
+				"h": 15
+			},
+			"sourceSize": {
+				"w": 14,
+				"h": 15
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 307,
+			"h": 81
+		},
+		"scale": "1"
+	}
+}
