@@ -99,10 +99,7 @@ namespace fz {
 		isPlaying = true;
 
 		currentClip = clip;
-		if (currentClip->Speed == 1.0f || currentClip->Speed == -1.0f)
-		{
-			SetSpeed(currentClip->Speed);
-		}
+		SetSpeed(currentClip->Speed);
 		totalFrame = clip->frames.size();
 		if (totalFrame <= 0)
 			return;

@@ -1,0 +1,74 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                76,
+                69
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                79,
+                1,
+                112,
+                66
+            ]
+        },
+        "2": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                193,
+                1,
+                76,
+                69
+            ]
+        },
+        "ClipName": "attack_sting1",
+        "FrameCount": 3,
+        "LoopType": "Single",
+        "Speed": null,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\attack_sting1.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

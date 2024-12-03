@@ -13,7 +13,7 @@ namespace fz {
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
 		float JumpPower = -500.f;
-		float MoveSpeed = 500.f;
+		float MoveSpeed = 100.f;
 
 		float KnockbackTime = 0.5f;
 		float AttackTime = 1.0f;
@@ -61,7 +61,7 @@ namespace fz {
 
 			timer.Update(dt);
 
-			isOnGround = body->IsOnGround({ 0.0f, 0.34f });
+			isOnGround = body->IsOnGround();
 
 			// 이동 적용
 			if (Input::IsKeyPressed(KeyType::Right))
@@ -129,7 +129,7 @@ namespace fz {
 				return;
 
 			timer["Attack"].Start(AttackTime);
-			status->Status = PlayerStatus::Attack1;
+			status->Status = PlayerStatus::SwingAttack2;
 		}
 
 		void Idle() override
@@ -138,7 +138,7 @@ namespace fz {
 				return;
 			if (!timer["Attack"].Done())
 				return;
-			if (!body->IsOnGround({ 0.0f, 0.34f }))
+			if (!body->IsOnGround())
 				return;
 
 			status->Status = PlayerStatus::Idle;

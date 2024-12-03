@@ -75,6 +75,7 @@
         "ClipName": "basic_attack_effect",
         "FrameCount": 4,
         "LoopType": "Single",
+        "Speed": null,
         "TexturePath": "game\\graphics\\effect\\attack\\attack1.png",
         "Transform": {
             "Rotation": 0.0,

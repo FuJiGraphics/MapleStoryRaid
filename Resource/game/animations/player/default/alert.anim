@@ -1,0 +1,74 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                81,
+                69
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                84,
+                1,
+                81,
+                70
+            ]
+        },
+        "2": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                167,
+                1,
+                81,
+                71
+            ]
+        },
+        "ClipName": "default_alert",
+        "FrameCount": 3,
+        "LoopType": "PingPong",
+        "Speed": null,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\alert.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

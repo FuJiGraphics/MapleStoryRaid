@@ -1,0 +1,55 @@
+{
+	"frames": {
+		"proneStab_0.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 94,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 94,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 94,
+				"h": 50
+			}
+		},
+		"prone_0.png": {
+			"frame": {
+				"x": 97,
+				"y": 1,
+				"w": 94,
+				"h": 50
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 94,
+				"h": 50
+			},
+			"sourceSize": {
+				"w": 94,
+				"h": 50
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 192,
+			"h": 52
+		},
+		"scale": "1"
+	}
+}

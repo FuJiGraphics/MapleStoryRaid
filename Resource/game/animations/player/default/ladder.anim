@@ -1,0 +1,56 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                57,
+                80
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                60,
+                1,
+                57,
+                80
+            ]
+        },
+        "ClipName": "ladder",
+        "FrameCount": 2,
+        "LoopType": "PingPong",
+        "Speed": null,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\ladder.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

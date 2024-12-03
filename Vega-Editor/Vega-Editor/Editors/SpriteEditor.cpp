@@ -18,6 +18,7 @@ namespace fz {
 		static sf::Vector2f s_Translate = { 0.0f, 0.0f };
 		static sf::Vector2f s_Scale = { 1.0f, 1.0f };
 		static float s_Rotation = 0.0f;
+		static float s_Speed = 1.0f;
 		static std::string ToString(AnimationLoopTypes type)
 		{
 			switch(type)
@@ -225,6 +226,12 @@ namespace fz {
 				if (s_IsClickedFrame >= 0 && s_IsClickedFrame < s_Frames.size() && !s_Frames.empty())
 				{
 					sf::IntRect texRect = s_Frames[s_IsClickedFrame].getTextureRect();
+
+					float speed = s_Speed;
+					if (VegaUI::DrawControl1("Animation Speed", "Reset", speed, 0.1f, 0.0f, 0.0f, 1.0f))
+					{
+						s_Speed = speed;
+					}
 					if (VegaUI::DrawControl4("Texture Rect", texRect))
 					{
 						s_Frames[s_IsClickedFrame].setTextureRect(texRect);
@@ -274,6 +281,7 @@ namespace fz {
 		auto& json = Database::GetJsonObject(path);
 		json.clear();
 
+		json["AnimationClip"]["Speed"] = s_Speed;
 		json["AnimationClip"]["FrameCount"] = s_Frames.size();
 		json["AnimationClip"]["TexturePath"] = s_CurrentPath;
 		json["AnimationClip"]["ClipName"] = s_ClipName;
@@ -308,7 +316,8 @@ namespace fz {
 
 		Database::LoadFromJson(s_OpenFilePath);
 		auto& json = Database::GetJsonObject(s_OpenFilePath);
-
+		if (!json["AnimationClip"]["Speed"].is_null())
+			s_Speed = json["AnimationClip"]["Speed"];
 		unsigned int frameCount = json["AnimationClip"]["FrameCount"];
 		s_CurrentPath = json["AnimationClip"]["TexturePath"];
 		s_ClipName = json["AnimationClip"]["ClipName"];
@@ -453,6 +462,7 @@ namespace fz {
 		s_Scale = { 1.0f, 1.0f };
 		s_Rotation = 0.0f;
 		s_OpenFilePath = "";
+		s_Speed = 1.0f;
 	}
 
 	void SpriteEditor::RenderSprite(const sf::Sprite& sprite, Shared<fz::Framebuffer>& buffer)

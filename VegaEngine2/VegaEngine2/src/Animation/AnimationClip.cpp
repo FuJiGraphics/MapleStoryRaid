@@ -27,6 +27,8 @@ namespace fz {
 		auto& target = json["AnimationClip"];
 
 		std::string loopStr;
+		if (!target["Speed"].is_null())
+			Speed = target["Speed"];
 		id = target["ClipName"];
 		loopStr = target["LoopType"];
 		path = target["TexturePath"];

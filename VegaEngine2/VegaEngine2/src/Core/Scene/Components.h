@@ -153,10 +153,10 @@ namespace fz {
 		void SetLinearVelocity(const sf::Vector2f& velocity);
 		sf::Vector2f GetLinearVelocity() const;
 
-		bool IsOnGround(const sf::Vector2f& rayDir = {0.0f, 0.3f});
-		bool IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal);
-		bool IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos);
-		bool IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction);
+		bool IsOnGround(float rayLen = 0.45f);
+		bool IsOnGround(float rayLen, sf::Vector2f& normal);
+		bool IsOnGround(float rayLen, sf::Vector2f& normal, sf::Vector2f& pos);
+		bool IsOnGround(float rayLen, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction);
 
 		RigidbodyComponent() = default;
 		RigidbodyComponent(const RigidbodyComponent& other) = default;

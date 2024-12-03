@@ -65,6 +65,10 @@ namespace fz {
 			return m_Scene->m_Registry.all_of<T>(m_Handle);
 		}
 
+		GameObject GetRootParent();
+		bool GetActive();
+
+		void SetActive(bool enabled);
 		void SetColorWithChilds(const sf::Color& color);
 		sf::Vector2f GetWorldPosition();
 		sf::Transform GetWorldTransform();

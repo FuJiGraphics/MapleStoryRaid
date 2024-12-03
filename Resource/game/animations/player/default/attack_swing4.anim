@@ -1,0 +1,92 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                49,
+                103
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                52,
+                1,
+                49,
+                102
+            ]
+        },
+        "2": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                103,
+                1,
+                74,
+                91
+            ]
+        },
+        "3": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                179,
+                1,
+                103,
+                74
+            ]
+        },
+        "ClipName": "attack_swing4",
+        "FrameCount": 4,
+        "LoopType": "Single",
+        "Speed": null,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\attack_swing4.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

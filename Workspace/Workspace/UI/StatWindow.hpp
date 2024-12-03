@@ -23,9 +23,9 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			if (Input::IsMouseButtonPressed(MouseButtonType::Left))
+			if (IsClickedBounds())
 			{
-				if (IsClickedBounds())
+				if (Input::IsMouseButtonPressed(MouseButtonType::Left))
 				{
 					if (!clicked)
 					{
@@ -54,6 +54,8 @@ namespace fz {
 					clicked = false;
 				}
 			}
+			else
+				clicked = false;
 		}
 
 		bool IsClickedBounds()

@@ -41,9 +41,19 @@ namespace fz {
 			return m_Entity.AddComponent<T>();
 		}
 		
+		void SetActive(bool enabled)
+		{
+			m_Entity.SetActive(enabled);
+		}
+
 		void SetColorWithChilds(const sf::Color& color)
 		{
 			m_Entity.SetColorWithChilds(color);
+		}
+
+		GameObject GetRootEntity()
+		{
+			return m_Entity.GetRootParent();
 		}
 
 		fz::Entity& GetCurrentEntity()

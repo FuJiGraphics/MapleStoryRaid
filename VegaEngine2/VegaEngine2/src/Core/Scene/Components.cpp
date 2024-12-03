@@ -74,27 +74,27 @@ namespace fz {
 		return Utils::MeterToPixel(((b2Body*)RuntimeBody)->GetLinearVelocity());
 	}
 
-	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir)
+	bool RigidbodyComponent::IsOnGround(float rayLen)
 	{
 		sf::Vector2f empty;
 		float fempty;
-		return IsOnGround(rayDir, empty, empty, fempty);
+		return IsOnGround(rayLen, empty, empty, fempty);
 	}
 
-	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal)
+	bool RigidbodyComponent::IsOnGround(float rayLen, sf::Vector2f& normal)
 	{
 		sf::Vector2f empty;
 		float fempty;
-		return IsOnGround(rayDir, normal, empty, fempty);
+		return IsOnGround(rayLen, normal, empty, fempty);
 	}
 
-	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos)
+	bool RigidbodyComponent::IsOnGround(float rayLen, sf::Vector2f& normal, sf::Vector2f& pos)
 	{
 		float fempty;
-		return IsOnGround(rayDir, normal, pos, fempty);
+		return IsOnGround(rayLen, normal, pos, fempty);
 	}
 
-	bool RigidbodyComponent::IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction)
+	bool RigidbodyComponent::IsOnGround(float rayLen, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction)
 	{
 		if (Scene::s_World == nullptr)
 			return false;
@@ -109,32 +109,34 @@ namespace fz {
 
 			float Fraction = 0.0f;
 			bool HitGround = false;
-			sf::Vector2f Normal = { 0.0f, 0.0f };
-			sf::Vector2f Position = { 0.0f, 0.0f };
+			b2Vec2 Normal = { 0.0f, 0.0f };
+			b2Vec2 Position = { 0.0f, 0.0f };
 			float ReportFixture(b2Fixture* f, const b2Vec2& p, const b2Vec2& n, float fraction) override
 			{
 				if (f->GetBody()->GetType() == b2_staticBody)
 				{
   					HitGround = true;
    					Normal = { n.x, n.y };
-					Position = Utils::MeterToPixel(p);
+					Position = p;
 					Fraction = fraction;
-					return 0.0f;  // 충돌 후 추가 검사 방지
+					return Fraction;  // 충돌 후 추가 검사 방지
 				}
 				return 1.0f;  // 계속 진행
 			}
 		};
 		RayCastCallback callback;
 
-		// 객체의 현재 위치
 		b2Vec2 start = ((b2Body*)RuntimeBody)->GetPosition();
-		// 바닥으로 1미터 떨어진 위치
-		b2Vec2 end = start - b2Vec2(rayDir.x, rayDir.y * -1.0f);
-
-		bool hitGround = false;
+		b2Vec2 end = start + b2Vec2(0.0f, 5.0f);
 		Scene::s_World->RayCast(&callback, start, end);
-		normal = callback.Normal;
-		pos = callback.Position;
+		b2Vec2 norm = callback.Normal;
+		callback.HitGround = false;
+		
+		end = start - b2Vec2(norm.x * rayLen, norm.y * rayLen);
+		bool hitGround = false; 
+		Scene::s_World->RayCast(&callback, start, end);
+		normal = { callback.Normal.x, callback.Normal.y };
+		pos = Utils::MeterToPixel(callback.Position);
 		hitGround = callback.HitGround;
  		return hitGround;
 	}

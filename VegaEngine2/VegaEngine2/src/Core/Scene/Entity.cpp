@@ -45,6 +45,35 @@ namespace fz {
 		other.m_UUID = "";
 	}
 
+	GameObject Entity::GetRootParent()
+	{
+		if (!HasComponent<RootEntityComponent>())
+		{
+			auto& parent = GetComponent<ParentEntityComponent>().ParentEntity;
+			return parent.GetRootParent();
+		}
+		return { m_Handle, m_Scene->shared_from_this() };
+	}
+
+	bool Entity::GetActive()
+	{
+		return this->GetComponent<TagComponent>().Active;
+	}
+
+	void Entity::SetActive(bool enabled)
+	{
+		auto& tagComp = this->GetComponent<TagComponent>();
+		tagComp.Active = enabled;
+		if (HasComponent<ChildEntityComponent>())
+		{
+			auto& childComp = GetComponent<ChildEntityComponent>();
+			for (auto& child : childComp.CurrentChildEntities)
+			{
+				child.SetActive(enabled);
+			}
+		}
+	}
+
 	void Entity::SetColorWithChilds(const sf::Color& color)
 	{
 		if (this->HasComponent<SpriteComponent>())

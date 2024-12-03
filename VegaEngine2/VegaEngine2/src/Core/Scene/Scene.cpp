@@ -205,7 +205,6 @@ namespace fz {
 				dstBoxComp.Restitution = srcBoxComp.Restitution;
 				dstBoxComp.RestitutionThreshold = srcBoxComp.RestitutionThreshold;
 			}
-			// TODO: 스크립트 복사
 			if (src.HasComponent<NativeScriptComponent>())
 			{
 				auto& srcNativeComp = src.GetComponent<NativeScriptComponent>();
@@ -217,7 +216,6 @@ namespace fz {
 				dstNativeComp.OnDestroyFunction = srcNativeComp.OnDestroyFunction;
 				dstNativeComp.OnUpdateFunction = srcNativeComp.OnUpdateFunction;
 			}
-
 			m_LoadPrefabInstanceList.push_back(dst);
 		}
 	}
@@ -268,6 +266,11 @@ namespace fz {
 					}
 				}
 			}
+		}
+		if (entity.HasComponent<NativeScriptComponent>())
+		{
+			auto& nativeComp = entity.GetComponent<NativeScriptComponent>();
+			nativeComp.OnDestroyFunction(nativeComp.Instance);
 		}
 		auto it = m_EntityPool.find(entity.m_UUID);
 		if (it != m_EntityPool.end())
@@ -320,7 +323,6 @@ namespace fz {
 		auto& rigidBodyComp = entity.GetComponent<RigidbodyComponent>();
 		auto& tagComp = entity.GetComponent<TagComponent>();
 		auto& transform = transformComp.Transform;
-		FZLOG_DEBUG("생성 {0}", tagComp.Tag);
 		const b2Vec2& meterPos = Utils::PixelToMeter(entity.GetWorldPosition());
 		b2Body* body = nullptr;
 		b2BodyDef bodyDef;
@@ -583,10 +585,7 @@ namespace fz {
 								nsc.Instance = nsc.CreateInstanceFunc();
 								if (!nsc.Instance->m_Entity)
 									nsc.Instance->m_Entity = { entity, shared_from_this() };
-								if (tag.Active)
-								{
-									nsc.OnCreateFunction(nsc.Instance);
-								}
+								nsc.OnCreateFunction(nsc.Instance);
 							}
 						});
 	}
