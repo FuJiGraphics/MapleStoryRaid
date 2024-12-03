@@ -10,37 +10,43 @@ namespace fz {
     {
         using AnimPool = std::unordered_map<std::string, AnimationClip>;
     public:
-        //float jumpCooldown = 1.05f; // 점프 쿨타임
-        //float jumpDelay = 0.60f;
-        //float jumpTimer = 0.0f;    // 점프 타이머
-        //float actionTimer = 0.0f;  // 행동 타이머
-        //float idleDuration = 3.0f; // 가만히 서있는 시간
-        //float moveDuration = 5.0f; // 이동 시간
 
         float JumpPower = -430.f;
         float MoveSpeed = 100.f;
 
         Animator animator;
+        Animator animator2;
+
         AnimPool clips;
+        AnimPool clips2;
+
 
         TransformComponent* transform;
         RigidbodyComponent* body;
 
         Timer timer;
 
-        enum class AIState { Idle, Moving } currentState = AIState::Moving;
+        enum class AIState { Idle, Moving, CastingSkill} currentState = AIState::Moving;
 
         void Start() override
         {
-            transform = &GetComponent<TransformComponent>();
+         /*   transform = &GetComponent<TransformComponent>();
             body = &GetComponent<RigidbodyComponent>();
-			sf::Sprite& sprite = GetComponent<SpriteComponent>();
-			animator.SetTarget(GetCurrentEntity());
+            sf::Sprite& sprite = GetComponent<SpriteComponent>();
+            animator.SetTarget(sprite, *transform);
             animator.SetSpeed(1.0f);
             clips["idle"].loadFromFile("game/animations/mushmom_idle.anim");
             clips["move"].loadFromFile("game/animations/mushmom_move.anim");
             clips["damaged"].loadFromFile("game/animations/mushmom_damaged.anim");
             clips["die"].loadFromFile("game/animations/mushmom_die.anim");
+            clips["skill1"].loadFromFile("game/animations/mushmom_skill1.anim");
+
+            sf::Sprite& effectSprite = GetComponent<SpriteComponent>();
+            animator2.SetTarget(effectSprite, *transform);
+            animator2.SetSpeed(1.0f);
+            clips2["skilleffect1"].loadFromFile("game/animations/mushmom_skill1Effect.anim");*/
+
+
             body->SetGravityScale(1.5f);
 
             timer["ActionTimer"].Start(5.0f); // 이동 상태로 시작
@@ -54,11 +60,22 @@ namespace fz {
         {
             if (!HasComponent<RigidbodyComponent>())
                 return;
-            animator.Update(dt);
 
+            animator.Update(dt);
+            animator2.Update(dt);
             timer.Update(dt);
 
-            if (timer["ActionTimer"].Done())
+            if (currentState == AIState::CastingSkill)
+            {
+                // 스킬 지속 시간 확인
+                if (timer["SkillDuration"].Done())
+                {
+                    currentState = AIState::Idle; // 스킬이 끝나면 Idle 상태로 복귀
+                }
+                return; // 스킬 중에는 다른 동작을 수행하지 않음
+            }
+
+            if (timer["ActionTimer"].Done() && currentState != AIState::CastingSkill)
             {
                 // 상태 전환
                 if (currentState == AIState::Moving)
@@ -77,6 +94,11 @@ namespace fz {
                 }
             }
 
+            if (timer["SkillCooldown"].Done())
+            {
+                UseSkill();
+            }
+
             if (currentState == AIState::Moving)
             {
                 Move(MoveDirection, dt);
@@ -87,7 +109,7 @@ namespace fz {
                     Jump();
                 }
             }
-            else
+            else if (currentState == AIState::Idle)
             {
                 Idle();
             }
@@ -96,11 +118,15 @@ namespace fz {
 
         void Idle() override
         {
+            if (currentState == AIState::CastingSkill) // 스킬 중에는 Idle 실행 방지
+                return;
             animator.Play(&clips["idle"]);
         }
 
         void Move(Directions dir, float dt) 
         {
+            if (currentState == AIState::CastingSkill) // 스킬 중에는 이동 실행 방지
+                return;
             fz::Transform& transform = GetComponent<TransformComponent>();
           
             if (dir == Directions::RIGHT)
@@ -134,7 +160,20 @@ namespace fz {
         {
             animator.Play(&clips["die"]);
         }
+        void UseSkill()
+        {
+            if (!timer["SkillCooldown"].Done() || currentState == AIState::CastingSkill)
+                return; // 쿨다운 중이면 실행하지 않음
 
+            currentState = AIState::CastingSkill;
+
+            animator.Play(&clips["skill1"]);
+            animator2.Play(&clips2["skilleffect1"]);
+
+            timer["SkillDuration"].Start(3.0f);
+            // 3. 쿨다운 타이머 초기화
+            timer["SkillCooldown"].Start(5.0f); // 5초 쿨타임
+        }
     private:
         Directions MoveDirection = Directions::RIGHT;
 

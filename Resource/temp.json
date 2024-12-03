@@ -26,7 +26,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1574.0,
-                    868.0
+                    737.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -823,7 +823,168 @@
                 }
             },
             "62067b21-825e-46bb-b1e4-e728e5fa1025": {
-                "HasChild": false,
+                "00d37eaf-8d76-4661-90af-8e2083eae15c": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "INT"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "17506eb8-426d-4093-aeea-a1a5538d6268": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "STR"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "2ab9c7e5-a352-4fec-b1ca-03cfeacdd525": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "HP"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "499c7388-881f-472d-8619-a25b6d83d6fa": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Guild"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "5dfa0c19-9731-425d-bdb6-00fdd971f776": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "MP"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "78272598-8ff2-4225-a495-5dc54cbf93f6": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "DEX"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "9c54dc93-b20d-4701-b9a4-82eb1fa82b52": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Level"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "HasChild": true,
                 "RootEntity": false,
                 "SpriteComponent": {
                     "Color": {
@@ -866,46 +1027,6 @@
                     "Active": true,
                     "Tag": "StatWindow"
                 },
-                "TextComponent": {
-                    "CharacterSize": 30,
-                    "Color": [
-                        255,
-                        255,
-                        255,
-                        255
-                    ],
-                    "FillColor": [
-                        255,
-                        255,
-                        255,
-                        255
-                    ],
-                    "FontPath": "fonts\\opensans\\OpenSans_Condensed-Bold.ttf",
-                    "LetterSpacing": 1.0,
-                    "LineSpacing": 1.0,
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "OutlineColor": [
-                        0,
-                        0,
-                        0,
-                        255
-                    ],
-                    "OutlineThickness": 0.0,
-                    "Position": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "SortingOrder": 106,
-                    "String": ""
-                },
                 "TransformComponent": {
                     "Origin": [
                         0.0,
@@ -920,6 +1041,161 @@
                         0.0,
                         -500.0
                     ]
+                },
+                "a1c381a9-1100-434e-a943-18adf568fc9b": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Class"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "b45370f2-3b83-4b8f-8472-1c97c4d323eb": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Name"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 46,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans_Condensed-Bold.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "c2af412b-4941-4a3d-a41b-e8478c8024fe": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Popularity"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "f7501c66-69b9-4bf6-8ff7-0777eac9cf6a": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "LUK"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "fbbd3dc0-ff44-49eb-a893-fbe12a8a18b7": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Experience"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    }
                 }
             },
             "6ea0b68b-9620-453a-986f-cac3050541be": {

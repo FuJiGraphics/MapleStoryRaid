@@ -209,6 +209,8 @@ namespace fz {
 
 	public:
 		void SetTrigger(bool enabled);
+		sf::Vector2f GetStartPos() const { return StartPos; }
+		sf::Vector2f GetEndPos() const { return EndPos; }
 
 		EdgeCollider2DComponent() = default;
 		EdgeCollider2DComponent(const EdgeCollider2DComponent& other) = default;

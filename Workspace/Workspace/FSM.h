@@ -25,6 +25,8 @@ namespace fz {
 		virtual void Skill2() {}
 		virtual void Skill3() {}
 		virtual void Skill4() {}
+
+		virtual void Spawn() {}
 	};
 
 	class CharacterFSM

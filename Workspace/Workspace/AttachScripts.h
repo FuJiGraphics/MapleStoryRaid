@@ -26,8 +26,7 @@
 #include "Fireboar.h"
 #include "Ironhog.h"
 #include "Mushmom.h"
-#include "Eregos.h"
-
+#include "Balrog.h"
 
 namespace fz {
 
@@ -53,7 +52,7 @@ namespace fz {
 		BIND_SCRIPT("Spoa", SpoaScript);
 		BIND_SCRIPT("Stump", StumpScript);
 		BIND_SCRIPT("Mushmom", MushmomScript);
-		BIND_SCRIPT("Eregos", EregosScript);
+		BIND_SCRIPT("balrog", BalrogScript);
 	}
 
 } // namespace fz
