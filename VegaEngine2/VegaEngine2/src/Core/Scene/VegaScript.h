@@ -56,6 +56,11 @@ namespace fz {
 			return m_Entity.GetWorldPosition();
 		}
 
+		sf::Transform GetWorldTransform()
+		{
+			return m_Entity.GetWorldTransform();
+		}
+
 		Weak<Scene>& GetCurrentScene()
 		{
 			return m_Entity.GetCurrentScene();

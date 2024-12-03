@@ -715,18 +715,31 @@ namespace fz {
 		if (mainCamera)
 		{
 			Renderer2D::BeginScene(*mainCamera, m_FrameBuffer);
-
-			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteComponent, TagComponent>);
-			for (auto handle : group)
+			// 스프라이트 렌더링
 			{
-				fz:Entity entity = { handle, shared_from_this() };
-				const auto& [transform, sprite, tag] = group.get<TransformComponent, SpriteComponent, TagComponent>(handle);
-				if (tag.Active == false)
-					continue; // ** 비활성화시 로직 생략
+				auto entities = GetEntities<TagComponent, TransformComponent, SpriteComponent>();
+				for (auto handle : entities)
+				{
+					Entity entity = { handle, shared_from_this() };
+					const auto& [tag, transform, Sprite] = entities.get<TagComponent, TransformComponent, SpriteComponent>(handle);
+					if (tag.Active == false)
+						continue; // ** 비활성화시 로직 생략
 
-				Renderer2D::Draw(sprite.SortingOrder, sprite, entity.GetWorldTransform(), transform.AnimTransform);
+					Renderer2D::Draw(Sprite.SortingOrder, Sprite, entity.GetWorldTransform(), transform.AnimTransform);
+				}
 			}
-
+			// Text 렌더링
+			{
+				auto entities = GetEntities<TagComponent, TransformComponent, TextComponent>();
+				for (auto handle : entities)
+				{
+					Entity entity = { handle, shared_from_this() };
+					const auto& [tag, transform, text] = entities.get<TagComponent, TransformComponent, TextComponent>(handle);
+					if (tag.Active == false)
+						continue; // ** 비활성화시 로직 생략
+					Renderer2D::Draw(text.SortingOrder, text.Text, entity.GetWorldTransform(), transform.AnimTransform);
+				}
+			}
 			// Debug Display Mode
 			OnDrawDebugShape();
 			Renderer2D::EndScene();

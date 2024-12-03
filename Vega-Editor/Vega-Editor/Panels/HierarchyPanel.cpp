@@ -336,15 +336,20 @@ namespace fz {
 					{
 						textComp.SortingOrder = sortingOrder;
 					}
-					VegaUI::OpenFontFile(FRAMEWORK.GetWindow().GetHandle(), textComp.FontPath);
+					if (VegaUI::OpenFontFile(FRAMEWORK.GetWindow().GetHandle(), textComp.FontPath))
+					{
+						FONT_MGR.Load(textComp.FontPath);
+						textComp.Text.setFont(FONT_MGR.Get(textComp.FontPath));
+					}
 					std::string str = textComp.Text.getString();
 					if (VegaUI::InputText("Input Text", str))
 					{
 						textComp.Text.setString(str);
 					}
 					int size = textComp.Text.getCharacterSize();
-					if (VegaUI::DrawControl1("Character Size", "Reset", size))
+					if (VegaUI::DrawControl1("Character Size", "Reset", size, 1, 1, 0, 1))
 					{
+						size = Utils::Clamp(size, 1, size);
 						textComp.Text.setCharacterSize(size);
 					}
 					sf::Color color = textComp.Text.getColor();

@@ -5,6 +5,7 @@
 // UI
 #include "UI/UI.hpp"
 #include "UI/CashShop.hpp"
+#include "UI/StatWindow.hpp"
 
 // Effects
 #include "Skill/BasicAttack.hpp"
@@ -34,6 +35,7 @@ namespace fz {
 	{
 		BIND_SCRIPT("UI", UIScript);
 		BIND_SCRIPT("CashShop", CashShopScript);
+		BIND_SCRIPT("StatWindow", StatWindowScript);
 
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);

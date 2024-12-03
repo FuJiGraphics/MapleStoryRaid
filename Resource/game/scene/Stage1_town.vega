@@ -830,6 +830,46 @@
                         "Active": true,
                         "Tag": "INT"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "50"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -841,8 +881,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            103.0
                         ]
                     }
                 },
@@ -853,6 +893,46 @@
                         "Active": true,
                         "Tag": "STR"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "50"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -864,8 +944,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            67.0
                         ]
                     }
                 },
@@ -876,6 +956,46 @@
                         "Active": true,
                         "Tag": "HP"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -887,8 +1007,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -63.0
                         ]
                     }
                 },
@@ -899,6 +1019,46 @@
                         "Active": true,
                         "Tag": "Guild"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -910,8 +1070,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -81.0
                         ]
                     }
                 },
@@ -922,6 +1082,46 @@
                         "Active": true,
                         "Tag": "MP"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -933,8 +1133,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -45.0
                         ]
                     }
                 },
@@ -945,8 +1145,35 @@
                         "Active": true,
                         "Tag": "DEX"
                     },
-                    "TransformComponent": {
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
                         "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
                             0.0,
                             0.0
                         ],
@@ -955,18 +1182,8 @@
                             1.0,
                             1.0
                         ],
-                        "Translate": [
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                "9c54dc93-b20d-4701-b9a4-82eb1fa82b52": {
-                    "HasChild": false,
-                    "RootEntity": false,
-                    "TagComponent": {
-                        "Active": true,
-                        "Tag": "Level"
+                        "SortingOrder": 110,
+                        "String": "50"
                     },
                     "TransformComponent": {
                         "Origin": [
@@ -979,8 +1196,71 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            85.0
+                        ]
+                    }
+                },
+                "9c54dc93-b20d-4701-b9a4-82eb1fa82b52": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Level"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -28.0,
+                            -99.0
                         ]
                     }
                 },
@@ -1038,8 +1318,8 @@
                         1.0
                     ],
                     "Translate": [
-                        0.0,
-                        -500.0
+                        156.0,
+                        -451.0
                     ]
                 },
                 "a1c381a9-1100-434e-a943-18adf568fc9b": {
@@ -1049,31 +1329,8 @@
                         "Active": true,
                         "Tag": "Class"
                     },
-                    "TransformComponent": {
-                        "Origin": [
-                            0.0,
-                            0.0
-                        ],
-                        "Rotation": 0.0,
-                        "Scale": [
-                            1.0,
-                            1.0
-                        ],
-                        "Translate": [
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                "b45370f2-3b83-4b8f-8472-1c97c4d323eb": {
-                    "HasChild": false,
-                    "RootEntity": false,
-                    "TagComponent": {
-                        "Active": true,
-                        "Tag": "Name"
-                    },
                     "TextComponent": {
-                        "CharacterSize": 46,
+                        "CharacterSize": 11,
                         "Color": [
                             0,
                             0,
@@ -1086,7 +1343,7 @@
                             0,
                             255
                         ],
-                        "FontPath": "fonts\\opensans\\OpenSans_Condensed-Bold.ttf",
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
                         "LetterSpacing": 1.0,
                         "LineSpacing": 1.0,
                         "Origin": [
@@ -1123,8 +1380,71 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            -117.0
+                        ]
+                    }
+                },
+                "b45370f2-3b83-4b8f-8472-1c97c4d323eb": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Name"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "NAME"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -28.0,
+                            -135.0
                         ]
                     }
                 },
@@ -1135,6 +1455,46 @@
                         "Active": true,
                         "Tag": "Popularity"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -1146,8 +1506,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -9.0
                         ]
                     }
                 },
@@ -1158,8 +1518,35 @@
                         "Active": true,
                         "Tag": "LUK"
                     },
-                    "TransformComponent": {
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
                         "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
                             0.0,
                             0.0
                         ],
@@ -1168,18 +1555,8 @@
                             1.0,
                             1.0
                         ],
-                        "Translate": [
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                "fbbd3dc0-ff44-49eb-a893-fbe12a8a18b7": {
-                    "HasChild": false,
-                    "RootEntity": false,
-                    "TagComponent": {
-                        "Active": true,
-                        "Tag": "Experience"
+                        "SortingOrder": 110,
+                        "String": "100"
                     },
                     "TransformComponent": {
                         "Origin": [
@@ -1192,8 +1569,71 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            121.0
+                        ]
+                    }
+                },
+                "fbbd3dc0-ff44-49eb-a893-fbe12a8a18b7": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Experience"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -28.0,
+                            -27.0
                         ]
                     }
                 }
