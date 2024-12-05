@@ -149,6 +149,12 @@ namespace fz {
 		return sf::Mouse::isButtonPressed((sf::Mouse::Button)button);
 	}
 
+	bool InputManager::IsMouseButtonReleasedImpl(MouseButtonType button)
+	{
+		FZLOG_ASSERT(false, "¹Ì±¸Çö");
+		return false;
+	}
+
 	sf::Vector2f InputManager::GetMousePositionImpl()
 	{
 		sf::Vector2i mousePos;

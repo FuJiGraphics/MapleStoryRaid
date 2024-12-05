@@ -5,7 +5,9 @@ namespace fz {
 
 	enum class Directions
 	{
-		LEFT, RIGHT
+		NONE, 
+		LEFT, RIGHT, 
+		UP, DOWN
 	};
 
 	class MonsterFSM

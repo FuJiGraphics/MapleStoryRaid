@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1574.0,
-                    737.0
+                    1533.0,
+                    868.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -142,30 +142,7 @@
             }
         },
         "aede658d-5753-46ac-9570-f360e921f0ac": {
-            "175a7fb5-6ccc-471a-9f9c-5d5a02721daa": {
-                "HasChild": false,
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Hair"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        27.0,
-                        0.0
-                    ]
-                }
-            },
-            "29df05cf-a4e8-4862-a381-e94d33499808": {
+            "8a2a0deb-2c63-4d93-8488-2d1a0f6d6727": {
                 "HasChild": false,
                 "RootEntity": false,
                 "SpriteComponent": {
@@ -183,68 +160,8 @@
                     },
                     "MaskMode": false,
                     "Origin": [
-                        7.0,
-                        7.5
-                    ],
-                    "Origins": "MC",
-                    "Position": [
-                        0.0,
-                        -1.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "SortingOrder": 5,
-                    "TexPath": "game\\graphics\\player\\hand\\idle.png",
-                    "TexRect": {
-                        "Height": 15,
-                        "Left": 261,
-                        "Top": 32,
-                        "Width": 14
-                    }
-                },
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Hand"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        10.5,
-                        11.0
-                    ]
-                }
-            },
-            "3d788e6f-ad7b-401d-aa3b-13af06d94b86": {
-                "HasChild": false,
-                "RootEntity": false,
-                "SpriteComponent": {
-                    "Color": {
-                        "A": 255,
-                        "B": 255,
-                        "G": 255,
-                        "R": 255
-                    },
-                    "MaskColor": {
-                        "A": 255,
-                        "B": 0,
-                        "G": 0,
-                        "R": 0
-                    },
-                    "MaskMode": false,
-                    "Origin": [
-                        13.0,
-                        8.0
+                        29.0,
+                        36.5
                     ],
                     "Origins": "MC",
                     "Position": [
@@ -257,137 +174,17 @@
                         1.0
                     ],
                     "SortingOrder": 4,
-                    "TexPath": "game\\graphics\\player\\face\\face1\\idle.png",
+                    "TexPath": "game\\graphics\\player\\Hero\\default\\idle.png",
                     "TexRect": {
-                        "Height": 16,
-                        "Left": 0,
-                        "Top": 0,
-                        "Width": 26
+                        "Height": 73,
+                        "Left": 1,
+                        "Top": 1,
+                        "Width": 58
                     }
                 },
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Face"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        -4.5,
-                        -10.5
-                    ]
-                }
-            },
-            "4b4aeede-cf52-4681-b418-0c1914f6a8cb": {
-                "HasChild": false,
-                "RootEntity": false,
-                "SpriteComponent": {
-                    "Color": {
-                        "A": 255,
-                        "B": 255,
-                        "G": 255,
-                        "R": 255
-                    },
-                    "MaskColor": {
-                        "A": 255,
-                        "B": 0,
-                        "G": 0,
-                        "R": 0
-                    },
-                    "MaskMode": false,
-                    "Origin": [
-                        20.5,
-                        6.5
-                    ],
-                    "Origins": "MC",
-                    "Position": [
-                        4.5,
-                        -6.5
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "SortingOrder": 4,
-                    "TexPath": "game\\graphics\\player\\weapon\\basic_sword\\idle.png",
-                    "TexRect": {
-                        "Height": 13,
-                        "Left": 2,
-                        "Top": 2,
-                        "Width": 41
-                    }
-                },
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Weapon"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        -3.0,
-                        19.0
-                    ]
-                }
-            },
-            "52d30285-ed74-4c89-a26b-5040f7932c18": {
-                "HasChild": false,
-                "RootEntity": false,
-                "SpriteComponent": {
-                    "Color": {
-                        "A": 255,
-                        "B": 255,
-                        "G": 255,
-                        "R": 255
-                    },
-                    "MaskColor": {
-                        "A": 255,
-                        "B": 0,
-                        "G": 0,
-                        "R": 0
-                    },
-                    "MaskMode": false,
-                    "Origin": [
-                        21.5,
-                        35.0
-                    ],
-                    "Origins": "MC",
-                    "Position": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "SortingOrder": 3,
-                    "TexPath": "game\\graphics\\player\\body\\idle.png",
-                    "TexRect": {
-                        "Height": 70,
-                        "Left": 0,
-                        "Top": 0,
-                        "Width": 43
-                    }
-                },
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Body"
+                    "Tag": "PlayerDefault"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -417,7 +214,7 @@
                 "RestitutionThreshold": 0.5,
                 "Size": {
                     "X": 18.75,
-                    "Y": 31.200000762939453
+                    "Y": 31.5
                 }
             },
             "HasChild": true,
@@ -441,69 +238,9 @@
                     1.0
                 ],
                 "Translate": [
-                    859.0889892578125,
-                    595.2999877929688
+                    2074.089111328125,
+                    437.29998779296875
                 ]
-            },
-            "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
-                "HasChild": false,
-                "RootEntity": false,
-                "SpriteComponent": {
-                    "Color": {
-                        "A": 255,
-                        "B": 255,
-                        "G": 255,
-                        "R": 255
-                    },
-                    "MaskColor": {
-                        "A": 255,
-                        "B": 0,
-                        "G": 0,
-                        "R": 0
-                    },
-                    "MaskMode": false,
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Origins": "MC",
-                    "Position": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "SortingOrder": 3,
-                    "TexPath": "",
-                    "TexRect": {
-                        "Height": 0,
-                        "Left": 0,
-                        "Top": 0,
-                        "Width": 0
-                    }
-                },
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Shoes"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        0.0,
-                        0.0
-                    ]
-                }
             }
         },
         "d1878583-1f7a-4533-8f8c-b0c3bbab2633": {
@@ -830,6 +567,46 @@
                         "Active": true,
                         "Tag": "INT"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "50"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -841,8 +618,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            103.0
                         ]
                     }
                 },
@@ -853,6 +630,46 @@
                         "Active": true,
                         "Tag": "STR"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "50"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -864,8 +681,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            67.0
                         ]
                     }
                 },
@@ -876,6 +693,46 @@
                         "Active": true,
                         "Tag": "HP"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -887,8 +744,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -63.0
                         ]
                     }
                 },
@@ -899,6 +756,46 @@
                         "Active": true,
                         "Tag": "Guild"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -910,8 +807,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -81.0
                         ]
                     }
                 },
@@ -922,6 +819,46 @@
                         "Active": true,
                         "Tag": "MP"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -933,8 +870,8 @@
                             1.0
                         ],
                         "Translate": [
-                            0.0,
-                            0.0
+                            -28.0,
+                            -45.0
                         ]
                     }
                 },
@@ -945,8 +882,35 @@
                         "Active": true,
                         "Tag": "DEX"
                     },
-                    "TransformComponent": {
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
                         "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
                             0.0,
                             0.0
                         ],
@@ -955,18 +919,8 @@
                             1.0,
                             1.0
                         ],
-                        "Translate": [
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                "9c54dc93-b20d-4701-b9a4-82eb1fa82b52": {
-                    "HasChild": false,
-                    "RootEntity": false,
-                    "TagComponent": {
-                        "Active": true,
-                        "Tag": "Level"
+                        "SortingOrder": 110,
+                        "String": "50"
                     },
                     "TransformComponent": {
                         "Origin": [
@@ -979,9 +933,150 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            85.0
+                        ]
+                    }
+                },
+                "7ee9ea06-71cc-4db6-a449-3b309308a60e": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "AbilityPoint"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "0"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -22.0,
+                            37.0
                         ]
+                    }
+                },
+                "9c54dc93-b20d-4701-b9a4-82eb1fa82b52": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Level"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -28.0,
+                            -99.0
+                        ]
+                    }
+                },
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 86.0,
+                        "Y": 167.25
                     }
                 },
                 "HasChild": true,
@@ -1039,7 +1134,7 @@
                     ],
                     "Translate": [
                         0.0,
-                        -500.0
+                        -350.0
                     ]
                 },
                 "a1c381a9-1100-434e-a943-18adf568fc9b": {
@@ -1049,31 +1144,8 @@
                         "Active": true,
                         "Tag": "Class"
                     },
-                    "TransformComponent": {
-                        "Origin": [
-                            0.0,
-                            0.0
-                        ],
-                        "Rotation": 0.0,
-                        "Scale": [
-                            1.0,
-                            1.0
-                        ],
-                        "Translate": [
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                "b45370f2-3b83-4b8f-8472-1c97c4d323eb": {
-                    "HasChild": false,
-                    "RootEntity": false,
-                    "TagComponent": {
-                        "Active": true,
-                        "Tag": "Name"
-                    },
                     "TextComponent": {
-                        "CharacterSize": 46,
+                        "CharacterSize": 11,
                         "Color": [
                             0,
                             0,
@@ -1086,7 +1158,7 @@
                             0,
                             255
                         ],
-                        "FontPath": "fonts\\opensans\\OpenSans_Condensed-Bold.ttf",
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
                         "LetterSpacing": 1.0,
                         "LineSpacing": 1.0,
                         "Origin": [
@@ -1123,8 +1195,71 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            -117.0
+                        ]
+                    }
+                },
+                "b45370f2-3b83-4b8f-8472-1c97c4d323eb": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Name"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "NAME"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -28.0,
+                            -135.0
                         ]
                     }
                 },
@@ -1135,6 +1270,46 @@
                         "Active": true,
                         "Tag": "Popularity"
                     },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
                     "TransformComponent": {
                         "Origin": [
                             0.0,
@@ -1146,8 +1321,46 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            -9.0
+                        ]
+                    }
+                },
+                "f26ad122-7a44-4776-a0ab-882e32e224cb": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": true,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 6.0,
+                            "Y": 5.699999809265137
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "StatWindowExit"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            74.0,
+                            -157.0
                         ]
                     }
                 },
@@ -1158,8 +1371,35 @@
                         "Active": true,
                         "Tag": "LUK"
                     },
-                    "TransformComponent": {
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
                         "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
                             0.0,
                             0.0
                         ],
@@ -1168,18 +1408,8 @@
                             1.0,
                             1.0
                         ],
-                        "Translate": [
-                            0.0,
-                            0.0
-                        ]
-                    }
-                },
-                "fbbd3dc0-ff44-49eb-a893-fbe12a8a18b7": {
-                    "HasChild": false,
-                    "RootEntity": false,
-                    "TagComponent": {
-                        "Active": true,
-                        "Tag": "Experience"
+                        "SortingOrder": 110,
+                        "String": "100"
                     },
                     "TransformComponent": {
                         "Origin": [
@@ -1192,8 +1422,71 @@
                             1.0
                         ],
                         "Translate": [
+                            -28.0,
+                            121.0
+                        ]
+                    }
+                },
+                "fbbd3dc0-ff44-49eb-a893-fbe12a8a18b7": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "Experience"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
                             0.0,
                             0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "TEST"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -28.0,
+                            -27.0
                         ]
                     }
                 }
@@ -1332,6 +1625,21 @@
                 ]
             },
             "a24e57f7-d210-4540-9ef3-53d98782a075": {
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 13.5,
+                        "Y": 9.0
+                    }
+                },
                 "HasChild": false,
                 "RootEntity": false,
                 "SpriteComponent": {
@@ -1373,7 +1681,7 @@
                 },
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Stat"
+                    "Tag": "StatUI"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1583,8 +1891,8 @@
                     "Restitution": 0.0,
                     "RestitutionThreshold": 0.5,
                     "Size": {
-                        "X": 21.0,
-                        "Y": 15.0
+                        "X": 13.0,
+                        "Y": 9.199999809265137
                     }
                 },
                 "HasChild": false,
@@ -1748,7 +2056,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line6"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1791,7 +2099,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line8"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1834,7 +2142,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line7"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1877,7 +2185,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line9"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1920,7 +2228,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line3"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1963,7 +2271,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line12"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1978,6 +2286,49 @@
                     "Translate": [
                         2138.0,
                         314.0
+                    ]
+                }
+            },
+            "41d98eec-8ed7-40f8-b81d-d3f23e1f4e31": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 215.8000030517578,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": true,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Rope"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2160.0,
+                        267.0
                     ]
                 }
             },
@@ -2006,7 +2357,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line13"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2021,6 +2372,48 @@
                     "Translate": [
                         2138.0,
                         255.0
+                    ]
+                }
+            },
+            "8f6e02f1-7466-49ae-9d36-8cc91ad31222": {
+                "BoxCollider2DComponent": {
+                    "Density": 0.0,
+                    "Friction": 0.0,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 22.0,
+                        "Y": 120.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ladder"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1189.0,
+                        429.0
                     ]
                 }
             },
@@ -2049,7 +2442,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line5"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2092,7 +2485,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line10"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2135,7 +2528,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line1"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2236,7 +2629,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line11"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2279,7 +2672,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line2"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2365,7 +2758,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line4"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [

@@ -3,6 +3,9 @@
 
 namespace fz {
 
+	struct ChildEntityComponent;
+	class Entity;
+
 	class Utils
 	{
 	public:
@@ -44,6 +47,9 @@ namespace fz {
 		static sf::Vector2f MeterToPixel(const b2Vec2& vec);
 
 		static bool IsEqual(float a, float b);
+
+		static void SetChildTagsToMap(std::unordered_map<std::string, fz::Entity>& map, ChildEntityComponent& childComp);
+		static void AddTagToMap(std::unordered_map<std::string, fz::Entity>& map, fz::Entity entity);
 	};
 
 } // namespace fz

@@ -2,7 +2,7 @@
 #include "VegaUI.h"
 
 namespace fz {
-	bool VegaUI::DrawControl1(const std::string& label, const std::string& buttonLabel, int& v, int speed_x, int x_min, float x_max, int resetValue, float columnWidth)
+	bool VegaUI::DrawControl1(const std::string& label, const std::string& buttonLabel, int& v, int speed_x, int x_min, int x_max, int resetValue, float columnWidth)
 	{
 		bool result = false;
 		ImGui::PushID(label.c_str());

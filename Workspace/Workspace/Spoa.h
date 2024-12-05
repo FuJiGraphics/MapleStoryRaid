@@ -35,8 +35,7 @@ namespace fz {
             stat = &AddComponent<StatComponent>();
             stat->Stat.HP = 200;
             stat->Stat.MP = 0;
-            stat->Stat.AD = 10;
-            stat->Stat.AP = 0;
+            stat->Stat.ApplySTR(1);
 
             transform = &GetComponent<TransformComponent>();
             body = &GetComponent<RigidbodyComponent>();
@@ -179,11 +178,9 @@ namespace fz {
             animator.Play(&clips["die"]);
             currentState = AIState::Die;
             timer["Die"].Start(0.5f);
-            stat->Stat.IsDead = true;
 
             spawnCount--;
             Spawn();
-
         }
 
         void Knockback(Directions dir)
@@ -206,7 +203,7 @@ namespace fz {
                 targetTransform = &collision.gameObject.GetComponent<TransformComponent>();
 
                 const auto& stat = collision.gameObject.GetComponent<StatComponent>();
-                Damaged(stat.Stat.AD);
+                Damaged(stat.Stat.AttackPower);
             }
         }
         void FollowTarget(float dt)

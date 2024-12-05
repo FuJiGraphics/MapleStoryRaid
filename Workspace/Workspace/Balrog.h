@@ -31,9 +31,8 @@ namespace fz {
         {
             stat = &AddComponent<StatComponent>();
             stat->Stat.HP = 200;
-            stat->Stat.MP = 0;
-            stat->Stat.AD = 10;
-            stat->Stat.AP = 0;
+			stat->Stat.MP = 0;
+			stat->Stat.ApplySTR(1);
             transform = &GetComponent<TransformComponent>();
             body = &GetComponent<RigidbodyComponent>();
 

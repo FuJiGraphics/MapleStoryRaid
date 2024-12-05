@@ -74,6 +74,7 @@ namespace fz {
 		static bool IsKeyReleasedImpl(KeyType keycode);
 		static bool IsKeyDownImpl(KeyType keycode);
 		static bool IsMouseButtonPressedImpl(MouseButtonType button);
+		static bool IsMouseButtonReleasedImpl(MouseButtonType button);
 		static sf::Vector2f GetMousePositionImpl();
 		static bool Contains(const std::list<int>& list, int code);
 		static void SetEditorMode(bool enabled);

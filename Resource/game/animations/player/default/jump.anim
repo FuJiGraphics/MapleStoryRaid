@@ -1,0 +1,56 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                51,
+                85
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                54,
+                1,
+                51,
+                85
+            ]
+        },
+        "ClipName": "jump",
+        "FrameCount": 2,
+        "LoopType": "PingPong",
+        "Speed": 1.0,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\jump.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                -3.0,
+                -12.0
+            ]
+        }
+    }
+}

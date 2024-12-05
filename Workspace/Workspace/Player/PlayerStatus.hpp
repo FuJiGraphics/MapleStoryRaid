@@ -5,9 +5,24 @@ namespace fz {
 
 	enum class PlayerStatus
 	{
-		Idle, Move, Jump, 
-		Attack1, Attack2, Attack3,
-		Damaged, Die
+		Idle,
+		Move,
+		Jump,
+		Alert,
+		Rope,
+		Ladder,
+		Prone,
+		ProneAttack,
+		DashStingAttack,
+		StingAttack1,
+		StingAttack2,
+		SwingAttack1,
+		SwingAttack2,
+		SwingAttack3,
+		SwingAttack4,
+		Damaged, 
+		Die,
+		Stop,
 	};
 
 	struct PlayerStatusComponent

@@ -1,0 +1,15 @@
+alert.anim
+attack_dash_sting.anim
+attack_sting1.anim
+attack_sting2.anim
+attack_swing1.anim
+attack_swing2.anim
+attack_swing3.anim
+attack_swing4.anim
+idle.anim
+jump.anim
+ladder.anim
+prone.anim
+prone_attack.anim
+rope.anim
+walk.anim

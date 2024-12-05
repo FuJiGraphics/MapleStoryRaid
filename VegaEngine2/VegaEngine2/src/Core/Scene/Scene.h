@@ -64,6 +64,12 @@ namespace fz {
 			return m_Registry.view<Components...>();
 		}
 
+		template <typename... Components>
+		auto GetEntities() const
+		{
+			return m_Registry.view<Components...>();
+		}
+
 	protected:
 		Entity CreateEntity(const std::string& tagName = "");
 		void DeleteEntity(fz::Entity& entity);

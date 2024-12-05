@@ -30,6 +30,12 @@ namespace fz {
 		}
 
 		template <typename T>
+		const T& GetComponent() const
+		{
+			return m_Entity.GetComponent<T>();
+		}
+
+		template <typename T>
 		bool HasComponent()
 		{
 			return m_Entity.HasComponent<T>();
@@ -41,9 +47,19 @@ namespace fz {
 			return m_Entity.AddComponent<T>();
 		}
 		
+		void SetActive(bool enabled)
+		{
+			m_Entity.SetActive(enabled);
+		}
+
 		void SetColorWithChilds(const sf::Color& color)
 		{
 			m_Entity.SetColorWithChilds(color);
+		}
+
+		GameObject GetRootEntity()
+		{
+			return m_Entity.GetRootParent();
 		}
 
 		fz::Entity& GetCurrentEntity()
@@ -54,6 +70,11 @@ namespace fz {
 		sf::Vector2f GetWorldPosition()
 		{
 			return m_Entity.GetWorldPosition();
+		}
+
+		sf::Transform GetWorldTransform()
+		{
+			return m_Entity.GetWorldTransform();
 		}
 
 		Weak<Scene>& GetCurrentScene()

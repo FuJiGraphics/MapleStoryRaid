@@ -145,7 +145,7 @@ namespace fz {
 
         void Jump() override
         {
-            if (body->IsOnGround({ 0.0f, 2.0f }))
+            if (body->IsOnGround())
             {
                 body->AddPosition({ 0.0f, JumpPower });
             }

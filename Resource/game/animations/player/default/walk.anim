@@ -1,0 +1,92 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                -11.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                79,
+                1,
+                76,
+                72
+            ]
+        },
+        "1": {
+            "Border": [
+                0.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                79,
+                71
+            ]
+        },
+        "2": {
+            "Border": [
+                -1.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                160,
+                1,
+                76,
+                72
+            ]
+        },
+        "3": {
+            "Border": [
+                1.0,
+                0.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                238,
+                1,
+                76,
+                71
+            ]
+        },
+        "ClipName": "walk",
+        "FrameCount": 4,
+        "LoopType": "PingPong",
+        "Speed": 1.0,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\walk.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                -10.0,
+                0.0
+            ]
+        }
+    }
+}

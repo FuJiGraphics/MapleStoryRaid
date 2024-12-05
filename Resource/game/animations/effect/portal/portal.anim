@@ -147,6 +147,7 @@
         "ClipName": "Portal",
         "FrameCount": 8,
         "LoopType": "Loop",
+        "Speed": null,
         "TexturePath": "game\\graphics\\effect\\portal\\portal.png",
         "Transform": {
             "Rotation": 0.0,

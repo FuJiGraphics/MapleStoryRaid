@@ -153,10 +153,10 @@ namespace fz {
 		void SetLinearVelocity(const sf::Vector2f& velocity);
 		sf::Vector2f GetLinearVelocity() const;
 
-		bool IsOnGround(const sf::Vector2f& rayDir = {0.0f, 0.3f});
-		bool IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal);
-		bool IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos);
-		bool IsOnGround(const sf::Vector2f& rayDir, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction);
+		bool IsOnGround(float rayLen = 0.45f);
+		bool IsOnGround(float rayLen, sf::Vector2f& normal);
+		bool IsOnGround(float rayLen, sf::Vector2f& normal, sf::Vector2f& pos);
+		bool IsOnGround(float rayLen, sf::Vector2f& normal, sf::Vector2f& pos, float& fraction);
 
 		RigidbodyComponent() = default;
 		RigidbodyComponent(const RigidbodyComponent& other) = default;
@@ -182,7 +182,9 @@ namespace fz {
 
 	public:
 		void SetTrigger(bool enabled);
-		sf::Vector2f GetSize() const { return Size; }
+		sf::FloatRect GetGlobalBounds() const;
+		sf::Vector2f GetSize() const { return Size * 2.0f; }
+		sf::Vector2f GetHalfSize() const { return Size; }
 
 		BoxCollider2DComponent() = default;
 		BoxCollider2DComponent(const BoxCollider2DComponent& other) = default;

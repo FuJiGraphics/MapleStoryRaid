@@ -5,6 +5,9 @@
 // UI
 #include "UI/UI.hpp"
 #include "UI/CashShop.hpp"
+#include "UI/StatUI.hpp"
+#include "UI/StatWindow.hpp"
+#include "UI/StatWindowExit.hpp"
 
 // Effects
 #include "Skill/BasicAttack.hpp"
@@ -13,10 +16,7 @@
 #include "Portal/Portal1_2Left.hpp"
 // Player
 #include "Player/Player.hpp"
-#include "Player/PlayerFace.hpp"
-#include "Player/PlayerBody.hpp"
-#include "Player/PlayerHand.hpp"
-#include "Player/PlayerWeapon.hpp"
+#include "Player/PlayerDefault.hpp"
 
 // πŒ¿Á
 #include "RibbonPig.h"
@@ -34,16 +34,18 @@ namespace fz {
 	{
 		BIND_SCRIPT("UI", UIScript);
 		BIND_SCRIPT("CashShop", CashShopScript);
+		BIND_SCRIPT("StatUI", StatUIScript);
+		BIND_SCRIPT("StatWindow", StatWindowScript);
+		BIND_SCRIPT("StatWindowExit", StatWindowExitScript);
 
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);
 		BIND_SCRIPT("Portal1_2Left", Portal1_2Left_Script);
 		BIND_SCRIPT("Camera", CameraScript);
+
+		// Player
 		BIND_SCRIPT("Player", PlayerScript);
-		BIND_SCRIPT("Body", PlayerBodyScript);
-		BIND_SCRIPT("Hand", PlayerHandScript);
-		BIND_SCRIPT("Weapon", PlayerWeaponScript);
-		BIND_SCRIPT("Face", PlayerFaceScript);
+		BIND_SCRIPT("PlayerDefault", PlayerDefaultScript);
 
 		BIND_SCRIPT("Fireboar", FireboarScript);
 		BIND_SCRIPT("Ironhog", IronhogScript);

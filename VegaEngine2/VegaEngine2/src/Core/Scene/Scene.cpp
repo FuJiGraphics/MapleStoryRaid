@@ -205,7 +205,6 @@ namespace fz {
 				dstBoxComp.Restitution = srcBoxComp.Restitution;
 				dstBoxComp.RestitutionThreshold = srcBoxComp.RestitutionThreshold;
 			}
-			// TODO: 스크립트 복사
 			if (src.HasComponent<NativeScriptComponent>())
 			{
 				auto& srcNativeComp = src.GetComponent<NativeScriptComponent>();
@@ -217,7 +216,6 @@ namespace fz {
 				dstNativeComp.OnDestroyFunction = srcNativeComp.OnDestroyFunction;
 				dstNativeComp.OnUpdateFunction = srcNativeComp.OnUpdateFunction;
 			}
-
 			m_LoadPrefabInstanceList.push_back(dst);
 		}
 	}
@@ -268,6 +266,11 @@ namespace fz {
 					}
 				}
 			}
+		}
+		if (entity.HasComponent<NativeScriptComponent>())
+		{
+			auto& nativeComp = entity.GetComponent<NativeScriptComponent>();
+			nativeComp.OnDestroyFunction(nativeComp.Instance);
 		}
 		auto it = m_EntityPool.find(entity.m_UUID);
 		if (it != m_EntityPool.end())
@@ -320,7 +323,6 @@ namespace fz {
 		auto& rigidBodyComp = entity.GetComponent<RigidbodyComponent>();
 		auto& tagComp = entity.GetComponent<TagComponent>();
 		auto& transform = transformComp.Transform;
-		FZLOG_DEBUG("생성 {0}", tagComp.Tag);
 		const b2Vec2& meterPos = Utils::PixelToMeter(entity.GetWorldPosition());
 		b2Body* body = nullptr;
 		b2BodyDef bodyDef;
@@ -583,10 +585,7 @@ namespace fz {
 								nsc.Instance = nsc.CreateInstanceFunc();
 								if (!nsc.Instance->m_Entity)
 									nsc.Instance->m_Entity = { entity, shared_from_this() };
-								if (tag.Active)
-								{
-									nsc.OnCreateFunction(nsc.Instance);
-								}
+								nsc.OnCreateFunction(nsc.Instance);
 							}
 						});
 	}
@@ -715,18 +714,31 @@ namespace fz {
 		if (mainCamera)
 		{
 			Renderer2D::BeginScene(*mainCamera, m_FrameBuffer);
-
-			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteComponent, TagComponent>);
-			for (auto handle : group)
+			// 스프라이트 렌더링
 			{
-				fz:Entity entity = { handle, shared_from_this() };
-				const auto& [transform, sprite, tag] = group.get<TransformComponent, SpriteComponent, TagComponent>(handle);
-				if (tag.Active == false)
-					continue; // ** 비활성화시 로직 생략
+				auto entities = GetEntities<TagComponent, TransformComponent, SpriteComponent>();
+				for (auto handle : entities)
+				{
+					Entity entity = { handle, shared_from_this() };
+					const auto& [tag, transform, Sprite] = entities.get<TagComponent, TransformComponent, SpriteComponent>(handle);
+					if (tag.Active == false)
+						continue; // ** 비활성화시 로직 생략
 
-				Renderer2D::Draw(sprite.SortingOrder, sprite, entity.GetWorldTransform(), transform.AnimTransform);
+					Renderer2D::Draw(Sprite.SortingOrder, Sprite, entity.GetWorldTransform(), transform.AnimTransform);
+				}
 			}
-
+			// Text 렌더링
+			{
+				auto entities = GetEntities<TagComponent, TransformComponent, TextComponent>();
+				for (auto handle : entities)
+				{
+					Entity entity = { handle, shared_from_this() };
+					const auto& [tag, transform, text] = entities.get<TagComponent, TransformComponent, TextComponent>(handle);
+					if (tag.Active == false)
+						continue; // ** 비활성화시 로직 생략
+					Renderer2D::Draw(text.SortingOrder, text.Text, entity.GetWorldTransform(), transform.AnimTransform);
+				}
+			}
 			// Debug Display Mode
 			OnDrawDebugShape();
 			Renderer2D::EndScene();

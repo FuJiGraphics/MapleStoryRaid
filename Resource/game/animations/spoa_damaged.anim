@@ -21,6 +21,7 @@
         "ClipName": "None",
         "FrameCount": 1,
         "LoopType": "Loop",
+        "Speed": null,
         "TexturePath": "game\\graphics\\monster\\spoa.png",
         "Transform": {
             "Rotation": 0.0,

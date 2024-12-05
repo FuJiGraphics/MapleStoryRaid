@@ -1,0 +1,95 @@
+{
+	"frames": {
+		"swingTF_0.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 49,
+				"h": 103
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 49,
+				"h": 103
+			},
+			"sourceSize": {
+				"w": 49,
+				"h": 103
+			}
+		},
+		"swingTF_1.png": {
+			"frame": {
+				"x": 52,
+				"y": 1,
+				"w": 49,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 49,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 49,
+				"h": 102
+			}
+		},
+		"swingTF_2.png": {
+			"frame": {
+				"x": 103,
+				"y": 1,
+				"w": 74,
+				"h": 91
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 74,
+				"h": 91
+			},
+			"sourceSize": {
+				"w": 74,
+				"h": 91
+			}
+		},
+		"swingTF_3.png": {
+			"frame": {
+				"x": 179,
+				"y": 1,
+				"w": 103,
+				"h": 74
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 103,
+				"h": 74
+			},
+			"sourceSize": {
+				"w": 103,
+				"h": 74
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 283,
+			"h": 105
+		},
+		"scale": "1"
+	}
+}

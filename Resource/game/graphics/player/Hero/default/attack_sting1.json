@@ -1,0 +1,75 @@
+{
+	"frames": {
+		"stabO1_0.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 76,
+				"h": 69
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 76,
+				"h": 69
+			},
+			"sourceSize": {
+				"w": 76,
+				"h": 69
+			}
+		},
+		"stabO1_1.png": {
+			"frame": {
+				"x": 79,
+				"y": 1,
+				"w": 112,
+				"h": 66
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 112,
+				"h": 66
+			},
+			"sourceSize": {
+				"w": 112,
+				"h": 66
+			}
+		},
+		"stabO1_2.png": {
+			"frame": {
+				"x": 193,
+				"y": 1,
+				"w": 76,
+				"h": 69
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 76,
+				"h": 69
+			},
+			"sourceSize": {
+				"w": 76,
+				"h": 69
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 270,
+			"h": 71
+		},
+		"scale": "1"
+	}
+}

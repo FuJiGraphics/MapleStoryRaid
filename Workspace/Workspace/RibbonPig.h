@@ -123,7 +123,7 @@ namespace fz {
 			if (!timer["Knocback"].Done())
 				return;
 			// 바닥에 닿으면 점프 상태 해제
-			if (body->IsOnGround({ 0.0f, 0.4f }))
+			if (body->IsOnGround())
 			{
 				body->AddPosition({ 0.0f, JumpPower });
 			}

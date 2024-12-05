@@ -1,0 +1,74 @@
+{
+    "AnimationClip": {
+        "0": {
+            "Border": [
+                -3.0,
+                -13.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                1,
+                1,
+                49,
+                97
+            ]
+        },
+        "1": {
+            "Border": [
+                -16.0,
+                -8.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                52,
+                1,
+                56,
+                87
+            ]
+        },
+        "2": {
+            "Border": [
+                -27.0,
+                6.0
+            ],
+            "Color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "Rect": [
+                110,
+                1,
+                81,
+                70
+            ]
+        },
+        "ClipName": "attack_swing2",
+        "FrameCount": 3,
+        "LoopType": "Single",
+        "Speed": 1.0,
+        "TexturePath": "game\\graphics\\player\\Hero\\default\\attack_swing2.png",
+        "Transform": {
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                0.0,
+                0.0
+            ]
+        }
+    }
+}

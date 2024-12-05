@@ -12,8 +12,8 @@ namespace fz {
 	{
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
-		float JumpPower = -500.f;
-		float MoveSpeed = 500.f;
+		float LadderSpeed = 100.f;
+		float RopeSpeed = 100.f;
 
 		float KnockbackTime = 0.5f;
 		float AttackTime = 1.0f;
@@ -26,9 +26,18 @@ namespace fz {
 		StatComponent* Stat = nullptr;
 
 		bool isOnGround = false;
-
+		bool isOnLadder = false;
+		bool isOnRope = false;
 	
-		bool IsInsidePortal = false;
+		bool isInsideRope = false;
+		bool isInsideLadder = false;
+		bool isInsidePortal = false;
+
+		float currGroundPosY = 0.0f;
+
+		sf::FloatRect currLadderRect;
+		sf::Vector2f currRopeBounds[2];
+
 		GameObject TargetPortal;
 
 		Timer timer;
@@ -61,16 +70,54 @@ namespace fz {
 
 			timer.Update(dt);
 
-			isOnGround = body->IsOnGround({ 0.0f, 0.34f });
+			isOnGround = body->IsOnGround();
 
 			// 이동 적용
+			if (Input::IsKeyDown(KeyType::Space))
+			{
+				if (isOnGround)
+					this->Jump();
+			}
+
+			if (!isOnGround)
+			{
+				if (isOnLadder && isInsideLadder)
+					this->OnLadder(Directions::NONE);
+				else if (isOnRope && isInsideRope)
+					this->OnRope(Directions::NONE);
+				else
+					this->Jump();
+			}
+			else
+			{
+				this->Idle();
+			}
+			
 			if (Input::IsKeyPressed(KeyType::Right))
 			{
-				this->Move(Directions::RIGHT);
+				if (!isOnRope && !isOnLadder)
+					this->Move(Directions::RIGHT);
 			}
 			else if (Input::IsKeyPressed(KeyType::Left))
 			{
-				this->Move(Directions::LEFT);
+				if (!isOnRope && !isOnLadder)
+					this->Move(Directions::LEFT);
+			}
+			else if (Input::IsKeyPressed(KeyType::Up))
+			{
+				if (isInsideLadder)
+					this->OnLadder(Directions::UP);
+				else if (isInsideRope)
+					this->OnRope(Directions::UP);
+				else if (isInsidePortal)
+					this->ChangeScene();
+			}
+			else if (Input::IsKeyPressed(KeyType::Down))
+			{
+				if (isInsideLadder)
+					this->OnLadder(Directions::DOWN);
+				else if (isInsideRope)
+					this->OnRope(Directions::DOWN);
 			}
 			else if (Input::IsKeyDown(KeyType::Q))
 			{
@@ -80,46 +127,90 @@ namespace fz {
 			{
 				this->Die();
 			}
-			else
-			{
-				this->Idle();
-			}
-
-			if (IsInsidePortal && Input::IsKeyDown(KeyType::Up))
-			{
-				this->ChangeScene();
-			}
-
+			
+			
 			if (Input::IsKeyDown(KeyType::T))
 			{
 				GetCurrentScene()->Instantiate("Spoa", { 200.f, 0.0f });
 			}
-
-			if (Input::IsKeyDown(KeyType::Space))
-			{
-				this->Jump();
-			}
+			
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
-				this->Attack();
+				if (!isOnRope && !isOnLadder)
+					this->Attack();
 			}
 		}
 
-		virtual void OnCollisionEnter(Collision collision) 
+		void OnTriggerEnter(Collider collider)override 
+		{
+			if (collider.tag == "Ladder")
+			{
+				isInsideLadder = true;
+			}
+		}
+
+		void OnTriggerStay(Collider collider) override 
+		{
+
+		}
+		void OnTriggerExit(Collider collider) override 
+		{
+			if (collider.tag == "Ladder")
+			{
+				isInsideLadder = false;
+			}
+		}
+
+		void OnCollisionEnter(Collision collision) override
 		{
 			if (collision.gameObject.HasComponent<PortalComponent>())
 			{
-				IsInsidePortal = true;
+				isInsidePortal = true;
 				TargetPortal = collision.gameObject;
 			}
+			else if (collision.tag == "Ladder")
+			{
+				isInsideLadder = true;
+				const sf::Vector2f& pos = collision.gameObject.GetWorldPosition();
+				const sf::Vector2f& half = collision.gameObject.GetComponent<BoxCollider2DComponent>().GetHalfSize();
+				currLadderRect.left = pos.x - half.x;
+				currLadderRect.top = pos.y - half.y;
+				currLadderRect.width = pos.x + half.x;
+				currLadderRect.height = pos.y + half.y;
+			}
+			else if (collision.tag == "Rope")
+			{
+				isInsideRope = true;
+				const sf::Vector2f& pos = collision.gameObject.GetWorldPosition();
+				const sf::Vector2f& startPos = collision.gameObject.GetComponent<EdgeCollider2DComponent>().GetStartPos();
+				const sf::Vector2f& endPos = collision.gameObject.GetComponent<EdgeCollider2DComponent>().GetEndPos();
+				currRopeBounds[0].y = pos.y;
+				currRopeBounds[1].y = pos.y + (endPos.x - startPos.x);
+			}
 		}
 
-		virtual void OnCollisionExit(Collision collision) 
+		void OnCollisionStay(Collision collision) override
+		{
+			if (collision.tag == "Ground")
+			{
+				
+			}
+		}
+
+		void OnCollisionExit(Collision collision) override
 		{
 			if (collision.gameObject.HasComponent<PortalComponent>())
 			{
-				IsInsidePortal = false;
+				isInsidePortal = false;
 				TargetPortal = {};
+			}
+			else if (collision.tag == "Ladder")
+			{
+				isInsideLadder = false;
+			}
+			else if (collision.tag == "Rope")
+			{
+				isInsideRope = false;
 			}
 		}
 
@@ -129,7 +220,7 @@ namespace fz {
 				return;
 
 			timer["Attack"].Start(AttackTime);
-			status->Status = PlayerStatus::Attack1;
+			status->Status = PlayerStatus::SwingAttack2;
 		}
 
 		void Idle() override
@@ -138,9 +229,11 @@ namespace fz {
 				return;
 			if (!timer["Attack"].Done())
 				return;
-			if (!body->IsOnGround({ 0.0f, 0.34f }))
-				return;
-
+			auto& body = GetComponent<RigidbodyComponent>();
+			body.SetGravityScale(1.5f);
+			auto& collider = GetComponent<BoxCollider2DComponent>();
+			collider.SetTrigger(false);
+			isOnLadder = false;
 			status->Status = PlayerStatus::Idle;
 			SetColorWithChilds({ 255, 255, 255, 255 });
 		}
@@ -157,16 +250,17 @@ namespace fz {
 				status->Status = PlayerStatus::Move;
 			}
 
+			auto& stat = GetComponent<StatComponent>().Stat;
 			fz::Transform& transform = GetComponent<TransformComponent>();
 			if (dir == Directions::RIGHT)
 			{
-				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
+				body->AddPosition({ stat.MoveSpeed * 1.f, 0.0f });
 				transform.SetScale(-1.0f, 1.0f);
 				currDir = Directions::RIGHT;
 			}
 			else if (dir == Directions::LEFT)
 			{
-				body->AddPosition({ MoveSpeed * -1.f, 0.0f });
+				body->AddPosition({ stat.MoveSpeed * -1.f, 0.0f });
 				transform.SetScale(1.0f, 1.0f);
 				currDir = Directions::LEFT;
 			}
@@ -179,10 +273,11 @@ namespace fz {
 			if (!timer["Attack"].Done())
 				return;
 
+			status->Status = PlayerStatus::Jump;
 			if (isOnGround)
 			{
-				status->Status = PlayerStatus::Jump;
-				body->AddPosition({ 0.0f, JumpPower });
+				auto& stat = GetComponent<StatComponent>().Stat;
+				body->AddPosition({ 0.0f, stat.JumpPower * -1.f });
 			}
 		}
 
@@ -223,5 +318,97 @@ namespace fz {
 			SceneManager::RuntimeChangeScene(comp.NextScenePath);
 		}
 
-	};
-}
+		void OnLadder(Directions dir)
+		{
+			if (!isInsideLadder)
+				return;
+			auto& body = GetComponent<RigidbodyComponent>();
+			auto& collider = GetComponent<BoxCollider2DComponent>();
+			const auto& pos = GetComponent<TransformComponent>().Transform.GetTranslate();
+			const auto& half = collider.GetHalfSize();
+			collider.SetTrigger(true);
+			body.SetGravityScale(0.0f);
+			isOnLadder = true;
+			switch (dir)
+			{
+				case Directions::NONE:
+					status->Status = PlayerStatus::Stop;
+					body.AddPositionNoGravity({ 0.0f, 0.0f });
+					break;
+				case Directions::UP:
+					if (pos.y - half.y > currLadderRect.top)
+					{
+						status->Status = PlayerStatus::Ladder;
+						body.AddPositionNoGravity({ 0.0f, LadderSpeed * -1.f });
+					}
+					else
+					{
+						isOnLadder = false;
+						collider.SetTrigger(false);
+						body.SetGravityScale(1.5f);
+					}
+					break;
+				case Directions::DOWN:
+					if (pos.y + half.y < currLadderRect.height)
+					{
+						status->Status = PlayerStatus::Ladder;
+						body.AddPositionNoGravity({ 0.0f, LadderSpeed * 1.f });
+					}
+					else
+					{
+						isOnLadder = false;
+						collider.SetTrigger(false);
+						body.SetGravityScale(1.5f);
+					}
+					break;
+			}
+		}
+
+		void OnRope(Directions dir)
+		{
+			if (!isInsideRope)
+				return;
+			auto& body = GetComponent<RigidbodyComponent>();
+			auto& collider = GetComponent<BoxCollider2DComponent>();
+			const auto& pos = GetComponent<TransformComponent>().Transform.GetTranslate();
+			const auto& half = collider.GetHalfSize();
+			collider.SetTrigger(true);
+			body.SetGravityScale(0.0f);
+			isOnRope = true;
+			switch (dir)
+			{
+				case Directions::NONE:
+					status->Status = PlayerStatus::Stop;
+					body.AddPositionNoGravity({ 0.0f, 0.0f });
+					break;
+				case Directions::UP:
+					if (pos.y - half.y > currRopeBounds[0].y)
+					{
+						status->Status = PlayerStatus::Rope;
+						body.AddPositionNoGravity({ 0.0f, RopeSpeed * -1.f });
+					}
+					else
+					{
+						isOnRope = false;
+						collider.SetTrigger(false);
+						body.SetGravityScale(1.5f);
+					}
+					break;
+				case Directions::DOWN:
+					if (pos.y + half.y < currRopeBounds[1].y)
+					{
+						status->Status = PlayerStatus::Rope;
+						body.AddPositionNoGravity({ 0.0f, RopeSpeed * 1.f });
+					}
+					else
+					{
+						isOnRope = false;
+						collider.SetTrigger(false);
+						body.SetGravityScale(1.5f);
+					}
+					break;
+			}
+		}
+
+	}; // class
+} // namespace fz

@@ -83,9 +83,9 @@ namespace fz {
 
 	void Animator::Play(AnimationClip* clip, bool clearQueue)
 	{
-		if (currentClip == clip)
+		if (isPlaying && currentClip == clip)
 			return;
-		else
+		else if (isPlaying)
 			this->Stop();
 
 		if (clearQueue)
@@ -99,10 +99,7 @@ namespace fz {
 		isPlaying = true;
 
 		currentClip = clip;
-		if (currentClip->Speed == 1.0f || currentClip->Speed == -1.0f)
-		{
-			SetSpeed(currentClip->Speed);
-		}
+		SetSpeed(currentClip->Speed);
 		totalFrame = clip->frames.size();
 		if (totalFrame <= 0)
 			return;
@@ -125,7 +122,6 @@ namespace fz {
 		isPlaying = false;
 		currentFrame = 0;
 		checkFrame = totalFrame - 1;
-		currentClip = nullptr;
 	}
 
 	void Animator::SetFrame(const AnimationFrame& frame)

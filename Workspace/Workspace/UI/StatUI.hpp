@@ -8,11 +8,13 @@ namespace fz {
 	{
 	public:
 		sf::Vector2f size;
-		bool IsClickedLeft = false;
+		bool isClickedLeft = false;
+		GameObject statWindow;
 
 		void Start() override
 		{
 			size = GetComponent<BoxCollider2DComponent>().GetSize();
+			statWindow = GetCurrentScene()->GetEntityFromTag("StatWindow");
 		}
 
 		void OnDestroy() override
@@ -22,14 +24,21 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			if (!IsClickedLeft && Input::IsMouseButtonPressed(MouseButtonType::Left))
-			{
-				IsClickedLeft = true;
-				if (IsClickedBounds())
-				{
+			if (statWindow.GetActive())
+				GetComponent<SpriteComponent>().Sprite.SetColor({ 180, 180, 180, 255 });
+			else
+				GetComponent<SpriteComponent>().Sprite.SetColor({ 255, 255, 255, 255 });
 
+			if (IsClickedBounds())
+			{
+				if (!isClickedLeft && Input::IsMouseButtonPressed(MouseButtonType::Left))
+				{
+					isClickedLeft = true;
+					GameObject statWindow = GetCurrentScene()->GetEntityFromTag("StatWindow");
+					statWindow.SetActive(true);
 				}
 			}
+			isClickedLeft = false;
 		}
 
 		bool IsClickedBounds()
