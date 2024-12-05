@@ -30,21 +30,21 @@ namespace fz {
 
         void Start() override
         {
-         /*   transform = &GetComponent<TransformComponent>();
-            body = &GetComponent<RigidbodyComponent>();
-            sf::Sprite& sprite = GetComponent<SpriteComponent>();
-            animator.SetTarget(sprite, *transform);
-            animator.SetSpeed(1.0f);
-            clips["idle"].loadFromFile("game/animations/mushmom_idle.anim");
-            clips["move"].loadFromFile("game/animations/mushmom_move.anim");
-            clips["damaged"].loadFromFile("game/animations/mushmom_damaged.anim");
-            clips["die"].loadFromFile("game/animations/mushmom_die.anim");
-            clips["skill1"].loadFromFile("game/animations/mushmom_skill1.anim");
+			transform = &GetComponent<TransformComponent>();
+			body = &GetComponent<RigidbodyComponent>();
+			sf::Sprite& sprite = GetComponent<SpriteComponent>();
+			animator.SetTarget(GetCurrentEntity());
+			animator.SetSpeed(1.0f);
+			clips["idle"].loadFromFile("game/animations/mushmom_idle.anim");
+			clips["move"].loadFromFile("game/animations/mushmom_move.anim");
+			clips["damaged"].loadFromFile("game/animations/mushmom_damaged.anim");
+			clips["die"].loadFromFile("game/animations/mushmom_die.anim");
+			clips["skill1"].loadFromFile("game/animations/mushmom_skill1.anim");
 
-            sf::Sprite& effectSprite = GetComponent<SpriteComponent>();
-            animator2.SetTarget(effectSprite, *transform);
-            animator2.SetSpeed(1.0f);
-            clips2["skilleffect1"].loadFromFile("game/animations/mushmom_skill1Effect.anim");*/
+			sf::Sprite& effectSprite = GetComponent<SpriteComponent>();
+			animator2.SetTarget(GetCurrentEntity());
+			animator2.SetSpeed(1.0f);
+			clips2["skilleffect1"].loadFromFile("game/animations/mushmom_skill1Effect.anim");
 
 
             body->SetGravityScale(1.5f);

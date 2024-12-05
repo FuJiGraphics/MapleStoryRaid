@@ -179,6 +179,7 @@ namespace fz {
 				auto& dstRigidbodyComp = dst.AddComponent<RigidbodyComponent>();
 				dstRigidbodyComp.FixedRotation = srcRigidbodyComp.FixedRotation;
 				dstRigidbodyComp.RigidType = srcRigidbodyComp.RigidType;
+				dstRigidbodyComp.GroupIndex = srcRigidbodyComp.GroupIndex;
 			}
 			if (src.HasComponent<BoxCollider2DComponent>())
 			{
@@ -209,8 +210,6 @@ namespace fz {
 			{
 				auto& srcNativeComp = src.GetComponent<NativeScriptComponent>();
 				auto& dstNativeComp = dst.AddComponent<NativeScriptComponent>();
-				dstNativeComp.Instance = srcNativeComp.CreateInstanceFunc();
-				dstNativeComp.Instance->m_Entity = dst;
 				dstNativeComp.CreateInstanceFunc = srcNativeComp.CreateInstanceFunc;
 				dstNativeComp.OnCreateFunction = srcNativeComp.OnCreateFunction;
 				dstNativeComp.OnDestroyFunction = srcNativeComp.OnDestroyFunction;
@@ -277,6 +276,7 @@ namespace fz {
 		{
 			m_EntityPool.erase(it);
 		}
+		FZLOG_DEBUG("entity 삭제 {0}", (int)entity.m_Handle);
 		m_Registry.destroy(entity.m_Handle);
 	}
 
@@ -322,13 +322,13 @@ namespace fz {
 		auto& transformComp = entity.GetComponent<TransformComponent>();
 		auto& rigidBodyComp = entity.GetComponent<RigidbodyComponent>();
 		auto& tagComp = entity.GetComponent<TagComponent>();
-		auto& transform = transformComp.Transform;
+		const auto& transform = entity.GetWorldTransform();
 		const b2Vec2& meterPos = Utils::PixelToMeter(entity.GetWorldPosition());
 		b2Body* body = nullptr;
 		b2BodyDef bodyDef;
 		bodyDef.type = ToBox2dBodyType(rigidBodyComp.RigidType);
 		bodyDef.position.Set(meterPos.x, meterPos.y);
-		bodyDef.angle = Utils::DegreeToRadian(transform.GetRotation());
+		bodyDef.angle = Utils::DegreeToRadian(transformComp.Transform.GetRotation());
 		body = s_World->CreateBody(&bodyDef);
 		if (body)
 		{ 
@@ -339,8 +339,8 @@ namespace fz {
 		{
 			auto& collider = entity.GetComponent<BoxCollider2DComponent>();
 
-			const b2Vec2& meterBoxSize = Utils::PixelToMeter({ std::abs(collider.Size.x * transform.GetScale().x),
-															   std::abs(collider.Size.y * transform.GetScale().y) });
+			const b2Vec2& meterBoxSize = Utils::PixelToMeter({ std::abs(collider.Size.x * transformComp.Transform.GetScale().x),
+															   std::abs(collider.Size.y * transformComp.Transform.GetScale().y) });
 			if (meterBoxSize.x <= 0.0f || meterBoxSize.y <= 0.0f)
 			{
 				FZLOG_WARN("Collider 생성 실패, Box Size 크기를 잘못 설정하였습니다. {0}, {1},", meterBoxSize.x, meterBoxSize.y);
@@ -360,6 +360,7 @@ namespace fz {
 			fixtureDef.restitution = collider.Restitution;
 			fixtureDef.restitutionThreshold = collider.RestitutionThreshold;
 			fixtureDef.userData.pointer = static_cast<uintptr_t>(entity.m_Handle);
+			fixtureDef.filter.groupIndex = rigidBodyComp.GroupIndex;
 			collider.RuntimeFixture = body->CreateFixture(&fixtureDef);
 		}
 		else if (entity.HasComponent<EdgeCollider2DComponent>())
@@ -396,6 +397,7 @@ namespace fz {
 			fixtureDef.restitution = collider.Restitution;
 			fixtureDef.restitutionThreshold = collider.RestitutionThreshold;
 			fixtureDef.userData.pointer = static_cast<uintptr_t>(entity.m_Handle);
+			fixtureDef.filter.groupIndex = rigidBodyComp.GroupIndex;
 			collider.RuntimeFixture = body->CreateFixture(&fixtureDef);
 		}
 	}
@@ -427,6 +429,7 @@ namespace fz {
 
 	void Scene::OnPostUpdate()
 	{
+		this->ReleasePostRemoveInstancies();
 		this->ReleasePrefabInstancies();
 		this->OnPostUpdateScript();
 		this->StopPhysics();
@@ -452,16 +455,30 @@ namespace fz {
 
 	void Scene::OnDestroyRuntimeInstance()
 	{
-		while(!m_RemoveInstanceList.empty())
+		if (!s_World->IsLocked())
 		{
-			GameObject delObj = m_RemoveInstanceList.front();
-			m_RemoveInstanceList.pop_front();
-			auto it = m_PrefabInstancePool.find(delObj.m_UUID);
-			if (it != m_PrefabInstancePool.end())
+			while (!m_RemoveInstanceList.empty())
 			{
-				m_PrefabInstancePool.erase(it);
+				GameObject delObj = m_RemoveInstanceList.front();
+				m_RemoveInstanceList.pop_front();
+				{ // PrefabInstance Pool에서 삭제
+					auto it = m_PrefabInstancePool.find(delObj.m_UUID);
+					if (it != m_PrefabInstancePool.end())
+					{
+						m_PrefabInstancePool.erase(it);
+					}
+				}
+				delObj.SetActiveWithChild(false);
+				{ // Entity Pool에서 삭제
+					auto it = m_EntityPool.find(delObj.m_UUID);
+					if (it != m_EntityPool.end())
+					{
+						m_EntityPool.erase(it);
+					}
+				}
+				delObj.DeleteRigidbodyWithChilds();
+				m_PostRemoveInstanceList.push_back(delObj);
 			}
-			this->DeleteEntity(delObj);
 		}
 	}
 
@@ -471,6 +488,15 @@ namespace fz {
 		{
 			fz::Entity deleteEntity = { instance.first, instance.second, shared_from_this() };
 			this->DeleteEntity(deleteEntity);
+		}
+		m_PrefabInstancePool.clear();
+	}
+
+	void Scene::ReleasePostRemoveInstancies()
+	{
+		for (auto& instance : m_PostRemoveInstanceList)
+		{
+			this->DeleteEntity(instance);
 		}
 		m_PrefabInstancePool.clear();
 	}
@@ -635,17 +661,22 @@ namespace fz {
 
 	void Scene::OnCreateRuntimeInstance()
 	{
-		while(!m_LoadPrefabInstanceList.empty())
+		if (!s_World->IsLocked())
 		{
-			fz::Entity gen = m_LoadPrefabInstanceList.front();
-			m_LoadPrefabInstanceList.pop_front();
-			this->LoginPhysicsWorld(gen);
-			if (gen.HasComponent<NativeScriptComponent>())
+			while (!m_LoadPrefabInstanceList.empty())
 			{
-				auto& dstNativeComp = gen.GetComponent<NativeScriptComponent>();
-				dstNativeComp.OnCreateFunction(dstNativeComp.Instance);
+				fz::Entity gen = m_LoadPrefabInstanceList.front();
+				m_LoadPrefabInstanceList.pop_front();
+				this->LoginPhysicsWorld(gen);
+				if (gen.HasComponent<NativeScriptComponent>())
+				{
+					auto& dstNativeComp = gen.GetComponent<NativeScriptComponent>();
+					dstNativeComp.Instance = dstNativeComp.CreateInstanceFunc();
+					dstNativeComp.Instance->m_Entity = gen;
+					dstNativeComp.OnCreateFunction(dstNativeComp.Instance);
+				}
+				m_PrefabInstancePool.insert({ gen.m_UUID, gen.m_Handle });
 			}
-			m_PrefabInstancePool.insert({ gen.m_UUID, gen.m_Handle });
 		}
 	}
 
@@ -677,8 +708,18 @@ namespace fz {
 				{
 					const sf::Vector2f& pixelBoxPos = Utils::MeterToPixel(body->GetPosition());
 					const auto& bodyRot = Utils::RadianToDegree(body->GetAngle());
-					transform.SetTranslate(pixelBoxPos.x, pixelBoxPos.y);
-					transform.SetRotation(bodyRot);
+					if (entity.HasComponent<ParentEntityComponent>())
+					{
+						fz::Entity parent = entity.GetComponent<ParentEntityComponent>().ParentEntity;
+						const sf::Transform& inverse = parent.GetWorldTransform().getInverse();
+						transform.SetTranslate(inverse * pixelBoxPos);
+						transform.SetRotation(bodyRot);
+					}
+					else
+					{
+						transform.SetTranslate(pixelBoxPos.x, pixelBoxPos.y);
+						transform.SetRotation(bodyRot);
+					}
 				}
 			}
 		}

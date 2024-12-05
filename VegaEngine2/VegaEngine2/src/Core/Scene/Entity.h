@@ -87,6 +87,7 @@ namespace fz {
 		void SavePrefab(const std::string& path);
 		void SetActiveWithChild(bool enabled);
 		sf::Transform GetRealWorldTransform(fz::Entity parent) const;
+		void DeleteRigidbodyWithChilds();
 
 	protected:
 		inline static std::uint32_t s_EntityCount = 1;

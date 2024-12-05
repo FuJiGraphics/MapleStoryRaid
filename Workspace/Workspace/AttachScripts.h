@@ -8,6 +8,7 @@
 #include "UI/StatUI.hpp"
 #include "UI/StatWindow.hpp"
 #include "UI/StatWindowExit.hpp"
+#include "UI/HPGradation.hpp"
 
 // Effects
 #include "Skill/BasicAttack.hpp"
@@ -17,6 +18,8 @@
 // Player
 #include "Player/Player.hpp"
 #include "Player/PlayerDefault.hpp"
+#include "Player/Tomb.hpp"
+#include "Player/Ghost.hpp"
 
 // πŒ¿Á
 #include "RibbonPig.h"
@@ -37,6 +40,7 @@ namespace fz {
 		BIND_SCRIPT("StatUI", StatUIScript);
 		BIND_SCRIPT("StatWindow", StatWindowScript);
 		BIND_SCRIPT("StatWindowExit", StatWindowExitScript);
+		BIND_SCRIPT("HPGradation", HPGradationScript);
 
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);
@@ -46,7 +50,9 @@ namespace fz {
 		// Player
 		BIND_SCRIPT("Player", PlayerScript);
 		BIND_SCRIPT("PlayerDefault", PlayerDefaultScript);
-
+		BIND_SCRIPT("Tomb", TombScript);
+		BIND_SCRIPT("Ghost", GhostScript);
+			
 		BIND_SCRIPT("Fireboar", FireboarScript);
 		BIND_SCRIPT("Ironhog", IronhogScript);
 		BIND_SCRIPT("RibbonPig", RibbonPigScript);
@@ -55,6 +61,8 @@ namespace fz {
 		BIND_SCRIPT("Stump", StumpScript);
 		BIND_SCRIPT("Mushmom", MushmomScript);
 		BIND_SCRIPT("balrog", BalrogScript);
+
+		BIND_SCRIPT("SpawnerSystem", SpawnerSystem);
 	}
 
 } // namespace fz

@@ -1,296 +1,252 @@
-#pragma once
+Ôªø#pragma once
 #include <VegaEngine2.h>
 #include "FSM.h"
 #include "Utils/Timer.h"
 #include <random>
+#include "SpawnerSystem.hpp"
+#include "CallbackComponent.h"
 
 namespace fz {
 
-    class SpoaScript : public VegaScript, public MonsterFSM
-    {
-        using AnimPool = std::unordered_map<std::string, AnimationClip>;
-    public:
-        float JumpPower = -500.f;
-        float MoveSpeed = 100.f;
+	class SpoaScript : public VegaScript, public MonsterFSM
+	{
+		using AnimPool = std::unordered_map<std::string, AnimationClip>;
+	public:
+		float JumpPower = -500.f;
+		float MoveSpeed = 100.f;
 
-        float KnockbackTime = 0.5f;
+		float KnockbackTime = 0.5f;
 
-        Directions currDir = Directions::LEFT;
+		Directions currDir = Directions::LEFT;
 
-        Animator animator;
-        AnimPool clips;
+		Animator animator;
+		AnimPool clips;
 
-        TransformComponent* transform = nullptr;
-        RigidbodyComponent* body = nullptr;
-        StatComponent* stat = nullptr;
-        TransformComponent* targetTransform = nullptr;
+		TransformComponent* transform = nullptr;
+		RigidbodyComponent* body = nullptr;
+		StatComponent* stat = nullptr;
+		TransformComponent* targetTransform = nullptr;
+		
+		bool isOnDie = false;
+		Timer timer;
 
-        bool isOnDie = false;
-        Timer timer;
-        int spawnCount = 0;
-        enum class AIState { Idle, Moving, Chasing, Die } currentState = AIState::Moving;
+		enum class AIState { Idle, Moving, Chasing, Die } currentState = AIState::Idle;
 
-        void Start() override
-        {
-            stat = &AddComponent<StatComponent>();
-            stat->Stat.HP = 200;
-            stat->Stat.MP = 0;
-            stat->Stat.ApplySTR(1);
+		void Start() override
+		{
 
-            transform = &GetComponent<TransformComponent>();
-            body = &GetComponent<RigidbodyComponent>();
-            sf::Sprite& sprite = GetComponent<SpriteComponent>();
+			stat = &AddComponent<StatComponent>();
+			stat->Stat.HP = 200;
+			stat->Stat.MP = 0;
 
-            animator.SetTarget(GetCurrentEntity());
-            animator.SetSpeed(1.0f);
-            clips["idle"].loadFromFile("game/animations/spoa_idle.anim");
-            clips["move"].loadFromFile("game/animations/spoa_move.anim");
-            clips["damaged"].loadFromFile("game/animations/spoa_damaged.anim");
-            clips["die"].loadFromFile("game/animations/spoa_die.anim");
+			transform = &GetComponent<TransformComponent>();
+			body = &GetComponent<RigidbodyComponent>();
+			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 
-            body->SetGravityScale(1.5f);
+			animator.SetTarget(GetCurrentEntity());
+			animator.SetSpeed(1.0f);
+			clips["idle"].loadFromFile("game/animations/spoa_idle.anim");
+			clips["move"].loadFromFile("game/animations/spoa_move.anim");
+			clips["damaged"].loadFromFile("game/animations/spoa_damaged.anim");
+			clips["die"].loadFromFile("game/animations/spoa_die.anim");
 
-            timer["ActionTimer"].Start(5.0f); // ¿Ãµø ªÛ≈¬∑Œ Ω√¿€
-        }
+			body->SetGravityScale(1.5f);
 
-        void OnDestroy() override
-        {
-            FZLOG_DEBUG("Ω∫∆˜æ∆ Ω∫≈©∏≥∆Æ ∆ƒ±´!{0} { 1 }", 1.1, "aSDASCAsad");
-        }
+			timer["ActionTimer"].Start(5.0f); 
+		}
 
-        void OnUpdate(float dt) override
-        {
-            if (!HasComponent<RigidbodyComponent>())
-                return;
+		void OnDestroy() override
+		{
+			FZLOG_DEBUG("Ïä§Ìè¨ÏïÑ Ïä§ÌÅ¨Î¶ΩÌä∏ ÌååÍ¥¥{0} { 1 }", 1.1, "aSDASCAsad");
+		}
 
-            animator.Update(dt);
-            timer.Update(dt);
+		void OnUpdate(float dt) override
+		{
+			if (!HasComponent<RigidbodyComponent>())
+				return;
 
-            if (timer["Die"].IsStart() && timer["Die"].Done())
-            {
-                GetCurrentScene()->DestroyInstance(GetCurrentEntity());
-                return;
+			auto& tagComp = GetComponent<TagComponent>();
 
-            }
-            else if (timer["Die"].IsStart())
-            {
-                Die();
-                return;
-            }
-            if (timer["DamagedCooldown"].IsStart() && timer["DamagedCooldown"].Done())
-            {
-                currentState = AIState::Chasing;
-            }
-            if (currentState == AIState::Chasing)
-            {
-                FollowTarget(dt); // √ﬂ¿˚ ∑Œ¡˜
-                return;
-            }
+			animator.Update(dt);
+			timer.Update(dt);
 
-            if (!timer["Die"].IsStart() && timer["ActionTimer"].Done())
-            {
-                // ªÛ≈¬ ¿¸»Ø
-                if (currentState == AIState::Moving)
-                {
-                    currentState = AIState::Idle;
-                    timer["ActionTimer"].Start(3.0f); // Idle ¡ˆº” Ω√∞£
-                }
-                else
-                {
-                    currentState = AIState::Moving;
-                    timer["ActionTimer"].Start(5.0f); // ¿Ãµø ¡ˆº” Ω√∞£
-                    MoveDirection = GetRandomDirection();
-                }
-            }
+			if (currentState == AIState::Die)
+			{
+				Die(); // Die ÏÉÅÌÉú ÏßÄÏÜç Ï≤òÎ¶¨
+				if (timer["Die"].Done())
+				{
+					GetCurrentScene()->DestroyInstance(GetCurrentEntity());
+				}
+				return;
+			}
 
-            if (currentState == AIState::Moving)
-            {
-                Move(MoveDirection, dt);
-            }
-            else if (currentState == AIState::Die)
-            {
-                Die();
-            }
-            else
-            {
-                Idle();
-            }
+			if (timer["DamagedCooldown"].IsStart() && timer["DamagedCooldown"].Done())
+			{
+				currentState = AIState::Chasing;
+			}
+			if (currentState == AIState::Chasing)
+			{
+				FollowTarget(dt);
+				return;
+			}
 
-        }
+			if (!timer["Die"].IsStart() && timer["ActionTimer"].Done())
+			{
+				
+				if (currentState == AIState::Moving)
+				{
+					currentState = AIState::Idle;
+					timer["ActionTimer"].Start(3.0f); 
+				}
+				else
+				{
+					currentState = AIState::Moving;
+					timer["ActionTimer"].Start(5.0f); 
+					MoveDirection = GetRandomDirection();
+				}
+			}
 
-        void Idle() override
-        {
-            if (!timer["Knocback"].Done())
-                return;
-            animator.Play(&clips["idle"]);
-        }
+			if (currentState == AIState::Moving)
+			{
+				Move(MoveDirection, dt);
+			}
+			else if (currentState == AIState::Die)
+			{
+				Die();
+			}
+			else
+			{
+				Idle();
+			}
+		}
 
-        void Move(Directions dir, float dt)
-        {
-            if (!timer["Knocback"].Done())
-                return;
-            fz::Transform& transform = GetComponent<TransformComponent>();
-            // ¿Ãµø ¿˚øÎ
-            currDir = dir;
-            if (dir == Directions::RIGHT)
-            {
-                body->AddPosition({ MoveSpeed * 1.f, 0.0f });
-                transform.SetScale(-1.0f, 1.0f);
-                animator.Play(&clips["move"]);
-            }
-            else if (dir == Directions::LEFT)
-            {
-                body->AddPosition({ MoveSpeed * -1.f, 0.0f });
-                transform.SetScale(1.0f, 1.0f);
-                animator.Play(&clips["move"]);
-            }
+		void Idle() override
+		{
+			if (!timer["Knocback"].Done())
+				return;
+			animator.Play(&clips["idle"]);
+		}
 
-        }
+		void Move(Directions dir, float dt)
+		{
+			if (!timer["Knocback"].Done())
+				return;
+			fz::Transform& transform = GetComponent<TransformComponent>();
 
-        void Damaged(int damage) override
-        {
-            stat->Stat.HP -= damage;
-            if (stat->Stat.HP <= 0)
-            {
-                stat->Stat.HP = 0;
-                Die();
-            }
-            else
-            {
-                animator.Play(&clips["damaged"]);
+			currDir = dir;
+			if (dir == Directions::RIGHT)
+			{
+				body->AddPosition({ MoveSpeed * 1.f, 0.0f });
+				transform.SetScale(-1.0f, 1.0f);
+				animator.Play(&clips["move"]);
+			}
+			else if (dir == Directions::LEFT)
+			{
+				body->AddPosition({ MoveSpeed * -1.f, 0.0f });
+				transform.SetScale(1.0f, 1.0f);
+				animator.Play(&clips["move"]);
+			}
+		}
 
-                GameObject player = GetCurrentScene()->GetEntityFromTag("Player");
-                targetPlayer = player;  // ∏¬¿∫ Ω∫∆˜æ∆∏∏ √ﬂ¿˚ ≈∏∞Ÿ º≥¡§
+		void Damaged(int damage) override
+		{
+			stat->Stat.HP -= damage;
+			if (stat->Stat.HP <= 0)
+			{
+				stat->Stat.HP = 0;
+				Die();
+			}
+			else
+			{
+				animator.Play(&clips["damaged"]);
 
-                if (currDir == Directions::LEFT)
-                    Knockback(Directions::RIGHT);
-                else if (currDir == Directions::RIGHT)
-                    Knockback(Directions::LEFT);
+				GameObject player = GetCurrentScene()->GetEntityFromTag("Player");
+				targetPlayer = player;  
 
-                currentState = AIState::Chasing;
-                currentState = AIState::Idle;
-                timer["DamagedCooldown"].Start(1.0f);
-            }
-        }
+				if (currDir == Directions::LEFT)
+					Knockback(Directions::RIGHT);
+				else if (currDir == Directions::RIGHT)
+					Knockback(Directions::LEFT);
 
-        void Die() override
-        {
-            animator.Play(&clips["die"]);
-            currentState = AIState::Die;
-            timer["Die"].Start(0.5f);
+				currentState = AIState::Chasing;
+				currentState = AIState::Idle;
+				timer["DamagedCooldown"].Start(1.0f);
+			}
+		}
 
-            spawnCount--;
-            Spawn();
-        }
+		void Die() override
+		{
+			if (!timer["Die"].IsStart())
+			{
+				animator.Play(&clips["die"]);
+				currentState = AIState::Die;
+				timer["Die"].Start(1.f);
+				
+				auto& callbackComp = GetComponent<CallbackComponent>();
+				for (auto& fn : callbackComp.Callbacks["Die"])
+				{
+					fn(GetCurrentEntity());
+				}
+			}
+		}
 
-        void Knockback(Directions dir)
-        {
-            if (!timer["Knocback"].Done())
-                return;
-            timer["Knocback"].Start(KnockbackTime);
-            if (dir == Directions::LEFT)
-                body->AddForce({ -2000.f, -2000.0f });
-            else if (dir == Directions::RIGHT)
-                body->AddForce({ +2000.f, -2000.0f });
-        }
+		void Knockback(Directions dir)
+		{
+			if (!timer["Knocback"].Done())
+				return;
+			timer["Knocback"].Start(KnockbackTime);
+			if (dir == Directions::LEFT)
+				body->AddForce({ -1000.f, -1000.0f });
+			else if (dir == Directions::RIGHT)
+				body->AddForce({ +1000.f, -1000.0f });
+		}
 
+		virtual void OnCollisionEnter(Collision collision)
+		{
+			if (collision.gameObject.HasComponent<SkillComponent>())
+			{
+				targetTransform = &collision.gameObject.GetComponent<TransformComponent>();
 
-        virtual void OnCollisionEnter(Collision collision)
-        {
+				const auto& stat = collision.gameObject.GetComponent<StatComponent>();
+				Damaged(stat.Stat.AttackPower);
+			}
+		}
 
-            if (collision.gameObject.HasComponent<SkillComponent>())
-            {
-                targetTransform = &collision.gameObject.GetComponent<TransformComponent>();
+		void FollowTarget(float dt)
+		{
+			GameObject player = GetCurrentScene()->GetEntityFromTag("Player");
+			auto targetPosition = player.GetComponent<TransformComponent>().Transform.GetTranslate();
+			auto myPosition = transform->Transform.GetTranslate();
 
-                const auto& stat = collision.gameObject.GetComponent<StatComponent>();
-                Damaged(stat.Stat.AttackPower);
-            }
-        }
-        void FollowTarget(float dt)
-        {
-            // √ﬂ¿˚ ¥ÎªÛ¿« ¿ßƒ°
-            GameObject player = GetCurrentScene()->GetEntityFromTag("Player");
-            auto targetPosition = player.GetComponent<TransformComponent>().Transform.GetTranslate();
-            auto myPosition = transform->Transform.GetTranslate();
+			Directions dir = (targetPosition.x > myPosition.x) ? Directions::RIGHT : Directions::LEFT;
+			float moveAmount = MoveSpeed * dt;
 
-            GameObject line1 = GetCurrentScene()->GetEntityFromTag("Line1");
-            auto linePosition1 = line1.GetComponent<TransformComponent>().Transform.GetTranslate();
+			if (dir == Directions::RIGHT)
+			{
+				body->AddPosition({ MoveSpeed * 1, 0.0f });
+				transform->Transform.SetScale(-1.0f, 1.0f);
+				animator.Play(&clips["move"]);
+			}
+			else
+			{
+				body->AddPosition({ -MoveSpeed * 1, 0.0f });
+				transform->Transform.SetScale(1.0f, 1.0f);
+				animator.Play(&clips["move"]);
+			}
+		}
 
-            GameObject line2 = GetCurrentScene()->GetEntityFromTag("Line2");
-            auto linePosition2 = line2.GetComponent<TransformComponent>().Transform.GetTranslate();
+	private:
+		Directions MoveDirection = Directions::RIGHT;
 
-            Directions dir = (targetPosition.x > myPosition.x) ? Directions::RIGHT : Directions::LEFT;
-            float moveAmount = MoveSpeed * dt;
+		Directions GetRandomDirection()
+		{
+			std::random_device rd;
+			std::mt19937 gen(rd());
+			std::uniform_int_distribution<> dis(0, 1);
+			return dis(gen) == 0 ? Directions::LEFT : Directions::RIGHT;
+		}
 
-
-            if (dir == Directions::RIGHT)
-            {
-                body->AddPosition({ MoveSpeed * 1, 0.0f });
-                transform->Transform.SetScale(-1.0f, 1.0f);
-                animator.Play(&clips["move"]);
-            }
-            else
-            {
-                body->AddPosition({ -MoveSpeed * 1, 0.0f });
-                transform->Transform.SetScale(1.0f, 1.0f);
-                animator.Play(&clips["move"]);
-            }
-        }
-
-        void Spawn() override
-        {
-            static int spawnCount = 0; // Ω∫∆˘µ» ∏ÛΩ∫≈Õ ºˆ∏¶ √ﬂ¿˚«œ¥¬ ∫Øºˆ
-
-            // √÷¥Î Ω∫∆˘ ¡¶«—¿ª ≥—¡ˆ æ µµ∑œ ¡¶æÓ
-            if (spawnCount >= maxSpawnCount)
-            {
-                return;
-            }
-            std::vector<std::string> spawnLines = { "Line1", "Line2", "Line3" };
-
-            // ∑£¥˝¿∏∑Œ «œ≥™¿« Line º±≈√
-            std::random_device rd;
-            std::mt19937 gen(rd());
-            std::uniform_int_distribution<> randomIndex(0, spawnLines.size() - 1);
-            std::string selectedLine = spawnLines[randomIndex(gen)];
-
-            // º±≈√µ» Line ø£∆º∆º ∞°¡Æø¿±‚
-            GameObject line = GetCurrentScene()->GetEntityFromTag(selectedLine);
-            auto& edgeCollider = line.GetComponent<EdgeCollider2DComponent>();
-            auto& transform = line.GetComponent<TransformComponent>().Transform;
-
-            // StartPosøÕ EndPos∏¶ ±‚π›¿∏∑Œ Ω∫∆˘ ¿ßƒ° ∞ËªÍ
-            sf::Vector2f startWorldPos = edgeCollider.GetStartPos();
-            sf::Vector2f endWorldPos = edgeCollider.GetEndPos();
-
-            std::uniform_real_distribution<float> randomX(startWorldPos.x, endWorldPos.x);
-            float spawnX = randomX(gen);
-            float spawnY = startWorldPos.y;
-
-            // Ω∫∆˘ ¿ßƒ° º≥¡§
-            sf::Vector2f spawnPosition = { spawnX, spawnY };
-
-            // Ω∫∆˜æ∆ ª˝º∫
-            GetCurrentScene()->Instantiate("Spoa", spawnPosition);
-            spawnCount++;
-        }
-
-
-    private:
-
-        const int maxSpawnCount = 3;
-
-        Directions MoveDirection = Directions::RIGHT;
-
-        Directions GetRandomDirection()
-        {
-            std::random_device rd;
-            std::mt19937 gen(rd());
-            std::uniform_int_distribution<> dis(0, 1);
-            return dis(gen) == 0 ? Directions::LEFT : Directions::RIGHT;
-        }
-
-        GameObject targetPlayer;
-    };
+		GameObject targetPlayer;
+	};
 
 }

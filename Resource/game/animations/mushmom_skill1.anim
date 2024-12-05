@@ -93,6 +93,7 @@
         "ClipName": "None",
         "FrameCount": 5,
         "LoopType": "Loop",
+        "Speed": null,
         "TexturePath": "game\\graphics\\monster\\mushMom.png",
         "Transform": {
             "Rotation": 0.0,

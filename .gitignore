@@ -15,6 +15,6 @@ Build/
 *.recipe
 *.vcxproj.FileListAbsolute.txt
 
-Vendor/VegaEngine-*
+Vendor/VegaEngine-**
 
 *.sln

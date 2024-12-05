@@ -5,7 +5,6 @@ using namespace std;
 
 namespace fz {
 
-
 	HierarchyPanel::HierarchyPanel(const Shared<Scene>& scene, EditorState* state)
 		: m_Context(nullptr)
 		, m_OnEntityRemove(false)
@@ -102,6 +101,9 @@ namespace fz {
 
 	bool HierarchyPanel::DrawTreeNode(fz::Entity& entity, const char* tag)
 	{
+		if (entity.HasComponent<PrefabInstance>())
+			return false;
+
 		auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
 		HWND handle = (HWND)nativeWindow->getSystemHandle();
 		ImGuiTreeNodeFlags flag = ((m_SelectionContext == entity) ? ImGuiTreeNodeFlags_Selected : 0) | ImGuiTreeNodeFlags_OpenOnArrow;
@@ -439,6 +441,11 @@ namespace fz {
 						ImGui::EndCombo();
 					}
 					ImGui::Checkbox("Fixed Rotation", &rigidComp.FixedRotation);
+					int index = rigidComp.GroupIndex;
+					if (VegaUI::DrawControl1("Group Index", "Reset", index, 1, 0, 0, 0))
+					{
+						rigidComp.GroupIndex = index;
+					}
 				}
 				ImGui::TreePop();
 			}

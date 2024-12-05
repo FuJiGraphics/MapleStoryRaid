@@ -2,7 +2,10 @@
 #include "EntitySerializer.h"
 #include "Entity.h"
 
+#define DESERIALIZE(to, from) { if (!(from).is_null()) to = (from); }
+
 namespace fz {
+
 
 	namespace {
 		static std::string ToString(RigidbodyComponent::BodyType type)
@@ -254,8 +257,10 @@ namespace fz {
 			auto& bodyComp = m_Entity.GetComponent<RigidbodyComponent>();
 			bool fixedRotation = bodyComp.FixedRotation;
 			std::string rigidType = ToString(bodyComp.RigidType);
+			int groupIndex = bodyComp.GroupIndex;
 			json["RigidbodyComponent"]["FixedRotation"] = fixedRotation;
 			json["RigidbodyComponent"]["RigidType"] = rigidType;
+			json["RigidbodyComponent"]["GroupIndex"] = groupIndex;
 		}
 	}
 
@@ -343,7 +348,7 @@ namespace fz {
 		auto& transform = transfomComp.Transform;
 
 		std::vector<float> translate = json["TransformComponent"]["Translate"];
-		std::vector<float> scale =  json["TransformComponent"]["Scale"];
+		std::vector<float> scale = json["TransformComponent"]["Scale"];
 		float rotation = json["TransformComponent"]["Rotation"];
 		std::vector<float> origin = json["TransformComponent"]["Origin"];
 
@@ -444,6 +449,7 @@ namespace fz {
 		std::string rigidType = json["RigidbodyComponent"]["RigidType"];
 		rigidComp.FixedRotation = json["RigidbodyComponent"]["FixedRotation"];
 		rigidComp.RigidType = ToBodyType(rigidType);
+		DESERIALIZE(rigidComp.GroupIndex, json["RigidbodyComponent"]["GroupIndex"]);
 	}
 
 	void EntitySerializer::DeserializeCollider(json& json)

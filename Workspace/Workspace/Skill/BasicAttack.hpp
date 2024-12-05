@@ -2,6 +2,7 @@
 #include <VegaEngine2.h>
 #include "FSM.h"
 #include "SkillComponent.hpp"
+#include "Utils/Timer.h"
 
 namespace fz {
 
@@ -11,6 +12,7 @@ namespace fz {
 	public:
 		Animator animator;
 		AnimPool clips;
+		Timer timer;
 
 		void Start() override
 		{
@@ -20,6 +22,7 @@ namespace fz {
 			TransformComponent& transform = GetComponent<TransformComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 			animator.SetTarget(GetCurrentEntity());
+			timer["Attack"].Start(0.5f);
 		}
 
 		void OnDestroy() override
@@ -29,10 +32,15 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
+			timer.Update(dt);
+
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 			const sf::Texture* texture = sprite.getTexture();
 			animator.Play(&clips["Attack"]);
 			animator.Update(dt);
+			if (timer["Attack"].Done())
+				GetCurrentScene()->DestroyInstance(GetCurrentEntity());
+
 		}
 	};
 

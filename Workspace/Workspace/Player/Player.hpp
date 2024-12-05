@@ -25,6 +25,8 @@ namespace fz {
 		PlayerStatusComponent* status = nullptr;
 		StatComponent* Stat = nullptr;
 
+		bool isDead = false;
+
 		bool isOnGround = false;
 		bool isOnLadder = false;
 		bool isOnRope = false;
@@ -121,18 +123,18 @@ namespace fz {
 			}
 			else if (Input::IsKeyDown(KeyType::Q))
 			{
-				this->Damaged(0);
+				this->Damaged(10);
 			}
-			else if (Input::IsKeyPressed(KeyType::W))
+			else if (Input::IsKeyDown(KeyType::W))
 			{
 				this->Die();
 			}
 			
 			
-			if (Input::IsKeyDown(KeyType::T))
+	/*		if (Input::IsKeyDown(KeyType::T))
 			{
 				GetCurrentScene()->Instantiate("Spoa", { 200.f, 0.0f });
-			}
+			}*/
 			
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
@@ -221,6 +223,7 @@ namespace fz {
 
 			timer["Attack"].Start(AttackTime);
 			status->Status = PlayerStatus::SwingAttack2;
+			Effect();
 		}
 
 		void Idle() override
@@ -283,6 +286,15 @@ namespace fz {
 
 		void Damaged(int damage) override
 		{
+			if (isDead)
+				return;
+
+			Stat->Stat.CurrentHP -= damage;
+			if (Stat->Stat.CurrentHP <= 0)
+			{
+				this->Die();
+				return;
+			}
 			status->Status = PlayerStatus::Damaged;
 			if (currDir == Directions::LEFT)
 				Knockback(Directions::RIGHT);
@@ -292,8 +304,12 @@ namespace fz {
 
 		void Die() override
 		{
-			// TODO: Á×À½ ÀÌÆåÆ® ³Ö±â
-			// animator.Play(&clips["die"]);
+			if (isDead)
+				return;
+
+			const sf::Vector2f& currPos = GetWorldPosition();
+			GetCurrentScene()->Instantiate("Tomb", { currPos.x, currPos.y - currPos.y });
+			isDead = true;
 		}
 
 		void Knockback(Directions dir)
@@ -410,5 +426,14 @@ namespace fz {
 			}
 		}
 
+
+		void Effect()
+		{
+			const auto& scale = GetComponent<TransformComponent>().Transform.GetScale();
+			const auto& pos = GetWorldPosition();
+			GameObject CurrEffect = GetCurrentScene()->Instantiate(
+				"BasicAttack", { pos.x - (30.f * scale.x), pos.y - 25.f }, scale);
+			auto& effectStat = CurrEffect.AddComponent<StatComponent>();
+		}
 	}; // class
 } // namespace fz

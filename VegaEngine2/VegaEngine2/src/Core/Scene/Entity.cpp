@@ -208,5 +208,30 @@ namespace fz {
 		return GetRealWorldTransform(parentComp.ParentEntity) * transform;
 	}
 
+	void Entity::DeleteRigidbodyWithChilds()
+	{
+		if (HasComponent<ChildEntityComponent>())
+		{
+			auto& comp = GetComponent<ChildEntityComponent>();
+			for (auto& child : comp.CurrentChildEntities)
+			{
+				child.DeleteRigidbodyWithChilds();
+			}
+		}
+		if (HasComponent<RigidbodyComponent>())
+		{
+			auto& rigidComp = GetComponent<RigidbodyComponent>();
+			b2World* currWorld = GetCurrentScene()->s_World;
+			if (rigidComp.RuntimeBody) 
+			{
+				if (currWorld && !currWorld->IsLocked())
+				{
+					currWorld->DestroyBody((b2Body*)rigidComp.RuntimeBody);
+					rigidComp.RuntimeBody = nullptr;
+				}
+			}
+		}
+	}
+
 
 } // namespace fz

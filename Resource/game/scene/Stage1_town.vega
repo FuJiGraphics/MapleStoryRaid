@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1532.0,
-                    868.0
+                    1534.0,
+                    737.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -39,6 +39,7 @@
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": false,
+                "GroupIndex": 0,
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
@@ -81,6 +82,7 @@
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": 0,
                 "RigidType": "Static"
             },
             "RootEntity": true,
@@ -138,6 +140,86 @@
                 "Translate": [
                     2508.0,
                     551.0
+                ]
+            }
+        },
+        "96acfb4e-6dd1-41e2-b709-f00b4f77ef02": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 17.700000762939453,
+                    "Y": 19.549999237060547
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": -1,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    19.0,
+                    21.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 4,
+                "TexPath": "game\\graphics\\player\\Hero\\tomb\\fall.png",
+                "TexRect": {
+                    "Height": 43,
+                    "Left": 1,
+                    "Top": 1,
+                    "Width": 38
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Tomb"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -220,6 +302,7 @@
             "HasChild": true,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": -1,
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
@@ -238,8 +321,8 @@
                     1.0
                 ],
                 "Translate": [
-                    859.0889892578125,
-                    591.2999877929688
+                    2074.089111328125,
+                    437.29998779296875
                 ]
             }
         },
@@ -299,8 +382,8 @@
                         1.0
                     ],
                     "Translate": [
-                        -74.0,
-                        14.0
+                        -76.0,
+                        14.5
                     ]
                 }
             },
@@ -935,6 +1018,69 @@
                         "Translate": [
                             -28.0,
                             85.0
+                        ]
+                    }
+                },
+                "7ee9ea06-71cc-4db6-a449-3b309308a60e": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": false,
+                        "Tag": "AbilityPoint"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 11,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "0"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -22.0,
+                            37.0
                         ]
                     }
                 },
@@ -1988,12 +2134,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line6"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2031,12 +2178,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line8"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2074,12 +2222,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line7"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2117,12 +2266,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line9"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2160,12 +2310,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line3"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2203,12 +2354,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line12"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2223,6 +2375,50 @@
                     "Translate": [
                         2138.0,
                         314.0
+                    ]
+                }
+            },
+            "41d98eec-8ed7-40f8-b81d-d3f23e1f4e31": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 215.8000030517578,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": true,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Rope"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2160.0,
+                        267.0
                     ]
                 }
             },
@@ -2246,12 +2442,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line13"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2273,7 +2470,7 @@
                 "BoxCollider2DComponent": {
                     "Density": 0.0,
                     "Friction": 0.0,
-                    "IsTrigger": false,
+                    "IsTrigger": true,
                     "Offset": {
                         "X": 0.0,
                         "Y": 0.0
@@ -2282,18 +2479,19 @@
                     "RestitutionThreshold": 0.5,
                     "Size": {
                         "X": 22.0,
-                        "Y": 125.0
+                        "Y": 120.0
                     }
                 },
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "ladder"
+                    "Tag": "Ladder"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2307,7 +2505,7 @@
                     ],
                     "Translate": [
                         1189.0,
-                        427.0
+                        429.0
                     ]
                 }
             },
@@ -2331,12 +2529,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line5"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2374,12 +2573,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line10"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2417,12 +2617,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line1"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2518,12 +2719,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line11"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2561,12 +2763,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line2"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2604,6 +2807,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -2647,12 +2851,13 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line4"
+                    "Tag": "Ground"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2690,6 +2895,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": 0,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -2733,6 +2939,7 @@
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": 0,
                 "RigidType": "Static"
             },
             "RootEntity": true,

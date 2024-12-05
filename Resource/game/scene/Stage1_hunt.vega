@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1516.0,
-                    733.0
+                    616.0,
+                    507.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -39,6 +39,7 @@
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": false,
+                "GroupIndex": null,
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
@@ -62,7 +63,30 @@
                 ]
             }
         },
-        "3740e81b-ff4b-4f46-9cfa-d7fbf4d3fc05": {
+        "375719bf-2210-4861-b19b-7053b73850af": {
+            "HasChild": false,
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "SpawnerSystem"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        "503d4b0e-fa3f-4430-9b04-51d2afca23fd": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
@@ -74,13 +98,14 @@
                 "Restitution": 0.0,
                 "RestitutionThreshold": 0.5,
                 "Size": {
-                    "X": 16.399999618530273,
-                    "Y": 17.299999237060547
+                    "X": 31.399999618530273,
+                    "Y": 30.799999237060547
                 }
             },
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": null,
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
@@ -99,7 +124,87 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    23.0,
+                    164.5,
+                    127.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    6.300000190734863,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 3,
+                "TexPath": "game\\graphics\\monster\\ribbonpig.png",
+                "TexRect": {
+                    "Height": 255,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 329
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "RibbonPig"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -500.0,
+                    -500.0
+                ]
+            }
+        },
+        "5849ed2f-a5e3-474c-a287-e957b979195d": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 15.5,
+                    "Y": 17.5
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": null,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    18.5,
                     20.0
                 ],
                 "Origins": "MC",
@@ -118,7 +223,7 @@
                     "Height": 40,
                     "Left": 0,
                     "Top": 0,
-                    "Width": 46
+                    "Width": 37
                 }
             },
             "TagComponent": {
@@ -136,8 +241,8 @@
                     1.0
                 ],
                 "Translate": [
-                    20000.0,
-                    20000.0
+                    -500.0,
+                    -700.0
                 ]
             }
         },
@@ -160,6 +265,7 @@
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": null,
                 "RigidType": "Static"
             },
             "RootEntity": true,
@@ -220,6 +326,306 @@
                 ]
             }
         },
+        "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 58.20000076293945,
+                    "Y": 56.29999923706055
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": null,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    61.5,
+                    57.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 3,
+                "TexPath": "game\\graphics\\monster\\mushMom.png",
+                "TexRect": {
+                    "Height": 114,
+                    "Left": 3,
+                    "Top": 0,
+                    "Width": 123
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Mushmom"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        },
+        "63ffb820-e294-4be2-af6e-a9c89b4f2c79": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 16.700000762939453,
+                    "Y": 19.799999237060547
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": null,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    112.0,
+                    132.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 3,
+                "TexPath": "game\\graphics\\monster\\snail.png",
+                "TexRect": {
+                    "Height": 265,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 224
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Snail"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    -500.0,
+                    -500.0
+                ]
+            }
+        },
+        "886fd4ee-d37c-4620-958a-76d0cad98942": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 68.30000305175781,
+                    "Y": 81.80000305175781
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": null,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    87.0,
+                    82.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    4.800000190734863,
+                    2.9000000953674316
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 3,
+                "TexPath": "game\\graphics\\monster\\22970.png",
+                "TexRect": {
+                    "Height": 165,
+                    "Left": 13,
+                    "Top": 33,
+                    "Width": 174
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Balrog"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    900.0,
+                    900.0
+                ]
+            }
+        },
+        "9cab6c5a-e0cb-4633-b6b6-233ec5438696": {
+            "HasChild": false,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    535.0,
+                    1257.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\monster\\22970.png",
+                "TexRect": {
+                    "Height": 2514,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 1070
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "BalrogSkill1"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
+                ]
+            }
+        },
         "b643b4cd-24d8-4552-95fc-0e016e3eee47": {
             "00e52c39-9c2d-4f6a-8a4d-7b77942377b7": {
                 "EdgeCollider2DComponent": {
@@ -241,6 +647,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -284,6 +691,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -327,6 +735,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -370,6 +779,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -413,6 +823,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -456,6 +867,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -557,6 +969,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -600,6 +1013,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -643,6 +1057,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -686,6 +1101,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -729,6 +1145,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -772,6 +1189,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -815,6 +1233,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -858,6 +1277,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -901,6 +1321,7 @@
             "HasChild": false,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": null,
                 "RigidType": "Static"
             },
             "RootEntity": true,
@@ -1639,6 +2060,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": false,
+                    "GroupIndex": null,
                     "RigidType": "Static"
                 },
                 "RootEntity": false,
@@ -1718,6 +2140,7 @@
                 "HasChild": false,
                 "RigidbodyComponent": {
                     "FixedRotation": true,
+                    "GroupIndex": null,
                     "RigidType": "Dynamic"
                 },
                 "RootEntity": false,
@@ -2098,6 +2521,7 @@
             "HasChild": true,
             "RigidbodyComponent": {
                 "FixedRotation": true,
+                "GroupIndex": null,
                 "RigidType": "Dynamic"
             },
             "RootEntity": true,
@@ -2116,8 +2540,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -378.89886474609375,
-                    317.300048828125
+                    -300.0,
+                    -264.70001220703125
                 ]
             },
             "fd3ce1ce-39c4-4487-9ee3-c3ae46d6ee73": {
@@ -2179,48 +2603,6 @@
                         0.0
                     ]
                 }
-            }
-        },
-        "fcc93c3c-8490-45e6-bb1c-e816cd27373c": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": false,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 0.5,
-                    "Y": 0.5
-                }
-            },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": false,
-                "RigidType": "Static"
-            },
-            "RootEntity": true,
-            "TagComponent": {
-                "Active": true,
-                "Tag": "SpawnArea"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "Translate": [
-                    0.0,
-                    0.0
-                ]
             }
         }
     }

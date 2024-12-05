@@ -143,6 +143,7 @@ namespace fz {
 		};
 		BodyType RigidType = BodyType::Static;
 		bool FixedRotation = false;
+		int GroupIndex = 0; // 0 초과일 때 같은 그룹끼리 충돌 x
 
 		void AddForce(const sf::Vector2f& force);
 		void AddPosition(const sf::Vector2f& pos);
@@ -182,7 +183,6 @@ namespace fz {
 
 	public:
 		void SetTrigger(bool enabled);
-		sf::FloatRect GetGlobalBounds() const;
 		sf::Vector2f GetSize() const { return Size * 2.0f; }
 		sf::Vector2f GetHalfSize() const { return Size; }
 
@@ -238,6 +238,4 @@ namespace fz {
 			OnUpdateFunction = [](Weak<VegaScript> instance, float dt) { instance->OnUpdate(dt); };
 		}
 	};
-
-
 } // namespace fz

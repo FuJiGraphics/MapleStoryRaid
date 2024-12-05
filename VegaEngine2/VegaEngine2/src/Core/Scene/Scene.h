@@ -3,8 +3,6 @@
 #include "SceneSerializer.h"
 #include "CollisionHandler.h"
 
-class b2WorldId;
-
 namespace fz {
 	
 	// Forwards
@@ -100,15 +98,16 @@ namespace fz {
 		void LoadPrefab(const std::string& path);
 
 		void OnCreateRuntimeInstance();
+		void OnDestroyRuntimeInstance();
 		void OnUpdatePhysicsSystem(float dt);
 		void OnUpdateCamera(OrthoCamera** dstCamera, sf::Transform& dstTransform);
 		void OnRenderEditorSprite(OrthoCamera* mainCamera);
 		void OnRuntimeRenderDrawable(OrthoCamera* mainCamera, sf::Transform& transform);
 		void OnDrawDebugShape();
 		void OnViewportResize(unsigned int width, unsigned int height);
-		void OnDestroyRuntimeInstance();
 
 		void ReleasePrefabInstancies();
+		void ReleasePostRemoveInstancies();
 
 		inline const Shared<Framebuffer>& GetFrameBuffer() const { return m_FrameBuffer; }
 
@@ -127,6 +126,7 @@ namespace fz {
 		EntityPool				m_PrefabInstancePool;
 		CollisionHandler		m_CollistionHandler;
 		std::list<fz::Entity>	m_RemoveInstanceList;
+		std::list<fz::Entity>	m_PostRemoveInstanceList;
 		std::list<fz::Entity>	m_LoadPrefabInstanceList;
 		bool					m_SceneChanged;
 	};
