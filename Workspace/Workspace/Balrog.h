@@ -104,13 +104,21 @@ namespace fz {
                 {
                     GetCurrentScene()->DestroyInstance(GetCurrentEntity());
                 }
+
                 return;
             }
 
-
-            if (timer["DamagedCooldown"].IsStart() && timer["DamagedCooldown"].Done())
+            if (currentState == AIState::Chasing && timer["SkillTimer"].Done())
             {
+                // Chasing 상태에서만 Skill1으로 전환
+                currentState = AIState::Skill1;
+                timer["SkillTimer"].Start(1.0f); // Skill1은 1초 동안 유지
+            }
+            else if (currentState == AIState::Skill1 && timer["SkillTimer"].Done())
+            {
+                // Skill1 상태에서 Chasing으로 전환
                 currentState = AIState::Chasing;
+                timer["SkillTimer"].Start(3.0f); // Chasing은 3초 동안 유지
             }
 
             if (currentState == AIState::Chasing)
@@ -120,6 +128,7 @@ namespace fz {
             }
 
             if (currentState == AIState::Skill1)
+
             {
                 Skill1();
 
@@ -148,6 +157,7 @@ namespace fz {
             else if (currentState == AIState::Die)
             {
                 Die();
+                return;
             }
             else
             {
