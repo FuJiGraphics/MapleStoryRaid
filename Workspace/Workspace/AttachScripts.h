@@ -15,6 +15,8 @@
 // Portal
 #include "Portal/Portal1R.hpp"
 #include "Portal/Portal1_2Left.hpp"
+#include "Portal/Potal1R_hunt.hpp"
+#include "Portal/Portal1L_Boss.hpp"
 // Player
 #include "Player/Player.hpp"
 #include "Player/PlayerDefault.hpp"
@@ -45,6 +47,8 @@ namespace fz {
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);
 		BIND_SCRIPT("Portal1_2Left", Portal1_2Left_Script);
+		BIND_SCRIPT("Portal1R_hunt", Portal1R_Hunt_Script);
+		BIND_SCRIPT("Portal1L_Boss", Portal1L_Boss_Script);
 		BIND_SCRIPT("Camera", CameraScript);
 
 		// Player

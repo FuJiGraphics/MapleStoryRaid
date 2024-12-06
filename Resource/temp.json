@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    2174.0,
-                    1233.0
+                    638.0,
+                    507.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -60,6 +60,149 @@
                 "Translate": [
                     798.7179565429688,
                     612.3553466796875
+                ]
+            }
+        },
+        "19ce7860-8d3e-43b7-a737-001bac4f44e3": {
+            "5cabf798-b47a-4855-aee7-7a59c3fd24fa": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        512.0,
+                        289.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "game\\graphics\\map\\cloud.png",
+                    "TexRect": {
+                        "Height": 579,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 1024
+                    }
+                },
+                "TagComponent": {
+                    "Active": false,
+                    "Tag": "Cloud"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "6a1e275a-f680-4275-a753-25c729de2aeb": {
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": false,
+                    "Tag": "Mountain"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "HasChild": true,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    1246.5,
+                    170.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\map\\mountain.png",
+                "TexRect": {
+                    "Height": 340,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 2493
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Background"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    92.0
                 ]
             }
         },
@@ -140,86 +283,6 @@
                 "Translate": [
                     2508.0,
                     551.0
-                ]
-            }
-        },
-        "4bd6c934-9e74-4f6d-9721-01e49bd17452": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": true,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 21.0,
-                    "Y": 21.0
-                }
-            },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": true,
-                "GroupIndex": 0,
-                "RigidType": "Dynamic"
-            },
-            "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    32.0,
-                    36.0
-                ],
-                "Origins": "MC",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 50,
-                "TexPath": "game\\graphics\\player\\Hero\\ghost\\Dead.png",
-                "TexRect": {
-                    "Height": 72,
-                    "Left": 0,
-                    "Top": 0,
-                    "Width": 64
-                }
-            },
-            "TagComponent": {
-                "Active": false,
-                "Tag": "Ghost"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "Translate": [
-                    2060.0,
-                    441.0
                 ]
             }
         },
@@ -366,7 +429,7 @@
             },
             "BoxCollider2DComponent": {
                 "Density": 1.0,
-                "Friction": 0.5,
+                "Friction": 1.0,
                 "IsTrigger": false,
                 "Offset": {
                     "X": 0.0,
@@ -401,8 +464,88 @@
                     1.0
                 ],
                 "Translate": [
-                    2074.089111328125,
-                    437.29998779296875
+                    922.0889892578125,
+                    546.2999877929688
+                ]
+            }
+        },
+        "cca95a70-d981-4574-afd5-ba2994e1ceca": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 15.5,
+                    "Y": 26.200000762939453
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": 0,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    32.0,
+                    36.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 5,
+                "TexPath": "game\\graphics\\player\\Hero\\ghost\\Dead.png",
+                "TexRect": {
+                    "Height": 72,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 64
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Ghost"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
                 ]
             }
         },
@@ -2830,7 +2973,7 @@
                         "X": 204.0,
                         "Y": 0.0
                     },
-                    "Friction": 0.5,
+                    "Friction": 1.0,
                     "IsOneSides": false,
                     "IsTrigger": false,
                     "Restitution": 0.0,
@@ -2842,7 +2985,7 @@
                 },
                 "HasChild": false,
                 "RigidbodyComponent": {
-                    "FixedRotation": false,
+                    "FixedRotation": true,
                     "GroupIndex": 0,
                     "RigidType": "Static"
                 },

@@ -24,6 +24,7 @@ namespace fz {
 		static void UpdateForEditor(float dt, EditorCamera& editorCamera);
 
 		static void AddChangedSceneEvent(const CallbackFn& func);
+		static Scene& GetCurrentScene();
 
 	private:
 		inline static std::string s_PrevScenePath;

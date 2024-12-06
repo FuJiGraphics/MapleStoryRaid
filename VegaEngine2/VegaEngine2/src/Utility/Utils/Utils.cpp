@@ -98,8 +98,8 @@ namespace fz {
     sf::Vector2f Utils::GetNormal(const sf::Vector2f& vec)
     {
         float mag = Magnitude(vec);
-        if (mag != 0)
-            return vec;
+        if (mag == 0)
+            return { 0.f, 0.f };
         return vec / mag;
     }
 

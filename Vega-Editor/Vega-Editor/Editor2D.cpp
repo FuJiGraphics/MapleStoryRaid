@@ -68,14 +68,18 @@ namespace fz {
 		HWND handle = (HWND)nativeWindow->getSystemHandle();
 
 		// ÀúÀå ÇÖ Å°
-		if (ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyPressed(ImGuiKey_S))
+		static bool isHotkeyDown = false;
+		if (!isHotkeyDown && ImGui::IsKeyDown(ImGuiKey_LeftCtrl) && ImGui::IsKeyDown(ImGuiKey_S))
 		{
+			isHotkeyDown = true;
 			if (m_SceneState == EditorState::Edit)
 			{
 				SceneManager::SaveScene();
 				FZLOG_INFO("Scene Save UUID = {0}", m_ActiveScene->GetUUID());
 			}
 		}
+		else
+			isHotkeyDown = false;
 
 		if (ImGui::BeginMenu("File"))
 		{

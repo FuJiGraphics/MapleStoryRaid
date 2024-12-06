@@ -15,7 +15,9 @@ namespace fz {
 		{
 			auto& src = stat.Stat;
 			Status.HP = src.HP;
+			Status.CurrentHP = src.CurrentHP;
 			Status.MP = src.MP;
+			Status.CurrentMP = src.CurrentMP;
 			Status.AttackPower = src.AttackPower;
 			Status.PhysicalDefense = src.PhysicalDefense;
 			Status.MagicPower = src.MagicPower;
@@ -35,7 +37,9 @@ namespace fz {
 		{
 			auto& dst = stat.Stat;
 			dst.HP = Status.HP;
+			dst.CurrentHP = Status.CurrentHP;
 			dst.MP = Status.MP;
+			dst.CurrentMP = Status.CurrentMP;
 			dst.AttackPower = Status.AttackPower;
 			dst.PhysicalDefense = Status.PhysicalDefense;
 			dst.MagicPower = Status.MagicPower;

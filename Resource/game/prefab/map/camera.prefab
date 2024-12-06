@@ -1,5 +1,5 @@
 {
-    "0c79cc09-5ee2-48d7-a060-74d604416caa": {
+    "b906b357-dcda-4d3d-87ff-1ba458145df5": {
         "BoxCollider2DComponent": {
             "Density": 1.0,
             "Friction": 0.5,
@@ -24,8 +24,8 @@
             "Primary": true,
             "Rotation": 0.0,
             "Size": [
-                1516.0,
-                864.0
+                1534.0,
+                737.0
             ],
             "Viewport": {
                 "Height": 1.0,
@@ -38,6 +38,7 @@
         "HasChild": false,
         "RigidbodyComponent": {
             "FixedRotation": false,
+            "GroupIndex": 0,
             "RigidType": "Dynamic"
         },
         "RootEntity": true,

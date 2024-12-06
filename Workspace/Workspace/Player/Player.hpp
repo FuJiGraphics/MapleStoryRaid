@@ -308,7 +308,7 @@ namespace fz {
 				return;
 
 			const sf::Vector2f& currPos = GetWorldPosition();
-			GetCurrentScene()->Instantiate("Tomb", { currPos.x, currPos.y - currPos.y });
+			GetCurrentScene()->Instantiate("Tomb", { currPos.x, currPos.y - 400.f });
 			isDead = true;
 		}
 

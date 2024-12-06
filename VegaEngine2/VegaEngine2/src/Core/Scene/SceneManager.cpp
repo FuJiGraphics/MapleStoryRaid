@@ -126,4 +126,9 @@ namespace fz {
 		s_EventCallbacks.push_back(func);
 	}
 
+	Scene& SceneManager::GetCurrentScene()
+	{
+		return *s_ActiveScene;
+	}
+
 } // namespace fz

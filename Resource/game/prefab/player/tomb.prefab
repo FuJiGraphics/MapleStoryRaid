@@ -1,5 +1,5 @@
 {
-    "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
+    "3bc698ad-af20-4384-9963-7022a4427e5f": {
         "BoxCollider2DComponent": {
             "Density": 1.0,
             "Friction": 0.5,
@@ -11,14 +11,14 @@
             "Restitution": 0.0,
             "RestitutionThreshold": 0.5,
             "Size": {
-                "X": 58.20000076293945,
-                "Y": 56.29999923706055
+                "X": 17.700000762939453,
+                "Y": 19.549999237060547
             }
         },
         "HasChild": false,
         "RigidbodyComponent": {
             "FixedRotation": true,
-            "GroupIndex": null,
+            "GroupIndex": -1,
             "RigidType": "Dynamic"
         },
         "RootEntity": true,
@@ -37,8 +37,8 @@
             },
             "MaskMode": false,
             "Origin": [
-                61.5,
-                57.0
+                19.0,
+                21.5
             ],
             "Origins": "MC",
             "Position": [
@@ -50,32 +50,32 @@
                 1.0,
                 1.0
             ],
-            "SortingOrder": 0,
-            "TexPath": "game\\graphics\\monster\\mushMom.png",
+            "SortingOrder": 4,
+            "TexPath": "game\\graphics\\player\\Hero\\tomb\\fall.png",
             "TexRect": {
-                "Height": 114,
-                "Left": 3,
-                "Top": 0,
-                "Width": 123
+                "Height": 43,
+                "Left": 1,
+                "Top": 1,
+                "Width": 38
             }
         },
         "TagComponent": {
-            "Active": true,
-            "Tag": "Mushmom"
+            "Active": false,
+            "Tag": "Tomb"
         },
         "TransformComponent": {
             "Origin": [
                 0.0,
                 0.0
             ],
-            "Rotation": -1053.0120849609375,
+            "Rotation": 0.0,
             "Scale": [
                 1.0,
                 1.0
             ],
             "Translate": [
-                1500.0,
-                60.0
+                0.0,
+                0.0
             ]
         }
     }

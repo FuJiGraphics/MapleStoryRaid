@@ -1,5 +1,5 @@
 {
-    "5bab8522-355e-48ee-9ba4-29120e70cf61": {
+    "95afee07-8f9d-468d-8647-d93b539d6337": {
         "BoxCollider2DComponent": {
             "Density": 1.0,
             "Friction": 0.5,
@@ -11,14 +11,15 @@
             "Restitution": 0.0,
             "RestitutionThreshold": 0.5,
             "Size": {
-                "X": 39.599998474121094,
-                "Y": 122.0
+                "X": 15.5,
+                "Y": 26.200000762939453
             }
         },
         "HasChild": false,
         "RigidbodyComponent": {
             "FixedRotation": true,
-            "RigidType": "Static"
+            "GroupIndex": 0,
+            "RigidType": "Dynamic"
         },
         "RootEntity": true,
         "SpriteComponent": {
@@ -36,8 +37,8 @@
             },
             "MaskMode": false,
             "Origin": [
-                45.0,
-                130.0
+                32.0,
+                36.0
             ],
             "Origins": "MC",
             "Position": [
@@ -49,18 +50,18 @@
                 1.0,
                 1.0
             ],
-            "SortingOrder": 1,
-            "TexPath": "game\\graphics\\effect\\portal\\portal.png",
+            "SortingOrder": 5,
+            "TexPath": "game\\graphics\\player\\Hero\\ghost\\Dead.png",
             "TexRect": {
-                "Height": 260,
-                "Left": 2,
-                "Top": 2,
-                "Width": 90
+                "Height": 72,
+                "Left": 0,
+                "Top": 0,
+                "Width": 64
             }
         },
         "TagComponent": {
-            "Active": true,
-            "Tag": "Portal"
+            "Active": false,
+            "Tag": "Ghost"
         },
         "TransformComponent": {
             "Origin": [
@@ -73,8 +74,8 @@
                 1.0
             ],
             "Translate": [
-                2508.0,
-                551.0
+                0.0,
+                0.0
             ]
         }
     }

@@ -1,9 +1,9 @@
 {
-    "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
+    "7d12c3e2-c222-49d1-a9af-db4929f576b3": {
         "BoxCollider2DComponent": {
             "Density": 1.0,
             "Friction": 0.5,
-            "IsTrigger": false,
+            "IsTrigger": true,
             "Offset": {
                 "X": 0.0,
                 "Y": 0.0
@@ -11,15 +11,15 @@
             "Restitution": 0.0,
             "RestitutionThreshold": 0.5,
             "Size": {
-                "X": 58.20000076293945,
-                "Y": 56.29999923706055
+                "X": 39.599998474121094,
+                "Y": 122.0
             }
         },
         "HasChild": false,
         "RigidbodyComponent": {
             "FixedRotation": true,
-            "GroupIndex": null,
-            "RigidType": "Dynamic"
+            "GroupIndex": 0,
+            "RigidType": "Static"
         },
         "RootEntity": true,
         "SpriteComponent": {
@@ -37,8 +37,8 @@
             },
             "MaskMode": false,
             "Origin": [
-                61.5,
-                57.0
+                45.0,
+                130.0
             ],
             "Origins": "MC",
             "Position": [
@@ -50,32 +50,32 @@
                 1.0,
                 1.0
             ],
-            "SortingOrder": 0,
-            "TexPath": "game\\graphics\\monster\\mushMom.png",
+            "SortingOrder": 1,
+            "TexPath": "game\\graphics\\effect\\portal\\portal.png",
             "TexRect": {
-                "Height": 114,
-                "Left": 3,
-                "Top": 0,
-                "Width": 123
+                "Height": 260,
+                "Left": 2,
+                "Top": 2,
+                "Width": 90
             }
         },
         "TagComponent": {
             "Active": true,
-            "Tag": "Mushmom"
+            "Tag": "Portal1R"
         },
         "TransformComponent": {
             "Origin": [
                 0.0,
                 0.0
             ],
-            "Rotation": -1053.0120849609375,
+            "Rotation": 0.0,
             "Scale": [
                 1.0,
                 1.0
             ],
             "Translate": [
-                1500.0,
-                60.0
+                2508.0,
+                551.0
             ]
         }
     }
