@@ -64,7 +64,7 @@ namespace fz {
 		BIND_SCRIPT("Spoa", SpoaScript);
 		BIND_SCRIPT("Stump", StumpScript);
 		BIND_SCRIPT("Mushmom", MushmomScript);
-		BIND_SCRIPT("balrog", BalrogScript);
+		BIND_SCRIPT("Balrog", BalrogScript);
 
 		BIND_SCRIPT("SpawnerSystem", SpawnerSystem);
 	}

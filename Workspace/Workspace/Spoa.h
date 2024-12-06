@@ -22,12 +22,16 @@ namespace fz {
 		Animator animator;
 		AnimPool clips;
 
+		GameObject CurrItemDrop;
+
 		TransformComponent* transform = nullptr;
 		RigidbodyComponent* body = nullptr;
 		StatComponent* stat = nullptr;
 		TransformComponent* targetTransform = nullptr;
 		
 		bool isOnDie = false;
+		bool OnDropItem = false;
+
 		Timer timer;
 
 		enum class AIState { Idle, Moving, Chasing, Die } currentState = AIState::Idle;
@@ -76,6 +80,7 @@ namespace fz {
 				if (timer["Die"].Done())
 				{
 					GetCurrentScene()->DestroyInstance(GetCurrentEntity());
+					DropItem();
 				}
 				return;
 			}
@@ -120,6 +125,17 @@ namespace fz {
 			}
 		}
 
+		void DropItem()
+		{
+			if (!OnDropItem)
+			{
+				OnDropItem = true;
+				const auto& scale = GetComponent<TransformComponent>().Transform.GetScale();
+				const auto& pos = GetWorldPosition();
+				CurrItemDrop = GetCurrentScene()->Instantiate(
+					"MonsterItem", { pos.x - (30.f * scale.x), pos.y - 25.f }, scale);
+			}
+		}
 		void Idle() override
 		{
 			if (!timer["Knocback"].Done())

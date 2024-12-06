@@ -3,7 +3,8 @@
 #include "FSM.h"
 #include "Utils/Timer.h"
 #include <random>
-
+#include "SpawnerSystem.hpp"
+#include "CallbackComponent.h"
 
 namespace fz {
 
@@ -21,15 +22,27 @@ namespace fz {
 		Animator animator;
 		AnimPool clips;
 
+		GameObject CurrItemDrop;
+
 		TransformComponent* transform;
 		RigidbodyComponent* body;
+		StatComponent* stat = nullptr;
+		TransformComponent* targetTransform = nullptr;
 
+		bool isOnDie = false;
+
+		bool OnDropItem = false;
 		Timer timer;
 
-		enum class AIState { Idle, Moving } currentState = AIState::Moving;
+		enum class AIState { Idle, Moving, Chasing, Die } currentState = AIState::Moving;
 
 		void Start() override
 		{
+			stat = &AddComponent<StatComponent>();
+			stat->Stat.HP = 200;
+			stat->Stat.MP = 0;
+
+
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
@@ -53,11 +66,29 @@ namespace fz {
 		{
 			if (!HasComponent<RigidbodyComponent>())
 				return;
-
+			auto& tagComp = GetComponent<TagComponent>();
 			animator.Update(dt);
-
-
 			timer.Update(dt);
+
+
+			if (currentState == AIState::Die)
+			{
+				Die(); // Die 상태 지속 처리
+				if (timer["Die"].Done())
+				{
+					GetCurrentScene()->DestroyInstance(GetCurrentEntity());
+				}
+				return;
+			}
+			if (timer["DamagedCooldown"].IsStart() && timer["DamagedCooldown"].Done())
+			{
+				currentState = AIState::Chasing;
+			}
+			if (currentState == AIState::Chasing)
+			{
+				FollowTarget(dt);
+				return;
+			}
 			// 이동 적용
 
 			if (timer["ActionTimer"].Done())
@@ -79,9 +110,9 @@ namespace fz {
 			{
 				Move(MoveDirection, dt);
 			}
-			else if (Input::IsKeyPressed(KeyType::Q))
+			else if (currentState == AIState::Die)
 			{
-				this->Damaged(0);
+				Die();
 			}
 			else
 			{
@@ -132,17 +163,57 @@ namespace fz {
 
 		void Damaged(int damage) override
 		{
-			// 플레이어 피격시
-			animator.Play(&clips["damaged"]);
-			if (currDir == Directions::LEFT)
-				Knockback(Directions::RIGHT);
-			else if (currDir == Directions::RIGHT)
-				Knockback(Directions::LEFT);
+
+			stat->Stat.HP -= damage;
+			if (stat->Stat.HP <= 0)
+			{
+				stat->Stat.HP = 0;
+				Die();
+			}
+
+			else
+			{
+				// 플레이어 피격시
+				animator.Play(&clips["damaged"]);
+
+
+
+				if (currDir == Directions::LEFT)
+					Knockback(Directions::RIGHT);
+				else if (currDir == Directions::RIGHT)
+					Knockback(Directions::LEFT);
+
+				currentState = AIState::Chasing;
+				currentState = AIState::Idle;
+				timer["DamagedCooldown"].Start(1.0f);
+			}
 		}
 
 		void Die() override
 		{
-			animator.Play(&clips["die"]);
+			if (!timer["Die"].IsStart())
+			{
+				animator.Play(&clips["die"]);
+				currentState = AIState::Die;
+				timer["Die"].Start(1.f);
+
+
+				auto& callbackComp = GetComponent<CallbackComponent>();
+				for (auto& fn : callbackComp.Callbacks["Die"])
+				{
+					fn(GetCurrentEntity());
+				}
+			}
+		}
+		virtual void OnCollisionEnter(Collision collision)
+		{
+			if (collision.gameObject.HasComponent<SkillComponent>())
+			{
+				targetTransform = &collision.gameObject.GetComponent<TransformComponent>();
+
+				const auto& stat = collision.gameObject.GetComponent<StatComponent>();
+				Damaged(stat.Stat.AttackPower);
+			}
 		}
 		void Knockback(Directions dir)
 		{
@@ -153,6 +224,28 @@ namespace fz {
 				body->AddForce({ -500.f, -500.f });
 			else if (dir == Directions::RIGHT)
 				body->AddForce({ +500.f, -500.f });
+		}
+		void FollowTarget(float dt)
+		{
+			GameObject player = GetCurrentScene()->GetEntityFromTag("Player");
+			auto targetPosition = player.GetComponent<TransformComponent>().Transform.GetTranslate();
+			auto myPosition = transform->Transform.GetTranslate();
+
+			Directions dir = (targetPosition.x > myPosition.x) ? Directions::RIGHT : Directions::LEFT;
+			float moveAmount = MoveSpeed * dt;
+
+			if (dir == Directions::RIGHT)
+			{
+				body->AddPosition({ MoveSpeed * 1, 0.0f });
+				transform->Transform.SetScale(-1.0f, 1.0f);
+				animator.Play(&clips["move"]);
+			}
+			else
+			{
+				body->AddPosition({ -MoveSpeed * 1, 0.0f });
+				transform->Transform.SetScale(1.0f, 1.0f);
+				animator.Play(&clips["move"]);
+			}
 		}
 	private:
 
@@ -165,6 +258,7 @@ namespace fz {
 			std::uniform_int_distribution<> dis(0, 1);
 			return dis(gen) == 0 ? Directions::LEFT : Directions::RIGHT;
 		}
+		GameObject targetPlayer;
 	};
 
 }

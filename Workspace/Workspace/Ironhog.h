@@ -7,17 +7,28 @@ namespace fz {
 
 	class IronhogScript : public VegaScript, public MonsterFSM
 	{
-	using AnimPool = std::unordered_map<std::string, AnimationClip>;
+		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
 		float JumpPower = -500.f;
 		float MoveSpeed = 100.f;
 
+		float KnockbackTime = 0.5f;
+
+		Directions currDir = Directions::LEFT;
+
 		Animator animator;
 		AnimPool clips;
 
+		GameObject CurrItemDrop;
+
 		TransformComponent* transform;
 		RigidbodyComponent* body;
+		StatComponent* stat = nullptr;
+		TransformComponent* targetTransform = nullptr;
 
+		bool isOnDie = false;
+
+		bool OnDropItem = false;
 		Timer timer;
 
 		void Start() override

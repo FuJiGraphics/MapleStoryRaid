@@ -18,6 +18,7 @@
         "HasChild": false,
         "RigidbodyComponent": {
             "FixedRotation": true,
+            "GroupIndex": null,
             "RigidType": "Dynamic"
         },
         "RootEntity": true,

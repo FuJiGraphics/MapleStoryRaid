@@ -125,6 +125,10 @@ namespace fz {
 			{
 				this->Damaged(10);
 			}
+			else if (Input::IsKeyDown(KeyType::T))
+			{
+				GetCurrentScene()->Instantiate("Balrog", { 600.f, 700.0f });
+			}
 			else if (Input::IsKeyDown(KeyType::W))
 			{
 				this->Die();
