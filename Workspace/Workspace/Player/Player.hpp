@@ -133,13 +133,6 @@ namespace fz {
 			{
 				this->Die();
 			}
-			
-			
-	/*		if (Input::IsKeyDown(KeyType::T))
-			{
-				GetCurrentScene()->Instantiate("Spoa", { 200.f, 0.0f });
-			}*/
-			
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
 				if (!isOnRope && !isOnLadder)
@@ -193,6 +186,10 @@ namespace fz {
 				currRopeBounds[0].y = pos.y;
 				currRopeBounds[1].y = pos.y + (endPos.x - startPos.x);
 			}
+			else if (collision.tag == "Block")
+			{
+
+			}
 		}
 
 		void OnCollisionStay(Collision collision) override
@@ -217,6 +214,10 @@ namespace fz {
 			else if (collision.tag == "Rope")
 			{
 				isInsideRope = false;
+			}
+			else if (collision.tag == "Block")
+			{
+
 			}
 		}
 
@@ -262,17 +263,42 @@ namespace fz {
 			if (dir == Directions::RIGHT)
 			{
 				RaycastHit hit;
-				Physics.Raycast(GetWorldPosition(), { 1.0f, 0.0f }, hit, 100.f);
-				FZLOG_DEBUG("Raycast {0}", hit.Collider.tag);
-				body->AddPosition({ stat.MoveSpeed * 1.f, 0.0f });
-				transform.SetScale(-1.0f, 1.0f);
-				currDir = Directions::RIGHT;
+				sf::Vector2f boxSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
+				sf::Vector2f origin = GetWorldPosition();
+				origin.y = origin.y + boxSize.y + 1.f;
+				Physics.Raycast(origin, { 1.f, 0.f }, hit, boxSize.x + 5.f);
+				sf::Vector2f nextDir = hit.Normal;
+				// 벽이 아닐 경우
+				if (hit.Collider.tag != "Block")
+				{
+					nextDir.x = nextDir.x * -1.f;
+					if (Utils::IsEqual(nextDir.y, 0.f))
+						body->AddPosition({ (float)stat.MoveSpeed, 0.f });
+					else
+						body->AddPosition(nextDir * (float)stat.MoveSpeed);
+					transform.SetScale(-1.0f, 1.0f);
+					currDir = Directions::RIGHT;
+				}
 			}
 			else if (dir == Directions::LEFT)
 			{
-				body->AddPosition({ stat.MoveSpeed * -1.f, 0.0f });
-				transform.SetScale(1.0f, 1.0f);
-				currDir = Directions::LEFT;
+				RaycastHit hit;
+				sf::Vector2f boxSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
+				sf::Vector2f origin = GetWorldPosition();
+				origin.y = origin.y + boxSize.y + 1.f;
+				Physics.Raycast(origin, { -1.0f, 0.0f }, hit, boxSize.x + 5.f);
+				sf::Vector2f nextDir = hit.Normal;
+				// 벽일 경우
+				if (hit.Collider.tag != "Block")
+				{
+					nextDir.x = nextDir.x * -1.f;
+					if (Utils::IsEqual(nextDir.y, 0.f))
+						body->AddPosition({ stat.MoveSpeed * -1.f, 0.f });
+					else
+						body->AddPosition(nextDir * ((float)stat.MoveSpeed) * 1.f);
+					transform.SetScale(1.0f, 1.0f);
+					currDir = Directions::LEFT;
+				}
 			}
 		}
 

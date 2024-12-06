@@ -429,7 +429,7 @@
             },
             "BoxCollider2DComponent": {
                 "Density": 1.0,
-                "Friction": 0.5,
+                "Friction": 1.0,
                 "IsTrigger": false,
                 "Offset": {
                     "X": 0.0,
@@ -464,7 +464,7 @@
                     1.0
                 ],
                 "Translate": [
-                    2074.089111328125,
+                    922.0889892578125,
                     437.29998779296875
                 ]
             }
@@ -2451,7 +2451,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Ground"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2495,7 +2495,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Ground"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2973,7 +2973,7 @@
                         "X": 204.0,
                         "Y": 0.0
                     },
-                    "Friction": 0.5,
+                    "Friction": 1.0,
                     "IsOneSides": false,
                     "IsTrigger": false,
                     "Restitution": 0.0,
@@ -3036,7 +3036,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Block1"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -3080,7 +3080,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Ground"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -3124,7 +3124,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Block2"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [

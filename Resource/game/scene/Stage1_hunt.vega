@@ -26,7 +26,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1534.0,
-                    756.0
+                    737.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -2584,7 +2584,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "B2"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2672,7 +2672,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "LLine2"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2716,7 +2716,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line1"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -3038,7 +3038,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "B1"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -3126,7 +3126,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "LLine1"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -3170,7 +3170,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "LLine3"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -3183,8 +3183,8 @@
                         1.0
                     ],
                     "Translate": [
-                        -290.0,
-                        262.5
+                        -288.0,
+                        263.5
                     ]
                 }
             },

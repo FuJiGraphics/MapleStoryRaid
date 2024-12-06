@@ -7,6 +7,7 @@ namespace fz {
 	{
 	public:
 		static Physics_internal& GetInstance();
+		static void Raycast(const sf::Vector2f& origin, float angle, RaycastHit& hitInfo, float maxDistance);
 		static void Raycast(const sf::Vector2f& origin, const sf::Vector2f& direction, RaycastHit& hitInfo, float maxDistance);
 		static void SetRaycastDebug(bool enabled);
 

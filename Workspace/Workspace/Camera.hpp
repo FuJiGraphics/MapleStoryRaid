@@ -45,24 +45,14 @@ namespace fz {
 			{
 				newPos.y = currPos.y;
 			}
-			prevPos = { currPos.x, currPos.y };
+
+			sf::Vector2f viewSize = GetComponent<CameraComponent>().Camera.GetSize();
+			RaycastHit hitLeft;
+			RaycastHit hitRight;
+			Physics.Raycast(newPos, { -1.0f, 0.0f }, hitLeft, viewSize.x * 0.5f);
+			Physics.Raycast(newPos, { 1.0f, 0.0f }, hitRight, viewSize.x * 0.5f);
+
 			body.AddPositionNoGravity({ newPos.x - currPos.x, newPos.y - currPos.y });
-		}
-
-		void OnTriggerEnter(Collider collider) override
-		{
-			if (collider.tag == "B2")
-				IsCollideBlockL = true;
-			if (collider.tag == "B1")
-				IsCollideBlockR = true;
-		}
-
-		void OnTriggerExit(Collider collider) override
-		{
-			if (collider.tag == "B2")
-				IsCollideBlockL = false;
-			if (collider.tag == "B1")
-				IsCollideBlockR = false;
 		}
 	};
 } // namespace fz

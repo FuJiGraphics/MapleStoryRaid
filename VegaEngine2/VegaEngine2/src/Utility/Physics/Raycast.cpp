@@ -14,7 +14,8 @@ namespace fz {
 	{
 		m_Info.Fixture = fixture;
 		m_Info.Point = point;
-		m_Info.Normal = normal;
+		m_Info.Normal.x = Utils::IsEqual(normal.x, 0.f) ? 0.f : normal.x;
+		m_Info.Normal.y = Utils::IsEqual(normal.y, 0.f) ? 0.f : normal.y;
 		m_Info.Fraction = fraction;
 		m_HitDetected = true;
 		return m_Info.Fraction;

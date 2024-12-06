@@ -9,6 +9,12 @@ namespace fz {
 		return _instance;
 	}
 
+	void Physics_internal::Raycast(const sf::Vector2f& origin, float angle, RaycastHit& hitInfo, float maxDistance)
+	{
+		sf::Vector2f dir = Utils::GetRotateVector(angle, { 1.0f, 0.0f });
+		Physics_internal::Raycast(origin, dir, hitInfo, maxDistance);
+	}
+
 	void Physics_internal::Raycast(
 		const sf::Vector2f& origin,
 		const sf::Vector2f& direction,
@@ -22,7 +28,7 @@ namespace fz {
 
 		sf::Vector2f normalDir = Utils::GetNormal(direction);
 		b2Vec2 rayStart = Utils::PixelToMeter(origin);
-		b2Vec2 rayEnd = rayStart + maxDistance * Utils::PixelToMeter(normalDir);
+		b2Vec2 rayEnd = rayStart + Utils::PixelToMeter(maxDistance * normalDir);
 
 		// RayCastCallback »ý¼º
 		RayCastCallback callback;
