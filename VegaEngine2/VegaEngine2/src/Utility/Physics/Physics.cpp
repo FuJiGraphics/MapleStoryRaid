@@ -3,19 +3,18 @@
 
 namespace fz {
 
-    Physics_internal& Physics_internal::GetInstance()
-    {
-        static Physics_internal _instance;
-        return _instance;
-    }
+	Physics_internal& Physics_internal::GetInstance()
+	{
+		static Physics_internal _instance;
+		return _instance;
+	}
 
-    void Physics_internal::Raycast(
-        const sf::Vector2f& origin, 
-        const sf::Vector2f& direction, 
-        RaycastHit& hitInfo, float 
-        maxDistance, 
-        int layerMask)
-    {
+	void Physics_internal::Raycast(
+		const sf::Vector2f& origin,
+		const sf::Vector2f& direction,
+		RaycastHit& hitInfo, float
+		maxDistance)
+	{
 		Scene& scene = SceneManager::GetCurrentScene();
 		b2World* world = scene.s_World;
 
@@ -31,7 +30,7 @@ namespace fz {
 		// Box2D Raycast 실행
 		world->RayCast(&callback, rayStart, rayEnd);
 
-		if (callback.IsHitDetected()) 
+		if (callback.IsHitDetected())
 		{
 			const RayCastInfo& info = callback.GetInfo();
 			auto handle = static_cast<entt::entity>(info.Fixture->GetUserData().pointer);
@@ -46,16 +45,20 @@ namespace fz {
 			else
 				hitInfo.Rigidbody = nullptr;
 		}
-		else 
+		else
 		{
-			// 충돌하지 않았을 경우 기본값 설정
-			hitInfo.Collider = Collider(); // 비어있는 Collider 객체
+			hitInfo.Collider = Collider();
 			hitInfo.Point = sf::Vector2f(0, 0);
 			hitInfo.Normal = sf::Vector2f(0, 0);
 			hitInfo.Distance = 0.0f;
-			hitInfo.Transform = fz::Transform(); // 기본 Transform
-			hitInfo.Rigidbody = nullptr; // Rigidbody 없음
+			hitInfo.Transform = fz::Transform();
+			hitInfo.Rigidbody = nullptr;
 		}
-    }
+	}
+
+	void Physics_internal::SetRaycastDebug(bool enabled)
+	{
+		FZLOG_ASSERT(false, "미구현");
+	}
 
 } // namespace fz

@@ -692,7 +692,7 @@
                 "EdgeCollider2DComponent": {
                     "Density": 1.0,
                     "EndPos": {
-                        "X": 132.10000610351563,
+                        "X": 169.39999389648438,
                         "Y": 0.0
                     },
                     "Friction": 0.5,
@@ -728,7 +728,7 @@
                     ],
                     "Translate": [
                         458.0,
-                        227.0
+                        195.0
                     ]
                 }
             },
@@ -2771,8 +2771,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1534.0,
-                    756.0
+                    638.0,
+                    507.0
                 ],
                 "Viewport": {
                     "Height": 1.0,

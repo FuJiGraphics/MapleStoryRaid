@@ -394,7 +394,7 @@
                     1.0,
                     1.0
                 ],
-                "SortingOrder": -4,
+                "SortingOrder": 4,
                 "TexPath": "game\\graphics\\monster\\22970.png",
                 "TexRect": {
                     "Height": 165,
@@ -692,7 +692,7 @@
                 "EdgeCollider2DComponent": {
                     "Density": 1.0,
                     "EndPos": {
-                        "X": 132.10000610351563,
+                        "X": 169.39999389648438,
                         "Y": 0.0
                     },
                     "Friction": 0.5,
@@ -728,7 +728,7 @@
                     ],
                     "Translate": [
                         458.0,
-                        227.0
+                        195.0
                     ]
                 }
             },
@@ -2772,7 +2772,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1534.0,
-                    756.0
+                    737.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -2806,6 +2806,86 @@
                 "Translate": [
                     798.7179565429688,
                     612.3553466796875
+                ]
+            }
+        },
+        "c7f91631-b6ea-4aae-9d57-34c023c3b0bf": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 22.299999237060547,
+                    "Y": 34.75
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": 0,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    25.0,
+                    37.5
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 4,
+                "TexPath": "game\\graphics\\effect\\attack\\attack1.png",
+                "TexRect": {
+                    "Height": 75,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 50
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "BasicAttack"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    1573.0,
+                    516.0
                 ]
             }
         }

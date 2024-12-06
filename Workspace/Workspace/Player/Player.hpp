@@ -261,6 +261,9 @@ namespace fz {
 			fz::Transform& transform = GetComponent<TransformComponent>();
 			if (dir == Directions::RIGHT)
 			{
+				RaycastHit hit;
+				Physics.Raycast(GetWorldPosition(), { 1.0f, 0.0f }, hit, 100.f);
+				FZLOG_DEBUG("Raycast {0}", hit.Collider.tag);
 				body->AddPosition({ stat.MoveSpeed * 1.f, 0.0f });
 				transform.SetScale(-1.0f, 1.0f);
 				currDir = Directions::RIGHT;
