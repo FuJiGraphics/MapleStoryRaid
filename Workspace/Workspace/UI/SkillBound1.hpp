@@ -1,20 +1,19 @@
 #pragma once
 #include <VegaEngine2.h>
-#include "FSM.h"
+#include "BoundComponent.hpp"
 
 namespace fz {
 
-	class StatUIScript : public VegaScript
+	class SkillBound1Script : public VegaScript
 	{
 	public:
 		sf::Vector2f halfSize;
 		bool isClickedLeft = false;
-		GameObject statWindow;
 
 		void Start() override
 		{
 			halfSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
-			statWindow = GetCurrentScene()->GetEntityFromTag("StatWindow");
+			AddComponent<BoundComponent>();
 		}
 
 		void OnDestroy() override
@@ -24,21 +23,21 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			if (statWindow.GetActive())
-				GetComponent<SpriteComponent>().Sprite.SetColor({ 180, 180, 180, 255 });
-			else
-				GetComponent<SpriteComponent>().Sprite.SetColor({ 255, 255, 255, 255 });
-
 			if (IsClickedBounds())
 			{
-				if (!isClickedLeft && Input::IsMouseButtonPressed(MouseButtonType::Left))
+				if (Input::IsMouseButtonPressed(MouseButtonType::Left))
 				{
-					isClickedLeft = true;
-					GameObject statWindow = GetCurrentScene()->GetEntityFromTag("StatWindow");
-					statWindow.SetActive(true);
+					GetComponent<BoundComponent>().IsClicked = true;
+				}
+				if (Input::IsMouseButtonReleased(MouseButtonType::Left))
+				{
+					GetComponent<BoundComponent>().IsClicked = false;
 				}
 			}
-			isClickedLeft = false;
+			else if (Input::IsMouseButtonReleased(MouseButtonType::Left))
+			{
+				GetComponent<BoundComponent>().IsClicked = false;
+			}
 		}
 
 		bool IsClickedBounds()

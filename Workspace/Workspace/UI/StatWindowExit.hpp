@@ -7,11 +7,11 @@ namespace fz {
 	class StatWindowExitScript : public VegaScript
 	{
 	public:
-		sf::Vector2f size;
+		sf::Vector2f halfSize;
 
 		void Start() override
 		{
-			size = GetComponent<BoxCollider2DComponent>().GetSize();
+			halfSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
 		}
 
 		void OnDestroy() override
@@ -40,9 +40,8 @@ namespace fz {
 			const auto& pos = GetWorldPosition();
 			const auto& scale = GetWorldTransform().getMatrix();
 			sf::Vector2f bounds[2];
-			float zoom = GetCurrentScene()->GetEntityFromTag("Camera").GetComponent<CameraComponent>().Camera.GetZoom();
-			bounds[0] = { pos.x - (size.x * scale[0]), pos.y - (size.y * scale[5]) };
-			bounds[1] = { pos.x + (size.x * scale[0]), pos.y + (size.y * scale[5]) };
+			bounds[0] = { pos.x - (halfSize.x * scale[0]), pos.y - (halfSize.y * scale[5]) };
+			bounds[1] = { pos.x + (halfSize.x * scale[0]), pos.y + (halfSize.y * scale[5]) };
 			if (bounds[0].x > mousePos.x || bounds[0].y > mousePos.y)
 				return false;
 			if (bounds[1].x < mousePos.x || bounds[1].y < mousePos.y)

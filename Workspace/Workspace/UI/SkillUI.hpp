@@ -4,17 +4,17 @@
 
 namespace fz {
 
-	class StatUIScript : public VegaScript
+	class SkillUIScript : public VegaScript
 	{
 	public:
 		sf::Vector2f halfSize;
 		bool isClickedLeft = false;
-		GameObject statWindow;
+		GameObject skillWindow;
 
 		void Start() override
 		{
 			halfSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
-			statWindow = GetCurrentScene()->GetEntityFromTag("StatWindow");
+			skillWindow = GetCurrentScene()->GetEntityFromTag("SkillWindow");
 		}
 
 		void OnDestroy() override
@@ -24,7 +24,7 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			if (statWindow.GetActive())
+			if (skillWindow.GetActive())
 				GetComponent<SpriteComponent>().Sprite.SetColor({ 180, 180, 180, 255 });
 			else
 				GetComponent<SpriteComponent>().Sprite.SetColor({ 255, 255, 255, 255 });
@@ -34,8 +34,8 @@ namespace fz {
 				if (!isClickedLeft && Input::IsMouseButtonPressed(MouseButtonType::Left))
 				{
 					isClickedLeft = true;
-					GameObject statWindow = GetCurrentScene()->GetEntityFromTag("StatWindow");
-					statWindow.SetActive(true);
+					GameObject skillWindow = GetCurrentScene()->GetEntityFromTag("SkillWindow");
+					skillWindow.SetActive(true);
 				}
 			}
 			isClickedLeft = false;

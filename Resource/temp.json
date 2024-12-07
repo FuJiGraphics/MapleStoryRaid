@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    356.3599853515625,
-                    293.22998046875
+                    896.2099609375,
+                    428.92999267578125
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -907,6 +907,141 @@
                     ]
                 }
             },
+            "25ed2f75-f49a-4e36-8975-8e0c69967c30": {
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": false,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 13.699999809265137,
+                        "Y": 8.899999618530273
+                    }
+                },
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        14.0,
+                        10.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 104,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\SkillKey.png",
+                    "TexRect": {
+                        "Height": 20,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 28
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "SkillUI"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        318.0,
+                        -17.0
+                    ]
+                }
+            },
+            "2621931e-ef34-426d-b014-444852da4137": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        14.0,
+                        10.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 104,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\KeySet.png",
+                    "TexRect": {
+                        "Height": 20,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 28
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Key"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        348.0,
+                        -17.0
+                    ]
+                }
+            },
             "2a4e57a4-152f-400c-bbaf-ebf038c99233": {
                 "HasChild": false,
                 "RootEntity": false,
@@ -1039,6 +1174,490 @@
                     "Translate": [
                         285.5,
                         18.0
+                    ]
+                }
+            },
+            "472e93a9-e204-4a3a-83d3-55f6228ce36f": {
+                "HasChild": true,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        75.5,
+                        40.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 103,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\QuickSlot\\QuickSlot.png",
+                    "TexRect": {
+                        "Height": 80,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 151
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "QuickSlot"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        325.0,
+                        -72.0
+                    ]
+                },
+                "eff32d2c-4f77-4492-923a-44bea13c6749": {
+                    "43a3f2df-f0ea-4c9d-b239-2bd9d33eb0ab": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": true,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotT1"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -53.0,
+                                -17.0
+                            ]
+                        }
+                    },
+                    "6400293c-c779-4282-9b4a-db3cf1d8f3a4": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotB2"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -17.0,
+                                17.0
+                            ]
+                        }
+                    },
+                    "6623684f-d5ae-41c6-8142-6adb46bd3ac6": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotB3"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                18.0,
+                                17.0
+                            ]
+                        }
+                    },
+                    "671baa97-0ef2-4809-b3e9-10e7b216892d": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotB4"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                53.0,
+                                17.0
+                            ]
+                        }
+                    },
+                    "676b3705-5a2d-4cd1-a697-e307923d8780": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotT2"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -17.0,
+                                -17.0
+                            ]
+                        }
+                    },
+                    "679df606-0d0e-4cf5-a240-7810b52fc496": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotB1"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -53.0,
+                                17.0
+                            ]
+                        }
+                    },
+                    "8794add2-01a3-44be-b681-58c1738ed566": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotT4"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                53.0,
+                                -17.0
+                            ]
+                        }
+                    },
+                    "HasChild": true,
+                    "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            75.5,
+                            40.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 104,
+                        "TexPath": "game\\graphics\\ui\\BottomBar\\QuickSlot\\QuickSlotLayer.png",
+                        "TexRect": {
+                            "Height": 80,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 151
+                        }
+                    },
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "QuickSlotHotkey"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    "bd690758-8d4f-4501-a6da-932b26d7d97c": {
+                        "BoxCollider2DComponent": {
+                            "Density": 1.0,
+                            "Friction": 0.5,
+                            "IsTrigger": false,
+                            "Offset": {
+                                "X": 0.0,
+                                "Y": 0.0
+                            },
+                            "Restitution": 0.0,
+                            "RestitutionThreshold": 0.5,
+                            "Size": {
+                                "X": 14.0,
+                                "Y": 14.0
+                            }
+                        },
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SlotT3"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                18.0,
+                                -17.0
+                            ]
+                        }
+                    }
+                }
+            },
+            "5d4409c1-ee48-42b8-83c9-5fc4bd8cae91": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        21.0,
+                        9.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 104,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\report_Post_Box.png",
+                    "TexRect": {
+                        "Height": 19,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 42
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Report"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        191.0,
+                        -17.0
                     ]
                 }
             },
@@ -1822,11 +2441,48 @@
                         "RestitutionThreshold": 0.5,
                         "Size": {
                             "X": 6.0,
-                            "Y": 5.699999809265137
+                            "Y": 6.0
                         }
                     },
                     "HasChild": false,
                     "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            6.0,
+                            6.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "TexPath": "game\\graphics\\ui\\exit.png",
+                        "TexRect": {
+                            "Height": 12,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 12
+                        }
+                    },
                     "TagComponent": {
                         "Active": false,
                         "Tag": "StatWindowExit"
@@ -1842,7 +2498,7 @@
                             1.0
                         ],
                         "Translate": [
-                            74.0,
+                            75.0,
                             -157.0
                         ]
                     }
@@ -2034,6 +2690,949 @@
                     ]
                 }
             },
+            "89399a4f-4bc0-46be-9ef7-a694a2104cb5": {
+                "005c29eb-fb9e-4b51-9922-71f61dcc07ae": {
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillPoint"
+                    },
+                    "TextComponent": {
+                        "CharacterSize": 12,
+                        "Color": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FillColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "FontPath": "fonts\\opensans\\OpenSans-Regular.ttf",
+                        "LetterSpacing": 1.0,
+                        "LineSpacing": 1.0,
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "OutlineColor": [
+                            0,
+                            0,
+                            0,
+                            255
+                        ],
+                        "OutlineThickness": 0.0,
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 110,
+                        "String": "0"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -2.0,
+                            122.0
+                        ]
+                    }
+                },
+                "0ba45294-cc91-405e-8e06-79c761dc808f": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": false,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 13.0,
+                            "Y": 8.5
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillWindowTab1"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -36.0,
+                            -111.0
+                        ]
+                    }
+                },
+                "1b4deb15-d377-4630-bcbc-fc6bda35abad": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": false,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 13.699999809265137,
+                            "Y": 8.300000190734863
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillWindowTab4"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            60.0,
+                            -111.0
+                        ]
+                    }
+                },
+                "2bc012d2-ad47-40d3-84c1-88186b3751da": {
+                    "3c16adc1-9c45-4d7c-ae18-602ec7174a52": {
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "SpriteComponent": {
+                            "Color": {
+                                "A": 255,
+                                "B": 255,
+                                "G": 255,
+                                "R": 255
+                            },
+                            "MaskColor": {
+                                "A": 255,
+                                "B": 0,
+                                "G": 0,
+                                "R": 0
+                            },
+                            "MaskMode": false,
+                            "Origin": [
+                                16.0,
+                                16.0
+                            ],
+                            "Origins": "MC",
+                            "Position": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "SortingOrder": 112,
+                            "TexPath": "game\\graphics\\ui\\Skills\\BasicSwingIcon.png",
+                            "TexRect": {
+                                "Height": 32,
+                                "Left": 0,
+                                "Top": 0,
+                                "Width": 32
+                            }
+                        },
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SkillBoundItem1"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -52.5,
+                                -0.5
+                            ]
+                        }
+                    },
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": true,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 70.5,
+                            "Y": 18.0
+                        }
+                    },
+                    "HasChild": true,
+                    "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            70.5,
+                            20.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 111,
+                        "TexPath": "game\\graphics\\ui\\SkillBackGround.png",
+                        "TexRect": {
+                            "Height": 40,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 141
+                        }
+                    },
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillBound1"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -8.0,
+                            -30.0
+                        ]
+                    }
+                },
+                "48940678-9d93-4074-9e58-d8f3cf985096": {
+                    "51c35019-6335-4687-82be-521170551322": {
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "SpriteComponent": {
+                            "Color": {
+                                "A": 255,
+                                "B": 255,
+                                "G": 255,
+                                "R": 255
+                            },
+                            "MaskColor": {
+                                "A": 255,
+                                "B": 0,
+                                "G": 0,
+                                "R": 0
+                            },
+                            "MaskMode": false,
+                            "Origin": [
+                                16.0,
+                                16.0
+                            ],
+                            "Origins": "MC",
+                            "Position": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "SortingOrder": 112,
+                            "TexPath": "game\\graphics\\ui\\Skills\\AttackPasDisable.png",
+                            "TexRect": {
+                                "Height": 32,
+                                "Left": 0,
+                                "Top": 0,
+                                "Width": 32
+                            }
+                        },
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SkillBoundItem2"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -52.5,
+                                -0.5
+                            ]
+                        }
+                    },
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": true,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 69.94999694824219,
+                            "Y": 16.200000762939453
+                        }
+                    },
+                    "HasChild": true,
+                    "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            70.5,
+                            20.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 111,
+                        "TexPath": "game\\graphics\\ui\\SkillBackGround.png",
+                        "TexRect": {
+                            "Height": 40,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 141
+                        }
+                    },
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillBound2"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -8.0,
+                            11.0
+                        ]
+                    }
+                },
+                "66f12692-1f5e-42c5-8a96-319e9add003a": {
+                    "4836fb81-2af6-4d8c-ac4c-b8693c43e35c": {
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "SpriteComponent": {
+                            "Color": {
+                                "A": 255,
+                                "B": 255,
+                                "G": 255,
+                                "R": 255
+                            },
+                            "MaskColor": {
+                                "A": 255,
+                                "B": 0,
+                                "G": 0,
+                                "R": 0
+                            },
+                            "MaskMode": false,
+                            "Origin": [
+                                16.0,
+                                16.0
+                            ],
+                            "Origins": "MC",
+                            "Position": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "SortingOrder": 112,
+                            "TexPath": "game\\graphics\\ui\\Skills\\defenceDisable.png",
+                            "TexRect": {
+                                "Height": 32,
+                                "Left": 0,
+                                "Top": 0,
+                                "Width": 32
+                            }
+                        },
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SkillBoundItem3"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -52.5,
+                                -0.5
+                            ]
+                        }
+                    },
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": true,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 69.6500015258789,
+                            "Y": 16.899999618530273
+                        }
+                    },
+                    "HasChild": true,
+                    "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            70.5,
+                            20.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 111,
+                        "TexPath": "game\\graphics\\ui\\SkillBackGround.png",
+                        "TexRect": {
+                            "Height": 40,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 141
+                        }
+                    },
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillBound3"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -8.0,
+                            51.0
+                        ]
+                    }
+                },
+                "7515ccb9-e2f3-4f8d-90ff-a2bb80815b74": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": true,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 6.0,
+                            "Y": 6.0
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            6.0,
+                            6.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 111,
+                        "TexPath": "game\\graphics\\ui\\exit.png",
+                        "TexRect": {
+                            "Height": 12,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 12
+                        }
+                    },
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillWindowExit"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            76.0,
+                            -132.5
+                        ]
+                    }
+                },
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 87.5,
+                        "Y": 144.5
+                    }
+                },
+                "HasChild": true,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        87.5,
+                        144.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 105,
+                    "TexPath": "game\\graphics\\ui\\SkillWindow\\SkillWindow0.png",
+                    "TexRect": {
+                        "Height": 289,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 175
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "SkillWindow"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        70.0,
+                        -262.0
+                    ]
+                },
+                "bd5cfda9-c94b-4ede-993c-2650faf7250b": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": false,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 13.600000381469727,
+                            "Y": 9.199999809265137
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillWindowTab0"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -68.0,
+                            -111.0
+                        ]
+                    }
+                },
+                "c5c2aa14-e1fc-4f37-80ce-4ec0e9af182f": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": true,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 69.1500015258789,
+                            "Y": 16.700000762939453
+                        }
+                    },
+                    "HasChild": true,
+                    "RootEntity": false,
+                    "SpriteComponent": {
+                        "Color": {
+                            "A": 255,
+                            "B": 255,
+                            "G": 255,
+                            "R": 255
+                        },
+                        "MaskColor": {
+                            "A": 255,
+                            "B": 0,
+                            "G": 0,
+                            "R": 0
+                        },
+                        "MaskMode": false,
+                        "Origin": [
+                            70.5,
+                            20.0
+                        ],
+                        "Origins": "MC",
+                        "Position": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "SortingOrder": 111,
+                        "TexPath": "game\\graphics\\ui\\SkillBackGround.png",
+                        "TexRect": {
+                            "Height": 40,
+                            "Left": 0,
+                            "Top": 0,
+                            "Width": 141
+                        }
+                    },
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillBound4"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -8.0,
+                            91.0
+                        ]
+                    },
+                    "bfe287db-3462-435a-85b4-9169e76f688a": {
+                        "HasChild": false,
+                        "RootEntity": false,
+                        "SpriteComponent": {
+                            "Color": {
+                                "A": 255,
+                                "B": 255,
+                                "G": 255,
+                                "R": 255
+                            },
+                            "MaskColor": {
+                                "A": 255,
+                                "B": 0,
+                                "G": 0,
+                                "R": 0
+                            },
+                            "MaskMode": false,
+                            "Origin": [
+                                16.0,
+                                16.0
+                            ],
+                            "Origins": "MC",
+                            "Position": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "SortingOrder": 112,
+                            "TexPath": "game\\graphics\\ui\\Skills\\AttackSkillDisable.png",
+                            "TexRect": {
+                                "Height": 32,
+                                "Left": 0,
+                                "Top": 0,
+                                "Width": 32
+                            }
+                        },
+                        "TagComponent": {
+                            "Active": true,
+                            "Tag": "SkillBoundItem4"
+                        },
+                        "TransformComponent": {
+                            "Origin": [
+                                0.0,
+                                0.0
+                            ],
+                            "Rotation": 0.0,
+                            "Scale": [
+                                1.0,
+                                1.0
+                            ],
+                            "Translate": [
+                                -52.5,
+                                0.0
+                            ]
+                        }
+                    }
+                },
+                "fdde29cc-6d04-4ff7-bcea-5d6aac7fb674": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": false,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 14.0,
+                            "Y": 8.600000381469727
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillWindowTab3"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            28.0,
+                            -111.0
+                        ]
+                    }
+                },
+                "feace173-a147-4642-9607-896d8ca150a0": {
+                    "BoxCollider2DComponent": {
+                        "Density": 1.0,
+                        "Friction": 0.5,
+                        "IsTrigger": false,
+                        "Offset": {
+                            "X": 0.0,
+                            "Y": 0.0
+                        },
+                        "Restitution": 0.0,
+                        "RestitutionThreshold": 0.5,
+                        "Size": {
+                            "X": 14.100000381469727,
+                            "Y": 8.5
+                        }
+                    },
+                    "HasChild": false,
+                    "RootEntity": false,
+                    "TagComponent": {
+                        "Active": true,
+                        "Tag": "SkillWindowTab2"
+                    },
+                    "TransformComponent": {
+                        "Origin": [
+                            0.0,
+                            0.0
+                        ],
+                        "Rotation": 0.0,
+                        "Scale": [
+                            1.0,
+                            1.0
+                        ],
+                        "Translate": [
+                            -5.0,
+                            -111.0
+                        ]
+                    }
+                }
+            },
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
@@ -2177,7 +3776,7 @@
                         1.0
                     ],
                     "Translate": [
-                        221.0,
+                        288.0,
                         -17.0
                     ]
                 }
@@ -2239,6 +3838,66 @@
                     "Translate": [
                         155.0,
                         14.0
+                    ]
+                }
+            },
+            "b3f2c2b0-4de0-4d47-a5f7-1afff475ede6": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        14.0,
+                        10.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 104,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\QuickSlotKey.png",
+                    "TexRect": {
+                        "Height": 20,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 28
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Slot"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        378.0,
+                        -17.0
                     ]
                 }
             },
@@ -2362,6 +4021,66 @@
                     ]
                 }
             },
+            "d3e5778e-cb45-46ed-a778-b3786b91acbf": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        14.0,
+                        10.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 104,
+                    "TexPath": "game\\graphics\\ui\\BottomBar\\Basic\\EquipKey.png",
+                    "TexRect": {
+                        "Height": 20,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 28
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Equip"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        228.0,
+                        -17.0
+                    ]
+                }
+            },
             "f3b99247-3b87-4bd9-9354-9ee6aaa49c4d": {
                 "BoxCollider2DComponent": {
                     "Density": 1.0,
@@ -2432,7 +4151,7 @@
                         1.0
                     ],
                     "Translate": [
-                        191.0,
+                        258.0,
                         -17.0
                     ]
                 }

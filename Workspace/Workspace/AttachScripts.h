@@ -8,11 +8,15 @@
 #include "Camera.hpp"
 // UI
 #include "UI/UI.hpp"
+#include "UI/HPGradation.hpp"
 #include "UI/CashShop.hpp"
 #include "UI/StatUI.hpp"
 #include "UI/StatWindow.hpp"
 #include "UI/StatWindowExit.hpp"
-#include "UI/HPGradation.hpp"
+#include "UI/SkillUI.hpp"
+#include "UI/SkillWindow.hpp"
+#include "UI/SkillWindowExit.hpp"
+#include "UI/SkillBound1.hpp"
 // Effects
 #include "Skill/BasicAttack.hpp"
 // Portal
@@ -45,11 +49,15 @@ namespace fz {
 		BIND_SCRIPT("AmherstBoss", AmherstBossScript);
 
 		BIND_SCRIPT("UI", UIScript);
+		BIND_SCRIPT("HPGradation", HPGradationScript);
 		BIND_SCRIPT("CashShop", CashShopScript);
 		BIND_SCRIPT("StatUI", StatUIScript);
 		BIND_SCRIPT("StatWindow", StatWindowScript);
 		BIND_SCRIPT("StatWindowExit", StatWindowExitScript);
-		BIND_SCRIPT("HPGradation", HPGradationScript);
+		BIND_SCRIPT("SkillUI", SkillUIScript);
+		BIND_SCRIPT("SkillWindow", SkillWindowScript);
+		BIND_SCRIPT("SkillWindowExit", SkillWindowExitScript);
+		BIND_SCRIPT("SkillBound1", SkillBound1Script);
 
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);

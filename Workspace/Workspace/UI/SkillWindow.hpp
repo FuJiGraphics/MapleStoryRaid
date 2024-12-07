@@ -1,27 +1,19 @@
 #pragma once
 #include <VegaEngine2.h>
-#include "FSM.h"
-#include "Stat.hpp"
+#include "BoundComponent.hpp"
 
 namespace fz {
 
-#define UpdateStatFromString(statType, str) statMap[#statType].GetComponent<TextComponent>().Text.setString(str);
-#define UpdateStatFromInt(statType, num) statMap[#statType].GetComponent<TextComponent>().Text.setString(std::to_string(num));
-
-	class StatWindowScript : public VegaScript
+	class SkillWindowScript : public VegaScript
 	{
 	public:
 		sf::Vector2f halfSize;
 		sf::Vector2f prevMousePos;
 		bool clicked = false;
 
-		std::unordered_map<std::string, fz::Entity> statMap;
-
 		void Start() override
 		{
 			halfSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
-			auto& childComp = GetComponent<ChildEntityComponent>();
-			Utils::SetChildTagsToMap(statMap, childComp);
 		}
 
 		void OnDestroy() override
@@ -31,7 +23,6 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			this->UpdateStatus("Player");
 			if (IsClickedBounds())
 			{
 				if (Input::IsMouseButtonPressed(MouseButtonType::Left))
@@ -69,6 +60,18 @@ namespace fz {
 
 		bool IsClickedBounds()
 		{
+			auto& childComp = GetComponent<ChildEntityComponent>();
+			for (auto& child : childComp.CurrentChildEntities)
+			{
+				if (child.HasComponent<BoundComponent>())
+				{
+					const auto& boundComp = child.GetComponent<BoundComponent>();
+					// 바운드 클릭 시 드래그 할 수 없게 함
+					if (boundComp.IsClicked)
+						return false;
+				}
+			}
+
 			const sf::Vector2f& mousePos = GetCurrentScene()->GetWorldMousePos();
 			const auto& pos = GetWorldPosition();
 			const auto& scale = GetWorldTransform().getMatrix();
@@ -80,39 +83,6 @@ namespace fz {
 			if (bounds[1].x < mousePos.x || bounds[1].y < mousePos.y)
 				return false;
 			return true;
-		}
-
-		void UpdateStatus(const std::string& tag)
-		{
-			GameObject target = GetCurrentScene()->GetEntityFromTag(tag);
-			if (target)
-			{
-				if (target.HasComponent<StatComponent>())
-				{
-					auto& stat = target.GetComponent<StatComponent>().Stat;
-					UpdateStatFromString(Name, stat.Name);
-					UpdateStatFromString(Name, stat.Name);
-					UpdateStatFromString(Class, stat.Class);
-					UpdateStatFromString(Guild, stat.Guild);
-					UpdateStatFromInt(Level, stat.Level);
-					UpdateStatFromInt(HP, stat.HP);
-					UpdateStatFromInt(MP, stat.MP);
-					UpdateStatFromInt(STR, stat.NumOfStr);
-					UpdateStatFromInt(DEX, stat.NumOfDex);
-					UpdateStatFromInt(INT, stat.NumOfInt);
-					UpdateStatFromInt(LUK, stat.NumOfLuk);
-					UpdateStatFromInt(Experience, stat.Experience);
-					UpdateStatFromInt(Popularity, stat.Popularity);
-				}
-				else
-				{
-					FZLOG_WARN("타겟의 Status를 찾을 수 없습니다.");
-				}
-			}
-			else
-			{
-				FZLOG_WARN("타겟 오브젝트를 찾을 수 없습니다.");
-			}
 		}
 
 	}; // class

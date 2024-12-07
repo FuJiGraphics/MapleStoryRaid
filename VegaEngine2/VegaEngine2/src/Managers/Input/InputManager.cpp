@@ -7,6 +7,8 @@ namespace fz {
 	std::unordered_map<Axis, AxisInfo> InputManager::s_AxisInfoMap;
 	std::unordered_map<sf::Keyboard::Key, bool> InputManager::s_KeyStates;
 	std::unordered_map<sf::Keyboard::Key, bool> InputManager::s_PrevKeyStates;
+	std::unordered_map<sf::Mouse::Button, bool> InputManager::s_MouseButtonStates;
+	std::unordered_map<sf::Mouse::Button, bool> InputManager::s_PrevMouseButtonStates;
 	bool InputManager::s_IsEditorMode = false;
 	sf::Vector2i InputManager::s_MousePosFromViewport = { 0, 0 };
 	sf::Vector2f InputManager::s_ViewportBounds[2] = { { 0.0f, 0.0f }, { 0.0f, 0.0f } };
@@ -52,10 +54,21 @@ namespace fz {
 
 	void InputManager::PollEvent(const sf::Event& ev)
 	{
-		if (ev.type == sf::Event::KeyPressed)
-			s_KeyStates[ev.key.code] = true;
-		else if (ev.type == sf::Event::KeyReleased)
-			s_KeyStates[ev.key.code] = false;
+		switch (ev.type)
+		{
+			case sf::Event::KeyPressed:
+				s_KeyStates[ev.key.code] = true;
+				break;
+			case sf::Event::KeyReleased:
+				s_KeyStates[ev.key.code] = false;
+				break;
+			case sf::Event::MouseButtonPressed:
+				s_MouseButtonStates[ev.mouseButton.button] = true;
+				break;
+			case sf::Event::MouseButtonReleased:
+				s_MouseButtonStates[ev.mouseButton.button] = false;
+				break;
+		}
 	}
 
 	void InputManager::SetEditorMode(bool enabled)
@@ -144,15 +157,56 @@ namespace fz {
 		return false;
 	}
 
+	bool InputManager::IsKeyCombinationPressedImpl(const std::vector<KeyType>& keys)
+	{
+		for (auto key : keys)
+		{
+			if (!IsKeyPressedImpl(key))
+				return false;
+		}
+		return true;
+	}
+
+	bool InputManager::IsMouseDownImpl(MouseButtonType button)
+	{
+		auto it = s_PrevMouseButtonStates.find((sf::Mouse::Button)button);
+		if (it == s_PrevMouseButtonStates.end())
+		{
+			if (!sf::Mouse::isButtonPressed((sf::Mouse::Button)button))
+			{
+				s_PrevMouseButtonStates[(sf::Mouse::Button)button] = false;
+				return true;
+			}
+			else
+			{
+				s_PrevMouseButtonStates[(sf::Mouse::Button)button] = true;
+				return false;
+			}
+		}
+		else
+		{
+			if (it->second && !sf::Mouse::isButtonPressed((sf::Mouse::Button)button))
+			{
+				s_PrevMouseButtonStates[(sf::Mouse::Button)button] = false;
+				return true;
+			}
+			else if (!it->second && sf::Mouse::isButtonPressed((sf::Mouse::Button)button))
+			{
+				s_PrevMouseButtonStates[(sf::Mouse::Button)button] = true;
+				return false;
+			}
+		}
+		return false;
+	}
+
 	bool InputManager::IsMouseButtonPressedImpl(MouseButtonType button)
 	{
-		return sf::Mouse::isButtonPressed((sf::Mouse::Button)button);
+		return s_MouseButtonStates[(sf::Mouse::Button)button];
 	}
 
 	bool InputManager::IsMouseButtonReleasedImpl(MouseButtonType button)
 	{
-		FZLOG_ASSERT(false, "¹Ì±¸Çö");
-		return false;
+		return !InputManager::IsMouseButtonPressedImpl(button);
 	}
 
 	sf::Vector2f InputManager::GetMousePositionImpl()
