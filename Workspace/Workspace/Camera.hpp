@@ -1,6 +1,8 @@
 #pragma once
 #include <VegaEngine2.h>
 #include "FSM.h"
+#include "Map/MapComponent.h"
+#include "Player/SaveData.hpp"
 
 namespace fz {
 
@@ -11,6 +13,8 @@ namespace fz {
 		bool IsCollideBlockL = false;
 		bool IsCollideBlockR = false;
 		sf::Vector2f prevPos;
+		GameObject CurrentMap;
+		bool isFirstUpdate = true;
 
 		void Start() override
 		{
@@ -22,6 +26,8 @@ namespace fz {
 
 			auto& body = GetComponent<RigidbodyComponent>();
 			body.SetGravityScale(0.0f);
+
+			//this->FindMap(CurrentMap);
 		}
 
 		void OnDestroy() override
@@ -31,7 +37,22 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
+			if (isFirstUpdate)
+			{
+				isFirstUpdate = false;
+				this->FindMap(CurrentMap);
+			}
 			auto& body = GetComponent<RigidbodyComponent>();
+			// Callback으로 바꾸기
+			if (SaveData::ChangedScene)
+			{
+				this->FindMap(CurrentMap);
+				auto& info = CurrentMap.GetComponent<MapComponent>();
+				sf::Vector2f mapCentor;
+				Utils::SetOrigin(mapCentor, Origins::MC, info.Size);
+				body.SetPosition(mapCentor);
+			}
+			auto& mapInfo = CurrentMap.GetComponent<MapComponent>();
 
 			GameObject target = GetCurrentScene()->GetEntityFromTag("Player");
 			auto& transform = target.GetComponent<TransformComponent>();
@@ -45,14 +66,32 @@ namespace fz {
 			{
 				newPos.y = currPos.y;
 			}
+			
+			//auto& camera = GetComponent<CameraComponent>().Camera;
+			//const sf::Vector2f& viewSize = camera.GetSize();
+			//float viewHalfWidth = viewSize.x * 0.5f;
+			//float mapWidth = mapInfo.Size.x;
 
-			sf::Vector2f viewSize = GetComponent<CameraComponent>().Camera.GetSize();
-			RaycastHit hitLeft;
-			RaycastHit hitRight;
-			Physics.Raycast(newPos, { -1.0f, 0.0f }, hitLeft, viewSize.x * 0.5f);
-			Physics.Raycast(newPos, { 1.0f, 0.0f }, hitRight, viewSize.x * 0.5f);
+			//float viewRightWidth = newPos.x + viewHalfWidth;
+			//float mapRightWidth;mapInfo.Position.x + mapWidth;
+			//if (viewRightWidth >= mapRightWidth)
+			//	return;
+			//float viewleftWidth = newPos.x - viewHalfWidth;
+			//float mapLeftWidth = mapInfo.Position.x;
+			//if (viewleftWidth <= mapLeftWidth)
+			//	return;
 
 			body.AddPositionNoGravity({ newPos.x - currPos.x, newPos.y - currPos.y });
+		}
+
+		void FindMap(GameObject& dst)
+		{
+			auto entityList = GetCurrentScene()->GetEntitiesFromComponent<MapComponent>();
+			for (auto& entity : entityList)
+			{
+				dst = entity;
+				break;
+			}
 		}
 	};
 } // namespace fz

@@ -38,9 +38,11 @@ namespace fz {
 		{
 			const sf::Vector2f& mousePos = GetCurrentScene()->GetWorldMousePos();
 			const auto& pos = GetWorldPosition();
+			const auto& scale = GetWorldTransform().getMatrix();
 			sf::Vector2f bounds[2];
-			bounds[0] = { pos.x - size.x * 2.f, pos.y - size.y * 2.f };
-			bounds[1] = { pos.x + size.x * 2.f, pos.y + size.y * 2.f };
+			float zoom = GetCurrentScene()->GetEntityFromTag("Camera").GetComponent<CameraComponent>().Camera.GetZoom();
+			bounds[0] = { pos.x - (size.x * scale[0]), pos.y - (size.y * scale[5]) };
+			bounds[1] = { pos.x + (size.x * scale[0]), pos.y + (size.y * scale[5]) };
 			if (bounds[0].x > mousePos.x || bounds[0].y > mousePos.y)
 				return false;
 			if (bounds[1].x < mousePos.x || bounds[1].y < mousePos.y)

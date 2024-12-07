@@ -8,6 +8,8 @@
 
 namespace fz {
 
+	class SaveData;
+
 	class PlayerScript : public VegaScript, public CharacterFSM
 	{
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;

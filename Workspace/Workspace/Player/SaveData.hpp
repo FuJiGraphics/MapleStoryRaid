@@ -1,3 +1,5 @@
+#pragma once
+#include "Stat.hpp"
 
 namespace fz {
 

@@ -1,5 +1,9 @@
 #pragma once
 
+// Map
+#include "Map/AmherstTown.hpp"
+#include "Map/AmherstHunt.hpp"
+#include "Map/AmherstBoss.hpp"
 // Camera
 #include "Camera.hpp"
 // UI
@@ -9,7 +13,6 @@
 #include "UI/StatWindow.hpp"
 #include "UI/StatWindowExit.hpp"
 #include "UI/HPGradation.hpp"
-
 // Effects
 #include "Skill/BasicAttack.hpp"
 // Portal
@@ -37,6 +40,10 @@ namespace fz {
 
 	static void AttachScripts(Shared<Scene>& scene)
 	{
+		BIND_SCRIPT("AmherstTown", AmherstTownScript);
+		BIND_SCRIPT("AmherstHunt", AmherstHuntScript);
+		BIND_SCRIPT("AmherstBoss", AmherstBossScript);
+
 		BIND_SCRIPT("UI", UIScript);
 		BIND_SCRIPT("CashShop", CashShopScript);
 		BIND_SCRIPT("StatUI", StatUIScript);

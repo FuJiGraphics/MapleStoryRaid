@@ -28,9 +28,10 @@ namespace fz {
 		{
 			const auto& viewport = GetCurrentScene()->GetViewportSize();
 			const sf::Vector2f& pos = target.GetComponent<TransformComponent>().Transform.GetTranslate();
-			float dw = viewport.x / 800.f;
-			float dh = (viewport.y * 0.125f) / 71.f;
-			transform->Transform.SetTranslate({ pos.x, pos.y + ((viewport.y * 0.125f) * 3.5f)});
+			float zoom = target.GetComponent<CameraComponent>().Camera.GetZoom();
+			float dw = (viewport.x * zoom) / 800.f;
+			float dh = (viewport.y * zoom) * 0.125f / 71.f;
+			transform->Transform.SetTranslate({ pos.x, (pos.y + ((viewport.y * 0.125f) * 3.5f) * zoom) });
 			transform->Transform.SetScale(dw, dh);
 		}
 

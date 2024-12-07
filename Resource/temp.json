@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1534.0,
-                    737.0
+                    356.3599853515625,
+                    293.22998046875
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -34,7 +34,7 @@
                     "Top": 0.0,
                     "Width": 1.0
                 },
-                "Zoom": 1.0
+                "Zoom": 0.5899999737739563
             },
             "HasChild": false,
             "RigidbodyComponent": {
