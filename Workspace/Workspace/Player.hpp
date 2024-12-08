@@ -142,21 +142,11 @@ namespace fz {
 			{
 				GetCurrentScene()->Instantiate("Balrog", { 600.f, 700.0f });
 			}
-			else if (Input::IsKeyDown(KeyType::Num1))
-			{
-				//RaycastHit info;
-				//Physics.Raycast()
-			}
 			else if (Input::IsKeyDown(KeyType::W))
 			{
 				this->Die();
 			}
 			
-			
-	/*		if (Input::IsKeyDown(KeyType::T))
-			{
-				GetCurrentScene()->Instantiate("Spoa", { 200.f, 0.0f });
-			}*/
 			
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
@@ -187,6 +177,7 @@ namespace fz {
 				transform.Transform.SetTranslate(position);
 			}
 		}
+
 		void OnTriggerEnter(Collider collider)override 
 		{
 			if (collider.tag == "Ladder")

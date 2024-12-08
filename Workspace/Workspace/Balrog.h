@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <VegaEngine2.h>
 #include "FSM.h"
 #include "Utils/Timer.h"
@@ -19,9 +19,9 @@ namespace fz {
         Directions currDir = Directions::LEFT;
 
         Animator animator;
-        Animator effectanimator;
-
         AnimPool clips;
+
+        Animator effectanimator;
 
         TransformComponent* transform = nullptr;
         RigidbodyComponent* body = nullptr;
@@ -40,7 +40,7 @@ namespace fz {
             Die, Skill1,
             Skill2, Skill3
         }
-        currentState = AIState::Idle;
+        currentState = AIState::Moving;
 
         void Start() override
         {
@@ -80,59 +80,60 @@ namespace fz {
 
             body->SetGravityScale(1.5f);
 
-            timer["ActionTimer"].Start(5.0f); // ÀÌµ¿ »óÅÂ·Î ½ÃÀÛ
+            timer["ActionTimer"].Start(5.0f); //  Ìµ     Â·      
             timer["SkillTimer"].Start(3.0f);
+            timer["SkillCooldown"].Start(0.0f);
+
+            // ê° ìŠ¤í‚¬ ì¿¨íƒ€ì„ ì„¤ì •
+            timer["Skill1Cooldown"].Start(0.0f); // ì´ˆê¸°í™”
+            timer["Skill2Cooldown"].Start(0.0f);
+            timer["Skill3Cooldown"].Start(0.0f);
         }
 
         void OnDestroy() override
         {
-            FZLOG_DEBUG("ÁÖ´Ï¾î ¹ß·Ï ½ºÅ©¸³Æ® ¼Ò¸ê{0},{1}", 1.1, "aSDASCAsad");
+            FZLOG_DEBUG(" ë°œë¡ìŠ¤í¬ë¦½íŠ¸ ì†Œë©¸ {0},{1}", 1.1, "aSDASCAsad");
         }
 
         void OnUpdate(float dt) override
         {
             if (!HasComponent<RigidbodyComponent>())
                 return;
+            auto& tagComp = GetComponent<TagComponent>();
 
             animator.Update(dt);
             timer.Update(dt);
 
             if (currentState == AIState::Die)
             {
-                Die(); // Die »óÅÂ Áö¼Ó Ã³¸®
+                Die();
                 if (timer["Die"].Done())
                 {
                     GetCurrentScene()->DestroyInstance(GetCurrentEntity());
                 }
-
                 return;
             }
 
-            if (currentState == AIState::Chasing && timer["SkillTimer"].Done())
-            {
-                // Chasing »óÅÂ¿¡¼­¸¸ Skill1À¸·Î ÀüÈ¯
-                currentState = AIState::Skill1;
-                timer["SkillTimer"].Start(1.0f); // Skill1Àº 1ÃÊ µ¿¾È À¯Áö
-            }
-            else if (currentState == AIState::Skill1 && timer["SkillTimer"].Done())
-            {
-                // Skill1 »óÅÂ¿¡¼­ ChasingÀ¸·Î ÀüÈ¯
-                currentState = AIState::Chasing;
-                timer["SkillTimer"].Start(3.0f); // ChasingÀº 3ÃÊ µ¿¾È À¯Áö
-            }
-
+            // ì¶”ì  ìƒíƒœ
             if (currentState == AIState::Chasing)
             {
-                FollowTarget(dt);
+                FollowTarget(dt); // ê±°ë¦¬ ê¸°ë°˜ ì¶”ì 
                 return;
             }
+            // ìŠ¤í‚¬ ìƒíƒœ ì²˜ë¦¬ (ì¶”ì ê³¼ ë¶„ë¦¬)
+            //if (currentState == AIState::Skill1)
+            //{
+            //    UseRandomSkill();
+            //    return;
+            //}
 
-            if (currentState == AIState::Skill1)
 
+            if (timer["DamagedCooldown"].IsStart() && timer["DamagedCooldown"].Done())
             {
-                Skill1();
+                currentState = AIState::Chasing;
 
             }
+
             if (!timer["Die"].IsStart() && timer["ActionTimer"].Done())
             {
 
@@ -157,7 +158,6 @@ namespace fz {
             else if (currentState == AIState::Die)
             {
                 Die();
-                return;
             }
             else
             {
@@ -218,6 +218,7 @@ namespace fz {
             {
                 stat->Stat.HP = 0;
                 Die();
+                currentState = AIState::Die;
             }
             else
             {
@@ -241,20 +242,69 @@ namespace fz {
 
         void Skill1() override
         {
+            if (status->Status == BalrogStatus::Skill1 ||
+                status->Status == BalrogStatus::Skill2 ||
+                status->Status == BalrogStatus::Skill3)
+            {
+                return; // ë‹¤ë¥¸ ìŠ¤í‚¬ ì‹¤í–‰ ì¤‘ì´ë©´ ë¬´ì‹œ
+            }
+
             animator.Play(&clips["skill1"]);
             status->Status = BalrogStatus::Skill1;
         }
         void Skill2() override
         {
+            if (status->Status == BalrogStatus::Skill1 ||
+                status->Status == BalrogStatus::Skill2 ||
+                status->Status == BalrogStatus::Skill3)
+            {
+                return; // ë‹¤ë¥¸ ìŠ¤í‚¬ ì‹¤í–‰ ì¤‘ì´ë©´ ë¬´ì‹œ
+            }
+
             animator.Play(&clips["skill2"]);
             status->Status = BalrogStatus::Skill2;
         }
         void Skill3() override
         {
+            if (status->Status == BalrogStatus::Skill1 ||
+                status->Status == BalrogStatus::Skill2 ||
+                status->Status == BalrogStatus::Skill3)
+            {
+                return; // ë‹¤ë¥¸ ìŠ¤í‚¬ ì‹¤í–‰ ì¤‘ì´ë©´ ë¬´ì‹œ
+            }
+
             animator.Play(&clips["skill3"]);
             status->Status = BalrogStatus::Skill3;
         }
+        void UseRandomSkill()
+        {
+            if (!timer["SkillCooldown"].Done()) // ì¿¨íƒ€ì„ í™•ì¸
+                return;
 
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_int_distribution<> dis(1, 3); // 1~3 ëœë¤ ì„ íƒ
+
+            int randomSkill = dis(gen);
+
+            switch (randomSkill)
+            {
+            case 1:
+                Skill1();
+                break;
+            case 2:
+                Skill2();
+                break;
+            case 3:
+                Skill3();
+                break;
+            default:
+                break;
+            }
+
+            timer["SkillCooldown"].Start(1.0f); // ì¿¨íƒ€ì„ 1ì´ˆ (í•„ìš”í•˜ë©´ ë³€ê²½ ê°€ëŠ¥)
+
+        }
 
         void Die() override
         {
@@ -287,26 +337,50 @@ namespace fz {
             }
         }
 
+
         void FollowTarget(float dt)
         {
             GameObject player = GetCurrentScene()->GetEntityFromTag("Player");
+
+
             auto targetPosition = player.GetComponent<TransformComponent>().Transform.GetTranslate();
             auto myPosition = transform->Transform.GetTranslate();
 
-            Directions dir = (targetPosition.x > myPosition.x) ? Directions::RIGHT : Directions::LEFT;
-            float moveAmount = MoveSpeed * dt;
+            sf::Vector2f direction = targetPosition - myPosition;
+            float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
-            if (dir == Directions::RIGHT)
+            if (distance > 400.0f)
             {
-                body->AddPosition({ MoveSpeed * 1, 0.0f });
-                transform->Transform.SetScale(-1.0f, 1.0f);
-                animator.Play(&clips["move"]);
+                currentState = AIState::Chasing;
+
+                Directions dir = (targetPosition.x > myPosition.x) ? Directions::RIGHT : Directions::LEFT;
+                float moveAmount = MoveSpeed * 1;
+
+                if (dir == Directions::RIGHT)
+                {
+                    body->AddPosition({ moveAmount, 0.0f });
+                    transform->Transform.SetScale(-1.0f, 1.0f);
+      
+                }
+                else
+                {
+                    body->AddPosition({ -moveAmount, 0.0f });
+                    transform->Transform.SetScale(1.0f, 1.0f);
+     
+                }
+                if (animator.GetCurrentClip() != &clips["move"])
+                {
+                    animator.Play(&clips["move"]);
+                }
             }
             else
             {
-                body->AddPosition({ -MoveSpeed * 1, 0.0f });
-                transform->Transform.SetScale(1.0f, 1.0f);
-                animator.Play(&clips["move"]);
+                if (animator.GetCurrentClip() != &clips["skill1"] && timer["SkillCooldown"].Done())
+                {
+            
+                    UseRandomSkill(); // ëœë¤ ìŠ¤í‚¬ ì‹¤í–‰
+                    timer["SkillCooldown"].Start(3.0f); // ìŠ¤í‚¬ ì¿¨íƒ€ì„
+                }
             }
         }
     private:
@@ -321,5 +395,5 @@ namespace fz {
         }
         GameObject targetPlayer;
     };
-
+ 
 }

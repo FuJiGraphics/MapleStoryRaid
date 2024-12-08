@@ -1,8 +1,6 @@
 #pragma once
 #include <VegaEngine2.h>
 #include "FSM.h"
-#include "Map/MapComponent.h"
-#include "Player/SaveData.hpp"
 
 namespace fz {
 
@@ -13,9 +11,9 @@ namespace fz {
 		bool IsCollideBlockL = false;
 		bool IsCollideBlockR = false;
 		sf::Vector2f prevPos;
-		GameObject CurrentMap;
-		bool isFirstUpdate = true;
 
+		float leftBound = -1000.f;
+		float rightBound = 1000.f;
 		void Start() override
 		{
 			GameObject target = GetCurrentScene()->GetEntityFromTag("Player");
@@ -27,7 +25,12 @@ namespace fz {
 			auto& body = GetComponent<RigidbodyComponent>();
 			body.SetGravityScale(0.0f);
 
-			//this->FindMap(CurrentMap);
+			GameObject line1 = GetCurrentScene()->GetEntityFromTag("CameraBlock1");
+			const auto& lineTransform1 = line1.GetComponent<TransformComponent>().Transform;
+			leftBound = lineTransform1.GetTranslate().x;
+			GameObject line2 = GetCurrentScene()->GetEntityFromTag("CameraBlock2");
+			const auto& lineTransform2 = line2.GetComponent<TransformComponent>().Transform;
+			rightBound = lineTransform2.GetTranslate().x;
 		}
 
 		void OnDestroy() override
@@ -37,22 +40,7 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			if (isFirstUpdate)
-			{
-				isFirstUpdate = false;
-				this->FindMap(CurrentMap);
-			}
 			auto& body = GetComponent<RigidbodyComponent>();
-			// Callback으로 바꾸기
-			if (SaveData::ChangedScene)
-			{
-				this->FindMap(CurrentMap);
-				auto& info = CurrentMap.GetComponent<MapComponent>();
-				sf::Vector2f mapCentor;
-				Utils::SetOrigin(mapCentor, Origins::MC, info.Size);
-				body.SetPosition(mapCentor);
-			}
-			auto& mapInfo = CurrentMap.GetComponent<MapComponent>();
 
 			GameObject target = GetCurrentScene()->GetEntityFromTag("Player");
 			auto& transform = target.GetComponent<TransformComponent>();
@@ -66,32 +54,34 @@ namespace fz {
 			{
 				newPos.y = currPos.y;
 			}
-			
-			//auto& camera = GetComponent<CameraComponent>().Camera;
-			//const sf::Vector2f& viewSize = camera.GetSize();
-			//float viewHalfWidth = viewSize.x * 0.5f;
-			//float mapWidth = mapInfo.Size.x;
 
-			//float viewRightWidth = newPos.x + viewHalfWidth;
-			//float mapRightWidth;mapInfo.Position.x + mapWidth;
-			//if (viewRightWidth >= mapRightWidth)
-			//	return;
-			//float viewleftWidth = newPos.x - viewHalfWidth;
-			//float mapLeftWidth = mapInfo.Position.x;
-			//if (viewleftWidth <= mapLeftWidth)
-			//	return;
+			if (newPos.x <= leftBound)
+			{
+				newPos.x = leftBound; // 왼쪽 경계에 도달하면 고정
+			}
+			else if (newPos.x >= rightBound)
+			{
+				newPos.x = rightBound; // 오른쪽 경계에 도달하면 고정
+			}
 
+			prevPos = { currPos.x, currPos.y };
 			body.AddPositionNoGravity({ newPos.x - currPos.x, newPos.y - currPos.y });
 		}
 
-		void FindMap(GameObject& dst)
+		void OnTriggerEnter(Collider collider) override
 		{
-			auto entityList = GetCurrentScene()->GetEntitiesFromComponent<MapComponent>();
-			for (auto& entity : entityList)
-			{
-				dst = entity;
-				break;
-			}
+			if (collider.tag == "B2")
+				IsCollideBlockL = true;
+			if (collider.tag == "B1")
+				IsCollideBlockR = true;
+		}
+
+		void OnTriggerExit(Collider collider) override
+		{
+			if (collider.tag == "B2")
+				IsCollideBlockL = false;
+			if (collider.tag == "B1")
+				IsCollideBlockR = false;
 		}
 	};
 } // namespace fz

@@ -75,7 +75,7 @@
         "ClipName": "None",
         "FrameCount": 4,
         "LoopType": "Loop",
-        "Speed": null,
+        "Speed": 1.0,
         "TexturePath": "game\\graphics\\monster\\22970.png",
         "Transform": {
             "Rotation": 0.0,

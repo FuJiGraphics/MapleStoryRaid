@@ -19,13 +19,14 @@ namespace fz {
 		TEXTURE_MGR.Load("editor/icons/playbutton.png");
 		TEXTURE_MGR.Load("editor/icons/stopbutton.png");
 		SceneManager::AddChangedSceneEvent(BIND_EVENT_FUNC(Editor2D::ChangeSceneEvent));
+		bool loadedScene = false;
 		if (Utils::CanFileOpen(g_TempProjectPath))
 		{
-			bool loadedScene = SceneManager::LoadScene(g_TempProjectPath);
-			if (!loadedScene)
-			{
-				SceneManager::NewScene();
-			}
+			loadedScene = SceneManager::LoadScene(g_TempProjectPath);
+		}
+		if (!loadedScene)
+		{
+			SceneManager::NewScene();
 		}
 		InputManager::SetEditorMode(true);
 	}

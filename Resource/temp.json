@@ -4135,9 +4135,752 @@
                     1.0
                 ],
                 "Translate": [
-                    600.0,
-                    700.0
+                    -10000.0,
+                    -10000.0
                 ]
+            }
+        },
+        "62a4151e-4e72-42da-8df6-abb3d47995b7": {
+            "0836ba28-ba9b-4aa3-8db9-c7f2060f6720": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        145.5,
+                        82.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud2.png",
+                    "TexRect": {
+                        "Height": 165,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 291
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud8"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1531.0,
+                        -113.0
+                    ]
+                }
+            },
+            "3c6db94e-d22f-4003-8ed2-2f99ed213386": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        324.5,
+                        146.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud4.png",
+                    "TexRect": {
+                        "Height": 293,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 649
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud5"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1184.0,
+                        447.0
+                    ]
+                }
+            },
+            "4a925eda-b0e0-46a5-a8d5-c8a0d7ea1a89": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        179.0,
+                        137.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud3.png",
+                    "TexRect": {
+                        "Height": 275,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 358
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud7"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1091.0,
+                        -105.0
+                    ]
+                }
+            },
+            "5dcfa7df-e26e-4136-af70-2d3e53d726cf": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        140.5,
+                        51.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud1.png",
+                    "TexRect": {
+                        "Height": 102,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 281
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.2999999523162842,
+                        3.5999999046325684
+                    ],
+                    "Translate": [
+                        395.0,
+                        138.0
+                    ]
+                }
+            },
+            "6a5dc85d-733f-442f-b724-783cda6a3770": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        324.5,
+                        146.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud4.png",
+                    "TexRect": {
+                        "Height": 293,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 649
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud9"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -759.0,
+                        440.0
+                    ]
+                }
+            },
+            "914072ab-d31e-4159-bda4-5d83cbedb0ab": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        145.5,
+                        82.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud2.png",
+                    "TexRect": {
+                        "Height": 165,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 291
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud2"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.2000000476837158,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        -6.0
+                    ]
+                }
+            },
+            "HasChild": true,
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "AmherstBackground"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
+                ]
+            },
+            "a57aa541-ced4-41b2-8b22-8fddbdcddc8a": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        128.0,
+                        128.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -2,
+                    "TexPath": "game\\graphics\\MapBackGround\\MapBackGround0.png",
+                    "TexRect": {
+                        "Height": 256,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 256
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Sky"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        12.0,
+                        7.599999904632568
+                    ],
+                    "Translate": [
+                        353.0,
+                        104.0
+                    ]
+                }
+            },
+            "caa31c41-40ff-487c-8961-377821df7b1c": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        1246.5,
+                        304.0
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\MapBackGround2.png",
+                    "TexRect": {
+                        "Height": 608,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 2493
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "TreeGround"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.5,
+                        1.5
+                    ],
+                    "Translate": [
+                        503.0,
+                        619.0
+                    ]
+                }
+            },
+            "cc75283b-e289-48e8-979d-d5aaf02d645a": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        324.5,
+                        146.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud4.png",
+                    "TexRect": {
+                        "Height": 293,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 649
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud6"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -578.0,
+                        3.0
+                    ]
+                }
+            },
+            "dc348a00-2d7a-4aba-a97d-d6da5f059505": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        179.0,
+                        137.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud3.png",
+                    "TexRect": {
+                        "Height": 275,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 358
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud10"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        423.0,
+                        264.0
+                    ]
+                }
+            },
+            "e0e1c081-d886-449b-908a-7e6a387d15a0": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        145.5,
+                        82.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud2.png",
+                    "TexRect": {
+                        "Height": 165,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 291
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud4"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        908.0,
+                        284.0
+                    ]
+                }
+            },
+            "f2b19f65-0bcb-4c2b-808f-191405348fbe": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        179.0,
+                        137.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": -1,
+                    "TexPath": "game\\graphics\\MapBackGround\\Cloud3.png",
+                    "TexRect": {
+                        "Height": 275,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 358
+                    }
+                },
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Cloud3"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        394.0
+                    ]
+                }
             }
         },
         "7d12c3e2-c222-49d1-a9af-db4929f576b3": {
@@ -4281,7 +5024,7 @@
                 }
             },
             "TagComponent": {
-                "Active": true,
+                "Active": false,
                 "Tag": "Balrog"
             },
             "TransformComponent": {
@@ -4386,6 +5129,29 @@
                     "Translate": [
                         297.0,
                         21.0
+                    ]
+                }
+            },
+            "19bafe9d-0989-4630-b4c1-a284d66d2a18": {
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "CameraBlock1"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
                     ]
                 }
             },
@@ -4606,6 +5372,29 @@
                     "Translate": [
                         458.0,
                         195.0
+                    ]
+                }
+            },
+            "823ed052-e2d8-4251-a689-71bdbe2ceda9": {
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "CameraBlock2"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
                     ]
                 }
             },
