@@ -231,12 +231,28 @@ namespace fz {
 
 	void Scene::DeleteEntity(fz::Entity& entity)
 	{
+		if (entity && entity.HasComponent<ParentEntityComponent>())
+		{
+			auto& parentComp = entity.GetComponent<ParentEntityComponent>();
+			auto& childs = parentComp.ParentEntity.GetComponent<ChildEntityComponent>().CurrentChildEntities;
+			for (auto begin = childs.begin(); begin != childs.end(); ++begin)
+			{
+				if (*begin == entity)
+				{
+					childs.erase(begin);
+					break;
+				}
+			}
+		}
 		if (entity && entity.HasComponent<ChildEntityComponent>())
 		{
 			ChildEntityComponent& childComp = entity.GetComponent<ChildEntityComponent>();
-			for (auto& child : childComp.CurrentChildEntities)
+			auto& childs = childComp.CurrentChildEntities;
+			for (auto begin = childs.begin(); begin != childs.end(); ++begin)
 			{
-				DeleteEntity(child);
+				GameObject del = *begin;
+				begin = childs.erase(begin);
+				DeleteEntity(del);
 			}
 			childComp.CurrentChildEntities.clear();
 		}

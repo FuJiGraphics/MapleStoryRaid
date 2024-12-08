@@ -29,6 +29,7 @@ namespace fz {
 	{
 	public:
 		PlayerStatus Status = PlayerStatus::Idle;
+		bool IsLoginMode = false;
 
 		PlayerStatusComponent() = default;
 		PlayerStatusComponent(const PlayerStatusComponent&) = default;

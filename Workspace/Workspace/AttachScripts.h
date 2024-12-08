@@ -1,5 +1,12 @@
 #pragma once
 
+// Login
+#include "Title/LoginBox.hpp"
+#include "Title/TitleFrame.hpp"
+#include "Title/Char1.hpp"
+#include "Title/SelectChar1.hpp"
+#include "Title/SelectCharInfo.hpp"
+#include "Title/GameStartButton.hpp"
 // Map
 #include "Map/AmherstTown.hpp"
 #include "Map/AmherstHunt.hpp"
@@ -55,6 +62,13 @@ namespace fz {
 
 	static void AttachScripts(Shared<Scene>& scene)
 	{
+		BIND_SCRIPT("TitleFrame", TitleFrameScript);
+		BIND_SCRIPT("LoginButton", LoginButtonScript);
+		BIND_SCRIPT("Char1", Char1Script);
+		BIND_SCRIPT("SelectChar1", SelectChar1Script);
+		BIND_SCRIPT("CharInfoWindow", SelectCharInfoScript);
+		BIND_SCRIPT("GameStartButton", GameStartButtonScript);
+
 		BIND_SCRIPT("AmherstTown", AmherstTownScript);
 		BIND_SCRIPT("AmherstHunt", AmherstHuntScript);
 		BIND_SCRIPT("AmherstBoss", AmherstBossScript);

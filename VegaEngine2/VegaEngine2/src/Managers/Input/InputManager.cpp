@@ -27,6 +27,21 @@ namespace fz {
 		infoV.AddKey(true, sf::Keyboard::S);
 		infoV.AddKey(false, sf::Keyboard::W);
 		s_AxisInfoMap.insert({ infoV.axis, infoV });	
+
+		// Init Mouse
+		for (int i = 0; i < sf::Mouse::Button::ButtonCount; ++i)
+		{
+			s_MouseButtonStates[(sf::Mouse::Button)i] = false;
+			s_PrevMouseButtonStates[(sf::Mouse::Button)i] = false;
+		}
+
+		// Init Keyboard
+		for (int i = 0; i < sf::Keyboard::Key::KeyCount; ++i)
+		{
+			s_KeyStates[(sf::Keyboard::Key)i] = false;
+			s_PrevKeyStates[(sf::Keyboard::Key)i] = false;
+		}
+
 	}
 
 	void InputManager::Update(float dt)

@@ -8,8 +8,6 @@
 
 namespace fz {
 
-	class SaveData;
-
 	class PlayerScript : public VegaScript, public CharacterFSM
 	{
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;
@@ -32,7 +30,7 @@ namespace fz {
 		bool isOnGround = false;
 		bool isOnLadder = false;
 		bool isOnRope = false;
-	
+
 		bool isInsideRope = false;
 		bool isInsideLadder = false;
 		bool isInsidePortal = false;
@@ -43,9 +41,10 @@ namespace fz {
 		sf::Vector2f currRopeBounds[2];
 
 		GameObject TargetPortal;
+		std::vector<GameObject> cloudObjects;
 
 		Timer timer;
-			
+
 	public:
 		void Start() override
 		{
@@ -60,6 +59,18 @@ namespace fz {
 				transform->Transform.SetTranslate(SaveData::Position);
 				body->SetPosition(SaveData::Position);
 			}
+
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud2"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud3"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud4"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud5"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud6"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud7"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud8"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud9"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud10"));
+
 		}
 
 		void OnDestroy() override
@@ -73,7 +84,7 @@ namespace fz {
 				return;
 
 			timer.Update(dt);
-
+			UpdateCloudPosition(dt);
 			isOnGround = body->IsOnGround();
 
 			// 이동 적용
@@ -92,11 +103,11 @@ namespace fz {
 				else
 					this->Jump();
 			}
-			else
+			else if (!status->IsLoginMode)
 			{
 				this->Idle();
 			}
-			
+
 			if (Input::IsKeyPressed(KeyType::Right))
 			{
 				if (!isOnRope && !isOnLadder)
@@ -135,6 +146,8 @@ namespace fz {
 			{
 				this->Die();
 			}
+
+
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
 				if (!isOnRope && !isOnLadder)
@@ -142,7 +155,30 @@ namespace fz {
 			}
 		}
 
-		void OnTriggerEnter(Collider collider)override 
+		void UpdateCloudPosition(float dt)
+		{
+			for (auto& cloudObject : cloudObjects)
+			{
+				// 클라우드 오브젝트 유효성 검사
+				if (!cloudObject || !cloudObject.HasComponent<TransformComponent>())
+					continue;
+
+				// 클라우드의 현재 위치 가져오기
+				auto& transform = cloudObject.GetComponent<TransformComponent>();
+				sf::Vector2f position = transform.Transform.GetTranslate();
+
+				// 클라우드의 위치를 플레이어 위치에 상대적으로 이동
+				position.x -= 15 * dt; // X축 이동 속도
+				if (position.x < -800.0f) // -500은 화면 밖의 좌표
+				{
+					position.x = 1500.0f; // 초기화 좌표 (오른쪽에서 다시 시작)
+				}
+
+				transform.Transform.SetTranslate(position);
+			}
+		}
+
+		void OnTriggerEnter(Collider collider)override
 		{
 			if (collider.tag == "Ladder")
 			{
@@ -150,11 +186,11 @@ namespace fz {
 			}
 		}
 
-		void OnTriggerStay(Collider collider) override 
+		void OnTriggerStay(Collider collider) override
 		{
 
 		}
-		void OnTriggerExit(Collider collider) override 
+		void OnTriggerExit(Collider collider) override
 		{
 			if (collider.tag == "Ladder")
 			{
@@ -188,17 +224,13 @@ namespace fz {
 				currRopeBounds[0].y = pos.y;
 				currRopeBounds[1].y = pos.y + (endPos.x - startPos.x);
 			}
-			else if (collision.tag == "Block")
-			{
-
-			}
 		}
 
 		void OnCollisionStay(Collision collision) override
 		{
 			if (collision.tag == "Ground")
 			{
-				
+
 			}
 		}
 
@@ -217,15 +249,11 @@ namespace fz {
 			{
 				isInsideRope = false;
 			}
-			else if (collision.tag == "Block")
-			{
-
-			}
 		}
 
 		void Attack() override
 		{
-			if (!timer["Knocback"].Done())
+			if (!timer["Knocback"].Done() || status->IsLoginMode)
 				return;
 
 			timer["Attack"].Start(AttackTime);
@@ -235,10 +263,9 @@ namespace fz {
 
 		void Idle() override
 		{
-			if (!timer["Knocback"].Done())
+			if (!timer["Knocback"].Done() || !timer["Attack"].Done())
 				return;
-			if (!timer["Attack"].Done())
-				return;
+
 			auto& body = GetComponent<RigidbodyComponent>();
 			body.SetGravityScale(1.5f);
 			auto& collider = GetComponent<BoxCollider2DComponent>();
@@ -250,9 +277,7 @@ namespace fz {
 
 		void Move(Directions dir) override
 		{
-			if (!timer["Knocback"].Done())
-				return;
-			if (!timer["Attack"].Done())
+			if (!timer["Knocback"].Done() || !timer["Attack"].Done() || status->IsLoginMode)
 				return;
 
 			if (isOnGround)
@@ -265,50 +290,23 @@ namespace fz {
 			if (dir == Directions::RIGHT)
 			{
 				RaycastHit hit;
-				sf::Vector2f boxSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
-				sf::Vector2f origin = GetWorldPosition();
-				origin.y = origin.y + boxSize.y + 1.f;
-				Physics.Raycast(origin, { 1.f, 0.f }, hit, boxSize.x + 5.f);
-				sf::Vector2f nextDir = hit.Normal;
-				// 벽이 아닐 경우
-				if (hit.Collider.tag != "Block")
-				{
-					nextDir.x = nextDir.x * -1.f;
-					if (Utils::IsEqual(nextDir.y, 0.f))
-						body->AddPosition({ (float)stat.MoveSpeed, 0.f });
-					else
-						body->AddPosition(nextDir * (float)stat.MoveSpeed);
-					transform.SetScale(-1.0f, 1.0f);
-					currDir = Directions::RIGHT;
-				}
+				Physics.Raycast(GetWorldPosition(), { 1.0f, 0.0f }, hit, 100.f);
+				FZLOG_DEBUG("Raycast {0}", hit.Collider.tag);
+				body->AddPosition({ stat.MoveSpeed * 1.f, 0.0f });
+				transform.SetScale(-1.0f, 1.0f);
+				currDir = Directions::RIGHT;
 			}
 			else if (dir == Directions::LEFT)
 			{
-				RaycastHit hit;
-				sf::Vector2f boxSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
-				sf::Vector2f origin = GetWorldPosition();
-				origin.y = origin.y + boxSize.y + 1.f;
-				Physics.Raycast(origin, { -1.0f, 0.0f }, hit, boxSize.x + 5.f);
-				sf::Vector2f nextDir = hit.Normal;
-				// 벽일 경우
-				if (hit.Collider.tag != "Block")
-				{
-					nextDir.x = nextDir.x * -1.f;
-					if (Utils::IsEqual(nextDir.y, 0.f))
-						body->AddPosition({ stat.MoveSpeed * -1.f, 0.f });
-					else
-						body->AddPosition(nextDir * ((float)stat.MoveSpeed) * 1.f);
-					transform.SetScale(1.0f, 1.0f);
-					currDir = Directions::LEFT;
-				}
+				body->AddPosition({ stat.MoveSpeed * -1.f, 0.0f });
+				transform.SetScale(1.0f, 1.0f);
+				currDir = Directions::LEFT;
 			}
 		}
 
 		void Jump() override
 		{
-			if (!timer["Knocback"].Done())
-				return;
-			if (!timer["Attack"].Done())
+			if (!timer["Knocback"].Done() || !timer["Attack"].Done() || status->IsLoginMode)
 				return;
 
 			status->Status = PlayerStatus::Jump;
@@ -321,7 +319,7 @@ namespace fz {
 
 		void Damaged(int damage) override
 		{
-			if (isDead)
+			if (isDead || status->IsLoginMode)
 				return;
 
 			Stat->Stat.CurrentHP -= damage;
@@ -339,7 +337,7 @@ namespace fz {
 
 		void Die() override
 		{
-			if (isDead)
+			if (isDead || status->IsLoginMode)
 				return;
 
 			const sf::Vector2f& currPos = GetWorldPosition();
@@ -349,7 +347,7 @@ namespace fz {
 
 		void Knockback(Directions dir)
 		{
-			if (!timer["Knocback"].Done())
+			if (!timer["Knocback"].Done() || status->IsLoginMode)
 				return;
 
 			SetColorWithChilds({ 100, 100, 100, 240 });
@@ -371,8 +369,9 @@ namespace fz {
 
 		void OnLadder(Directions dir)
 		{
-			if (!isInsideLadder)
+			if (!isInsideLadder || status->IsLoginMode)
 				return;
+
 			auto& body = GetComponent<RigidbodyComponent>();
 			auto& collider = GetComponent<BoxCollider2DComponent>();
 			const auto& pos = GetComponent<TransformComponent>().Transform.GetTranslate();
@@ -417,8 +416,9 @@ namespace fz {
 
 		void OnRope(Directions dir)
 		{
-			if (!isInsideRope)
+			if (!isInsideRope || status->IsLoginMode)
 				return;
+
 			auto& body = GetComponent<RigidbodyComponent>();
 			auto& collider = GetComponent<BoxCollider2DComponent>();
 			const auto& pos = GetComponent<TransformComponent>().Transform.GetTranslate();
@@ -460,7 +460,6 @@ namespace fz {
 					break;
 			}
 		}
-
 
 		void Effect()
 		{

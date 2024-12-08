@@ -33,6 +33,13 @@ namespace fz {
 			return m_IsStart;
 		}
 
+		void Reset()
+		{
+			m_Time = 0;
+			m_ElapsedTime = 0.f;
+			m_IsStart = false;
+		}
+
 	protected:
 		float m_Time = 0;
 		float m_ElapsedTime = 0;

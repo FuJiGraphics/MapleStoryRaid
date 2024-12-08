@@ -1,5 +1,211 @@
 {
-    "e98bb556-cb4a-4a23-8079-bc179ea38e08": {
+    "ed63015c-19f7-423e-be31-21eb6181116a": {
+        "0ac50fbb-78aa-4474-aec2-ff9ec9e17a65": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 377.0,
+                    "Y": 0.5
+                }
+            },
+            "CameraComponent": {
+                "Center": [
+                    0.0,
+                    0.0
+                ],
+                "FixedAspectRatio": false,
+                "Primary": true,
+                "Rotation": 0.0,
+                "Size": [
+                    1063.2999267578125,
+                    623.7000122070313
+                ],
+                "Viewport": {
+                    "Height": 1.0,
+                    "Left": 0.0,
+                    "Top": 0.0,
+                    "Width": 1.0
+                },
+                "Zoom": 0.699999988079071
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": false,
+                "GroupIndex": 0,
+                "RigidType": "Dynamic"
+            },
+            "RootEntity": true,
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Camera"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    798.7179565429688,
+                    612.3553466796875
+                ]
+            }
+        },
+        "19ce7860-8d3e-43b7-a737-001bac4f44e3": {
+            "5cabf798-b47a-4855-aee7-7a59c3fd24fa": {
+                "HasChild": false,
+                "RootEntity": false,
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
+                    "Origin": [
+                        512.0,
+                        289.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "SortingOrder": 0,
+                    "TexPath": "game\\graphics\\map\\cloud.png",
+                    "TexRect": {
+                        "Height": 579,
+                        "Left": 0,
+                        "Top": 0,
+                        "Width": 1024
+                    }
+                },
+                "TagComponent": {
+                    "Active": false,
+                    "Tag": "Cloud"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "6a1e275a-f680-4275-a753-25c729de2aeb": {
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": false,
+                    "Tag": "Mountain"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "HasChild": true,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    1246.5,
+                    170.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\map\\mountain.png",
+                "TexRect": {
+                    "Height": 340,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 2493
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Background"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    0.0,
+                    92.0
+                ]
+            }
+        },
         "286edaab-3970-42eb-ba14-d801069dd4b2": {
             "0142046f-f199-4fac-b2f6-22892db2fd01": {
                 "HasChild": false,
@@ -3802,6 +4008,86 @@
                 }
             }
         },
+        "2cafe6a9-9048-4acc-a2a1-1ff7287b8a88": {
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": true,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
+                },
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 39.599998474121094,
+                    "Y": 122.0
+                }
+            },
+            "HasChild": false,
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": 0,
+                "RigidType": "Static"
+            },
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    45.0,
+                    130.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 1,
+                "TexPath": "game\\graphics\\effect\\portal\\portal.png",
+                "TexRect": {
+                    "Height": 260,
+                    "Left": 2,
+                    "Top": 2,
+                    "Width": 90
+                }
+            },
+            "TagComponent": {
+                "Active": true,
+                "Tag": "Portal1R"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "Translate": [
+                    2508.0,
+                    551.0
+                ]
+            }
+        },
         "3758090c-926e-465d-b289-4e6a0a9d9cc4": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
@@ -3874,269 +4160,6 @@
                 "Translate": [
                     0.0,
                     0.0
-                ]
-            }
-        },
-        "3bc698ad-af20-4384-9963-7022a4427e5f": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": false,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 17.700000762939453,
-                    "Y": 19.549999237060547
-                }
-            },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": true,
-                "GroupIndex": -1,
-                "RigidType": "Dynamic"
-            },
-            "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    19.0,
-                    21.5
-                ],
-                "Origins": "MC",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 4,
-                "TexPath": "game\\graphics\\player\\Hero\\tomb\\fall.png",
-                "TexRect": {
-                    "Height": 43,
-                    "Left": 1,
-                    "Top": 1,
-                    "Width": 38
-                }
-            },
-            "TagComponent": {
-                "Active": false,
-                "Tag": "Tomb"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "Translate": [
-                    0.0,
-                    0.0
-                ]
-            }
-        },
-        "5e98730e-0861-47f6-91cb-9d9e8f486a9d": {
-            "8a2a0deb-2c63-4d93-8488-2d1a0f6d6727": {
-                "HasChild": false,
-                "RootEntity": false,
-                "SpriteComponent": {
-                    "Color": {
-                        "A": 255,
-                        "B": 255,
-                        "G": 255,
-                        "R": 255
-                    },
-                    "MaskColor": {
-                        "A": 255,
-                        "B": 0,
-                        "G": 0,
-                        "R": 0
-                    },
-                    "MaskMode": false,
-                    "Origin": [
-                        29.0,
-                        36.5
-                    ],
-                    "Origins": "MC",
-                    "Position": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "SortingOrder": 4,
-                    "TexPath": "game\\graphics\\player\\Hero\\default\\idle.png",
-                    "TexRect": {
-                        "Height": 73,
-                        "Left": 1,
-                        "Top": 1,
-                        "Width": 58
-                    }
-                },
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "PlayerDefault"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        0.0,
-                        0.0
-                    ]
-                }
-            },
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": false,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 18.75,
-                    "Y": 31.5
-                }
-            },
-            "HasChild": true,
-            "RigidbodyComponent": {
-                "FixedRotation": true,
-                "GroupIndex": -1,
-                "RigidType": "Dynamic"
-            },
-            "RootEntity": true,
-            "TagComponent": {
-                "Active": true,
-                "Tag": "Player"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    -1.0,
-                    1.0
-                ],
-                "Translate": [
-                    400.0,
-                    700.0
-                ]
-            }
-        },
-        "61f2142b-8c3e-4fc0-9759-0634c9c89fe5": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": false,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 58.20000076293945,
-                    "Y": 56.29999923706055
-                }
-            },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": true,
-                "GroupIndex": 0,
-                "RigidType": "Dynamic"
-            },
-            "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    61.5,
-                    57.0
-                ],
-                "Origins": "MC",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 0,
-                "TexPath": "game\\graphics\\monster\\mushMom.png",
-                "TexRect": {
-                    "Height": 114,
-                    "Left": 3,
-                    "Top": 0,
-                    "Width": 123
-                }
-            },
-            "TagComponent": {
-                "Active": false,
-                "Tag": "Mushmom"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "Translate": [
-                    -10000.0,
-                    -10000.0
                 ]
             }
         },
@@ -4514,12 +4537,12 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    1.0,
+                    1.2999999523162842,
                     1.0
                 ],
                 "Translate": [
-                    0.0,
-                    0.0
+                    939.0,
+                    -180.0
                 ]
             },
             "a57aa541-ced4-41b2-8b22-8fddbdcddc8a": {
@@ -4883,87 +4906,7 @@
                 }
             }
         },
-        "7d12c3e2-c222-49d1-a9af-db4929f576b3": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": true,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
-                },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 39.599998474121094,
-                    "Y": 122.0
-                }
-            },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": true,
-                "GroupIndex": 0,
-                "RigidType": "Static"
-            },
-            "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    45.0,
-                    130.0
-                ],
-                "Origins": "MC",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 1,
-                "TexPath": "game\\graphics\\effect\\portal\\portal.png",
-                "TexRect": {
-                    "Height": 260,
-                    "Left": 2,
-                    "Top": 2,
-                    "Width": 90
-                }
-            },
-            "TagComponent": {
-                "Active": true,
-                "Tag": "Portal1L_Boss"
-            },
-            "TransformComponent": {
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "Translate": [
-                    452.0,
-                    -37.0
-                ]
-            }
-        },
-        "886fd4ee-d37c-4620-958a-76d0cad98942": {
+        "96acfb4e-6dd1-41e2-b709-f00b4f77ef02": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
@@ -4975,8 +4918,8 @@
                 "Restitution": 0.0,
                 "RestitutionThreshold": 0.5,
                 "Size": {
-                    "X": 81.0,
-                    "Y": 80.0999984741211
+                    "X": 17.700000762939453,
+                    "Y": 19.549999237060547
                 }
             },
             "HasChild": false,
@@ -5001,13 +4944,13 @@
                 },
                 "MaskMode": false,
                 "Origin": [
-                    87.0,
-                    82.5
+                    19.0,
+                    21.5
                 ],
                 "Origins": "MC",
                 "Position": [
-                    4.800000190734863,
-                    2.9000000953674316
+                    0.0,
+                    0.0
                 ],
                 "Rotation": 0.0,
                 "Scale": [
@@ -5015,17 +4958,17 @@
                     1.0
                 ],
                 "SortingOrder": 4,
-                "TexPath": "game\\graphics\\monster\\22970.png",
+                "TexPath": "game\\graphics\\player\\Hero\\tomb\\fall.png",
                 "TexRect": {
-                    "Height": 165,
-                    "Left": 13,
-                    "Top": 32,
-                    "Width": 174
+                    "Height": 43,
+                    "Left": 1,
+                    "Top": 1,
+                    "Width": 38
                 }
             },
             "TagComponent": {
                 "Active": false,
-                "Tag": "Balrog"
+                "Tag": "Tomb"
             },
             "TransformComponent": {
                 "Origin": [
@@ -5038,42 +4981,35 @@
                     1.0
                 ],
                 "Translate": [
-                    1696.9990234375,
-                    471.40008544921875
+                    0.0,
+                    0.0
                 ]
             }
         },
-        "88edd242-e4f4-4388-9a57-2426b1601b82": {
-            "1636e118-b956-4ec1-a837-58a0d437f7cf": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 308.79998779296875,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": true,
-                    "IsTrigger": false,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
+        "aede658d-5753-46ac-9570-f360e921f0ac": {
+            "8a2a0deb-2c63-4d93-8488-2d1a0f6d6727": {
                 "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
                 "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Ground"
-                },
-                "TransformComponent": {
+                "SpriteComponent": {
+                    "Color": {
+                        "A": 255,
+                        "B": 255,
+                        "G": 255,
+                        "R": 255
+                    },
+                    "MaskColor": {
+                        "A": 255,
+                        "B": 0,
+                        "G": 0,
+                        "R": 0
+                    },
+                    "MaskMode": false,
                     "Origin": [
+                        29.0,
+                        36.5
+                    ],
+                    "Origins": "MC",
+                    "Position": [
                         0.0,
                         0.0
                     ],
@@ -5082,62 +5018,18 @@
                         1.0,
                         1.0
                     ],
-                    "Translate": [
-                        260.0,
-                        85.0
-                    ]
-                }
-            },
-            "16bec956-7f0c-412e-a294-146035774f4d": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 165.6999969482422,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": true,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
+                    "SortingOrder": 4,
+                    "TexPath": "game\\graphics\\player\\Hero\\default\\idle.png",
+                    "TexRect": {
+                        "Height": 73,
+                        "Left": 1,
+                        "Top": 1,
+                        "Width": 58
                     }
                 },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Rope"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 90.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        297.0,
-                        21.0
-                    ]
-                }
-            },
-            "19bafe9d-0989-4630-b4c1-a284d66d2a18": {
-                "HasChild": false,
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "CameraBlock1"
+                    "Tag": "PlayerDefault"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -5155,291 +5047,31 @@
                     ]
                 }
             },
-            "1ba32103-4814-4787-9d59-0c63cf6806a1": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 390.0,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": false,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
+            "BoxCollider2DComponent": {
+                "Density": 1.0,
+                "Friction": 0.5,
+                "IsTrigger": false,
+                "Offset": {
+                    "X": 0.0,
+                    "Y": 0.0
                 },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Ground"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        217.0,
-                        235.0
-                    ]
-                }
-            },
-            "20dbe95c-80a4-4e32-8852-24b8f3263ea0": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 584.9000244140625,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": false,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Ground"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        117.0,
-                        417.0
-                    ]
-                }
-            },
-            "23cd2f08-503b-48c0-a398-23e4797870a4": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 287.3999938964844,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": true,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Rope"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 90.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        192.0,
-                        379.0
-                    ]
-                }
-            },
-            "5d489413-9cb8-46a7-bdf4-d8cd566e9f2d": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 1200.0,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": false,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Block"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 90.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        930.0,
-                        -278.0
-                    ]
-                }
-            },
-            "695c8271-47ea-4f5d-8a69-761df55aed6a": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 169.39999389648438,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": true,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": true,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Rope"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 90.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        458.0,
-                        195.0
-                    ]
-                }
-            },
-            "823ed052-e2d8-4251-a689-71bdbe2ceda9": {
-                "HasChild": false,
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "CameraBlock2"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        0.0,
-                        0.0
-                    ]
+                "Restitution": 0.0,
+                "RestitutionThreshold": 0.5,
+                "Size": {
+                    "X": 18.75,
+                    "Y": 31.5
                 }
             },
             "HasChild": true,
-            "RootEntity": true,
-            "SpriteComponent": {
-                "Color": {
-                    "A": 255,
-                    "B": 255,
-                    "G": 255,
-                    "R": 255
-                },
-                "MaskColor": {
-                    "A": 255,
-                    "B": 0,
-                    "G": 0,
-                    "R": 0
-                },
-                "MaskMode": false,
-                "Origin": [
-                    0.0,
-                    0.0
-                ],
-                "Origins": "TL",
-                "Position": [
-                    0.0,
-                    0.0
-                ],
-                "Rotation": 0.0,
-                "Scale": [
-                    1.0,
-                    1.0
-                ],
-                "SortingOrder": 0,
-                "TexPath": "game\\graphics\\town\\Stage1\\AmhustBoss.png",
-                "TexRect": {
-                    "Height": 925,
-                    "Left": 0,
-                    "Top": 0,
-                    "Width": 961
-                }
+            "RigidbodyComponent": {
+                "FixedRotation": true,
+                "GroupIndex": -1,
+                "RigidType": "Dynamic"
             },
+            "RootEntity": true,
             "TagComponent": {
                 "Active": true,
-                "Tag": "AmherstBoss"
+                "Tag": "Player"
             },
             "TransformComponent": {
                 "Origin": [
@@ -5448,104 +5080,16 @@
                 ],
                 "Rotation": 0.0,
                 "Scale": [
-                    1.0,
+                    -1.0,
                     1.0
                 ],
                 "Translate": [
-                    0.0,
-                    0.0
+                    825.0,
+                    636.2999877929688
                 ]
-            },
-            "bdfd8917-0f70-4b75-ab4c-da39fd68e0f1": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 922.0,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": true,
-                    "IsTrigger": false,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": false,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Ground"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 0.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        4.0,
-                        747.0
-                    ]
-                }
-            },
-            "f37f2b49-aa57-44a6-b389-0a3dac941136": {
-                "EdgeCollider2DComponent": {
-                    "Density": 1.0,
-                    "EndPos": {
-                        "X": 1200.0,
-                        "Y": 0.0
-                    },
-                    "Friction": 0.5,
-                    "IsOneSides": false,
-                    "IsTrigger": false,
-                    "Restitution": 0.0,
-                    "RestitutionThreshold": 0.5,
-                    "StartPos": {
-                        "X": 0.0,
-                        "Y": 0.0
-                    }
-                },
-                "HasChild": false,
-                "RigidbodyComponent": {
-                    "FixedRotation": false,
-                    "GroupIndex": 0,
-                    "RigidType": "Static"
-                },
-                "RootEntity": false,
-                "TagComponent": {
-                    "Active": true,
-                    "Tag": "Block"
-                },
-                "TransformComponent": {
-                    "Origin": [
-                        0.0,
-                        0.0
-                    ],
-                    "Rotation": 90.0,
-                    "Scale": [
-                        1.0,
-                        1.0
-                    ],
-                    "Translate": [
-                        3.0,
-                        -283.0
-                    ]
-                }
             }
         },
-        "95afee07-8f9d-468d-8647-d93b539d6337": {
+        "cca95a70-d981-4574-afd5-ba2994e1ceca": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
@@ -5625,52 +5169,615 @@
                 ]
             }
         },
-        "b906b357-dcda-4d3d-87ff-1ba458145df5": {
-            "BoxCollider2DComponent": {
-                "Density": 1.0,
-                "Friction": 0.5,
-                "IsTrigger": true,
-                "Offset": {
-                    "X": 0.0,
-                    "Y": 0.0
+        "e2b2bcc3-6d11-4061-ab70-fc37e5e41b5d": {
+            "082ce458-6fce-4dcb-a26e-3bc5c64dba95": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 860.7000122070313,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
                 },
-                "Restitution": 0.0,
-                "RestitutionThreshold": 0.5,
-                "Size": {
-                    "X": 377.0,
-                    "Y": 0.5
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1142.9998779296875,
+                        553.0
+                    ]
                 }
             },
-            "CameraComponent": {
-                "Center": [
+            "163e0842-1b0c-4388-856e-6fa9fe1a6100": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 91.9000015258789,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2003.9998779296875,
+                        612.0
+                    ]
+                }
+            },
+            "1cc81534-2b61-4a91-bf33-f46c3fdf48ab": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 93.0999984741211,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2002.9998779296875,
+                        552.0
+                    ]
+                }
+            },
+            "28ecf880-a068-4f78-bb4e-73c9e4ec58e9": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 62.20000076293945,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2095.0,
+                        612.0
+                    ]
+                }
+            },
+            "2e32921a-ddfd-4758-9dd9-b6a9720d21f5": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 69.5999984741211,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1077.0,
+                        614.0
+                    ]
+                }
+            },
+            "396f13ab-edf3-4825-9ce5-a5e63d0b05f3": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 140.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2138.0,
+                        314.0
+                    ]
+                }
+            },
+            "41d98eec-8ed7-40f8-b81d-d3f23e1f4e31": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 215.8000030517578,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": true,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Rope"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2160.0,
+                        267.0
+                    ]
+                }
+            },
+            "7aa7d322-4096-4c13-be87-72a4df18d780": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1029.5,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "CameraBlock2"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        216.39999389648438
+                    ],
+                    "Translate": [
+                        2021.0,
+                        500.0
+                    ]
+                }
+            },
+            "7bf0388d-8c30-4cc9-b3a6-0c8765e55691": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 140.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2138.0,
+                        255.0
+                    ]
+                }
+            },
+            "8f6e02f1-7466-49ae-9d36-8cc91ad31222": {
+                "BoxCollider2DComponent": {
+                    "Density": 0.0,
+                    "Friction": 0.0,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 22.0,
+                        "Y": 120.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ladder"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1189.0,
+                        429.0
+                    ]
+                }
+            },
+            "98020cb2-4b6f-429a-a479-87b7a3233d81": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 770.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        471.9999694824219,
+                        343.9999694824219
+                    ]
+                }
+            },
+            "9ca8b70d-88d8-40a0-9ce1-94fc7216f6a5": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 695.5999755859375,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2093.999755859375,
+                        675.0
+                    ]
+                }
+            },
+            "9eeb7a10-55f1-4b31-a74b-896be9a5ff9b": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1000.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        675.0
+                    ]
+                }
+            },
+            "HasChild": true,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
                     0.0,
                     0.0
                 ],
-                "FixedAspectRatio": false,
-                "Primary": true,
-                "Rotation": 0.0,
-                "Size": [
-                    1519.0,
-                    891.0
+                "Origins": "TL",
+                "Position": [
+                    0.0,
+                    0.0
                 ],
-                "Viewport": {
-                    "Height": 1.0,
-                    "Left": 0.0,
-                    "Top": 0.0,
-                    "Width": 1.0
-                },
-                "Zoom": 1.0
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 0,
+                "TexPath": "game\\graphics\\town\\Stage1\\Amhust.png",
+                "TexRect": {
+                    "Height": 903,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 2799
+                }
             },
-            "HasChild": false,
-            "RigidbodyComponent": {
-                "FixedRotation": false,
-                "GroupIndex": 0,
-                "RigidType": "Dynamic"
-            },
-            "RootEntity": true,
             "TagComponent": {
                 "Active": true,
-                "Tag": "Camera"
+                "Tag": "Amherst"
             },
             "TransformComponent": {
                 "Origin": [
@@ -5683,12 +5790,310 @@
                     1.0
                 ],
                 "Translate": [
-                    798.7179565429688,
-                    612.3553466796875
+                    0.0,
+                    0.0
                 ]
+            },
+            "a2fd6cff-c36f-40d0-8da7-922156764fef": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 2668.60009765625,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 1.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Line1"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        0.0,
+                        0.0
+                    ]
+                }
+            },
+            "ab18fc05-8191-40d3-92e2-9603485dcd78": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 140.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": true,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 0.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2046.999755859375,
+                        494.0
+                    ]
+                }
+            },
+            "b54acafa-1424-4502-b3ca-914b07a50f2b": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 204.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 322.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        917.0,
+                        739.0
+                    ]
+                }
+            },
+            "cfabddad-7769-49ca-b11e-6efeaecaef04": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1098.9000244140625,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Block1"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1.0,
+                        -230.0
+                    ]
+                }
+            },
+            "d32d7211-0dec-44ec-866b-07a82c0f131f": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 760.9000244140625,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "CameraBlock1"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 180.0,
+                    "Scale": [
+                        1.0,
+                        263.0
+                    ],
+                    "Translate": [
+                        801.0,
+                        440.0
+                    ]
+                }
+            },
+            "d479208c-2b50-4749-adf2-5bedecfc04df": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 127.0999984741211,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Ground"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        1144.0,
+                        552.0
+                    ]
+                }
+            },
+            "e5a99763-9ffa-4ba5-bfbd-16ba546a1815": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1029.5,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": false,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Block2"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2790.0,
+                        -230.0
+                    ]
+                }
             }
         },
-        "c7f91631-b6ea-4aae-9d57-34c023c3b0bf": {
+        "f957a6a3-90c6-4be7-853c-e79190d10284": {
             "BoxCollider2DComponent": {
                 "Density": 1.0,
                 "Friction": 0.5,
