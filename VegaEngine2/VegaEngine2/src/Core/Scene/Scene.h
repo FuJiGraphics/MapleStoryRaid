@@ -68,6 +68,16 @@ namespace fz {
 			return entities;
 		}
 
+		template <typename Component>
+		void GetEntitiesFromComponent(std::vector<Entity>& dst)
+		{
+			auto view = m_Registry.view<Component>();
+			for (auto& entity : view)
+			{
+				dst.push_back({ entity, shared_from_this() });
+			}
+		}
+
 		template <typename... Components>
 		auto GetEntities()
 		{

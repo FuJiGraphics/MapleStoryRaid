@@ -1,6 +1,7 @@
 #pragma once
 #include <VegaEngine2.h>
 #include "BoundComponent.hpp"
+#include "SkillButtonComponent.h"
 
 namespace fz {
 
@@ -28,6 +29,11 @@ namespace fz {
 				if (Input::IsMouseButtonPressed(MouseButtonType::Left))
 				{
 					GetComponent<BoundComponent>().IsClicked = true;
+					GameObject button = GetCurrentScene()->GetEntityFromTag("SkillButton");
+					button.SetActive(true);
+					auto& buttonComp = button.GetComponent<SkillButtonComponent>();
+					buttonComp.IconPath = "game/graphics/ui/Skills/BasicSwingIcon.png";
+					buttonComp.Skill = GetCurrentScene()->GetEntityFromTag("BasicAttack");
 				}
 				if (Input::IsMouseButtonReleased(MouseButtonType::Left))
 				{

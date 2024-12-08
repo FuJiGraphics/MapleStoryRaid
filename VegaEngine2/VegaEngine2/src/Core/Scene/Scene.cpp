@@ -249,23 +249,6 @@ namespace fz {
 				Scene::s_World->DestroyBody(body);
 			}
 		}
-		if (entity.HasComponent<ParentEntityComponent>())
-		{
-			auto& parentComp = entity.GetComponent<ParentEntityComponent>();
-			if (parentComp.ParentEntity.HasComponent<ChildEntityComponent>())
-			{
-				auto& childComp = parentComp.ParentEntity.GetComponent<ChildEntityComponent>();
-				for (auto begin = childComp.CurrentChildEntities.begin();
-					 begin != childComp.CurrentChildEntities.end(); ++begin)
-				{
-					if (*begin == entity)
-					{
-						childComp.CurrentChildEntities.erase(begin);
-						break;
-					}
-				}
-			}
-		}
 		if (entity.HasComponent<NativeScriptComponent>())
 		{
 			auto& nativeComp = entity.GetComponent<NativeScriptComponent>();

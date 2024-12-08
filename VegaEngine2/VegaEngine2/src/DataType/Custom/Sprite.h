@@ -10,7 +10,7 @@ namespace fz {
 		Sprite(const std::string& texPath);
 
 		void SetTextureWithMask(const std::string& texPath, const sf::Color& alphaMask);
-		void SetTexture(sf::Texture& texture);
+		void SetTexture(const sf::Texture& texture);
 		void SetTexture(const std::string& texPath);
 		void SetColor(const sf::Color& color);
 		void SetOrigins(Origins origins);

@@ -1,9 +1,9 @@
 {
-    "cc402766-26b7-4b89-8097-9187158527df": {
+    "3758090c-926e-465d-b289-4e6a0a9d9cc4": {
         "BoxCollider2DComponent": {
             "Density": 1.0,
             "Friction": 0.5,
-            "IsTrigger": false,
+            "IsTrigger": true,
             "Offset": {
                 "X": 0.0,
                 "Y": 0.0
@@ -11,16 +11,11 @@
             "Restitution": 0.0,
             "RestitutionThreshold": 0.5,
             "Size": {
-                "X": 31.399999618530273,
-                "Y": 30.799999237060547
+                "X": 16.0,
+                "Y": 16.0
             }
         },
         "HasChild": false,
-        "RigidbodyComponent": {
-            "FixedRotation": true,
-            "GroupIndex": -1,
-            "RigidType": "Dynamic"
-        },
         "RootEntity": true,
         "SpriteComponent": {
             "Color": {
@@ -37,12 +32,12 @@
             },
             "MaskMode": false,
             "Origin": [
-                164.5,
-                127.5
+                16.0,
+                16.0
             ],
             "Origins": "MC",
             "Position": [
-                6.300000190734863,
+                0.0,
                 0.0
             ],
             "Rotation": 0.0,
@@ -50,18 +45,18 @@
                 1.0,
                 1.0
             ],
-            "SortingOrder": 3,
-            "TexPath": "game\\graphics\\monster\\ribbonpig.png",
+            "SortingOrder": 115,
+            "TexPath": "game\\graphics\\ui\\Skills\\BasicSwingIcon.png",
             "TexRect": {
-                "Height": 255,
+                "Height": 32,
                 "Left": 0,
                 "Top": 0,
-                "Width": 329
+                "Width": 32
             }
         },
         "TagComponent": {
             "Active": false,
-            "Tag": "RibbonPig"
+            "Tag": "SkillButton"
         },
         "TransformComponent": {
             "Origin": [
@@ -74,8 +69,8 @@
                 1.0
             ],
             "Translate": [
-                -10000.0,
-                -10000.0
+                0.0,
+                0.0
             ]
         }
     }

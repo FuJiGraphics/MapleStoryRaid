@@ -1,6 +1,5 @@
 #pragma once
 #include <VegaEngine2.h>
-#include "FSM.h"
 
 namespace fz {
 

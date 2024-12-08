@@ -40,7 +40,7 @@ namespace fz {
 		m_Mask = alphaMask;
 	}
 
-	void Sprite::SetTexture(sf::Texture& texture)
+	void Sprite::SetTexture(const sf::Texture& texture)
 	{
 		m_Sprite.setTexture(texture);
 		m_Sprite.setTextureRect({ 0, 0, (int)texture.getSize().x, (int)texture.getSize().y });
@@ -50,12 +50,12 @@ namespace fz {
 
 	void Sprite::SetTexture(const std::string& texPath)
 	{
-		TEXTURE_MGR.Load(texPath);
 		const sf::Texture& texture = TEXTURE_MGR.Get(texPath);
 		m_Sprite.setTexture(texture);
 		m_Sprite.setTextureRect({ 0, 0, (int)texture.getSize().x, (int)texture.getSize().y });
 		m_Size = texture.getSize();
 		m_TexPath = texPath;
+		SetOrigins(m_Origins);
 	}
 
 	void Sprite::SetColor(const sf::Color& color)
