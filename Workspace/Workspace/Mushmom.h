@@ -37,7 +37,7 @@ namespace fz {
         {
 
             stat = &AddComponent<StatComponent>();
-            stat->Stat.HP = 200;
+            stat->Stat.HP = 2000;
             stat->Stat.MP = 0;
  
 

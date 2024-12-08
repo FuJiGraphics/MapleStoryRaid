@@ -4,6 +4,7 @@
 #include "Utils/Timer.h"
 #include <random>
 #include "CallbackComponent.h"
+#include "SoundMgr.h"
 
 namespace fz {
 
@@ -172,7 +173,6 @@ namespace fz {
 			{
 				// 플레이어 피격시
 				animator.Play(&clips["damaged"]);
-
 				if (currDir == Directions::LEFT)
 					Knockback(Directions::RIGHT);
 				else if (currDir == Directions::RIGHT)
@@ -197,6 +197,7 @@ namespace fz {
 				{
 					fn(GetCurrentEntity());
 				}
+	/*			SOUND_MGR.PlaySfx("game/sound/pig_Die.mp3", false);*/
 			}
 
 		}

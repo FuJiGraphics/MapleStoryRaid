@@ -26,7 +26,7 @@
                 "Rotation": 0.0,
                 "Size": [
                     1519.0,
-                    891.0
+                    779.0
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -4081,7 +4081,7 @@
                 }
             },
             "TagComponent": {
-                "Active": false,
+                "Active": true,
                 "Tag": "RibbonPig"
             },
             "TransformComponent": {
@@ -4095,8 +4095,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -10000.0,
-                    -10000.0
+                    355.0,
+                    236.0
                 ]
             }
         },

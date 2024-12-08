@@ -4121,7 +4121,7 @@
                 }
             },
             "TagComponent": {
-                "Active": false,
+                "Active": true,
                 "Tag": "Mushmom"
             },
             "TransformComponent": {
@@ -4135,8 +4135,8 @@
                     1.0
                 ],
                 "Translate": [
-                    -10000.0,
-                    -10000.0
+                    800.0,
+                    597.0
                 ]
             }
         },
@@ -5133,6 +5133,22 @@
                 }
             },
             "19bafe9d-0989-4630-b4c1-a284d66d2a18": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 372.3999938964844,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 140.6999969482422
+                    }
+                },
                 "HasChild": false,
                 "RootEntity": false,
                 "TagComponent": {
@@ -5144,14 +5160,14 @@
                         0.0,
                         0.0
                     ],
-                    "Rotation": 0.0,
+                    "Rotation": 180.0,
                     "Scale": [
                         1.0,
                         1.0
                     ],
                     "Translate": [
-                        0.0,
-                        0.0
+                        365.0,
+                        759.0
                     ]
                 }
             },
@@ -5376,6 +5392,22 @@
                 }
             },
             "823ed052-e2d8-4251-a689-71bdbe2ceda9": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 217.60000610351563,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 286.20001220703125
+                    }
+                },
                 "HasChild": false,
                 "RootEntity": false,
                 "TagComponent": {
@@ -5393,8 +5425,8 @@
                         1.0
                     ],
                     "Translate": [
-                        0.0,
-                        0.0
+                        611.0,
+                        492.0
                     ]
                 }
             },
@@ -5650,8 +5682,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1519.0,
-                    891.0
+                    623.0,
+                    530.0
                 ],
                 "Viewport": {
                     "Height": 1.0,

@@ -1,7 +1,7 @@
 #pragma once
 #include <VegaEngine2.h>
 #include "PortalComponent.hpp"
-
+#include "SoundMgr.h"
 namespace fz {
 
 	class Portal1R_Script : public VegaScript
@@ -22,11 +22,15 @@ namespace fz {
 			auto& comp = AddComponent<PortalComponent>();
 			comp.NextPlayerPos = { -613.f, -290.f };
 			comp.NextScenePath = "game/scene/Stage1_hunt.vega";
+
+			SOUND_MGR.PlayBgm("game/sound/Hunt_bgm.mp3", true);
+		
 		}
 
 		void OnUpdate(float dt) override
 		{
 			animator.Update(dt);
+
 		}
 	};
 

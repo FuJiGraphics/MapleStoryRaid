@@ -33,7 +33,7 @@ namespace fz {
 
 			if (timer["Spawn"].Done())
 			{
-				timer["Spawn"].Start(20.f);
+				timer["Spawn"].Start(1.f);
 				Spawn();
 			}
 		}

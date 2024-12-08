@@ -5,6 +5,7 @@
 #include "PlayerStatus.hpp"
 #include "Stat.hpp"
 #include "SaveData.hpp"
+#include "SoundMgr.h"
 
 namespace fz {
 
@@ -43,7 +44,7 @@ namespace fz {
 		sf::Vector2f currRopeBounds[2];
 
 		GameObject TargetPortal;
-
+		std::vector<GameObject> cloudObjects;
 		Timer timer;
 			
 	public:
@@ -60,6 +61,17 @@ namespace fz {
 				transform->Transform.SetTranslate(SaveData::Position);
 				body->SetPosition(SaveData::Position);
 			}
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud2"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud3"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud4"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud5"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud6"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud7"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud8"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud9"));
+			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud10"));
+	
 		}
 
 		void OnDestroy() override
@@ -73,7 +85,7 @@ namespace fz {
 				return;
 
 			timer.Update(dt);
-
+			UpdateCloudPosition(dt);
 			isOnGround = body->IsOnGround();
 
 			// 이동 적용
@@ -129,19 +141,43 @@ namespace fz {
 			}
 			else if (Input::IsKeyDown(KeyType::T))
 			{
-				GetCurrentScene()->Instantiate("Balrog", { 600.f, 700.0f });
+				GetCurrentScene()->Instantiate("RibbonPig", { 600.f, 700.0f });
+
 			}
 			else if (Input::IsKeyDown(KeyType::W))
 			{
 				this->Die();
 			}
+
 			if (Input::IsKeyDown(KeyType::LControl))
 			{
 				if (!isOnRope && !isOnLadder)
 					this->Attack();
 			}
 		}
+		void UpdateCloudPosition(float dt)
+		{
+			for (auto& cloudObject : cloudObjects)
+			{
+				// 클라우드 오브젝트 유효성 검사
+				if (!cloudObject || !cloudObject.HasComponent<TransformComponent>())
+					continue;
 
+				// 클라우드의 현재 위치 가져오기
+				auto& transform = cloudObject.GetComponent<TransformComponent>();
+				sf::Vector2f position = transform.Transform.GetTranslate();
+
+				// 클라우드의 위치를 플레이어 위치에 상대적으로 이동
+				position.x -= 15 * dt; // X축 이동 속도
+				if (position.x < -800.0f) // -500은 화면 밖의 좌표
+				{
+					position.x = 1500.0f; // 초기화 좌표 (오른쪽에서 다시 시작)
+				}
+
+				transform.Transform.SetTranslate(position);
+
+			}
+		}
 		void OnTriggerEnter(Collider collider)override 
 		{
 			if (collider.tag == "Ladder")
@@ -231,6 +267,7 @@ namespace fz {
 			timer["Attack"].Start(AttackTime);
 			status->Status = PlayerStatus::SwingAttack2;
 			Effect();
+	
 		}
 
 		void Idle() override

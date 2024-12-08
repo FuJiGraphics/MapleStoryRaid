@@ -47,3 +47,7 @@
 /* Entry Point */
 #include "EntryPoint.h"
 #include "AttachScripts.h"
+
+//sound
+
+#include "SoundMgr.h"

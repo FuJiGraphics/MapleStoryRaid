@@ -1,7 +1,7 @@
 #pragma once
 #include <VegaEngine2.h>
 #include "PortalComponent.hpp"
-
+#include "SoundMgr.h"
 namespace fz {
 
 	class Portal1_2Left_Script : public VegaScript
@@ -22,6 +22,9 @@ namespace fz {
 			auto& comp = AddComponent<PortalComponent>();
 			comp.NextPlayerPos = { 2508.f, 551.f };
 			comp.NextScenePath = "game/scene/Stage1_town.vega";
+			SOUND_MGR.PlayBgm("game/sound/Town_bgm.mp3", true);
+		
+	
 		}
 
 		void OnUpdate(float dt) override

@@ -62,6 +62,9 @@
 #include "Animation/AnimationClip.h"
 #include "Animation/Animator.h"
 
+// Sound
+#include "SoundMgr.h"
+#include <SFML/Audio.hpp>
 // Script
 #include "AttachScripts.h"
 
