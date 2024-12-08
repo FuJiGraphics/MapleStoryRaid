@@ -1,0 +1,135 @@
+{
+	"frames": {
+		"InfoScrollOpen0.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 242,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 242,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 242,
+				"h": 169
+			}
+		},
+		"InfoScrollOpen1.png": {
+			"frame": {
+				"x": 245,
+				"y": 1,
+				"w": 242,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 242,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 242,
+				"h": 169
+			}
+		},
+		"InfoScrollOpen2.png": {
+			"frame": {
+				"x": 489,
+				"y": 1,
+				"w": 242,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 242,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 242,
+				"h": 169
+			}
+		},
+		"InfoScrollOpen3.png": {
+			"frame": {
+				"x": 733,
+				"y": 1,
+				"w": 242,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 242,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 242,
+				"h": 169
+			}
+		},
+		"InfoScrollOpen4.png": {
+			"frame": {
+				"x": 977,
+				"y": 1,
+				"w": 242,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 242,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 242,
+				"h": 169
+			}
+		},
+		"InfoScrollOpen5.png": {
+			"frame": {
+				"x": 1221,
+				"y": 1,
+				"w": 242,
+				"h": 169
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 242,
+				"h": 169
+			},
+			"sourceSize": {
+				"w": 242,
+				"h": 169
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1464,
+			"h": 171
+		},
+		"scale": "1"
+	}
+}
