@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1063.2999267578125,
-                    623.7000122070313
+                    1065.4000244140625,
+                    548.7999877929688
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -1247,7 +1247,7 @@
             },
             "BoxCollider2DComponent": {
                 "Density": 1.0,
-                "Friction": 0.5,
+                "Friction": 1.0,
                 "IsTrigger": false,
                 "Offset": {
                     "X": 0.0,
@@ -1622,7 +1622,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Ground"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1666,7 +1666,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Ground"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1769,6 +1769,49 @@
                     "Translate": [
                         2138.0,
                         314.0
+                    ]
+                }
+            },
+            "3a2d5a30-acbb-4acf-8951-c9cb6401e163": {
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": -13.100000381469727,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 886.7000122070313,
+                        "Y": 0.5
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Block"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        5.0,
+                        0.0
                     ]
                 }
             },
@@ -2222,7 +2265,7 @@
                         "X": 204.0,
                         "Y": 0.0
                     },
-                    "Friction": 0.5,
+                    "Friction": 1.0,
                     "IsOneSides": false,
                     "IsTrigger": false,
                     "Restitution": 0.0,
@@ -2368,7 +2411,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Ground"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2427,6 +2470,49 @@
                     "Translate": [
                         2790.0,
                         -230.0
+                    ]
+                }
+            },
+            "eb447a86-d0e2-4f0b-9d75-ae3bd878d7ac": {
+                "BoxCollider2DComponent": {
+                    "Density": 1.0,
+                    "Friction": 0.5,
+                    "IsTrigger": true,
+                    "Offset": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    },
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "Size": {
+                        "X": 886.7000122070313,
+                        "Y": 0.5
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Block"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        2784.0,
+                        0.0
                     ]
                 }
             }

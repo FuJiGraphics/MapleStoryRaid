@@ -52,6 +52,10 @@ namespace fz {
 		{
 			status = &AddComponent<PlayerStatusComponent>();
 			Stat = &AddComponent<StatComponent>();
+			Stat->Stat.ApplySTR(1);
+			Stat->Stat.ApplySTR(1);
+			Stat->Stat.ApplyDEX(1);
+			Stat->Stat.MoveSpeed = 150.f;
 			transform = &GetComponent<TransformComponent>();
 			body = &GetComponent<RigidbodyComponent>();
 			body->SetGravityScale(1.5f);
@@ -293,16 +297,42 @@ namespace fz {
 			if (dir == Directions::RIGHT)
 			{
 				RaycastHit hit;
-				Physics.Raycast(GetWorldPosition(), { 1.0f, 0.0f }, hit, 100.f);
-				body->AddPosition({ stat.MoveSpeed * 1.f, 0.0f });
-				transform.SetScale(-1.0f, 1.0f);
-				currDir = Directions::RIGHT;
+				sf::Vector2f boxSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
+				sf::Vector2f origin = GetWorldPosition();
+				origin.y = origin.y + boxSize.y + 1.f;
+				Physics.Raycast(origin, { 1.f, 0.f }, hit, boxSize.x + 5.f);
+				sf::Vector2f nextDir = hit.Normal;
+				// 벽이 아닐 경우
+				if (hit.Collider.tag != "Block")
+				{
+					nextDir.x = nextDir.x * -1.f;
+					if (Utils::IsEqual(nextDir.y, 0.f))
+						body->AddPosition({ (float)stat.MoveSpeed, 0.f });
+					else
+						body->AddPosition(nextDir * (float)stat.MoveSpeed);
+					transform.SetScale(-1.0f, 1.0f);
+					currDir = Directions::RIGHT;
+				}
 			}
 			else if (dir == Directions::LEFT)
 			{
-				body->AddPosition({ stat.MoveSpeed * -1.f, 0.0f });
-				transform.SetScale(1.0f, 1.0f);
-				currDir = Directions::LEFT;
+				RaycastHit hit;
+				sf::Vector2f boxSize = GetComponent<BoxCollider2DComponent>().GetHalfSize();
+				sf::Vector2f origin = GetWorldPosition();
+				origin.y = origin.y + boxSize.y + 1.f;
+				Physics.Raycast(origin, { -1.0f, 0.0f }, hit, boxSize.x + 5.f);
+				sf::Vector2f nextDir = hit.Normal;
+				// 벽일 경우
+				if (hit.Collider.tag != "Block")
+				{
+					nextDir.x = nextDir.x * -1.f;
+					if (Utils::IsEqual(nextDir.y, 0.f))
+						body->AddPosition({ stat.MoveSpeed * -1.f, 0.f });
+					else
+						body->AddPosition(nextDir * ((float)stat.MoveSpeed) * 1.f);
+					transform.SetScale(1.0f, 1.0f);
+					currDir = Directions::LEFT;
+				}
 			}
 		}
 
@@ -398,7 +428,7 @@ namespace fz {
 				case Directions::NONE:
 					status->Status = PlayerStatus::Stop;
 					body.AddPositionNoGravity({ 0.0f, 0.0f });
-					break;
+					break;	
 				case Directions::UP:
 					if (pos.y - half.y > currLadderRect.top)
 					{

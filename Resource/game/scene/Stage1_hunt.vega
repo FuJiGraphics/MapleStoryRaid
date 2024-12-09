@@ -25,8 +25,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1063.2999267578125,
-                    623.7000122070313
+                    1065.4000244140625,
+                    548.7999877929688
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -1741,7 +1741,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "LLine2"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -1823,7 +1823,7 @@
                 "HasChild": false,
                 "RootEntity": false,
                 "TagComponent": {
-                    "Active": true,
+                    "Active": false,
                     "Tag": "CameraBlock1"
                 },
                 "TransformComponent": {
@@ -1839,6 +1839,50 @@
                     "Translate": [
                         -135.0,
                         -45.0
+                    ]
+                }
+            },
+            "5b999221-19d7-473b-bcd0-d9b17648cece": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1000.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Block"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        806.0,
+                        -604.0
                     ]
                 }
             },
@@ -1906,7 +1950,7 @@
                 "HasChild": false,
                 "RootEntity": false,
                 "TagComponent": {
-                    "Active": true,
+                    "Active": false,
                     "Tag": "CameraBlock2"
                 },
                 "TransformComponent": {
@@ -2229,7 +2273,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "Line4"
+                    "Tag": "Line"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2244,6 +2288,50 @@
                     "Translate": [
                         -289.0,
                         205.0
+                    ]
+                }
+            },
+            "c9b24040-cb44-4e53-a41f-51ab058b1013": {
+                "EdgeCollider2DComponent": {
+                    "Density": 1.0,
+                    "EndPos": {
+                        "X": 1000.0,
+                        "Y": 0.0
+                    },
+                    "Friction": 0.5,
+                    "IsOneSides": false,
+                    "IsTrigger": false,
+                    "Restitution": 0.0,
+                    "RestitutionThreshold": 0.5,
+                    "StartPos": {
+                        "X": 0.0,
+                        "Y": 0.0
+                    }
+                },
+                "HasChild": false,
+                "RigidbodyComponent": {
+                    "FixedRotation": true,
+                    "GroupIndex": 0,
+                    "RigidType": "Static"
+                },
+                "RootEntity": false,
+                "TagComponent": {
+                    "Active": true,
+                    "Tag": "Block"
+                },
+                "TransformComponent": {
+                    "Origin": [
+                        0.0,
+                        0.0
+                    ],
+                    "Rotation": 90.0,
+                    "Scale": [
+                        1.0,
+                        1.0
+                    ],
+                    "Translate": [
+                        -761.0,
+                        -590.0
                     ]
                 }
             },
@@ -2273,7 +2361,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "LLine1"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2317,7 +2405,7 @@
                 "RootEntity": false,
                 "TagComponent": {
                     "Active": true,
-                    "Tag": "LLine3"
+                    "Tag": "Block"
                 },
                 "TransformComponent": {
                     "Origin": [
@@ -2330,7 +2418,7 @@
                         1.0
                     ],
                     "Translate": [
-                        -290.0,
+                        -289.0,
                         262.5
                     ]
                 }

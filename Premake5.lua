@@ -1,4 +1,4 @@
-version = "1.9.29"
+version = "1.9.30"
 
 workspace "Solution"
 	startproject "Vega-Editor"
