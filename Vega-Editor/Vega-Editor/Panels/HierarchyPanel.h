@@ -11,7 +11,7 @@ namespace fz {
 		HierarchyPanel(const Shared<Scene>& scene, EditorState* state);
 
 		void SetContext(const Shared<Scene>& scene, EditorState* state);
-
+		void SetActive(bool enabled);
 		void OnImGuiRender();
 
 	protected:
@@ -26,6 +26,7 @@ namespace fz {
 		fz::Entity m_SelectionContext;
 		bool m_OnEntityRemove;
 		EditorState* m_EditState;
+		bool m_Active;
 	};
 }
 

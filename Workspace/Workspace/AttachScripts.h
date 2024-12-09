@@ -25,6 +25,7 @@
 #include "UI/SkillWindowExit.hpp"
 #include "UI/SkillButton.hpp"
 #include "UI/SkillBound1.hpp"
+#include "UI/SkillBound4.hpp"
 #include "UI/Slot/SlotT1.hpp"
 #include "UI/Slot/SlotT2.hpp"
 #include "UI/Slot/SlotT3.hpp"
@@ -33,8 +34,10 @@
 #include "UI/Slot/SlotB2.hpp"
 #include "UI/Slot/SlotB3.hpp"
 #include "UI/Slot/SlotB4.hpp"
+#include "UI/Fade.hpp"
 // Effects
 #include "Skill/BasicAttack.hpp"
+#include "Skill/PowerStrike.hpp"
 // Portal
 #include "Portal/Portal1R.hpp"
 #include "Portal/Portal1_2Left.hpp"
@@ -47,6 +50,7 @@
 #include "Player/Ghost.hpp"
 // Spawn
 #include "Spawn/SpawnB.hpp"
+#include "Spawn/SpawnBoss.hpp"
 
 // πŒ¿Á
 #include "RibbonPig.h"
@@ -68,6 +72,7 @@ namespace fz {
 		BIND_SCRIPT("SelectChar1", SelectChar1Script);
 		BIND_SCRIPT("CharInfoWindow", SelectCharInfoScript);
 		BIND_SCRIPT("GameStartButton", GameStartButtonScript);
+		BIND_SCRIPT("Fade", FadeScript);
 
 		BIND_SCRIPT("AmherstTown", AmherstTownScript);
 		BIND_SCRIPT("AmherstHunt", AmherstHuntScript);
@@ -84,6 +89,7 @@ namespace fz {
 		BIND_SCRIPT("SkillWindowExit", SkillWindowExitScript);
 		BIND_SCRIPT("SkillButton", SkillButtonScript);
 		BIND_SCRIPT("SkillBound1", SkillBound1Script);
+		BIND_SCRIPT("SkillBound4", SkillBound4Script);
 		BIND_SCRIPT("SlotT1", SlotT1Script);
 		BIND_SCRIPT("SlotT2", SlotT2Script);
 		BIND_SCRIPT("SlotT3", SlotT3Script);
@@ -94,14 +100,15 @@ namespace fz {
 		BIND_SCRIPT("SlotB4", SlotB4Script);
 
 		BIND_SCRIPT("BasicAttack", BasicAttackScript);
+		BIND_SCRIPT("PowerStrike", StrikeAttackScript);
 		BIND_SCRIPT("Portal1R", Portal1R_Script);
 		BIND_SCRIPT("Portal1_2Left", Portal1_2Left_Script);
 		BIND_SCRIPT("Portal1R_hunt", Portal1R_Hunt_Script);
 		BIND_SCRIPT("Portal1L_Boss", Portal1L_Boss_Script);
 		BIND_SCRIPT("Camera", CameraScript);
-
+		// Spawn
 		BIND_SCRIPT("SpawnB", SpawnBScript);
-
+		BIND_SCRIPT("SpawnBoss", SpawnBossScript);
 		// Player
 		BIND_SCRIPT("Player", PlayerScript);
 		BIND_SCRIPT("PlayerDefault", PlayerDefaultScript);

@@ -6,7 +6,7 @@
 
 namespace fz {
 
-	class BasicAttackScript : public VegaScript, public CharacterFSM
+	class StrikeAttackScript : public VegaScript, public CharacterFSM
 	{
 		using AnimPool = std::unordered_map<std::string, AnimationClip>;
 	public:
@@ -18,13 +18,13 @@ namespace fz {
 		{
 			auto& skillComp = AddComponent<SkillComponent>();
 
-			clips["Attack"].loadFromFile("game/animations/effect/basic_attack/attack.anim");
+			clips["Attack"].loadFromFile("game/animations/effect/strike/strike.anim");
 			TransformComponent& transform = GetComponent<TransformComponent>();
 			sf::Sprite& sprite = GetComponent<SpriteComponent>();
 			animator.SetTarget(GetCurrentEntity());
-			timer["Attack"].Start(0.5f);
+			timer["Attack"].Start(0.8f);
 			auto& stat = AddComponent<StatComponent>();
-			stat.Stat.AttackPower = 50.f;
+			stat.Stat.AttackPower = 150.f;
 		}
 
 		void OnDestroy() override

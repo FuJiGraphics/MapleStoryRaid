@@ -8,6 +8,7 @@ namespace fz {
 		, m_HierarchyPanel(m_ActiveScene, &m_SceneState)
 		, m_EditorCamera({ (float)FRAMEWORK.GetWidth(), (float)FRAMEWORK.GetHeight() }, false)
 		, m_ViewportBounds{ {0.f, 0.f}, {0.f, 0.f} }
+		, m_Active(true)
 	{
 		// Empty
 	}
@@ -120,6 +121,28 @@ namespace fz {
 			ImGui::EndMenu();
 		}
 
+		if (ImGui::BeginMenu("View"))
+		{
+			if (ImGui::MenuItem("Game Mode"))
+			{
+				if (this->m_Active)
+				{
+					ImGuiManager::SetDocking(true);
+					this->SetActive(false);
+					this->m_HierarchyPanel.SetActive(false);
+					// m_ActiveScene->OnViewportResize(FRAMEWORK.GetWidth(), FRAMEWORK.GetHeight());
+				}
+				else
+				{
+					ImGuiManager::SetDocking(true);
+					this->SetActive(true);
+					this->m_HierarchyPanel.SetActive(true);
+					InputManager::SetEditorMode(true);
+				}
+			}
+			ImGui::EndMenu();
+		}
+
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		if (ImGui::Begin("Viewports"))
 		{
@@ -163,23 +186,31 @@ namespace fz {
 		ImGui::PopStyleVar();
 
 		this->UiToolbar();
-		m_HierarchyPanel.OnImGuiRender();
-		if (ImGui::Begin("Draw Debug Mode"))
+		if (m_Active)
 		{
-			if (m_ActiveScene)
+			m_HierarchyPanel.OnImGuiRender();
+			if (ImGui::Begin("Draw Debug Mode"))
 			{
-				bool flag = m_ActiveScene->IsDebugDisplayMode();
-				if (ImGui::Checkbox("##debugMode", &flag))
+				if (m_ActiveScene)
 				{
-					m_ActiveScene->SetDebugDisplayMode(flag);
+					bool flag = m_ActiveScene->IsDebugDisplayMode();
+					if (ImGui::Checkbox("##debugMode", &flag))
+					{
+						m_ActiveScene->SetDebugDisplayMode(flag);
+					}
 				}
 			}
+			ImGui::End(); // Viewports
 		}
-		ImGui::End(); // Viewports
 
 		SpriteEditor::OnUI();
 
 		ImGui::EndMainMenuBar();
+	}
+
+	void Editor2D::SetActive(bool enabled)
+	{
+		m_Active = enabled;
 	}
 
 	void Editor2D::ChangeSceneEvent(Shared<Scene> scene)

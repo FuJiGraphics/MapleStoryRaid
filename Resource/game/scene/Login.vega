@@ -549,8 +549,8 @@
                 "Primary": true,
                 "Rotation": 0.0,
                 "Size": [
-                    1017.7300415039063,
-                    596.9700317382813
+                    1286.4000244140625,
+                    718.239990234375
                 ],
                 "Viewport": {
                     "Height": 1.0,
@@ -2048,6 +2048,66 @@
                         -21.0
                     ]
                 }
+            }
+        },
+        "c05debb5-11a1-4e68-b2fd-4f28c88ae6ad": {
+            "HasChild": false,
+            "RootEntity": true,
+            "SpriteComponent": {
+                "Color": {
+                    "A": 255,
+                    "B": 255,
+                    "G": 255,
+                    "R": 255
+                },
+                "MaskColor": {
+                    "A": 255,
+                    "B": 0,
+                    "G": 0,
+                    "R": 0
+                },
+                "MaskMode": false,
+                "Origin": [
+                    70.5,
+                    20.0
+                ],
+                "Origins": "MC",
+                "Position": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    1.0,
+                    1.0
+                ],
+                "SortingOrder": 999,
+                "TexPath": "game\\graphics\\ui\\Fade.png",
+                "TexRect": {
+                    "Height": 40,
+                    "Left": 0,
+                    "Top": 0,
+                    "Width": 141
+                }
+            },
+            "TagComponent": {
+                "Active": false,
+                "Tag": "Fade"
+            },
+            "TransformComponent": {
+                "Origin": [
+                    0.0,
+                    0.0
+                ],
+                "Rotation": 0.0,
+                "Scale": [
+                    100.0,
+                    100.0
+                ],
+                "Translate": [
+                    0.0,
+                    0.0
+                ]
             }
         }
     }

@@ -62,6 +62,7 @@ prebuildcommands
 
 filter "system:Windows"
 linkoptions { "/IGNORE:4006" }
+buildoptions { "/bigobj" }
 
 defines
 {

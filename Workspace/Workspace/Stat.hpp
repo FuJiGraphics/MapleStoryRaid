@@ -15,9 +15,9 @@ namespace fz {
 		int CurrentHP = HP;			// 현재 체력
 		int MP = 100;				// 마나
 		int CurrentMP = MP;			// 현재 마나
-		int AttackPower = 50;		// 공격력
+		int AttackPower = 10;		// 공격력
 		int PhysicalDefense = 0;	// 물리 방어력
-		int MagicPower = 35;		// 마력
+		int MagicPower = 10;		// 마력
 		int MagicDefense = 0;		// 마법 방어력
 		int Accuracy = 80;			// 명중률
 		int Evasion = 0;			// 회피율

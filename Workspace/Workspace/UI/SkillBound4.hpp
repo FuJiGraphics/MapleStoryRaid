@@ -5,7 +5,7 @@
 
 namespace fz {
 
-	class SkillBound1Script : public VegaScript
+	class SkillBound4Script : public VegaScript
 	{
 	public:
 		sf::Vector2f halfSize;
@@ -32,9 +32,9 @@ namespace fz {
 					GameObject button = GetCurrentScene()->GetEntityFromTag("SkillButton");
 					button.SetActive(true);
 					auto& buttonComp = button.GetComponent<SkillButtonComponent>();
-					button.GetComponent<SpriteComponent>().Sprite.SetTexture("game/graphics/ui/Skills/BasicSwingIcon.png");
-					buttonComp.IconPath = "game/graphics/ui/Skills/BasicSwingIcon.png";
-					buttonComp.Skill = GetCurrentScene()->GetEntityFromTag("BasicAttack");
+					button.GetComponent<SpriteComponent>().Sprite.SetTexture("game/graphics/ui/Skills/AttackSkillOver.png");
+					buttonComp.IconPath = "game/graphics/ui/Skills/AttackSkillOver.png";
+					buttonComp.Skill = GetCurrentScene()->GetEntityFromTag("PowerStrike");
 				}
 				if (Input::IsMouseButtonReleased(MouseButtonType::Left))
 				{

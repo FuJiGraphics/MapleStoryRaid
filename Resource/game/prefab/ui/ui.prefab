@@ -1,5 +1,5 @@
 {
-    "286edaab-3970-42eb-ba14-d801069dd4b2": {
+    "fff57d39-d777-4681-89aa-95bcab0f7d3f": {
         "0142046f-f199-4fac-b2f6-22892db2fd01": {
             "HasChild": false,
             "RootEntity": false,
@@ -3096,7 +3096,7 @@
                             1.0
                         ],
                         "SortingOrder": 112,
-                        "TexPath": "game\\graphics\\ui\\Skills\\AttackSkillDisable.png",
+                        "TexPath": "game\\graphics\\ui\\Skills\\AttackSkill.png",
                         "TexRect": {
                             "Height": 32,
                             "Left": 0,

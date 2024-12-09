@@ -24,6 +24,7 @@ namespace fz {
 		void OnUpdate(float dt) override;
 		void OnEvent(fz::Event& ev) override;
 		void OnUI() override;
+		void SetActive(bool enabled);
 
 		void ChangeSceneEvent(Shared<Scene> scene);
 
@@ -40,6 +41,7 @@ namespace fz {
 		EditorState m_SceneState;
 		EditorCamera m_EditorCamera;
 		sf::Vector2f m_ViewportBounds[2];
+		bool m_Active;
 	};
 
 } // namespace fz

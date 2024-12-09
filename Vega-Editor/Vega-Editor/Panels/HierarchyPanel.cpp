@@ -9,6 +9,7 @@ namespace fz {
 		: m_Context(nullptr)
 		, m_OnEntityRemove(false)
 		, m_EditState(nullptr)
+		, m_Active(true)
 	{
 		SetContext(scene, state);
 	}
@@ -20,8 +21,16 @@ namespace fz {
 		m_EditState = state;
 	}
 
+	void HierarchyPanel::SetActive(bool enabled)
+	{
+		m_Active = enabled;
+	}
+
 	void HierarchyPanel::OnImGuiRender()
 	{
+		if (!m_Active)
+			return;
+
 		if (ImGui::Begin("Hierarchy"))
 		{
 			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered(0))
@@ -103,6 +112,8 @@ namespace fz {
 	{
 		if (entity.HasComponent<PrefabInstance>())
 			return false;
+		if (!m_Active)
+			return false;
 
 		auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
 		HWND handle = (HWND)nativeWindow->getSystemHandle();
@@ -166,6 +177,9 @@ namespace fz {
 
 	void HierarchyPanel::DrawSceneComponents(fz::Entity& entity)
 	{
+		if (!m_Active)
+			return;
+
 		auto nativeWindow = (sf::RenderWindow*)System::GetSystem().GetWindow().GetNativeWindow();
 		HWND handle = (HWND)nativeWindow->getSystemHandle();
 

@@ -6,6 +6,7 @@
 #include "Stat.hpp"
 #include "SaveData.hpp"
 #include "SoundMgr.h"
+#include "UI/Slot/SlotComponent.h"
 
 namespace fz {
 
@@ -17,7 +18,7 @@ namespace fz {
 		float RopeSpeed = 100.f;
 
 		float KnockbackTime = 0.5f;
-		float AttackTime = 1.0f;
+		float AttackTime = 0.5f;
 
 		Directions currDir = Directions::LEFT;
 
@@ -60,6 +61,7 @@ namespace fz {
 				transform->Transform.SetTranslate(SaveData::Position);
 				body->SetPosition(SaveData::Position);
 			}
+
 			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud"));
 			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud2"));
 			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud3"));
@@ -70,7 +72,6 @@ namespace fz {
 			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud8"));
 			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud9"));
 			cloudObjects.push_back(GetCurrentScene()->GetEntityFromTag("Cloud10"));
-
 
 		}
 
@@ -135,26 +136,12 @@ namespace fz {
 				else if (isInsideRope)
 					this->OnRope(Directions::DOWN);
 			}
-			else if (Input::IsKeyDown(KeyType::Q))
+			if (!isOnRope && !isOnLadder)
 			{
-				this->Damaged(10);
-			}
-			else if (Input::IsKeyDown(KeyType::T))
-			{
-				GetCurrentScene()->Instantiate("RibbonPig", { 600.f, 700.0f });
-
-			}
-			else if (Input::IsKeyDown(KeyType::W))
-			{
-				this->Die();
-			}
-
-			if (Input::IsKeyDown(KeyType::LControl))
-			{
-				if (!isOnRope && !isOnLadder)
-					this->Attack();
+				this->OnKeyInput();
 			}
 		}
+
 		void UpdateCloudPosition(float dt)
 		{
 			for (auto& cloudObject : cloudObjects)
@@ -185,12 +172,21 @@ namespace fz {
 			{
 				isInsideLadder = true;
 			}
+			else if (collider.gameObject.HasComponent<StatComponent>())
+			{
+				if (!collider.gameObject.HasComponent<SkillComponent>())
+				{
+					auto& statComp = collider.gameObject.GetComponent<StatComponent>();
+					this->Damaged(statComp.Stat.AttackPower);
+				}
+			}
 		}
 
 		void OnTriggerStay(Collider collider) override
 		{
 
 		}
+
 		void OnTriggerExit(Collider collider) override
 		{
 			if (collider.tag == "Ladder")
@@ -225,6 +221,14 @@ namespace fz {
 				currRopeBounds[0].y = pos.y;
 				currRopeBounds[1].y = pos.y + (endPos.x - startPos.x);
 			}
+			else if (collision.gameObject.HasComponent<StatComponent>())
+			{
+				if (!collision.gameObject.HasComponent<SkillComponent>())
+				{
+					auto& statComp = collision.gameObject.GetComponent<StatComponent>();
+					this->Damaged(statComp.Stat.AttackPower);
+				}
+			}
 		}
 
 		void OnCollisionStay(Collision collision) override
@@ -232,6 +236,14 @@ namespace fz {
 			if (collision.tag == "Ground")
 			{
 
+			}
+			else if (collision.gameObject.HasComponent<StatComponent>())
+			{
+				if (!collision.gameObject.HasComponent<SkillComponent>())
+				{
+					auto& statComp = collision.gameObject.GetComponent<StatComponent>();
+					this->Damaged(statComp.Stat.AttackPower);
+				}
 			}
 		}
 
@@ -252,16 +264,6 @@ namespace fz {
 			}
 		}
 
-		void Attack() override
-		{
-			if (!timer["Knocback"].Done() || status->IsLoginMode)
-				return;
-
-			timer["Attack"].Start(AttackTime);
-			status->Status = PlayerStatus::SwingAttack2;
-			Effect();
-		}
-
 		void Idle() override
 		{
 			if (!timer["Knocback"].Done() || !timer["Attack"].Done())
@@ -278,7 +280,7 @@ namespace fz {
 
 		void Move(Directions dir) override
 		{
-			if (!timer["Knocback"].Done() || !timer["Attack"].Done() || status->IsLoginMode)
+			if (isDead || !timer["Knocback"].Done() || !timer["Attack"].Done() || status->IsLoginMode)
 				return;
 
 			if (isOnGround)
@@ -292,7 +294,6 @@ namespace fz {
 			{
 				RaycastHit hit;
 				Physics.Raycast(GetWorldPosition(), { 1.0f, 0.0f }, hit, 100.f);
-				FZLOG_DEBUG("Raycast {0}", hit.Collider.tag);
 				body->AddPosition({ stat.MoveSpeed * 1.f, 0.0f });
 				transform.SetScale(-1.0f, 1.0f);
 				currDir = Directions::RIGHT;
@@ -307,7 +308,7 @@ namespace fz {
 
 		void Jump() override
 		{
-			if (!timer["Knocback"].Done() || !timer["Attack"].Done() || status->IsLoginMode)
+			if (isDead || !timer["Knocback"].Done() || !timer["Attack"].Done() || status->IsLoginMode)
 				return;
 
 			status->Status = PlayerStatus::Jump;
@@ -322,18 +323,21 @@ namespace fz {
 		{
 			if (isDead || status->IsLoginMode)
 				return;
-
-			Stat->Stat.CurrentHP -= damage;
-			if (Stat->Stat.CurrentHP <= 0)
+			if (timer["Damaged"].Done())
 			{
-				this->Die();
-				return;
+				timer["Damaged"].Start(1.5f);
+				Stat->Stat.CurrentHP -= damage;
+				if (Stat->Stat.CurrentHP <= 0)
+				{
+					this->Die();
+					return;
+				}
+				status->Status = PlayerStatus::Damaged;
+				if (currDir == Directions::LEFT)
+					Knockback(Directions::RIGHT);
+				else if (currDir == Directions::RIGHT)
+					Knockback(Directions::LEFT);
 			}
-			status->Status = PlayerStatus::Damaged;
-			if (currDir == Directions::LEFT)
-				Knockback(Directions::RIGHT);
-			else if (currDir == Directions::RIGHT)
-				Knockback(Directions::LEFT);
 		}
 
 		void Die() override
@@ -365,6 +369,15 @@ namespace fz {
 			SaveData::Set(*Stat);
 			auto& comp = TargetPortal.GetComponent<PortalComponent>();
 			SaveData::Position = comp.NextPlayerPos;
+
+			// Save Slots
+			std::vector<GameObject> slots = GetCurrentScene()->GetEntitiesFromComponent<SlotComponent>();
+			for (auto& slot : slots)
+			{
+				const std::string& tag = slot.GetComponent<TagComponent>().Tag;
+				const SlotComponent& slotComp = slot.GetComponent<SlotComponent>();
+				SaveData::Set(tag, slotComp);
+			}
 			SceneManager::RuntimeChangeScene(comp.NextScenePath);
 		}
 
@@ -462,13 +475,35 @@ namespace fz {
 			}
 		}
 
-		void Effect()
+		void OnKeyInput()
 		{
-			const auto& scale = GetComponent<TransformComponent>().Transform.GetScale();
-			const auto& pos = GetWorldPosition();
-			GameObject CurrEffect = GetCurrentScene()->Instantiate(
-				"BasicAttack", { pos.x - (30.f * scale.x), pos.y - 25.f }, scale);
-			auto& effectStat = CurrEffect.AddComponent<StatComponent>();
+			auto& Scene = GetCurrentScene();
+			if (!Scene)
+				return;
+
+			std::vector<GameObject> slots = Scene->GetEntitiesFromComponent<SlotComponent>();
+			
+			for (auto& slot : slots)
+			{
+				auto& slotComp = slot.GetComponent<SlotComponent>();
+				if (slotComp.IsMounted && slotComp.IsKeyDown())
+				{
+					if (isDead || !timer["Knocback"].Done() || status->IsLoginMode)
+						return;
+
+					if (timer["Attack"].Done())
+					{
+						timer["Attack"].Start(AttackTime);
+						status->Status = PlayerStatus::SwingAttack2; 
+						const auto& scale = GetComponent<TransformComponent>().Transform.GetScale();
+						const auto& pos = GetWorldPosition();
+						GameObject CurrEffect = Scene->Instantiate(
+							slotComp.SkillTag,
+							{ pos.x - (65.f * scale.x), pos.y }, scale);
+					}
+				}
+			}
 		}
+
 	}; // class
 } // namespace fz

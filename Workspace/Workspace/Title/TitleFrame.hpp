@@ -2,21 +2,36 @@
 #include <VegaEngine2.h>
 #include "FrameComponent.h"
 #include "Player/PlayerStatus.hpp"
+#include "UI/FadeComponent.h"
 
 namespace fz {
 
 	class TitleFrameScript : public VegaScript
 	{
 	public:
-		FrameComponent* frame;
-		bool isFirstUpdate = true;
+		FrameComponent* Frame;
+		bool IsFirstUpdate = true;
+		bool IsStartGame = false;
 		float CameraSpeed = 1.5f;
-
+		GameObject Fade;
 		void Start() override
 		{
-			frame = &AddComponent<FrameComponent>();
-			frame->status = FrameStatus::Login;
+			Frame = &AddComponent<FrameComponent>();
+			Frame->status = FrameStatus::Login;
+			Fade = GetCurrentScene()->GetEntityFromTag("Fade");
 
+			sf::Vector2u targetResolution = { 800, 600 };
+
+			sf::Vector2u windowSize = GetCurrentScene()->GetViewportSize();
+			GetComponent<CameraComponent>().Camera.SetSize(static_cast<float>(targetResolution.x), static_cast<float>(targetResolution.y));
+
+			float viewportX = static_cast<float>(targetResolution.x) / static_cast<float>(windowSize.x);
+			float viewportY = static_cast<float>(targetResolution.y) / static_cast<float>(windowSize.y);
+
+			GetComponent<CameraComponent>().Camera.SetViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
+
+			float zoom = std::min(viewportX, viewportY);
+			GetComponent<CameraComponent>().Camera.Zoom(zoom);
 		}
 
 		void OnDestroy() override
@@ -26,20 +41,29 @@ namespace fz {
 
 		void OnUpdate(float dt) override
 		{
-			if (isFirstUpdate)
+			if (IsFirstUpdate)
 			{
-				isFirstUpdate = false;
+				IsFirstUpdate = false;
 				auto& playerStatus = GetCurrentScene()->GetEntityFromTag("Player").GetComponent<PlayerStatusComponent>();
 				playerStatus.IsLoginMode = true;
 			}
 
-			switch(frame->status)
+			if (IsStartGame)
+			{
+				if (Fade.GetComponent<FadeComponent>().IsFadeOutDone)
+				{
+					SceneManager::RuntimeChangeScene("game/scene/Stage1_town.vega");
+				}
+				return;
+			}
+
+			switch (Frame->status)
 			{
 				case FrameStatus::Login:
 					this->MoveLogin(dt);
 					break;
 				case FrameStatus::LoginDone:
-					frame->status = FrameStatus::CharSelect;
+					Frame->status = FrameStatus::CharSelect;
 					break;
 				case FrameStatus::LoginExit:
 					break;
@@ -51,7 +75,7 @@ namespace fz {
 					break;
 				case FrameStatus::CharSelectExit:
 					break;
-			} 
+			}
 		}
 
 		void MoveLogin(float dt)
@@ -82,9 +106,11 @@ namespace fz {
 
 		void StartGame()
 		{
-			SceneManager::RuntimeChangeScene("game/scene/Stage1_town.vega");
+			GameObject fade = GetCurrentScene()->GetEntityFromTag("Fade");
+			fade.GetComponent<FadeComponent>().SetFadeOut(true);
+			IsStartGame = true;
 		}
-
 	};
+
 } // namespace fz
 

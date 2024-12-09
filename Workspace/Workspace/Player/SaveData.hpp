@@ -1,5 +1,6 @@
 #pragma once
 #include "Stat.hpp"
+#include "UI/Slot/SlotComponent.h"
 
 namespace fz {
 
@@ -12,6 +13,7 @@ namespace fz {
 		inline static bool ChangedScene = false;
 		inline static sf::Vector2f Position = { 0.0f, 0.0f };
 		inline static Stat Status;
+		inline static std::unordered_map<std::string, SlotComponent> Slots;
 
 		static void Set(const StatComponent& stat)
 		{
@@ -35,6 +37,16 @@ namespace fz {
 			Status.NumOfInt = src.NumOfInt;
 			Status.NumOfLuk = src.NumOfLuk;
 		}
+
+		static void Set(const std::string& tag, const SlotComponent& slot)
+		{
+			Slots[tag].IsMounted = slot.IsMounted;
+			Slots[tag].Key = slot.Key;
+			Slots[tag].SkillTag = slot.SkillTag;
+			Slots[tag].Tag = slot.Tag;
+			Slots[tag].SkillTexturePath = slot.SkillTexturePath;
+		}
+
 		static void Get(StatComponent& stat)
 		{
 			auto& dst = stat.Stat;
@@ -56,6 +68,15 @@ namespace fz {
 			dst.NumOfDex = Status.NumOfDex;
 			dst.NumOfInt = Status.NumOfInt;
 			dst.NumOfLuk = Status.NumOfLuk;
+		}
+
+		static void Get(const std::string& tag, SlotComponent& slot)
+		{
+			slot.IsMounted = Slots[tag].IsMounted;
+			slot.Key = Slots[tag].Key;
+			slot.SkillTag = Slots[tag].SkillTag;
+			slot.Tag = Slots[tag].Tag;
+			slot.SkillTexturePath = Slots[tag].SkillTexturePath;
 		}
 	};
 

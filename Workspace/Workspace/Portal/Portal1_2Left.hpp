@@ -22,7 +22,7 @@ namespace fz {
 			auto& comp = AddComponent<PortalComponent>();
 			comp.NextPlayerPos = { 2508.f, 551.f };
 			comp.NextScenePath = "game/scene/Stage1_town.vega";
-			SOUND_MGR.PlayBgm("game/sound/Town_bgm.mp3", true);
+			SoundMgr::Instance().PlayBgm("game/sound/Town_bgm.mp3", true);
 		
 	
 		}

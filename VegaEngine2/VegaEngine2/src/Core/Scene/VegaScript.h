@@ -14,6 +14,7 @@ namespace fz {
 
 	struct Collider
 	{
+		GameObject gameObject;
 		std::string tag = "";
 	};
 
@@ -85,6 +86,10 @@ namespace fz {
 		virtual void Start() {}
 		virtual void OnDestroy() {}
 		virtual void OnUpdate(float dt) {}
+
+		virtual void OnGroupEnter(Collider collider) {}
+		virtual void OnGroupStay(Collider collider) {}
+		virtual void OnGroupExit(Collider collider) {}
 
 		virtual void OnTriggerEnter(Collider collider) {}
 		virtual void OnTriggerStay(Collider collider) {}

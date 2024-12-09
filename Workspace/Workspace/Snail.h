@@ -175,8 +175,6 @@ namespace fz {
 				// 플레이어 피격시
 				animator.Play(&clips["damaged"]);
 
-
-
 				if (currDir == Directions::LEFT)
 					Knockback(Directions::RIGHT);
 				else if (currDir == Directions::RIGHT)
@@ -195,13 +193,6 @@ namespace fz {
 				animator.Play(&clips["die"]);
 				currentState = AIState::Die;
 				timer["Die"].Start(1.f);
-
-
-				auto& callbackComp = GetComponent<CallbackComponent>();
-				for (auto& fn : callbackComp.Callbacks["Die"])
-				{
-					fn(GetCurrentEntity());
-				}
 			}
 		}
 		virtual void OnCollisionEnter(Collision collision)

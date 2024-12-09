@@ -192,11 +192,6 @@ namespace fz {
 				currentState = AIState::Die;
 				timer["Die"].Start(1.f);
 
-				auto& callbackComp = GetComponent<CallbackComponent>();
-				for (auto& fn : callbackComp.Callbacks["Die"])
-				{
-					fn(GetCurrentEntity());
-				}
 	/*			SOUND_MGR.PlaySfx("game/sound/pig_Die.mp3", false);*/
 			}
 

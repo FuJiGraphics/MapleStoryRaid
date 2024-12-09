@@ -231,24 +231,11 @@ namespace fz {
 
 	void Scene::DeleteEntity(fz::Entity& entity)
 	{
-		if (entity && entity.HasComponent<ParentEntityComponent>())
-		{
-			auto& parentComp = entity.GetComponent<ParentEntityComponent>();
-			auto& childs = parentComp.ParentEntity.GetComponent<ChildEntityComponent>().CurrentChildEntities;
-			for (auto begin = childs.begin(); begin != childs.end(); ++begin)
-			{
-				if (*begin == entity)
-				{
-					childs.erase(begin);
-					break;
-				}
-			}
-		}
 		if (entity && entity.HasComponent<ChildEntityComponent>())
 		{
 			ChildEntityComponent& childComp = entity.GetComponent<ChildEntityComponent>();
 			auto& childs = childComp.CurrentChildEntities;
-			for (auto begin = childs.begin(); begin != childs.end(); ++begin)
+			for (auto begin = childs.begin(); begin != childs.end();)
 			{
 				GameObject del = *begin;
 				begin = childs.erase(begin);
@@ -275,7 +262,20 @@ namespace fz {
 		{
 			m_EntityPool.erase(it);
 		}
-		FZLOG_DEBUG("entity 삭제 {0}", (int)entity.m_Handle);
+		if (entity && entity.HasComponent<ParentEntityComponent>())
+		{
+			auto& parentComp = entity.GetComponent<ParentEntityComponent>();
+			auto& childs = parentComp.ParentEntity.GetComponent<ChildEntityComponent>().CurrentChildEntities;
+			for (auto begin = childs.begin(); begin != childs.end(); ++begin)
+			{
+				if (*begin == entity)
+				{
+					childs.erase(begin);
+					break;
+				}
+			}
+		}
+		FZLOG_DEBUG("entity 삭제 handle = {0}, tag = {1}", (int)entity.m_Handle, entity.GetComponent<TagComponent>().Tag);
 		m_Registry.destroy(entity.m_Handle);
 	}
 

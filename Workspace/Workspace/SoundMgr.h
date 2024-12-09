@@ -1,9 +1,10 @@
 #pragma once
+
+#include <VegaEngine2.h>
 #include <list>
-#include <SFML/Audio.hpp>
-#include <SFML/Audio/SoundBuffer.hpp>
 
 namespace fz {
+
 	class SoundMgr : public Singleton<SoundMgr>
 	{
 		friend Singleton<SoundMgr>;
@@ -31,21 +32,111 @@ namespace fz {
 			bgm.setVolume(bgmVolume);
 		}
 
-		void SetSfxVolume(float v);
+		void Init(int totalChannels)
+		{
+			for (int i = 0; i < totalChannels; ++i)
+			{
+				waiting.push_back(new sf::Sound());
+			}
+		}
 
-		void Init(int totalChannels = 64);
-		void Release();
-		void Update(float dt);
+		void Release()
+		{
+			for (auto sound : waiting)
+			{
+				delete sound;
+			}
+			waiting.clear();
+			for (auto sound : playing)
+			{
+				delete sound;
+			}
+			waiting.clear();
+		}
 
-		void PlayBgm(std::string id, bool loop = true);
-		void PlayBgm(sf::SoundBuffer& buffer, bool loop = true);
-		void StopBgm();
+		void Update(float dt)
+		{
+			auto it = playing.begin();
+			while (it != playing.end())
+			{
+				if ((*it)->getStatus() == sf::Sound::Stopped)
+				{
+					waiting.push_back(*it);
+					playing.erase(it);
+				}
+				else
+				{
+					++it;
+				}
+			}
+		}
 
-		void PlaySfx(std::string id, bool loop = false);
-		void PlaySfx(sf::SoundBuffer& buffer, bool loop = false);
+		void PlayBgm(std::string id, bool loop)
+		{
+			PlayBgm(SOUNDBUFFER_MGR.Get(id), loop);
+		}
 
-		void StopAllSfx();
+		void PlayBgm(sf::SoundBuffer& buffer, bool loop)
+		{
+			bgm.stop();
+			//bgm.setVolume(bgmVolume);
+			bgm.setLoop(loop);
+			bgm.setBuffer(buffer);
+			bgm.play();
+		}
+
+		void StopBgm()
+		{
+			bgm.stop();
+		}
+
+		void PlaySfx(std::string id, bool loop)
+		{
+			PlaySfx(SOUNDBUFFER_MGR.Get(id), loop);
+		}
+
+		void PlaySfx(sf::SoundBuffer& buffer, bool loop)
+		{
+			sf::Sound* sound = nullptr;
+
+			if (waiting.empty())
+			{
+				sound = playing.front();
+				playing.pop_front();
+				sound->stop();
+			}
+			else
+			{
+				sound = waiting.front();
+				waiting.pop_front();
+			}
+
+			sound->setVolume(sfxVolume);
+			sound->setBuffer(buffer);
+			sound->setLoop(loop);
+			sound->play();
+			playing.push_back(sound);
+		}
+
+		void SetSfxVolume(float v)
+		{
+			sfxVolume = v;
+			for (auto sound : playing)
+			{
+				sound->setVolume(sfxVolume);
+			}
+		}
+
+		void StopAllSfx()
+		{
+			for (auto sound : playing)
+			{
+				sound->stop();
+				waiting.push_back(sound);
+			}
+			playing.clear();
+		}
 	};
 
-#define SOUND_MGR (SoundMgr::Instance())
+#define SOUND_MGR (fz::SoundMgr::Instance())
 }

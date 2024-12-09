@@ -2,6 +2,7 @@
 #include <VegaEngine2.h>
 #include "PortalComponent.hpp"
 #include "SoundMgr.h"
+
 namespace fz {
 
 	class Portal1R_Script : public VegaScript
@@ -23,7 +24,7 @@ namespace fz {
 			comp.NextPlayerPos = { -613.f, -290.f };
 			comp.NextScenePath = "game/scene/Stage1_hunt.vega";
 
-			SOUND_MGR.PlayBgm("game/sound/Hunt_bgm.mp3", true);
+			SoundMgr::Instance().PlayBgm("game/sound/Hunt_bgm.mp3", true);
 		
 		}
 

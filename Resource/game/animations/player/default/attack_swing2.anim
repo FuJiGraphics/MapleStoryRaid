@@ -57,7 +57,7 @@
         "ClipName": "attack_swing2",
         "FrameCount": 3,
         "LoopType": "Single",
-        "Speed": 1.0,
+        "Speed": 5.0,
         "TexturePath": "game\\graphics\\player\\Hero\\default\\attack_swing2.png",
         "Transform": {
             "Rotation": 0.0,

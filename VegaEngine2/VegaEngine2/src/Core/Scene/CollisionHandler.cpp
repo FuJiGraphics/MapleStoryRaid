@@ -29,7 +29,7 @@ namespace fz {
 			auto& scriptComp = entityA.GetComponent<NativeScriptComponent>();
 			if (fixtureA->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerEnter({ tagB });
+				scriptComp.Instance->OnTriggerEnter({ entityB, tagB });
 			}
 			else
 			{
@@ -41,7 +41,7 @@ namespace fz {
 			auto& scriptComp = entityB.GetComponent<NativeScriptComponent>();
 			if (fixtureB->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerEnter({ tagA });
+				scriptComp.Instance->OnTriggerEnter({ entityA, tagA });
 			}
 			else
 			{
@@ -75,7 +75,7 @@ namespace fz {
 			auto& scriptComp = entityA.GetComponent<NativeScriptComponent>();
 			if (fixtureA->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerExit({ tagB });
+				scriptComp.Instance->OnTriggerExit({ entityB, tagB });
 			}
 			else
 			{
@@ -87,7 +87,7 @@ namespace fz {
 			auto& scriptComp = entityB.GetComponent<NativeScriptComponent>();
 			if (fixtureB->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerExit({ tagA });
+				scriptComp.Instance->OnTriggerExit({ entityA, tagA });
 			}
 			else
 			{
@@ -135,7 +135,7 @@ namespace fz {
 			auto& scriptComp = entityA.GetComponent<NativeScriptComponent>();
 			if (fixtureA->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerStay({ tagB });
+				scriptComp.Instance->OnTriggerStay({ entityB, tagB });
 			}
 			else
 			{
@@ -147,7 +147,7 @@ namespace fz {
 			auto& scriptComp = entityB.GetComponent<NativeScriptComponent>();
 			if (fixtureB->IsSensor())
 			{
-				scriptComp.Instance->OnTriggerStay({ tagA });
+				scriptComp.Instance->OnTriggerStay({ entityA, tagA });
 			}
 			else
 			{

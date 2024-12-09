@@ -2,6 +2,7 @@
 #include <VegaEngine2.h>
 #include "PortalComponent.hpp"
 #include "SoundMgr.h"
+
 namespace fz {
 
 	class Portal1R_Hunt_Script: public VegaScript
@@ -23,7 +24,7 @@ namespace fz {
 			comp.NextPlayerPos = { 452.f, -37.f };
 			comp.NextScenePath = "game/scene/Stage1_boss.vega";
 
-			SOUND_MGR.PlayBgm("game/sound/Boss_bgm.mp3", true);
+			SoundMgr::Instance().PlayBgm("game/sound/Boss_bgm.mp3", true);
 		}
 
 		void OnUpdate(float dt) override

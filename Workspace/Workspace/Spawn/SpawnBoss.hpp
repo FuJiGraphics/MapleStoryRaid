@@ -5,12 +5,12 @@
 
 namespace fz {
 
-	class SpawnBScript : public VegaScript
+	class SpawnBossScript : public VegaScript
 	{
 	public:
 		Timer timer;
 		SpawnArea area;
-		int SpawnLimitCount = 30;
+		int SpawnLimitCount = 1;
 		int CurrentSpawnCount = 0;
 
 		void Start() override
@@ -45,13 +45,7 @@ namespace fz {
 
 			CurrentSpawnCount++;
 			sf::Vector2f spawnPos = area.Spawn();
-			int ran = Random(0, 2);
-			if (ran == 0)
-				GetCurrentScene()->Instantiate("Spoa", spawnPos);
-			if (ran == 1)
-				GetCurrentScene()->Instantiate("Snail", spawnPos);
-			if (ran == 2)
-				GetCurrentScene()->Instantiate("RibbonPig", spawnPos);
+			GetCurrentScene()->Instantiate("Mushmom", spawnPos);
 		}
 
 	}; // class

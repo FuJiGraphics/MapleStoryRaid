@@ -1,0 +1,82 @@
+{
+    "d937f054-5179-4430-ab12-7e2aa4276062": {
+        "BoxCollider2DComponent": {
+            "Density": 1.0,
+            "Friction": 0.5,
+            "IsTrigger": true,
+            "Offset": {
+                "X": 0.0,
+                "Y": 0.0
+            },
+            "Restitution": 0.0,
+            "RestitutionThreshold": 0.5,
+            "Size": {
+                "X": 66.4000015258789,
+                "Y": 57.5
+            }
+        },
+        "HasChild": false,
+        "RigidbodyComponent": {
+            "FixedRotation": true,
+            "GroupIndex": 0,
+            "RigidType": "Static"
+        },
+        "RootEntity": true,
+        "SpriteComponent": {
+            "Color": {
+                "A": 255,
+                "B": 255,
+                "G": 255,
+                "R": 255
+            },
+            "MaskColor": {
+                "A": 255,
+                "B": 0,
+                "G": 0,
+                "R": 0
+            },
+            "MaskMode": false,
+            "Origin": [
+                81.5,
+                83.0
+            ],
+            "Origins": "MC",
+            "Position": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "SortingOrder": 4,
+            "TexPath": "game\\graphics\\player\\Hero\\strike\\strike.png",
+            "TexRect": {
+                "Height": 166,
+                "Left": 0,
+                "Top": 0,
+                "Width": 163
+            }
+        },
+        "TagComponent": {
+            "Active": false,
+            "Tag": "PowerStrike"
+        },
+        "TransformComponent": {
+            "Origin": [
+                0.0,
+                0.0
+            ],
+            "Rotation": 0.0,
+            "Scale": [
+                1.0,
+                1.0
+            ],
+            "Translate": [
+                10000.0,
+                10000.0
+            ]
+        }
+    }
+}

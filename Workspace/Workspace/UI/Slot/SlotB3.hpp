@@ -2,7 +2,8 @@
 #include <VegaEngine2.h>
 #include "CallbackComponent.h"
 #include "SlotComponent.h"
-#include "../SkillButtonComponent.h"
+#include "UI/SkillButtonComponent.h"
+#include "Player/SaveData.hpp"
 
 namespace fz {
 
@@ -17,6 +18,11 @@ namespace fz {
 			auto& slotComp = AddComponent<SlotComponent>();
 			Tag = GetComponent<TagComponent>().Tag;
 			slotComp.Tag = Tag;
+			slotComp.Key = KeyType::End;
+			if (SaveData::ChangedScene)
+			{
+				SaveData::Get(Tag, slotComp);
+			}
 		}
 
 		void OnDestroy() override
@@ -58,7 +64,7 @@ namespace fz {
 			// Icon ¼³Á¤
 			SetActive(true);
 			slotComp.IsMounted = true;
-			slotComp.Skill = buttonComp.Skill;
+			slotComp.SkillTag = buttonComp.Skill.GetComponent<TagComponent>().Tag;
 			auto& spriteComp = GetComponent<SpriteComponent>();
 			spriteComp.Sprite.SetTexture(buttonComp.IconPath);
 		}
@@ -71,14 +77,10 @@ namespace fz {
 			{
 				if (slot != GetCurrentEntity())
 				{
-					auto& targetSkill = slot.GetComponent<SlotComponent>().Skill;
-					if (!targetSkill)
-						continue;
-					const auto& targetTag = targetSkill.GetComponent<TagComponent>().Tag;
+					const auto& targetTag = slot.GetComponent<SlotComponent>().SkillTag;
 					if (skillTag == targetTag)
 					{
 						slot.GetComponent<SlotComponent>().IsMounted = false;
-						targetSkill = {};
 						slot.SetActive(false);
 					}
 				}

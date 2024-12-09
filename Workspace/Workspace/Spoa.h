@@ -126,15 +126,16 @@ namespace fz {
 
 		void DropItem()
 		{
-			if (!OnDropItem)
-			{
-				OnDropItem = true;
-				const auto& scale = GetComponent<TransformComponent>().Transform.GetScale();
-				const auto& pos = GetWorldPosition();
-				CurrItemDrop = GetCurrentScene()->Instantiate(
-					"MonsterItem", { pos.x - (30.f * scale.x), pos.y - 25.f }, scale);
-			}
+			//if (!OnDropItem)
+			//{
+			//	OnDropItem = true;
+			//	const auto& scale = GetComponent<TransformComponent>().Transform.GetScale();
+			//	const auto& pos = GetWorldPosition();
+			//	CurrItemDrop = GetCurrentScene()->Instantiate(
+			//		"MonsterItem", { pos.x - (30.f * scale.x), pos.y - 25.f }, scale);
+			//}
 		}
+
 		void Idle() override
 		{
 			if (!timer["Knocback"].Done())
@@ -196,12 +197,6 @@ namespace fz {
 				animator.Play(&clips["die"]);
 				currentState = AIState::Die;
 				timer["Die"].Start(1.f);
-				
-				auto& callbackComp = GetComponent<CallbackComponent>();
-				for (auto& fn : callbackComp.Callbacks["Die"])
-				{
-					fn(GetCurrentEntity());
-				}
 			}
 		}
 
